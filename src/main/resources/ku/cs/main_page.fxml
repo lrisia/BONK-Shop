@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
@@ -20,8 +25,144 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <TextField fx:id="searchTextField" layoutX="436.0" layoutY="49.0" prefHeight="31.0" prefWidth="307.0" promptText="search" style="-fx-background-color: ffffff; -fx-background-radius: 6;" />
-      <Icon content="SEARCH" layoutX="713.0" layoutY="51.0" />
+      <TextField fx:id="searchTextField" layoutX="436.0" layoutY="49.0" prefHeight="31.0" prefWidth="276.0" promptText="search" style="-fx-background-color: ffffff; -fx-background-radius: 6;" />
       <Line endX="-40.0" endY="425.0" layoutX="220.0" layoutY="147.0" startX="-40.0" startY="-33.400001525878906" />
+      <Rectangle fx:id="product01Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="197.0" layoutY="138.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="product02Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="389.0" layoutY="138.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="product03Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="582.0" layoutY="138.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="product04Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="197.0" layoutY="354.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="product05Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="389.0" layoutY="354.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="product06Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="582.0" layoutY="354.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6754385828971863" green="0.7894737124443054" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <ImageView fx:id="logoImageView" fitHeight="181.0" fitWidth="184.0" layoutX="40.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/logo_bonk.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ScrollBar layoutX="762.0" layoutY="113.0" orientation="VERTICAL" prefHeight="459.0" prefWidth="10.0" />
+      <ImageView fx:id="searchIconImageView" fitHeight="31.0" fitWidth="31.0" layoutX="712.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/search_icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>
