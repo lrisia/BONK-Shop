@@ -10,8 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import ku.cs.App;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,5 +40,10 @@ public class LoginPageController {
     public void clickCloseLabel(Event event) {
         Stage stage = (Stage) closeLabel.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void switchToRegister() throws IOException {
+        App.setRoot("register_page");
     }
 }
