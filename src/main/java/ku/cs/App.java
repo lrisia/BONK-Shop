@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import com.github.saacsos.FXRouter;
 
 import java.io.IOException;
 
@@ -18,11 +19,21 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login_page"), 600, 400);
-        stage.setResizable(false);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(scene);
-        stage.show();
+//        scene = new Scene(loadFXML("login_page"), 600, 400);
+//        stage.setResizable(false);
+//        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.setScene(scene);
+//        stage.show();
+        FXRouter.bind(this, stage, 600, 400);
+        configRoute();
+        FXRouter.goTo("login");
+    }
+
+    private static void configRoute() {
+        String packageStr = "ku/cs/";
+        FXRouter.when("login", packageStr+ "login_page.fxml");
+        FXRouter.when("register", packageStr+ "register_page.fxml");
+        FXRouter.when("main", packageStr+"main_page.fxml", 800, 600);
     }
 
     public static void setRoot(String fxml) throws IOException {

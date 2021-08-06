@@ -64,7 +64,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="loginLabel" layoutX="207.0" layoutY="345.0" onMouseClicked="#switchToLogin" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true">
+            <Label fx:id="loginLabel" layoutX="207.0" layoutY="345.0" onMouseClicked="#switchToLoginPage" onMouseEntered="#mouseEnteredLoginLabel" onMouseExited="#mouseExitedLoginLabel" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Font size="13.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="comfirmPasswordPasswordField" layoutX="60.0" layoutY="235.0" prefHeight="45.0" prefWidth="230.0" promptText="Comfirm Password" style="-fx-background-radius: 50;">
+            <PasswordField fx:id="confirmPasswordPasswordField" layoutX="60.0" layoutY="235.0" prefHeight="45.0" prefWidth="230.0" promptText="Confirm Password" style="-fx-background-radius: 50;">
                <font>
                   <Font size="13.0" />
                </font>

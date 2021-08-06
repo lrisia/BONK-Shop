@@ -2,19 +2,24 @@ package ku.cs.controllers;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import ku.cs.App;
+import com.github.saacsos.FXRouter;
 
 import java.io.IOException;
 
 public class RegisterPageController {
     @FXML private TextField nameTextField;
     @FXML private TextField usernameTextField;
-    @FXML private TextField passwordTextField;
-    @FXML private TextField confirmPasswordTextField;
+    @FXML private PasswordField passwordPasswordField;
+    @FXML private PasswordField confirmPasswordPasswordField;
     @FXML private Button registerBtn;
     @FXML private Label loginLabel;
     @FXML private Label closeLabel;
@@ -26,7 +31,24 @@ public class RegisterPageController {
     }
 
     @FXML
-    private void switchToLogin() throws IOException {
-        App.setRoot("Login_page");
+    private void switchToLoginPage() throws IOException {
+        try {
+            FXRouter.goTo("login");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า main ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML
+    private void mouseEnteredLoginLabel(MouseEvent mouseEvent) {
+        loginLabel.setStyle("-fx-text-fill: #7597fd");
+        System.out.println("Mouse entered login label");
+    }
+
+    @FXML
+    private void mouseExitedLoginLabel(MouseEvent mouseEvent) {
+        loginLabel.setStyle("-fx-text-fill: #575757");
+        System.out.println("mouse exited login label");
     }
 }
