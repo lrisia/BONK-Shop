@@ -10,80 +10,79 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: EFEFEF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: EFEFEF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.BasketController">
    <children>
-      <Rectangle arcHeight="95.0" arcWidth="95.0" fill="WHITE" height="530.0" layoutX="11.0" layoutY="56.0" stroke="WHITE" strokeType="INSIDE" width="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="56.0" />
+      <Rectangle arcHeight="95.0" arcWidth="95.0" fill="WHITE" height="530.0" layoutX="11.0" layoutY="56.0" stroke="WHITE" strokeType="INSIDE" width="780.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="56.0" />
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#efefef" height="53.0" layoutX="26.0" layoutY="74.0" stroke="WHITE" strokeType="INSIDE" width="750.0" />
-      <Button layoutX="656.0" layoutY="509.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: F90000; -fx-background-radius: 10;" text="สั่งสินค้า" textFill="WHITE">
+      <Button fx:id="purchaseBtn" layoutX="656.0" layoutY="509.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: F90000; -fx-background-radius: 10;" text="สั่งสินค้า" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="358.0" layoutY="86.0" text="ราคาต่อชิ้น">
+      <Label fx:id="priceLabel" layoutX="358.0" layoutY="86.0" text="ราคาต่อชิ้น">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="496.0" layoutY="86.0" text="จำนวน">
+      <Label fx:id="pieceLabel" layoutX="496.0" layoutY="86.0" text="จำนวน">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="598.0" layoutY="86.0" text="ราคารวม">
+      <Label fx:id="amountLabel" layoutX="598.0" layoutY="86.0" text="ราคารวม">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="708.0" layoutY="86.0" text="แอคชั่น">
+      <Label fx:id="actionLabel" layoutX="708.0" layoutY="86.0" text="แอคชั่น">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <SplitMenuButton layoutX="229.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="ตัวเลือกสินค้า">
+      <SplitMenuButton fx:id="option01SplitMenuBtn" layoutX="229.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="ตัวเลือกสินค้า">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="229.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="ตัวเลือกสินค้า">
+      <SplitMenuButton fx:id="option02SplitMenuBtn" layoutX="229.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="ตัวเลือกสินค้า">
          <items>
             <MenuItem mnemonicParsing="false" text="Action 1" />
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </SplitMenuButton>
-      <Label layoutX="372.0" layoutY="273.0" prefHeight="30.0" prefWidth="56.0" text="ราคาต่อชิ้น" />
-      <Label layoutX="373.0" layoutY="409.0" prefHeight="30.0" prefWidth="56.0" text="ราคาต่อชิ้น" />
-      <Label layoutX="610.0" layoutY="273.0" prefHeight="30.0" prefWidth="44.0" text="ราคารวม" />
-      <Label layoutX="610.0" layoutY="409.0" prefHeight="30.0" prefWidth="44.0" text="ราคารวม" />
-      <Button layoutX="721.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-color: F90000;" text="ลบ" textFill="WHITE" />
-      <Button layoutX="721.0" layoutY="412.0" mnemonicParsing="false" style="-fx-background-color: F90000;" text="ลบ" textFill="WHITE" />
-      <Spinner layoutX="495.0" layoutY="276.0" prefHeight="25.0" prefWidth="56.0" />
-      <Spinner layoutX="495.0" layoutY="412.0" prefHeight="25.0" prefWidth="56.0" />
-      <CheckBox layoutX="33.0" layoutY="184.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="164.0" text="*BONK*Shop">
+      <Label fx:id="price01Label" layoutX="372.0" layoutY="273.0" prefHeight="30.0" prefWidth="56.0" text="ราคาต่อชิ้น" />
+      <Label fx:id="price02Label" layoutX="373.0" layoutY="409.0" prefHeight="30.0" prefWidth="56.0" text="ราคาต่อชิ้น" />
+      <Label fx:id="amount01Label" layoutX="610.0" layoutY="273.0" prefHeight="30.0" prefWidth="44.0" text="ราคารวม" />
+      <Label fx:id="amount02Label" layoutX="610.0" layoutY="409.0" prefHeight="30.0" prefWidth="44.0" text="ราคารวม" />
+      <Button fx:id="delete01Btn" layoutX="721.0" layoutY="276.0" mnemonicParsing="false" style="-fx-background-color: F90000;" text="ลบ" textFill="WHITE" />
+      <Button fx:id="delete02Btn" layoutX="721.0" layoutY="412.0" mnemonicParsing="false" style="-fx-background-color: F90000;" text="ลบ" textFill="WHITE" />
+      <Spinner fx:id="piece01Spinner" layoutX="495.0" layoutY="276.0" prefHeight="25.0" prefWidth="56.0" />
+      <Spinner fx:id="piece02Spinner" layoutX="495.0" layoutY="412.0" prefHeight="25.0" prefWidth="56.0" />
+      <CheckBox fx:id="store01Checkbox" layoutX="33.0" layoutY="184.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="164.0" text="*BONK*Shop">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="63.0" layoutY="273.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+      <CheckBox fx:id="product01Checkbox" layoutX="63.0" layoutY="273.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="63.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+      <CheckBox fx:id="product02Checkbox" layoutX="63.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="33.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="สินค้า">
+      <CheckBox fx:id="allProductCheckbox" layoutX="33.0" layoutY="539.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="เลือกทั้งหมด">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="33.0" layoutY="539.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="เลือกทั้งหมด">
+      <Label fx:id="productLabel" layoutX="71.0" layoutY="86.0" text="สินค้า">
          <font>
             <Font size="20.0" />
          </font>
-      </CheckBox>
+      </Label>
    </children>
 </AnchorPane>
