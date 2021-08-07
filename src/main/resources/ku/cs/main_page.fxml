@@ -288,7 +288,7 @@
          </effect>
       </Rectangle>
       <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="28.0" layoutX="644.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="127.0" />
-      <ImageView fx:id="cartImageView" fitHeight="45.0" fitWidth="45.0" layoutX="645.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cartImageView" fitHeight="45.0" fitWidth="45.0" layoutX="645.0" layoutY="10.0" onMouseClicked="#switchToBasket" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/cart_icon.png" />
          </image>
