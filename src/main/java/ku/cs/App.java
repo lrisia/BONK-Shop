@@ -22,7 +22,7 @@ public class App extends Application {
 //        stage.setResizable(false);
 //        stage.initStyle(StageStyle.UNDECORATED);
 //        stage.setScene(scene);
-        FXRouter.bind(this, stage, 600, 400);
+        FXRouter.bind(this, stage, 800, 600);
         stage.setResizable(false);
         stage.initStyle(StageStyle.UNDECORATED);
         configRoute();
@@ -31,9 +31,9 @@ public class App extends Application {
 
     private static void configRoute() {
         String packageStr = "ku/cs/";
-        FXRouter.when("login", packageStr+ "login_page.fxml");
-        FXRouter.when("register", packageStr+ "register_page.fxml");
-        FXRouter.when("main", packageStr+"main_page.fxml", 800, 600);
+        FXRouter.when("login", packageStr+ "login_page.fxml",600,400);
+        FXRouter.when("register", packageStr+ "register_page.fxml",600,400);
+        FXRouter.when("main", packageStr+"main_page.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {
