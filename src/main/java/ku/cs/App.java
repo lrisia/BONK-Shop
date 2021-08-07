@@ -34,6 +34,7 @@ public class App extends Application {
         FXRouter.when("login", packageStr+ "login_page.fxml",600,400);
         FXRouter.when("register", packageStr+ "register_page.fxml",600,400);
         FXRouter.when("main", packageStr+"main_page.fxml");
+        FXRouter.when("basket",packageStr+"basket.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {
