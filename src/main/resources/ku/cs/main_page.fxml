@@ -287,5 +287,30 @@
             </DropShadow>
          </effect>
       </Rectangle>
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="28.0" layoutX="644.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="127.0" />
+      <ImageView fx:id="cartImageView" fitHeight="45.0" fitWidth="45.0" layoutX="645.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/cart_icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="userImageView" fitHeight="35.0" fitWidth="30.0" layoutX="735.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/user_icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="informationImageView" fitHeight="45.0" fitWidth="45.0" layoutX="690.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/information_icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>
