@@ -22,7 +22,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="117.0" layoutY="50.0" text="สมัครง่าย ๆ ไม่กี่ขั้นตอน" textFill="#7c7c7c">
+            <Label fx:id="alertLabel" alignment="CENTER" layoutX="6.0" layoutY="49.0" prefHeight="19.0" prefWidth="338.0" text="สมัครง่าย ๆ ไม่กี่ขั้นตอน" textAlignment="CENTER" textFill="#7c7c7c" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="1.0">
                <font>
                   <Font size="13.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <Button fx:id="registerBtn" layoutX="60.0" layoutY="295.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" style="-fx-background-radius: 50; -fx-background-color: #FA7344;" text="สมัครมาชิก" textFill="WHITE">
+            <Button fx:id="registerBtn" layoutX="60.0" layoutY="295.0" mnemonicParsing="false" onAction="#checkMatchConfirmPassword" prefHeight="45.0" prefWidth="230.0" style="-fx-background-radius: 50; -fx-background-color: #FA7344;" text="สมัครมาชิก" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

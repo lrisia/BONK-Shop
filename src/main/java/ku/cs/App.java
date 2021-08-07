@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -18,12 +19,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        scene = new Scene(loadFXML("login_page"), 600, 400);
 //        stage.setResizable(false);
 //        stage.initStyle(StageStyle.UNDECORATED);
 //        stage.setScene(scene);
-//        stage.show();
         FXRouter.bind(this, stage, 600, 400);
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         configRoute();
         FXRouter.goTo("login");
     }

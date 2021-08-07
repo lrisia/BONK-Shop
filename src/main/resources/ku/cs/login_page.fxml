@@ -74,7 +74,7 @@
                   <Font size="13.0" />
                </font>
             </PasswordField>
-            <Label layoutX="110.0" layoutY="69.0" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textAlignment="CENTER" textFill="#7c7c7c">
+            <Label fx:id="notificationLabel" alignment="CENTER" layoutX="5.0" layoutY="69.0" prefHeight="19.0" prefWidth="337.0" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="3.0">
                <font>
                   <Font size="13.0" />
                </font>
