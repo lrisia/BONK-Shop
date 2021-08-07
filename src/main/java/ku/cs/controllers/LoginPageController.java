@@ -2,8 +2,6 @@ package ku.cs.controllers;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,11 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import ku.cs.App;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+
 import com.github.saacsos.FXRouter;
+import javafx.stage.StageStyle;
 
 public class LoginPageController {
 
@@ -24,8 +22,13 @@ public class LoginPageController {
     @FXML private TextField inputUsernameTextField;
     @FXML private PasswordField inputPasswordField;
     @FXML private Label closeLabel;
+    @FXML private Label notificationLabel;
     @FXML private Label loginMessageLabel; //Username หรือ Password ไม่ถูกต้อง! กรุณาลองใหม่
     @FXML private ImageView myCatImageView;
+
+    public void setNotificationLabelLoginPage(String text) {
+        notificationLabel.setText(text);
+    }
 
     @FXML
     public void initialize() {
@@ -52,11 +55,6 @@ public class LoginPageController {
 
     @FXML
     public void loginAccept() throws IOException {
-//        Stage stage = (Stage) scene.getWindow();
-//        scene = new Scene(loadFXML("main_page"), 800, 600);
-//        stage.setResizable(false);
-//        stage.setScene(scene);
-//        stage.show();
         try {
             FXRouter.goTo("main");
         } catch (IOException e) {
