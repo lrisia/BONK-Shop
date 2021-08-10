@@ -3,6 +3,8 @@ package ku.cs.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
+
 public class BasketController
 {
     @FXML private Label price01Label;
@@ -20,4 +22,14 @@ public class BasketController
     @FXML private Button delete01Btn;
     @FXML private Button delete02Btn;
     @FXML private Button purchaseBtn;
+
+    @FXML
+    public void switchToMainPage() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("main");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า main ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 }

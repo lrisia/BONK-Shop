@@ -29,5 +29,14 @@ public class MainPageController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+    @FXML
+    public void switchToLoginPage() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("login");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 
 }
