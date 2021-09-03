@@ -1,7 +1,9 @@
-package ku.cs.controllers;
+package ku.cs.controllers.verify;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -54,7 +56,7 @@ public class LoginPageController {
     }
 
     @FXML
-    public void loginAccept() throws IOException {
+    public void loginAccept(ActionEvent actionEvent) throws IOException {
         try {
             FXRouter.goTo("main");
         } catch (IOException e) {

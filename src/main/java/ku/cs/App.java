@@ -24,16 +24,16 @@ public class App extends Application {
 //        stage.setScene(scene);
         FXRouter.bind(this, stage, 800, 600);
         stage.setResizable(false);
-        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         configRoute();
         FXRouter.goTo("login");
     }
 
     private static void configRoute() {
         String packageStr = "ku/cs/";
-        FXRouter.when("login", packageStr+ "login_page.fxml",600,400);
-        FXRouter.when("register", packageStr+ "register_page.fxml",600,400);
-        FXRouter.when("main", packageStr+"main_page.fxml");
+        FXRouter.when("login", packageStr+ "verify/login.fxml",600,400);
+        FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
+        FXRouter.when("main", packageStr+"shop/home.fxml");
         FXRouter.when("basket",packageStr+"basket.fxml");
     }
 

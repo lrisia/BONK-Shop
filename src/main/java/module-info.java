@@ -7,4 +7,8 @@ module ku.cs {
     exports ku.cs.controllers;
 
     opens ku.cs.controllers to javafx.fxml;
+    exports ku.cs.controllers.verify;
+    opens ku.cs.controllers.verify to javafx.fxml;
+    exports ku.cs.controllers.shop;
+    opens ku.cs.controllers.shop to javafx.fxml;
 }

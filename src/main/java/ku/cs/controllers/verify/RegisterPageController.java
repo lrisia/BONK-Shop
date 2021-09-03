@@ -1,4 +1,4 @@
-package ku.cs.controllers;
+package ku.cs.controllers.verify;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -67,13 +67,15 @@ public class RegisterPageController {
             passwordPasswordField.clear();
         }
     }
+
+    // ต้องมีตัวเลขกับตัวหนังสือ ยาวอย่างน้อย 6 ตัว เพื่อความปลอดภัย
     //―――――――――――――――――――――――――――――――――――――――――――
 
     //บันทึกข้อมูลลงไฟล์ ―――――――――――――――――――――――――――――――――――
     @FXML
     private void registerNewAccount() {
         try {
-            FileWriter fileWriter = new FileWriter("data.txt", true);
+            FileWriter fileWriter = new FileWriter("data/userCSV.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
@@ -82,7 +84,7 @@ public class RegisterPageController {
             printWriter.close();
 
 //            loginPageController.setNotificationLabelLoginPage("สมัครสมาชิกสำเร็จ");
-            System.out.println("New account has been record");
+            System.out.println("New account has been recorded!");
 
             FXRouter.goTo("login");
         } catch (IOException e) {

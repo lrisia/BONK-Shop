@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: efefef;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.MainPageController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: efefef;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.HomePageController">
    <children>
       <Rectangle arcHeight="95.0" arcWidth="95.0" fill="WHITE" height="530.0" layoutX="14.0" layoutY="65.0" stroke="WHITE" strokeType="INSIDE" width="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="64.0" />
       <Rectangle arcHeight="13.0" arcWidth="20.0" fill="WHITE" height="33.0" layoutX="434.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" width="311.0">
@@ -111,7 +111,7 @@
          </effect></Rectangle>
       <ImageView fx:id="logoImageView" fitHeight="181.0" fitWidth="184.0" layoutX="40.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/logo_bonk.png" />
+            <Image url="@../../../images/logo_bonk.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -119,7 +119,7 @@
       </ImageView>
       <ImageView fx:id="searchIconImageView" fitHeight="31.0" fitWidth="31.0" layoutX="712.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/search_icon.png" />
+            <Image url="@../../../images/search_icon.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -147,7 +147,7 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <Rectangle fx:id="product07Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="410.0" layoutY="354.0" stroke="WHITE" strokeType="INSIDE" width="164.0">
+      <Rectangle fx:id="product07Rect" arcHeight="45.0" arcWidth="45.0" height="193.0" layoutX="410.0" layoutY="354.0" onMouseDragged="#setOnMouseDragged" onMousePressed="#setOnMousePressed" stroke="WHITE" strokeType="INSIDE" width="164.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -290,7 +290,7 @@
       <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="28.0" layoutX="644.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="127.0" />
       <ImageView fx:id="cartImageView" fitHeight="45.0" fitWidth="45.0" layoutX="645.0" layoutY="10.0" onMouseClicked="#switchToBasket" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/cart_icon.png" />
+            <Image url="@../../../images/cart_icon.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -298,7 +298,7 @@
       </ImageView>
       <ImageView fx:id="userImageView" fitHeight="35.0" fitWidth="30.0" layoutX="735.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/user_icon.png" />
+            <Image url="@../../../images/user_icon.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -306,7 +306,7 @@
       </ImageView>
       <ImageView fx:id="informationImageView" fitHeight="45.0" fitWidth="45.0" layoutX="690.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/information_icon.png" />
+            <Image url="@../../../images/information_icon.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

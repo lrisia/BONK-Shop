@@ -1,7 +1,0 @@
-ccv,vcvcvcv,
-vcvcvcv,ccvcv,vdvdvdvddvv
-a,b,c
-fff,ff,ff
-,,2
-,,q
-,,a

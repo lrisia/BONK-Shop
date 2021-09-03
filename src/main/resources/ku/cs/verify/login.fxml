@@ -14,13 +14,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.LoginPageController">
+<BorderPane maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.LoginPageController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="255.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="myCatImageView" fitHeight="400.0" fitWidth="255.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/พาแมวมาทะเล.jpeg" />
+                  <Image url="@../../../images/พาแมวมาทะเล.jpeg" />
                </image></ImageView>
          </children>
       </AnchorPane>
