@@ -5,14 +5,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
+import ku.cs.models.verify.Account;
+import ku.cs.services.RecordedAccount;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 public class RegisterPageController {
     @FXML private TextField nameTextField;
@@ -22,6 +23,15 @@ public class RegisterPageController {
     @FXML private Label loginLabel;
     @FXML private Label closeLabel;
     @FXML private Label alertLabel;
+    @FXML private ImageView registerImageView;
+
+    private RecordedAccount recordedAccount = new RecordedAccount();
+
+    @FXML
+    public void initialize() {
+//        String path = getClass().getResource("images/verify/register.png").toExternalForm();
+//        registerImageView.setImage(new Image(path));
+    }
 
     @FXML //ปุ่มปิด
     public void clickCloseLabel(Event event) {
@@ -53,43 +63,24 @@ public class RegisterPageController {
     }
     //――――――――――――――――――――――――――――――――――――――――――
 
-    //ตรวจสอบความถูกฅ้องของรหัสที่สมัคร ――――――――――――――――――――――――――
-    @FXML //เช็คว่ารหัสที่กรอกสองช่องตรงกันไหม
-    private void checkMatchConfirmPassword() {
-        if (passwordPasswordField.getText().equals(confirmPasswordPasswordField.getText())) {
-            System.out.println("• รหัสผ่านตรงกัน");
-            registerNewAccount();
-        } else {
-            alertLabel.setText("รหัสผ่านไม่ตรงกัน โปรดตรวจสอบความถูกต้อง");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
-            System.out.println("x รหัสผ่านไม่ตรงกัน");
-            confirmPasswordPasswordField.clear();
-            passwordPasswordField.clear();
-        }
-    }
-
-    // ต้องมีตัวเลขกับตัวหนังสือ ยาวอย่างน้อย 6 ตัว เพื่อความปลอดภัย
-    //―――――――――――――――――――――――――――――――――――――――――――
-
-    //บันทึกข้อมูลลงไฟล์ ―――――――――――――――――――――――――――――――――――
+    //กดสมัครสมาชิก ――――――――――――――――――――――――――――――――――
     @FXML
     private void registerNewAccount() {
-        try {
-            FileWriter fileWriter = new FileWriter("data/userCSV.txt", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            PrintWriter printWriter = new PrintWriter(bufferedWriter);
-
-            printWriter.println(nameTextField.getText() + "," + usernameTextField.getText() + "," + passwordPasswordField.getText());
-            printWriter.flush();
-            printWriter.close();
-
-//            loginPageController.setNotificationLabelLoginPage("สมัครสมาชิกสำเร็จ");
-            System.out.println("New account has been recorded!");
-
-            FXRouter.goTo("login");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า login ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+        String userName = usernameTextField.getText();
+        String name = nameTextField.getText();
+        String password = passwordPasswordField.getText();
+        String confirmPassword = confirmPasswordPasswordField.getText();
+        String recordStatus = recordedAccount.recordRegister(name, userName, password, confirmPassword);
+        if (recordStatus.equals("Pass")) {
+            try {
+                FXRouter.goTo("login", "สมัครสำเร็จแล้ว");
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า login ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
+        } else {
+            alertLabel.setText(recordStatus);
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
         }
     }
     //―――――――――――――――――――――――――――――――――――――――――――

@@ -15,17 +15,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.TankPageController">
    <top>
       <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
                </image>
                <HBox.margin>
                   <Insets left="25.0" top="-35.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="238.0" stylesheets="@../styles/styles.css">
                <HBox.margin>
@@ -111,7 +114,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="tankHBox" alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
                         <ImageView fx:id="tankIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -253,7 +256,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
             <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <Label prefHeight="27.0" prefWidth="209.0" text="Most Popular">
+                  <Label prefHeight="27.0" prefWidth="209.0" text="Tank">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

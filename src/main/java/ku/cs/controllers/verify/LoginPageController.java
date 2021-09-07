@@ -3,40 +3,37 @@ package ku.cs.controllers.verify;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 
 import java.io.*;
 
 import com.github.saacsos.FXRouter;
-import javafx.stage.StageStyle;
+import ku.cs.services.RecordedAccount;
 
 public class LoginPageController {
-
-    @FXML private Button loginBtn;
-    @FXML private Button switchToRegisterBtn;
     @FXML private TextField inputUsernameTextField;
     @FXML private PasswordField inputPasswordField;
     @FXML private Label closeLabel;
     @FXML private Label notificationLabel;
-    @FXML private Label loginMessageLabel; //Username หรือ Password ไม่ถูกต้อง! กรุณาลองใหม่
-    @FXML private ImageView myCatImageView;
+    @FXML private Label headerLabel;
+    @FXML private ImageView loginImageView;
 
-    public void setNotificationLabelLoginPage(String text) {
-        notificationLabel.setText(text);
-    }
+    private RecordedAccount recordedAccount = new RecordedAccount();
+    private String registerSuccessful;
 
     @FXML
     public void initialize() {
-        File myCatFile = new File("images/พาแมวมาทะเล.jpeg");
-        Image myCatImage = new Image(myCatFile.toURI().toString());
-        myCatImageView.setImage(myCatImage);
+        String registerSuccessful = (String) FXRouter.getData();
+        if (registerSuccessful != null){
+            headerLabel.setText(registerSuccessful);
+            notificationLabel.setText("เริ่มช็อปปิ้งกันเลย!");
+        }
+//        String path = getClass().getResource("images/verify/login.png").toExternalForm();
+//        loginImageView.setImage(new Image(path));
     }
 
     @FXML
@@ -57,11 +54,18 @@ public class LoginPageController {
 
     @FXML
     public void loginAccept(ActionEvent actionEvent) throws IOException {
-        try {
-            FXRouter.goTo("main");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า main ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+        String userName = inputUsernameTextField.getText();
+        String password = inputPasswordField.getText();
+        if (recordedAccount.checkUsernameAlreadyHave(userName, password)) {
+            try {
+                FXRouter.goTo("main");
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า main ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
+        } else {
+            notificationLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
+            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
         }
     }
 }
