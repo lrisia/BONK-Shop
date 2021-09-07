@@ -72,9 +72,6 @@ public class HomePageController{
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
-<<<<<<< HEAD
-=======
     @FXML
     public void switchToPlane() throws IOException {
         try {
@@ -179,5 +176,4 @@ public class HomePageController{
 //        ls.add(product);
 //        return ls;
 //    }
->>>>>>> 8da2d69c3f7f990a7dbacf53c6db9dcd8f88fdd4
 }
