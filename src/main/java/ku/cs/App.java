@@ -34,7 +34,19 @@ public class App extends Application {
         FXRouter.when("login", packageStr+ "verify/login.fxml",600,400);
         FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
         FXRouter.when("main", packageStr+"shop/home.fxml");
-        FXRouter.when("basket",packageStr+"basket.fxml");
+        FXRouter.when("basket",packageStr+"shop/basket.fxml");
+        FXRouter.when("tank",packageStr+"shop/tank.fxml");
+        FXRouter.when("plane",packageStr+"shop/plane.fxml");
+        FXRouter.when("car",packageStr+"shop/car.fxml");
+        FXRouter.when("boat",packageStr+"shop/boat.fxml");
+        FXRouter.when("gun",packageStr+"shop/gun.fxml");
+        FXRouter.when("knife",packageStr+"shop/knife.fxml");
+        FXRouter.when("assault",packageStr+"shop/assault.fxml");
+
+
+
+
+
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -45,6 +57,14 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+//    @Override
+//    public void start(Stage primaryStage) throws Exception{
+//        Parent root = FXMLLoader.load(getClass().getResource("ku/cs/shop/home.fxml"));
+//        primaryStage.setTitle("BONK Shop");
+//        primaryStage.setScene(new Scene(root, 800, 600));
+//        primaryStage.show();
+//    }
 
     public static void main(String[] args) {
         launch();
