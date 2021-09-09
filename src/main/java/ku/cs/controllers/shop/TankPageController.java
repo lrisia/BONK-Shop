@@ -1,5 +1,6 @@
 package ku.cs.controllers.shop;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -75,6 +76,16 @@ public class TankPageController {
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+    @FXML
+    public void switchToInfo(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("info");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า info ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
         }
     }
 }
