@@ -142,6 +142,16 @@ public class HomePageController{
             e.printStackTrace();
         }
     }
+    @FXML
+    public void switchToProfile(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("shopSetup");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า shopSetup ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
 
 
 

@@ -35,7 +35,6 @@ public class App extends Application {
         FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
         FXRouter.when("main", packageStr+"shop/home.fxml");
         FXRouter.when("basket",packageStr+"shop/basket.fxml");
-        FXRouter.when("shopSetup",packageStr+"shop_setup.fxml");
         FXRouter.when("tank",packageStr+"shop/tank.fxml");
         FXRouter.when("plane",packageStr+"shop/plane.fxml");
         FXRouter.when("car",packageStr+"shop/car.fxml");
@@ -44,6 +43,7 @@ public class App extends Application {
         FXRouter.when("knife",packageStr+"shop/knife.fxml");
         FXRouter.when("assault",packageStr+"shop/assault.fxml");
         FXRouter.when("info",packageStr+"userdata/info_page.fxml");
+        FXRouter.when("shopSetup",packageStr+"userdata/shop_setup.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {

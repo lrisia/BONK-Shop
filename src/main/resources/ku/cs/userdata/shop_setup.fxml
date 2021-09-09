@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ShopSetupFormPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.ShopSetupFormPageController">
     <left>
-        <VBox prefHeight="200.0" prefWidth="240.0" spacing="15.0" styleClass="primary-color" stylesheets="@../../styles/styles.css" BorderPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="240.0" spacing="15.0" styleClass="primary-color" stylesheets="@../../../styles/styles.css" BorderPane.alignment="CENTER">
             <children>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                     <VBox.margin>
@@ -81,7 +81,7 @@
         </VBox>
     </left>
     <center>
-        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../styles/styles.css" BorderPane.alignment="CENTER">
+        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../../styles/styles.css" BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="SYBLabel" layoutX="188.0" layoutY="14.0" prefHeight="30.0" prefWidth="184.0" text="Start your business" textFill="WHITE">
                     <font>
@@ -101,7 +101,7 @@
                 </Button>
                 <ImageView fx:id="HomeLogo" fitHeight="378.0" fitWidth="378.0" layoutX="91.0" layoutY="152.0" onMouseClicked="#BackToHome" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/logo_white.png" />
+                        <Image url="@../../../images/logo_white.png" />
                     </image>
                 </ImageView>
                 <Line endX="-100.0" endY="570.0" layoutX="101.0" layoutY="14.0" startX="-100.0" stroke="WHITE" />

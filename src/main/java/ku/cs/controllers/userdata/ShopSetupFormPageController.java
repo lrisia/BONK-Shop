@@ -1,4 +1,4 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.userdata;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,13 +33,5 @@ public class ShopSetupFormPageController {
             FinishButton.setText("");
         }
     }
-    @FXML
-    public void BackToHome() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("main");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า main ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
+
 }
