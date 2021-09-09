@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.InfoPageController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="784.0" styleClass="border-color" stylesheets="@styles/styles.css">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Developer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="profileImageView1" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="profileImageView3" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="profileImageView2" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="256.0" layoutY="82.0" prefWidth="94.0" text="First Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="129.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="82.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="129.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="500.0" text="User Manual" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="382.0" layoutY="82.0" prefHeight="27.0" prefWidth="66.0" text="Pochara" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="586.0" layoutY="82.0" prefHeight="27.0" prefWidth="132.0" text="Suwaravoranath" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="129.0" prefHeight="27.0" prefWidth="34.0" text="Ton" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="129.0" prefHeight="27.0" prefWidth="101.0" text="6310451294" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="233.0" prefWidth="94.0" text="First Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="280.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="233.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="280.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="394.0" layoutY="233.0" prefHeight="27.0" prefWidth="43.0" text="Warit" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="586.0" layoutY="233.0" prefHeight="27.0" prefWidth="132.0" text="Wattanakritsada" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="280.0" prefHeight="27.0" prefWidth="34.0" text="Oab" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="280.0" prefHeight="27.0" prefWidth="101.0" text="6310450069" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="384.0" prefWidth="94.0" text="First Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="431.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="384.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="476.0" layoutY="431.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="383.0" layoutY="384.0" prefHeight="27.0" prefWidth="66.0" text="Anawat" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="615.0" layoutY="384.0" prefHeight="27.0" prefWidth="74.0" text="Homhual" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="391.0" layoutY="431.0" prefHeight="27.0" prefWidth="48.0" text="Muad" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="431.0" prefHeight="27.0" prefWidth="101.0" text="6310451871" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="628.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo_white.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
