@@ -2,12 +2,11 @@ package ku.cs.controllers.shop;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class CarPageController {
-
-
+public class StorePageController {
 
     @FXML
     public void switchToTank() throws IOException {
@@ -18,13 +17,22 @@ public class CarPageController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
     @FXML
     public void switchToPlane() throws IOException {
         try {
             com.github.saacsos.FXRouter.goTo("plane");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า plane ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML
+    public void switchToCar() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("car");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า car ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
@@ -68,16 +76,6 @@ public class CarPageController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
-    @FXML
-    public void switchToHome() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("main");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า main ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
     @FXML
     public void switchToInfo(Event event) throws IOException {
         try {
@@ -88,6 +86,7 @@ public class CarPageController {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void switchToSetup(Event event) throws IOException {
         try {
@@ -100,13 +99,24 @@ public class CarPageController {
     }
 
     @FXML
-    public void switchToStore(Event event) throws IOException {
+    public void switchToAddProduct(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("store");
+            com.github.saacsos.FXRouter.goTo("add_product");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ไปที่หน้า add_product ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void switchToHome() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("main");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า main ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+    
 }

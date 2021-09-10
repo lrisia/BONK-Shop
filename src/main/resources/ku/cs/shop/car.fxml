@@ -73,7 +73,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#switchToStore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/my_store_icon.png" />
                      </image>

@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.PlanePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.StorePageController">
    <top>
       <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -73,7 +74,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#switchToStore" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/my_store_icon.png" />
                      </image>
@@ -131,7 +132,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox fx:id="planeHBox" alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="planeHBox" alignment="CENTER" onMouseClicked="#switchToPlane" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
                         <ImageView fx:id="planeIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -254,9 +255,9 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
-            <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
+            <VBox prefHeight="484.0" prefWidth="597.0" spacing="5.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <Label prefHeight="27.0" prefWidth="209.0" text="Plane">
+                  <Label prefHeight="38.0" prefWidth="163.0" text="Store name">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -264,9 +265,22 @@
                         <Insets left="35.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ScrollPane prefHeight="151.0" prefWidth="585.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <Button fx:id="addProductBtn" mnemonicParsing="false" onMouseClicked="#switchToAddProduct" style="-fx-background-color: #c7192d;" text="Add product" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="500.0" top="-30.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ScrollPane prefHeight="151.0" prefWidth="599.0" styleClass="transparent" stylesheets="@../styles/styles.css">
                      <content>
                         <HBox fx:id="cardLayout" prefHeight="134.0" prefWidth="982.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane prefHeight="291.0" prefWidth="571.0">
+                     <content>
+                        <VBox prefHeight="900.0" prefWidth="580.0" />
                      </content>
                   </ScrollPane>
                </children>
