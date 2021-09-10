@@ -16,6 +16,10 @@
 
 }
 
+.button{
+    -fx-background-radius: 30;
+}
+
 .round-grey-background{
     -fx-background-color: #D7D7D7;
     -fx-background-radius: 50;
