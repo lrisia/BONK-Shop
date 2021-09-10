@@ -143,7 +143,7 @@ public class HomePageController{
         }
     }
     @FXML
-    public void switchToSetup() throws IOException {
+    public void switchToSetup(Event event) throws IOException {
         try {
             com.github.saacsos.FXRouter.goTo("setup");
         } catch (IOException e) {

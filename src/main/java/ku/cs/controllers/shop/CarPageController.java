@@ -88,4 +88,14 @@ public class CarPageController {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void switchToSetup(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("setup");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า setup ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
 }
