@@ -12,7 +12,10 @@ import javafx.stage.Stage;
 import java.io.*;
 
 import com.github.saacsos.FXRouter;
-import ku.cs.services.RecordedAccount;
+import ku.cs.models.verify.Account;
+import ku.cs.models.verify.AccountList;
+import ku.cs.services.RecordedAccount01;
+import ku.cs.services.UserDataSource;
 
 public class LoginPageController {
     @FXML private TextField inputUsernameTextField;
@@ -22,7 +25,9 @@ public class LoginPageController {
     @FXML private Label headerLabel;
     @FXML private ImageView loginImageView;
 
-    private RecordedAccount recordedAccount = new RecordedAccount();
+    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
+    private AccountList accountList = userDataSource.readData();
+    private RecordedAccount01 recordedAccount = new RecordedAccount01();
     private String registerSuccessful;
 
     @FXML
@@ -45,7 +50,7 @@ public class LoginPageController {
     @FXML
     public void switchToRegister() throws IOException {
         try {
-            FXRouter.goTo("register");
+            FXRouter.goTo("register", accountList);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -54,11 +59,11 @@ public class LoginPageController {
 
     @FXML
     public void loginAccept(ActionEvent actionEvent) throws IOException {
-        String userName = inputUsernameTextField.getText();
+        String username = inputUsernameTextField.getText();
         String password = inputPasswordField.getText();
-        if (recordedAccount.checkUsernameAlreadyHave(userName, password)) {
+        if (accountList.canLogin(username, password)) {
             try {
-                FXRouter.goTo("main");
+                FXRouter.goTo("main", accountList.searchAccountByUsername(username));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");

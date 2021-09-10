@@ -9,8 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
-import ku.cs.models.verify.Account;
-import ku.cs.services.RecordedAccount;
+import ku.cs.models.verify.AccountList;
+import ku.cs.services.UserDataSource;
 
 import java.io.IOException;
 
@@ -25,7 +25,8 @@ public class RegisterPageController {
     @FXML private Label alertLabel;
     @FXML private ImageView registerImageView;
 
-    private RecordedAccount recordedAccount = new RecordedAccount();
+    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
+    private AccountList accountList = (AccountList) FXRouter.getData();
 
     @FXML
     public void initialize() {
@@ -66,12 +67,29 @@ public class RegisterPageController {
     //กดสมัครสมาชิก ――――――――――――――――――――――――――――――――――
     @FXML
     private void registerNewAccount() {
-        String userName = usernameTextField.getText();
+        String username = usernameTextField.getText();
         String name = nameTextField.getText();
         String password = passwordPasswordField.getText();
         String confirmPassword = confirmPasswordPasswordField.getText();
-        String recordStatus = recordedAccount.recordRegister(name, userName, password, confirmPassword);
-        if (recordStatus.equals("Pass")) {
+        if (name.equals("")) {
+            alertLabel.setText("ยังไม่ได้กรอกชื่อ");
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else if (username.equals("")) {
+            alertLabel.setText("ยังไม่ได้กรอก Username");
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else if (password.equals("")) {
+            alertLabel.setText("ยังไม่ได้กรอกรหัสผ่าน");
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else if (confirmPassword.equals("")) {
+            alertLabel.setText("ยังไม่ได้ยืนยันรหัสผ่าน");
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else if (!password.equals(confirmPassword)) {
+            alertLabel.setText("รหัสผ่านไม่ตรงกัน");
+            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            confirmPasswordPasswordField.clear();
+        } else if (accountList.canRegister(username)) {
+            accountList.registerNewAccount(username, password, name);
+            userDataSource.writeData(accountList);
             try {
                 FXRouter.goTo("login", "สมัครสำเร็จแล้ว");
             } catch (IOException e) {
@@ -79,7 +97,7 @@ public class RegisterPageController {
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         } else {
-            alertLabel.setText(recordStatus);
+            alertLabel.setText("Username นี้ถูกใช้แล้ว");
             alertLabel.setStyle("-fx-text-fill: #f61e1e");
         }
     }
