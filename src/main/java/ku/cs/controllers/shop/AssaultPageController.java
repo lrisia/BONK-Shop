@@ -1,5 +1,6 @@
 package ku.cs.controllers.shop;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -75,6 +76,37 @@ public class AssaultPageController {
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+    @FXML
+    public void switchToInfo(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("info");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า info ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void switchToSetup(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("setup");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า setup ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void switchToStore(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("store");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
         }
     }
 }

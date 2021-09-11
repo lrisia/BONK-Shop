@@ -54,7 +54,7 @@
             <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/information_icon.png" />
                      </image>
@@ -62,7 +62,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="userImageView" fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="userImageView" fitHeight="40.0" fitWidth="35.0" onMouseClicked="#switchToSetup" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/user_icon.png" />
                      </image>
@@ -73,7 +73,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#switchToStore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/my_store_icon.png" />
                      </image>
@@ -256,7 +256,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
             <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <Label prefHeight="27.0" prefWidth="209.0" text="Boat">
+                  <Label prefHeight="27.0" prefWidth="209.0" text="Warship">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
