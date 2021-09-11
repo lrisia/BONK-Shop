@@ -1,0 +1,37 @@
+package ku.cs.controllers.userdata;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+
+public class ShopSetupFormPageController {
+    @FXML private Label firstNameLabel;
+    @FXML private Label lastNameLabel;
+    @FXML private Label phoneNumberLabel;
+    @FXML private ImageView ProfileImage;
+    @FXML private TextField StoreNameTextField;
+    @FXML private Label SYBLabel;
+    @FXML private Label SNameLabel;
+    @FXML private Button FinishButton;
+    String storeName = StoreNameTextField.getText();
+    public void haveStoreName(){
+        if(storeName != null){
+            SYBLabel.setText("");
+            SNameLabel.setText("");
+            StoreNameTextField.setText("");
+            FinishButton.setText("");
+        }
+    }
+
+}
