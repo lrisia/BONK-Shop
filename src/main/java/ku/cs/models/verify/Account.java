@@ -37,6 +37,8 @@ public class Account {
         loginTime = time[1];
     }
 
+    // todo: เทียบเวลาด้วย comparable, rator มีสอนใน lab
+
     public boolean canLogin(String username, String password) {
         if (this.username.equals(username) && this.password.equals(password))
             return true;
@@ -46,6 +48,8 @@ public class Account {
     public String getLoginDataTime() {
         return loginDate + " " + loginTime;
     }
+
+//    public void setBanStatus() {  }
 
     public boolean checkAccount(String username) {
         if (this.username.equals(username)) return true;
@@ -58,7 +62,4 @@ public class Account {
     }
 
     // todo: What user can do?
-
-
-
 }
