@@ -28,7 +28,6 @@ public class LoginPageController {
     private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
     private AccountList accountList = userDataSource.readData();
     private RecordedAccount01 recordedAccount = new RecordedAccount01();
-    private String registerSuccessful;
 
     @FXML
     public void initialize() {
