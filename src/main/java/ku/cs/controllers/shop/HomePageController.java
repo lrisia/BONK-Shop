@@ -164,53 +164,15 @@ public class HomePageController{
         }
     }
 
-
-
-
-
-
-
-
-//    @FXML
-//    public void switchToTank() throws IOException {
-//        try {
-//            com.github.saacsos.FXRouter.goTo("tank");
-//        } catch (IOException e) {
-//            System.err.println("ไปที่หน้า register ไม่ได้");
-//            System.err.println("ให้ตรวจสอบการกำหนด route");
-//        }
-//    }
-
-
-
-
-
-//    private List<Product> recentlyAdded;
+//  public void initialize(URL location, ResourceBundle resourceBundle) {
+//       recentlyAdded = new ArrayList<>(recentlyAdded());
+//       try {
 //
-//    @FXML
-//    public void initialize(URL location, ResourceBundle resourceBundle) {
-//        recentlyAdded = new ArrayList<>(recentlyAdded());
-//        try {
-//            for(int i = 0; i< recentlyAdded.size(); i++){
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(getClass().getResource("ku/cs/shop/product.fxml"));
-//                HBox cardBox = fxmlLoader.load();
+//
+//                HBox  new cardBox = ();//สร้างอันนี้
 //                ProductController productController = fxmlLoader.getController();
 //                productController.setData(recentlyAdded.get(i));
-//                cardLayout.getChildren().add(cardBox);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+//                cardLayout.getChildren().add(cardBox); //สร้างลูป
 //
-//    private List<Product> recentlyAdded(){
-//        List<Product> ls = new ArrayList<>();
-//        Product product = new Product();
-//        product.setName("P990-Razer");
-//        product.setImageSrc("images/icon_category/p990_product.png");
-//        product.setManufacturer("Military");
-//        ls.add(product);
-//        return ls;
-//    }
+
 }

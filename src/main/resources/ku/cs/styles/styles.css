@@ -13,7 +13,6 @@
 .round-layout{
     -fx-border-radius: 50;
     -fx-border-color: #D7D7D7;
-
 }
 
 .button{
@@ -49,6 +48,13 @@
 .button{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;
+}
+
+.round-layout-black{
+    -fx-border-radius: 50;
+    -fx-border-color: #000000;
+    -fx-background-color: white;
+    -fx-background-radius: 50;
 }
 
 

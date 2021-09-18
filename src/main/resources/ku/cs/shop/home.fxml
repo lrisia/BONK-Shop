@@ -251,7 +251,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
-            <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
+            <VBox prefHeight="478.0" prefWidth="597.0" spacing="5.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
                   <Label prefHeight="27.0" prefWidth="209.0" text="Most Popular">
                      <font>
@@ -261,9 +261,715 @@
                         <Insets left="35.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ScrollPane prefHeight="151.0" prefWidth="585.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <ScrollPane prefHeight="172.0" prefWidth="599.0" styleClass="transparent" stylesheets="@../styles/styles.css">
                      <content>
-                        <HBox fx:id="cardLayout" prefHeight="134.0" prefWidth="982.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
+                        <HBox fx:id="cardLayout" prefHeight="82.0" prefWidth="1230.0" spacing="15.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                           <children>
+                              <HBox prefHeight="134.0" prefWidth="290.0" spacing="10.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                 <children>
+                                    <ImageView fitHeight="66.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/icon_category/p990_product.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox prefHeight="133.0" prefWidth="170.0">
+                                       <children>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="P990-Razer">
+                                             <font>
+                                                <Font name="Agency FB Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="Millitary">
+                                             <font>
+                                                <Font name="Agency FB" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="67.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/five_star_icon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                              <HBox prefHeight="134.0" prefWidth="290.0" spacing="10.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                 <children>
+                                    <ImageView fitHeight="66.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/icon_category/p990_product.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox prefHeight="133.0" prefWidth="170.0">
+                                       <children>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="P990-Razer">
+                                             <font>
+                                                <Font name="Agency FB Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="Millitary">
+                                             <font>
+                                                <Font name="Agency FB" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="67.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/five_star_icon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox prefHeight="134.0" prefWidth="290.0" spacing="10.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                 <children>
+                                    <ImageView fitHeight="66.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/icon_category/p990_product.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox prefHeight="133.0" prefWidth="170.0">
+                                       <children>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="P990-Razer">
+                                             <font>
+                                                <Font name="Agency FB Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="Millitary">
+                                             <font>
+                                                <Font name="Agency FB" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="67.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/five_star_icon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox prefHeight="134.0" prefWidth="290.0" spacing="10.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                 <children>
+                                    <ImageView fitHeight="66.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../images/icon_category/p990_product.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox prefHeight="133.0" prefWidth="170.0">
+                                       <children>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="P990-Razer">
+                                             <font>
+                                                <Font name="Agency FB Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label prefHeight="31.0" prefWidth="131.0" text="Millitary">
+                                             <font>
+                                                <Font name="Agency FB" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="67.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/five_star_icon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding></HBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane prefHeight="294.0" prefWidth="599.0">
+                     <content>
+                        <VBox prefHeight="553.0" prefWidth="582.0" spacing="10.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                           <children>
+                              <HBox prefHeight="153.0" prefWidth="582.0" spacing="15.0">
+                                 <children>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="153.0" prefWidth="582.0" spacing="15.0">
+                                 <children>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="153.0" prefWidth="582.0" spacing="15.0">
+                                 <children>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <VBox prefHeight="151.0" prefWidth="133.0" styleClass="round-layout-black" stylesheets="@../styles/styles.css">
+                                       <children>
+                                          <ImageView fitHeight="51.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/icon_category/p990_product.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets left="20.0" top="15.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <VBox prefHeight="93.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="26.0" prefWidth="98.0" text="P990-Razer">
+                                                   <font>
+                                                      <Font name="Agency FB Bold" size="20.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="25.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Military">
+                                                   <font>
+                                                      <Font name="Agency FB" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="45.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ImageView fitHeight="56.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../images/five_star_icon.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children></VBox>
                      </content>
                   </ScrollPane>
                </children>
