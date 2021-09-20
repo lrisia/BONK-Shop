@@ -73,12 +73,18 @@ public class Account {
         password = newPassword;
     }
 
-    public void youGotBanned() {
-        banStatus = true;
+    public void switchBanStatus() {
+        if (banStatus) banStatus = false;
+        else banStatus = true;
     }
 
     public boolean checkAccount(String username) {
         if (this.username.equals(username)) return true;
+        return false;
+    }
+
+    public boolean gotBanned() {
+        if (banStatus) return true;
         return false;
     }
 
@@ -95,7 +101,7 @@ public class Account {
     @Override
     public String toString() {
         String banStatus = "Active";
-        if (this.banStatus == true) banStatus = "Baned";
+        if (this.banStatus == true) banStatus = "Banned";
         return username + " [" + banStatus + "]";
     }
 

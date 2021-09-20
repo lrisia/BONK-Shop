@@ -80,7 +80,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="banBtn" layoutX="546.0" layoutY="276.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="Ban/Unban" textFill="WHITE">
+            <Button fx:id="banBtn" layoutX="546.0" layoutY="276.0" mnemonicParsing="false" onAction="#ban" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="Ban/Unban" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

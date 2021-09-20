@@ -59,7 +59,13 @@ public class LoginPageController {
     public void loginAccept(ActionEvent actionEvent) throws IOException {
         String username = inputUsernameTextField.getText();
         String password = inputPasswordField.getText();
-        if (accountList.canLogin(username, password)) {
+        if (!accountList.canLogin(username, password)) {
+            notificationLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
+            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else if (accountList.searchAccountByUsername(username).gotBanned()) {
+            notificationLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");
+            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
+        } else {
             try {
                 userDataSource.writeData(accountList);
                 FXRouter.goTo("main", accountList.searchAccountByUsername(username));
@@ -67,9 +73,6 @@ public class LoginPageController {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
-        } else {
-            notificationLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
-            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
         }
     }
 }

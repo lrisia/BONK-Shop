@@ -27,6 +27,7 @@ public class AdminController {
     private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
     private AccountList accountList = userDataSource.readData();
     private Account account = (Account) FXRouter.getData();
+    private Account selectedAccount = null;
 
     public void initialize() {
         showListView();
@@ -54,6 +55,15 @@ public class AdminController {
         nameLabel.setText(account.getName());
         storeNameLabel.setText(account.getRole());
         timeLabel.setText(account.getTime());
+        selectedAccount = account;
+    }
+
+    public void ban() {
+        if (selectedAccount != null) {
+            selectedAccount.switchBanStatus();
+            userDataSource.writeData(accountList);
+            accountListView.refresh();
+        }
     }
 
     public void switchToHome() throws IOException {
