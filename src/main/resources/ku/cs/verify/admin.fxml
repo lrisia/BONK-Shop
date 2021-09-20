@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -50,11 +49,7 @@
    <center>
       <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane layoutX="14.0" layoutY="28.0" prefHeight="364.0" prefWidth="281.0">
-               <content>
-                  <ListView fx:id="accountListView" prefHeight="566.0" prefWidth="264.0" />
-               </content>
-            </ScrollPane>
+            <ListView fx:id="accountListView" layoutX="16.0" prefHeight="384.0" prefWidth="264.0" />
             <Label layoutX="333.0" layoutY="28.0" text="Selected user:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
