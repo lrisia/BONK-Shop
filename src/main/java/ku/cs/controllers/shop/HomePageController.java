@@ -145,13 +145,25 @@ public class HomePageController{
     @FXML
     public void switchToProfile(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("shopSetup");
+            com.github.saacsos.FXRouter.goTo("setup");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า shopSetup ไม่ได้");
+            System.err.println("ไปที่หน้า setup ไม่ได้");
+        }
+    }
+
+
+    @FXML
+    public void switchToStore(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("store");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า store ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
             e.printStackTrace();
         }
     }
+
+
 
 
 

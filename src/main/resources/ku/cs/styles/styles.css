@@ -16,6 +16,10 @@
 
 }
 
+.button{
+    -fx-background-radius: 30;
+}
+
 .round-grey-background{
     -fx-background-color: #D7D7D7;
     -fx-background-radius: 50;
@@ -42,5 +46,12 @@
 .shadow{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
 }
+.button{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
 
+.button{
+    -fx-background-radius: 30;
+ }
 
