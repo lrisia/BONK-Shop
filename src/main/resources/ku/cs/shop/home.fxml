@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -49,10 +48,7 @@
                   <String fx:value="round-white-background" />
                </styleClass>
             </HBox>
-            <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button fx:id="adminBtn" layoutX="131.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#switchToAdmin" prefHeight="41.0" prefWidth="85.0" text="Admin" />
-               </children></Pane>
+            <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
                <children>
                   <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">

@@ -46,15 +46,14 @@ public class UserDataSource implements DataSource<AccountList>{
             while ((line = bufferedReader.readLine()) != null) {
                 String data[] = line.split(",");
                 String type = data[0];
-                if (type.equals("Account")) {
-                    String username = data[1];
-                    String password = data[2];
-                    String name = data[3];
-                    boolean banStatus = Boolean.parseBoolean(data[4]);
-                    String loginDate = data[5];
-                    String loginTime = data[6];
-                    accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime));
-                }
+                String username = data[1];
+                String password = data[2];
+                String name = data[3];
+                boolean banStatus = Boolean.parseBoolean(data[4]);
+                String loginDate = data[5];
+                String loginTime = data[6];
+                accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime));
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

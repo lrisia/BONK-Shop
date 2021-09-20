@@ -59,6 +59,11 @@ public class Account {
                 + banStatus + "," + loginDate + "," + loginTime;
     }
 
+    public boolean isAdmin(){
+        if(role.equals("Admin")) return true;
+        return false;
+    }
+
     // todo: What user can do?
 
 
