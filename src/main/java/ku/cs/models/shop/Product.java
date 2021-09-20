@@ -6,9 +6,7 @@ public class Product {
     private String category;
     private String productName;
     private double price;
-    private String caption;
-
-
+    private String description;
 
     public boolean checkId(String id) {
         if (this.id.equals(id)) return true;

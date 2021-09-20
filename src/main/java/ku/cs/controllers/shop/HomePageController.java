@@ -123,7 +123,7 @@ public class HomePageController{
     public void switchToProfile(Event event) throws IOException {
         try {
             if(account.isAdmin()){
-                com.github.saacsos.FXRouter.goTo("admin");
+                com.github.saacsos.FXRouter.goTo("admin", account);
             }
             else{
                 com.github.saacsos.FXRouter.goTo("profile");

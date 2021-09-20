@@ -42,8 +42,10 @@ public class Account {
     // todo: เทียบเวลาด้วย comparable, rator มีสอนใน lab
 
     public boolean canLogin(String username, String password) {
-        if (this.username.equals(username) && this.password.equals(password))
+        if (this.username.equals(username) && this.password.equals(password)) {
+            initialLoginTime();
             return true;
+        }
         return false;
     }
 
@@ -51,10 +53,37 @@ public class Account {
         return loginDate + " " + loginTime;
     }
 
-//    public void setBanStatus() {  }
+    public String getUsername() {
+        return username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTime() {
+        return loginDate + "-" + loginTime;
+    }
+
+    public void changePassword(String newPassword) {
+        password = newPassword;
+    }
+
+    public void youGotBanned() {
+        banStatus = true;
+    }
 
     public boolean checkAccount(String username) {
         if (this.username.equals(username)) return true;
+        return false;
+    }
+
+    public boolean isAdmin(){
+        if(role.equals("Admin")) return true;
         return false;
     }
 
@@ -63,9 +92,11 @@ public class Account {
                 + banStatus + "," + loginDate + "," + loginTime;
     }
 
-    public boolean isAdmin(){
-        if(role.equals("Admin")) return true;
-        return false;
+    @Override
+    public String toString() {
+        String banStatus = "Active";
+        if (this.banStatus == true) banStatus = "Baned";
+        return username + " [" + banStatus + "]";
     }
 
     // todo: What user can do?

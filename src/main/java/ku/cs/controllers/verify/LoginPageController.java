@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.*;
 
 import com.github.saacsos.FXRouter;
-import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.RecordedAccount01;
 import ku.cs.services.UserDataSource;
@@ -62,6 +61,7 @@ public class LoginPageController {
         String password = inputPasswordField.getText();
         if (accountList.canLogin(username, password)) {
             try {
+                userDataSource.writeData(accountList);
                 FXRouter.goTo("main", accountList.searchAccountByUsername(username));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
