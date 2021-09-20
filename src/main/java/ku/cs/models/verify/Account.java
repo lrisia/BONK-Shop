@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Account {
+    private String role;
     private String name;
     private String username;
     private String password;
@@ -16,11 +17,12 @@ public class Account {
     private ProductList productList;
 
     public Account(String username, String password, String name) {
-        this(username, password, name, false, "", "");
+        this("Account", username, password, name, false, "", "");
         initialLoginTime();
     }
 
-    public Account(String username, String password, String name, boolean banStatus, String loginDate, String loginTime) {
+    public Account(String role, String username, String password, String name, boolean banStatus, String loginDate, String loginTime) {
+        this.role = role;
         this.name = name;
         this.username = username;
         this.password = password;
@@ -53,7 +55,7 @@ public class Account {
     }
 
     public String toCsv() {
-        return "Account," + username + "," + password + "," + name + ","
+        return role + "," + username + "," + password + "," + name + ","
                 + banStatus + "," + loginDate + "," + loginTime;
     }
 
