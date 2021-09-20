@@ -4,6 +4,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +33,7 @@ public class HomePageController{
     @FXML private ImageView knifeIconImageView;
     @FXML private ImageView assaultIconImageView;
     @FXML private HBox cardLayout;
+    @FXML private Button adminBtn;
 
 
 
@@ -145,9 +147,9 @@ public class HomePageController{
     @FXML
     public void switchToProfile(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("setup");
+            com.github.saacsos.FXRouter.goTo("profile");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า setup ไม่ได้");
+            System.err.println("ไปที่หน้า profile ไม่ได้");
         }
     }
 
@@ -158,6 +160,16 @@ public class HomePageController{
             com.github.saacsos.FXRouter.goTo("store");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void switchToAdmin(Event event) throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("admin");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า admin ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
             e.printStackTrace();
         }
