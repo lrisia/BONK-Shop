@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.SetupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.ProfileController">
    <left>
       <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
                         <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="upLoadBtn" mnemonicParsing="false" text="Upload Pic">
+                  <Button fx:id="upLoadBtn" mnemonicParsing="false" text="Upload Pic" textFill="RED">
                      <VBox.margin>
                         <Insets left="63.0" />
                      </VBox.margin>
@@ -65,28 +65,11 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="172.0" layoutY="61.0" text="Star your bisuness" textFill="WHITE">
+            <Label layoutX="28.0" layoutY="14.0" text="Setting" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="storeNameTextField" alignment="CENTER" layoutX="164.0" layoutY="251.0" prefHeight="25.0" prefWidth="273.0" promptText="enter your store name">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor></TextField>
-            <Label layoutX="247.0" layoutY="201.0" text="Store name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Button fx:id="finishBtn" layoutX="269.0" layoutY="300.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Finish" textFill="#c7192d">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <ImageView fx:id="logoImageView" fitHeight="228.0" fitWidth="228.0" layoutX="187.0" layoutY="358.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
@@ -96,6 +79,21 @@
                </cursor>
             </ImageView>
             <Line endX="-100.0" endY="581.0" layoutX="101.0" layoutY="7.0" startX="-100.0" stroke="WHITE" />
+            <TextField fx:id="storeNameTextField1" alignment="CENTER" layoutX="61.0" layoutY="236.0" prefHeight="25.0" prefWidth="480.0" promptText="enter your store name">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="217.0" layoutY="176.0" text="Change password" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="RED">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </center>

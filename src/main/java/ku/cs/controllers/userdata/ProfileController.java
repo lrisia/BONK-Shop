@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
-public class SetupController {
+public class ProfileController {
     @FXML Label userNameLabel;
     @FXML ImageView profileImageView;
     @FXML ImageView logoImageView;

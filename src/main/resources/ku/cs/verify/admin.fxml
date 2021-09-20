@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.AdminController">
+   <center>
+      <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane layoutX="14.0" layoutY="28.0" prefHeight="364.0" prefWidth="776.0">
+               <content>
+                  <TableView prefHeight="900.0" prefWidth="760.0">
+                    <columns>
+                      <TableColumn prefWidth="325.0" text="Picture" />
+                      <TableColumn prefWidth="159.0" text="Username" />
+                        <TableColumn prefWidth="158.0" text="Store name" />
+                        <TableColumn prefWidth="117.0" text="Access time" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Admin " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <TextField layoutX="237.0" layoutY="103.0" promptText="new password" />
+            <Label layoutX="54.0" layoutY="100.0" text="Change password" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="400.0" layoutY="103.0" mnemonicParsing="false" text="Save" textFill="RED" />
+            <ImageView fx:id="logoImageView" fitHeight="192.0" fitWidth="192.0" layoutX="608.0" layoutY="4.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logo_white.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
