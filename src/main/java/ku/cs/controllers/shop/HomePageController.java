@@ -2,21 +2,13 @@ package ku.cs.controllers.shop;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-
-import ku.cs.models.stock.Product;
-
+import ku.cs.models.verify.Account;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class HomePageController{
     @FXML private ImageView logoImageView;
@@ -34,9 +26,7 @@ public class HomePageController{
     @FXML private ImageView assaultIconImageView;
     @FXML private HBox cardLayout;
     @FXML private Button adminBtn;
-
-
-
+    private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
     // private double xOffset = 0;
     //  private double yOffset = 0;
@@ -50,21 +40,6 @@ public class HomePageController{
 //        // stage.setResizable(true);
 //        // stage.initStyle(StageStyle.DECORATED);
 //    }
-
-    //ความพยายามอันล้มเหลวที่จะทำให้ลากหน้าจอได้――――――――――――――――――――
-    @FXML
-    public void setOnMousePressed(MouseEvent event) {
-        // xOffset = event.getSceneX();
-        // yOffset = event.getSceneY();
-    }
-
-    @FXML
-    public void setOnMouseDragged(MouseEvent event) {
-        // stage.setX(event.getSceneX() - xOffset);
-        // stage.setY(event.getSceneX() - yOffset);
-    }
-    //――――――――――――――――――――――――――――――――――――――――――
-
 
     @FXML
     public void switchToTank() throws IOException {
@@ -147,12 +122,16 @@ public class HomePageController{
     @FXML
     public void switchToProfile(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("profile");
+            if(account.isAdmin()){
+                com.github.saacsos.FXRouter.goTo("admin");
+            }
+            else{
+                com.github.saacsos.FXRouter.goTo("profile");
+            }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");
         }
     }
-
 
     @FXML
     public void switchToStore(Event event) throws IOException {
@@ -164,22 +143,6 @@ public class HomePageController{
             e.printStackTrace();
         }
     }
-    @FXML
-    public void switchToAdmin(Event event) throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("admin");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า admin ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
 
 
 //    @FXML
@@ -191,10 +154,6 @@ public class HomePageController{
 //            System.err.println("ให้ตรวจสอบการกำหนด route");
 //        }
 //    }
-
-
-
-
 
 //    private List<Product> recentlyAdded;
 //

@@ -16,18 +16,52 @@
    <center>
       <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane layoutX="14.0" layoutY="28.0" prefHeight="364.0" prefWidth="776.0">
+            <ScrollPane layoutX="14.0" layoutY="28.0" prefHeight="364.0" prefWidth="316.0">
                <content>
-                  <TableView prefHeight="900.0" prefWidth="760.0">
+                  <TableView fx:id="userTableView" prefHeight="900.0" prefWidth="299.0">
                     <columns>
-                      <TableColumn prefWidth="325.0" text="Picture" />
-                      <TableColumn prefWidth="159.0" text="Username" />
-                        <TableColumn prefWidth="158.0" text="Store name" />
-                        <TableColumn prefWidth="117.0" text="Access time" />
+                      <TableColumn prefWidth="108.0" text="Username" />
+                        <TableColumn prefWidth="96.0" text="Store name" />
+                        <TableColumn prefWidth="98.0" text="Access time" />
                     </columns>
                   </TableView>
                </content>
             </ScrollPane>
+            <Label layoutX="517.0" layoutY="28.0" text="Selected user" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="392.0" layoutY="74.0" text="Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="392.0" layoutY="115.0" text="Store name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="userImageView" fitHeight="150.0" fitWidth="200.0" layoutX="392.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameLabel" layoutX="554.0" layoutY="74.0" text="nameLabel" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="storeNameLabel" layoutX="554.0" layoutY="115.0" text="storenameLabel" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="banBtn" layoutX="604.0" layoutY="264.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="58.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="Ban" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
@@ -39,13 +73,13 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField layoutX="237.0" layoutY="103.0" promptText="new password" />
+            <TextField fx:id="passwordTextField" layoutX="237.0" layoutY="103.0" promptText="new password" />
             <Label layoutX="54.0" layoutY="100.0" text="Change password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="400.0" layoutY="103.0" mnemonicParsing="false" text="Save" textFill="RED" />
+            <Button fx:id="saveBtn" layoutX="400.0" layoutY="103.0" mnemonicParsing="false" text="Save" textFill="RED" />
             <ImageView fx:id="logoImageView" fitHeight="192.0" fitWidth="192.0" layoutX="608.0" layoutY="4.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
