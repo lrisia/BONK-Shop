@@ -16,20 +16,7 @@ public class UserDataSource implements DataSource<AccountList>{
     public UserDataSource(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
-        initialFileIfNotExist();
-    }
-
-    public void initialFileIfNotExist() {
-        File file = new File(directory); // set directory path
-        if (!file.exists()) file.mkdir(); // if file not exist will make new directory
-        file = new File(directory + File.separator + filename); // set file path
-        if (!file.exists()) { // if file not exist in path
-            try {
-                file.createNewFile(); // make new file
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        InitialFileIfNotExist.initialFileIfNotExist(directory, filename);
     }
 
     @Override

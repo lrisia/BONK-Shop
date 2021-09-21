@@ -17,21 +17,6 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="profileImageView1" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="profileImageView3" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="profileImageView2" fitHeight="141.0" fitWidth="141.0" layoutX="63.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
-               </image>
-            </ImageView>
             <Label layoutX="256.0" layoutY="82.0" prefWidth="94.0" text="First Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -164,6 +149,21 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/ton.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/oab.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/muad.jpg" />
+               </image>
             </ImageView>
          </children></AnchorPane>
   </content>

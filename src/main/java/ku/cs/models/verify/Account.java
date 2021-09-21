@@ -65,8 +65,6 @@ public class Account {
         return name;
     }
 
-    public String getPassword() { return password; }
-
     public String getTime() {
         return loginDate + "-" + loginTime;
     }
