@@ -75,6 +75,16 @@ public class AdminController {
         }
     }
 
+    @FXML
+    private void switchToLoginPage() {
+        try {
+            com.github.saacsos.FXRouter.goTo("login");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
     public void changPassword() {
         String newPassword = passwordTextField.getText();
         if ((!newPassword.equals("")) && accountList.changePasswordByUsername(account.getUsername(), newPassword)) {

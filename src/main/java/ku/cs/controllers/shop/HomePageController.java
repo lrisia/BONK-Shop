@@ -136,7 +136,7 @@ public class HomePageController{
     @FXML
     public void switchToStore(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("store");
+            com.github.saacsos.FXRouter.goTo("store",account);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า store ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

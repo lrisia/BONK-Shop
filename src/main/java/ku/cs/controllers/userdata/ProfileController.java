@@ -57,4 +57,14 @@ public class ProfileController {
             userDataSource.writeData(accountList);
         }
     }
+
+    @FXML
+    private void switchToLoginPage() {
+        try {
+            com.github.saacsos.FXRouter.goTo("login");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 }
