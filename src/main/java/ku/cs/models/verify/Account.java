@@ -93,6 +93,12 @@ public class Account {
         return false;
     }
 
+    public boolean isSeller() {
+        if(role.equals("Seller")) return true;
+        return false;
+    }
+
+
     public String toCsv() {
         return role + "," + username + "," + password + "," + name + ","
                 + banStatus + "," + loginDate + "," + loginTime;
@@ -104,6 +110,7 @@ public class Account {
         if (this.banStatus == true) banStatus = "Banned";
         return username + " [" + banStatus + "]";
     }
+
 
     // todo: What user can do?
 }

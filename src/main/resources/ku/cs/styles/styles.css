@@ -52,6 +52,11 @@
 }
 
 .button{
+    -fx-background-color: #c7192d;
     -fx-background-radius: 30;
  }
+
+.product-card{
+    -fx-background-radius: 30;
+}
 

@@ -27,7 +27,7 @@
                         <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="upLoadBtn" mnemonicParsing="false" text="Upload Pic" textFill="RED">
+                  <Button fx:id="upLoadBtn" mnemonicParsing="false" text="Upload Pic" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="63.0" />
                      </VBox.margin>
@@ -79,7 +79,7 @@
                </cursor>
             </ImageView>
             <Line endX="-100.0" endY="581.0" layoutX="101.0" layoutY="7.0" startX="-100.0" stroke="WHITE" />
-            <TextField fx:id="storeNameTextField1" alignment="CENTER" layoutX="61.0" layoutY="236.0" prefHeight="25.0" prefWidth="480.0" promptText="enter your store name">
+            <TextField fx:id="storeNameTextField1" alignment="CENTER" layoutX="61.0" layoutY="236.0" prefHeight="25.0" prefWidth="480.0" promptText="enter new password">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -89,7 +89,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="RED">
+            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
