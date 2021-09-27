@@ -9,6 +9,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -261,11 +263,20 @@
                         <Insets left="35.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ScrollPane prefHeight="151.0" prefWidth="585.0" styleClass="transparent" stylesheets="@../styles/styles.css">
-                     <content>
-                        <HBox fx:id="cardLayout" prefHeight="134.0" prefWidth="982.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
-                     </content>
-                  </ScrollPane>
+                  <VBox prefHeight="6.0" prefWidth="599.0" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="300.0" prefWidth="525.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
