@@ -40,7 +40,6 @@ public class UserDataSource implements DataSource<AccountList>{
                 String loginDate = data[5];
                 String loginTime = data[6];
                 accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime));
-
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

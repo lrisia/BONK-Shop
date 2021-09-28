@@ -113,6 +113,16 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
+            <Label fx:id="tryLoginLabel" layoutX="577.0" layoutY="157.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tryLoginNumLabel" layoutX="674.0" layoutY="157.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

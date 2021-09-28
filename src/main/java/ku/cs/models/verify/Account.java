@@ -10,9 +10,12 @@ public class Account {
     private String name;
     private String username;
     private String password;
+    private String storeName;
     private boolean banStatus;
+    private int tryLoginWhenBanned;
     private String loginDate;
     private String loginTime;
+    private String picturePath;
 
     private ProductList productList;
 
@@ -29,6 +32,8 @@ public class Account {
         this.banStatus = banStatus;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
+        tryLoginWhenBanned = 0;
+        picturePath = "Default";
     }
 
     public void initialLoginTime() {
@@ -44,6 +49,7 @@ public class Account {
     public boolean canLogin(String username, String password) {
         if (this.username.equals(username) && this.password.equals(password)) {
             initialLoginTime();
+            tryLoginWhenBanned = 0;
             return true;
         }
         return false;
@@ -69,6 +75,10 @@ public class Account {
         return loginDate + "-" + loginTime;
     }
 
+    public int getTryLoginWhenBanned() {
+        return tryLoginWhenBanned;
+    }
+
     public void changePassword(String newPassword) {
         password = newPassword;
     }
@@ -84,6 +94,7 @@ public class Account {
     }
 
     public boolean gotBanned() {
+        tryLoginWhenBanned += 1;
         if (banStatus) return true;
         return false;
     }

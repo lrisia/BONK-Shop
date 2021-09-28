@@ -11,7 +11,6 @@ public class Product {
     private int stock;
 
     public Product(String shopName,String productName, double price, int stock, String description, String category, String id){
-
         this.shopName = shopName;
         this.productName = productName;
         this.price = price;
@@ -19,12 +18,6 @@ public class Product {
         this.description = description;
         this.category = category;
         this.id = id;
-
-
-
-
-
-
     }
 
     public boolean checkId(String id) {

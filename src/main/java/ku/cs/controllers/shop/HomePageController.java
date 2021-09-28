@@ -126,7 +126,7 @@ public class HomePageController{
                 com.github.saacsos.FXRouter.goTo("admin", account);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("profile");
+                com.github.saacsos.FXRouter.goTo("profile", account);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");

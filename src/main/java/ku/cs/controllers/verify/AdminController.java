@@ -21,6 +21,8 @@ public class AdminController {
     @FXML Label storeNameLabel;
     @FXML Label timeLabel;
     @FXML Label saveSuccessfulLabel;
+    @FXML Label tryLoginLabel;
+    @FXML Label tryLoginNumLabel;
     @FXML Button banBtn;
     @FXML TextField passwordTextField;
 
@@ -56,6 +58,13 @@ public class AdminController {
         storeNameLabel.setText(account.getRole());
         timeLabel.setText(account.getTime());
         selectedAccount = account;
+//        if (account.gotBanned()) {
+//            tryLoginLabel.setText("Try Login");
+//            tryLoginNumLabel.setText(String.valueOf(account.getTryLoginWhenBanned()));
+//        } else {
+//            tryLoginLabel.setText("");
+//            tryLoginNumLabel.setText("");
+//        }
     }
 
     public void ban() {
