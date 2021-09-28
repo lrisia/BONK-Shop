@@ -230,10 +230,7 @@ public class HomePageController implements Initializable {
 //            item.setImgSrc("images/product/rc_tank.jpg");
             item.setColor("6A7324");
             items.add(item);
-
-
         }
-
         return items;
     }
 
@@ -241,7 +238,7 @@ public class HomePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         items.addAll(getData());
         int column = 0;
-        int row = 0;
+        int row = 1;
         try {
             for (int i=0; i < items.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -260,13 +257,9 @@ public class HomePageController implements Initializable {
 
                 GridPane.setMargin(anchorPane,new Insets(10));
 
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

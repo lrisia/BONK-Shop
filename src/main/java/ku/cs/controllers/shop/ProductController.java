@@ -20,7 +20,7 @@ public class ProductController {
     public void setData(Item item){
         this.item = item;
         nameLabel.setText(item.getName());
-        priceLabel.setText(item.getPrice()+ "");
+        priceLabel.setText(App.CURRENCY + item.getPrice());
 //        Image image = new Image(getClass().getResourceAsStream(item.getImgSrc()));
 //        img.setImage(image);
     }
