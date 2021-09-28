@@ -6,25 +6,35 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import javafx.stage.FileChooser;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.UserDataSource;
-
+import java.io.File;
 import java.io.IOException;
 
 public class ProfileController {
-    @FXML Label userNameLabel;
+    public static File fileSelected;
+
     @FXML Label reportLabel;
     @FXML ImageView profileImageView;
     @FXML ImageView logoImageView;
     @FXML Button upLoadBtn;
+    @FXML Button finishBtn;
+    @FXML TextField storeNameTextField;
     @FXML PasswordField newPasswordTextField;
 
-    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
+    private UserDataSource userDataSource;
     private AccountList accountList = userDataSource.readData();
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
+
+    @FXML
+    public void initialize() {
+        profileImageView.setImage(new Image(account.getImagePath()));
+    }
 
     @FXML
     public void switchToHome() throws IOException {
@@ -63,6 +73,19 @@ public class ProfileController {
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.0);
             fadeOut.play();
+        }
+    }
+
+    @FXML
+    public void upLoadPic(){
+        FileChooser fileChooser = new FileChooser();
+        fileSelected = fileChooser.showOpenDialog(null);
+        fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
+        if(fileSelected != null){
+            Image image = new Image(fileSelected.toURI().toString());
+            profileImageView.setImage(image);
+            accountList.changeImageProfile(account);
+            userDataSource.writeData(accountList);
         }
     }
 }

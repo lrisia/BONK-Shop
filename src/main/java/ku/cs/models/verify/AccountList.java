@@ -46,6 +46,18 @@ public class AccountList {
         return true;
     }
 
+    public void removeAccount(Account account){
+        accountList.remove(account);
+    }
+
+    public void changeImageProfile(Account account) {
+        for (Account accountInList: accountList) {
+            if (accountInList.getUsername().equals(account.getUsername())) {
+                account.setImagePath();
+            }
+        }
+    }
+
 //    public boolean registerNewAccount(String username, String password, String name) {
 //        if ()
 //    }

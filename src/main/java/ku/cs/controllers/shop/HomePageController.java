@@ -2,15 +2,25 @@ package ku.cs.controllers.shop;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import ku.cs.models.shop.Item;
 import ku.cs.models.verify.Account;
-import java.io.IOException;
 
-public class HomePageController{
+import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class HomePageController implements Initializable {
     @FXML private ImageView logoImageView;
     @FXML private TextField searchTextField;
     @FXML private ImageView searchImageView;
@@ -26,20 +36,57 @@ public class HomePageController{
     @FXML private ImageView assaultIconImageView;
     @FXML private HBox cardLayout;
     @FXML private Button adminBtn;
+    @FXML private ScrollPane scroll;
+    @FXML private GridPane grid;
+
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
-    // private double xOffset = 0;
-    //  private double yOffset = 0;
+    private List<Item> items = new ArrayList<>();
 
-    // Stage stage = (Stage) logoImageView.getScene().getWindow();
+    private List<Item> getData(){
+        List<Item> items =  new ArrayList<>();
+        Item item;
 
-//    @FXML
-//    public void initialize() {
-//        // stage.close();
-//        // FXRouter.bind(this, stage, 800, 600);
-//        // stage.setResizable(true);
-//        // stage.initStyle(StageStyle.DECORATED);
-//    }
+        for(int i = 0; i <= 20; i++){
+            item = new Item();
+            item.setName("Tank");
+            item.setPrice(2000000);
+//            item.setImgSrc("images/product/rc_tank.jpg");
+            item.setColor("6A7324");
+            items.add(item);
+        }
+        return items;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        items.addAll(getData());
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i=0; i < items.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/product.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ProductController productController = fxmlLoader.getController();
+                productController.setData(items.get(i));
+
+                if(column == 3){
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane,column++, row);
+
+                GridPane.setMargin(anchorPane,new Insets(10));
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     public void switchToTank() throws IOException {
@@ -50,6 +97,7 @@ public class HomePageController{
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+
     @FXML
     public void switchToPlane() throws IOException {
         try {
@@ -136,7 +184,13 @@ public class HomePageController{
     @FXML
     public void switchToStore(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("store",account);
+            if(account.isSeller()){
+                com.github.saacsos.FXRouter.goTo("store",account);
+            }
+            else{
+                com.github.saacsos.FXRouter.goTo("shop_setup");
+            }
+
         } catch (IOException e) {
             System.err.println("ไปที่หน้า store ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -158,13 +212,12 @@ public class HomePageController{
 //    private List<Product> recentlyAdded;
 //
 //    @FXML
-//    public void initialize(URL location, ResourceBundle resourceBundle) {
-//        recentlyAdded = new ArrayList<>(recentlyAdded());
+//    public void showProduct (ProductList product) {
+//        recentlyAdded = new ArrayList<>(recentlyAdded());//get data ,get text
 //        try {
 //            for(int i = 0; i< recentlyAdded.size(); i++){
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(getClass().getResource("ku/cs/shop/product.fxml"));
-//                HBox cardBox = fxmlLoader.load();
+//
+//                HBox cardBox = new
 //                ProductController productController = fxmlLoader.getController();
 //                productController.setData(recentlyAdded.get(i));
 //                cardLayout.getChildren().add(cardBox);
@@ -173,14 +226,29 @@ public class HomePageController{
 //            e.printStackTrace();
 //        }
 //    }
+
+//    private ImageView imageView;
+//    private BorderPane mainPane;
+//    private Label textLabel;
+//    private HBox hBox;
 //
-//    private List<Product> recentlyAdded(){
-//        List<Product> ls = new ArrayList<>();
-//        Product product = new Product();
-//        product.setName("P990-Razer");
-//        product.setImageSrc("images/icon_category/p990_product.png");
-//        product.setManufacturer("Military");
-//        ls.add(product);
-//        return ls;
-//    }
+//    public void start(Stage homePageController) throws Exception {
+//
+////        this.imageView = new ImageView("images/icon_category/p990_product.png");
+////        imageView.setFitWidth(240);
+////        imageView.setPreserveRatio(true);
+//
+////        this.textLabel = new Label("Hello world!");
+////        textLabel.setWrapText(true);
+//
+//        HBox hBox = new HBox(8);
+//        ImageView image1 = new ImageView("images/icon_category/p990_product.png");
+//        HBox.setHgrow(image1, Priority.ALWAYS);
+//
+//
+//        cardLayout.getChildren().addAll(hBox,image1, textLabel);
+//
+//
+//        homePageController.setScene(new Scene(mainPane));
+//        homePageController.show()
 }

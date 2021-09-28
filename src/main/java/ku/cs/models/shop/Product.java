@@ -6,16 +6,16 @@ public class Product {
     private String category;
     private String productName;
     private double price;
-    private String description;
+    private String detail;
     private String imagePath;
     private int stock;
 
-    public Product(String shopName,String productName, double price, int stock, String description, String category, String id){
+    public Product(String shopName,String productName, double price, int stock, String detail, String category, String id){
         this.shopName = shopName;
         this.productName = productName;
         this.price = price;
         this.stock = stock;
-        this.description = description;
+        this.detail = detail;
         this.category = category;
         this.id = id;
     }

@@ -72,6 +72,8 @@ public class LoginPageController {
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
+                e.printStackTrace();
+
             }
         }
     }

@@ -17,6 +17,7 @@ public class App extends Application {
 
     private static Scene scene;
 
+
     @Override
     public void start(Stage stage) throws IOException {
 //        stage.setResizable(false);
@@ -45,6 +46,7 @@ public class App extends Application {
         FXRouter.when("info",packageStr+"userdata/info_page.fxml");
         FXRouter.when("profile",packageStr+"userdata/profile.fxml");
         FXRouter.when("store",packageStr+"shop/store.fxml");
+        FXRouter.when("shop_setup",packageStr+"shop/shop_setup.fxml");
         FXRouter.when("add_product",packageStr+"shop/add_product.fxml");
         FXRouter.when("admin",packageStr+"verify/admin.fxml");
     }
@@ -69,5 +71,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
 
 }

@@ -2,29 +2,34 @@ package ku.cs.models.verify;
 
 import ku.cs.models.shop.ProductList;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.awt.image.BufferedImage;
+
+import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
 public class Account {
     private String role;
     private String name;
     private String username;
     private String password;
-    private String storeName;
     private boolean banStatus;
     private int tryLoginWhenBanned;
     private String loginDate;
     private String loginTime;
-    private String picturePath;
-
+    private String imagePath;
     private ProductList productList;
 
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, false, "", "");
+        this("Account", username, password, name, false, "", "","profileDefault.png");
         initialLoginTime();
     }
 
-    public Account(String role, String username, String password, String name, boolean banStatus, String loginDate, String loginTime) {
+    public Account(String role, String username, String password, String name, boolean banStatus, String loginDate, String loginTime,String ImagePath) {
         this.role = role;
         this.name = name;
         this.username = username;
@@ -33,7 +38,7 @@ public class Account {
         this.loginDate = loginDate;
         this.loginTime = loginTime;
         tryLoginWhenBanned = 0;
-        picturePath = "Default";
+        this.imagePath = ImagePath;
     }
 
     public void initialLoginTime() {
@@ -104,9 +109,14 @@ public class Account {
         return false;
     }
 
+    public boolean isSeller() {
+        if(role.equals("Seller")) return true;
+        return false;
+    }
+
     public String toCsv() {
         return role + "," + username + "," + password + "," + name + ","
-                + banStatus + "," + loginDate + "," + loginTime;
+                + banStatus + "," + loginDate + "," + loginTime + "," + imagePath;
     }
 
     @Override
@@ -114,6 +124,37 @@ public class Account {
         String banStatus = "Active";
         if (this.banStatus == true) banStatus = "Banned";
         return username + " [" + banStatus + "]";
+    }
+
+    public void setImagePath() {
+        if (fileSelected != null) {
+            imagePath = username + "-" +
+                    LocalDate.now().getYear() + "-"
+                    + LocalDate.now().getMonth() + "-"
+                    + LocalDate.now().getDayOfMonth() + ".png";
+            copyUserImageToPackage(fileSelected, imagePath);
+        }
+        else {
+            imagePath = "profileDefault.png";
+        }
+    }
+
+    public String getImagePath() {
+        return new File(System.getProperty("user.dir") +
+                File.separator +
+                "data/PictureData" +
+                File.separator +
+                imagePath).toURI().toString();
+    }
+
+    public static void copyUserImageToPackage(File image, String imageName) {
+        File file = new File("data/PictureData");
+        try {
+            BufferedImage bi = ImageIO.read(image);
+            ImageIO.write(bi, "png", new File(file.getAbsolutePath(), imageName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // todo: What user can do?
