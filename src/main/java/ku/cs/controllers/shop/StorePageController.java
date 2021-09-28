@@ -3,11 +3,12 @@ package ku.cs.controllers.shop;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import ku.cs.models.verify.Account;
 
 import java.io.IOException;
 
 public class StorePageController {
-
+    private Account account = (Account) com.github.saacsos.FXRouter.getData();
     @FXML
     public void switchToTank() throws IOException {
         try {
@@ -118,5 +119,20 @@ public class StorePageController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-    
+
+    @FXML
+    public void switchToProfile(Event event) throws IOException {
+        try {
+            if(account.isAdmin()){
+                com.github.saacsos.FXRouter.goTo("admin", account);
+            }
+            else{
+                com.github.saacsos.FXRouter.goTo("profile");
+            }
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า profile ไม่ได้");
+        }
+    }
+
+
 }

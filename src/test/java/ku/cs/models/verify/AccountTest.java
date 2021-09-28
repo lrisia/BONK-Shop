@@ -2,37 +2,40 @@ package ku.cs.models.verify;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
 
     @Test
-    void testNullPassword() {
-        Account account = new Account();
-        assertFalse(account.register("Irisia", "", "12345"));
+    void testLocalDateTime() {
+        Account account = new Account("Irisia", "1234", "Ton");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String loginDataTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy,HH:mm:ss"));
+        assertEquals(loginDataTime, account.getLoginDataTime());
     }
 
     @Test
-    void testNullConfirmPassword() {
-        Account account = new Account();
-        assertFalse(account.register("Irisia", "12345", ""));
+    void testCheckAccount() {
+        Account account = new Account("Irisia", "1234", "Ton");
+        assertTrue(account.checkAccount("Irisia"));
     }
 
     @Test
-    void testAllPasswordNull() {
-        Account account = new Account();
-        assertFalse(account.register("Irisia", "", ""));
+    void testCheckAccountNotFound() {
+        Account account = new Account("Irisia", "1234", "Ton");
+        assertFalse(account.checkAccount("Mellon"));
     }
 
     @Test
-    void testPasswordNotSame() {
-        Account account = new Account();
-        assertFalse(account.register("Irisia", "12345", "54321"));
+    void testToCsv() {
+        Account account = new Account("Irisia", "1234", "Ton");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String loginDataTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy,HH:mm:ss"));
+        String expected = "Account,Irisia,1234,Ton,false," + loginDataTime;
+        assertEquals(expected, account.toCsv());
     }
 
-    @Test
-    void testCanRegister() {
-        Account account = new Account();
-        assertTrue(account.register("Irisia", "12345", "12345"));
-    }
 }

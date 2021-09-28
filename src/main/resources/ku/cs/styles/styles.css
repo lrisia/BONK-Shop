@@ -13,6 +13,7 @@
 .round-layout{
     -fx-border-radius: 50;
     -fx-border-color: #D7D7D7;
+
 }
 
 .button{
@@ -50,11 +51,15 @@
     -fx-background-radius: 30;
 }
 
-.round-layout-black{
-    -fx-border-radius: 50;
-    -fx-border-color: #000000;
-    -fx-background-color: white;
-    -fx-background-radius: 50;
+.button{
+    -fx-background-radius: 30;
 }
 
+.product{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
 
+.shadow1{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}

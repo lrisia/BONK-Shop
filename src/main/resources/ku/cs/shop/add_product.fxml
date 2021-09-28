@@ -9,7 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.AddProductPageController">
@@ -22,18 +21,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextField layoutX="403.0" layoutY="176.0" prefHeight="35.0" prefWidth="162.0" promptText="Enter product name!" />
-      <Label layoutX="321.0" layoutY="104.0" text="Add product" textFill="WHITE">
+      <TextField layoutX="406.0" layoutY="114.0" prefHeight="35.0" prefWidth="162.0" promptText="Enter product name!" />
+      <Label layoutX="332.0" layoutY="79.0" text="Add product" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="229.0" layoutY="180.0" prefHeight="27.0" prefWidth="131.0" text="Product name :" textFill="WHITE">
+      <Label layoutX="232.0" layoutY="118.0" prefHeight="27.0" prefWidth="131.0" text="Product name :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <SplitMenuButton layoutX="403.0" layoutY="227.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Choose product type">
+      <SplitMenuButton layoutX="406.0" layoutY="220.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" text="Choose product type">
         <items>
           <MenuItem mnemonicParsing="false" text="Tank" />
           <MenuItem mnemonicParsing="false" text="Plane" />
@@ -44,21 +43,56 @@
             <MenuItem mnemonicParsing="false" text="Assault Rifle" />
         </items>
       </SplitMenuButton>
-      <Label layoutX="229.0" layoutY="231.0" prefHeight="27.0" prefWidth="131.0" text="Product type :" textFill="WHITE">
+      <Label layoutX="232.0" layoutY="224.0" prefHeight="27.0" prefWidth="131.0" text="Product type :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="321.0" layoutY="287.0" prefHeight="27.0" prefWidth="143.0" text="Upload product :" textFill="WHITE">
+      <Label layoutX="612.0" layoutY="287.0" prefHeight="27.0" prefWidth="143.0" text="Upload product :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8c8e91" height="206.0" layoutX="255.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
-      <ImageView fitHeight="206.0" fitWidth="275.0" layoutX="255.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="addProductPictureBtn" layoutX="331.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: #c7192d;" text="add product picture" textFill="WHITE">
+      <Button fx:id="addProductPictureBtn" layoutX="623.0" layoutY="537.0" mnemonicParsing="false" style="-fx-background-color: #c7192d;" text="add product picture" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Button fx:id="addProductPictureBtn1" layoutX="698.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#switchToStore" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFFFF;" text="Back" textFill="RED">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="232.0" layoutY="171.0" prefHeight="27.0" prefWidth="162.0" text="Product quantity :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="addProductPictureBtn11" layoutX="406.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#switchToStore" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFFFF;" text="-" textFill="RED">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="addProductPictureBtn111" layoutX="511.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#switchToStore" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFFFF;" text="+" textFill="RED">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="481.0" layoutY="171.0" prefHeight="27.0" prefWidth="12.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="274.0" prefHeight="27.0" prefWidth="131.0" text="Product detail :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField alignment="TOP_LEFT" layoutX="39.0" layoutY="314.0" prefHeight="249.0" prefWidth="450.0" promptText="Enter product detail!" />
    </children>
 </Pane>

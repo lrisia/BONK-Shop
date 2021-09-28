@@ -1,10 +1,10 @@
 package ku.cs.services;
 
-import ku.cs.models.verify.Account;
+import ku.cs.models.verify.Account01;
 
 import java.io.*;
 
-public class RecordedAccount extends Account {
+public class RecordedAccount01 extends Account01 {
     // เขียนไฟล์
     public String recordRegister(String name, String userName, String password, String confirmPassword) {
         if (name.equals("")) {
