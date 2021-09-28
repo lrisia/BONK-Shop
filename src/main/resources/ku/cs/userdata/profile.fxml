@@ -13,21 +13,24 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.ProfileController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="200.0" styleClass="border-color" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
                <children>
-                  <ImageView fx:id="profileImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profileImageView" fitHeight="193.0" fitWidth="179.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+                        <Image url="@../../../images/profiledefault.png" />
                      </image>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </ImageView>
-                  <Button fx:id="upLoadBtn" mnemonicParsing="false" text="Upload Pic" textFill="WHITE">
+                  <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="Upload Pic" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="63.0" />
                      </VBox.margin>
@@ -63,7 +66,7 @@
       </VBox>
    </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="border-color" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="28.0" layoutY="14.0" text="Setting" textFill="WHITE">
                <font>

@@ -39,7 +39,8 @@ public class UserDataSource implements DataSource<AccountList>{
                 boolean banStatus = Boolean.parseBoolean(data[4]);
                 String loginDate = data[5];
                 String loginTime = data[6];
-                accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime));
+                String ImagePath = data[7];
+                accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime,ImagePath));
 
             }
         } catch (FileNotFoundException e) {

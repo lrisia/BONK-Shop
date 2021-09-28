@@ -27,6 +27,7 @@ public class LoginPageController {
     private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
     private AccountList accountList = userDataSource.readData();
     private RecordedAccount01 recordedAccount = new RecordedAccount01();
+    public static String getUsername;
 
     @FXML
     public void initialize() {
@@ -67,11 +68,14 @@ public class LoginPageController {
             notificationLabel.setStyle("-fx-text-fill: #f61e1e");
         } else {
             try {
+                getUsername = username;
                 userDataSource.writeData(accountList);
                 FXRouter.goTo("main", accountList.searchAccountByUsername(username));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
+                e.printStackTrace();
+
             }
         }
     }

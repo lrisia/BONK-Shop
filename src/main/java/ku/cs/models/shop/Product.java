@@ -10,8 +10,7 @@ public class Product {
     private String imagePath;
     private int stock;
 
-    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id){
-
+    public Product(String shopName,String productName, double price, int stock, String detail, String category, String id){
         this.shopName = shopName;
         this.productName = productName;
         this.price = price;
@@ -19,12 +18,6 @@ public class Product {
         this.detail = detail;
         this.category = category;
         this.id = id;
-
-
-
-
-
-
     }
 
     public boolean checkId(String id) {

@@ -4,36 +4,25 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import ku.cs.models.stock.Product;
-
-import java.util.Objects;
+import ku.cs.App;
+import ku.cs.models.shop.Item;
 
 public class ProductController {
 
-    @FXML
-    private HBox box;
+    @FXML private Label nameLabel;
 
-    @FXML
-    private ImageView productImage;
+    @FXML private Label priceLabel;
 
-    @FXML
-    private Label productName;
+    @FXML private ImageView img;
 
-    @FXML
-    private Label manufacturerName;
+    private Item item;
 
-    private String [] colors = {"B9E5FF", "BDB2FE", "FB9AA8", "FF5056"};
-
-    public void setData(Product product){
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getImageSrc())));
-
-        productImage.setImage(image);
-
-        productName.setText(product.getName());
-        manufacturerName.setText(product.getManufacturer());
-        box.setStyle("-fx-background-color: "+ Color.web(colors[(int)(Math.random()*colors.length)]));
-
+    public void setData(Item item){
+        this.item = item;
+        nameLabel.setText(item.getName());
+        priceLabel.setText(item.getPrice()+ "");
+//        Image image = new Image(getClass().getResourceAsStream(item.getImgSrc()));
+//        img.setImage(image);
     }
+
 }

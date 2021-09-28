@@ -46,6 +46,10 @@ public class AccountList {
         return true;
     }
 
+    public void removeAccount(Account account){
+        accountList.remove(account);
+    }
+
 //    public boolean registerNewAccount(String username, String password, String name) {
 //        if ()
 //    }
