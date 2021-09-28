@@ -9,10 +9,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -93,27 +93,24 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="494.0" prefWidth="199.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="484.0" prefWidth="167.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="274.0" prefWidth="169.0">
+            <VBox alignment="CENTER" prefHeight="274.0" prefWidth="184.0">
                <children>
                   <Label text="Category">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="45.0" top="15.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="Vehicals">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </Label>
-                  <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="186.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
                         <ImageView fx:id="tankIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -129,6 +126,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="planeHBox" alignment="CENTER" onMouseClicked="#switchToPlane" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
@@ -146,6 +146,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="carHBox" alignment="CENTER" onMouseClicked="#switchToCar" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
@@ -163,6 +166,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToBoat" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
@@ -180,18 +186,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="238.0" prefWidth="184.0">
+            <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
                <children>
-                  <Label text="Weapons">
+                  <Label alignment="CENTER" text="Weapons">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </Label>
                   <HBox fx:id="gunHBox" alignment="CENTER" onMouseClicked="#switchToGun" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
@@ -209,6 +215,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
                   <HBox fx:id="knifeHBox" alignment="CENTER" onMouseClicked="#switchToKnife" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
@@ -226,8 +235,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
-                  <HBox fx:id="assaultHBox" alignment="CENTER" onMouseClicked="#switchToAssault" prefHeight="50.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="assaultHBox" alignment="CENTER" onMouseClicked="#switchToAssault" prefHeight="50.0" prefWidth="184.0" spacing="10.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
                         <ImageView fx:id="assaultIconImageView" fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -236,13 +248,19 @@
                         </ImageView>
                         <Label prefHeight="22.0" prefWidth="130.0" text="Assault Rifle">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                              <Font name="Berlin Sans FB Demi Bold" size="16.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
@@ -250,10 +268,10 @@
       </VBox>
    </left>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="484.0" prefWidth="642.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
-            <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
+            <VBox prefHeight="484.0" prefWidth="629.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
                   <Label prefHeight="27.0" prefWidth="209.0" text="Most Popular">
                      <font>
@@ -263,15 +281,14 @@
                         <Insets left="35.0" top="10.0" />
                      </padding>
                   </Label>
-                  <VBox prefHeight="6.0" prefWidth="599.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="550.0" prefWidth="630.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="441.0" prefWidth="600.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                        <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="transparent" stylesheets="@../styles/styles.css" HBox.hgrow="ALWAYS">
                            <content>
                               <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
                               </GridPane>
                            </content>
                         </ScrollPane>

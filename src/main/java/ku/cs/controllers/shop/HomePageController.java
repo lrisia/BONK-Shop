@@ -222,13 +222,15 @@ public class HomePageController implements Initializable {
         List<Item> items =  new ArrayList<>();
         Item item;
 
-        for(int i=0; i<20; i++){
+        for(int i = 0; i <= 20; i++){
             item = new Item();
             item.setName("Tank");
             item.setPrice(2000000);
 //            item.setImgSrc("images/product/rc_tank.jpg");
             item.setColor("6A7324");
             items.add(item);
+
+
         }
 
         return items;
@@ -240,7 +242,7 @@ public class HomePageController implements Initializable {
         int column = 0;
         int row = 0;
         try {
-            for(int i=0; i<items.size(); i++) {
+            for (int i=0; i < items.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/product.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
@@ -253,12 +255,15 @@ public class HomePageController implements Initializable {
                     row++;
                 }
 
-                grid.add(anchorPane,column, row);
-                column++;
+                grid.add(anchorPane,column++, row);
+
                 GridPane.setMargin(anchorPane,new Insets(10));
+
+
+
             }
         } catch (IOException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
     }
 

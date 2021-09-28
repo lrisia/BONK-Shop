@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="0.0" prefWidth="0.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ProductController">
+<AnchorPane prefHeight="215.0" prefWidth="220.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ProductController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
          <children>
-            <HBox prefHeight="51.0" prefWidth="226.0">
-               <children>
-                  <Label fx:id="nameLabel" prefHeight="51.0" prefWidth="155.0" text="P-990 Razer">
-                     <font>
-                        <Font name="Agency FB Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <ImageView fx:id="img" fitHeight="98.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="P-990 Razer">
+               <font>
+                  <Font name="Agency FB Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="87.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/product/p990_product.png" />
                </image>
             </ImageView>
-            <Label fx:id="priceLabel" prefHeight="50.0" prefWidth="152.0" text="฿ 1,000,000">
+            <Label fx:id="priceLabel" alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text="฿ 1,000,000">
                <font>
                   <Font name="Agency FB Bold" size="18.0" />
                </font>
@@ -43,4 +35,7 @@
       <String fx:value="product" />
       <String fx:value="shadow1" />
    </styleClass>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

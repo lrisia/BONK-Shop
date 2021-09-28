@@ -30,7 +30,7 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="Upload Pic" textFill="WHITE">
+                  <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="Upload Pic" textFill="RED">
                      <VBox.margin>
                         <Insets left="63.0" />
                      </VBox.margin>
@@ -92,7 +92,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="WHITE">
+            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="RED">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
