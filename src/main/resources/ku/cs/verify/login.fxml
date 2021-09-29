@@ -73,7 +73,12 @@
                   <Font size="13.0" />
                </font>
             </PasswordField>
-            <Label fx:id="notificationLabel" alignment="CENTER" layoutX="5.0" layoutY="69.0" prefHeight="19.0" prefWidth="337.0" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="3.0">
+            <Label fx:id="notificationLabel" alignment="CENTER" layoutX="5.0" layoutY="69.0" prefHeight="19.0" prefWidth="337.0" textFill="#7c7c7c" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="3.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="5.0" layoutY="69.0" prefHeight="19.0" prefWidth="337.0" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c">
                <font>
                   <Font size="13.0" />
                </font>

@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,7 +25,7 @@
                <children>
                   <ImageView fx:id="profileImageView" fitHeight="193.0" fitWidth="179.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../images/profiledefault.png" />
+                        <Image url="@../../../images/profileDefault.png" />
                      </image>
                      <VBox.margin>
                         <Insets left="10.0" />
@@ -40,28 +41,17 @@
                   </Button>
                </children>
             </VBox>
-            <Label prefHeight="16.0" prefWidth="85.0" text="Username" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
+            <ImageView fx:id="logoImageView" fitHeight="206.0" fitWidth="198.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logo_white.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <VBox.margin>
-                  <Insets left="58.0" />
+                  <Insets top="120.0" />
                </VBox.margin>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="userNameLabel" prefHeight="16.0" prefWidth="85.0" text="username" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="61.0" />
-               </VBox.margin>
-            </Label>
+            </ImageView>
          </children>
       </VBox>
    </left>
@@ -73,26 +63,13 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="logoImageView" fitHeight="228.0" fitWidth="228.0" layoutX="187.0" layoutY="358.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/logo_white.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <Line endX="-100.0" endY="581.0" layoutX="101.0" layoutY="7.0" startX="-100.0" stroke="WHITE" />
-            <TextField fx:id="storeNameTextField1" alignment="CENTER" layoutX="61.0" layoutY="236.0" prefHeight="25.0" prefWidth="480.0" promptText="enter new password">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <Label layoutX="217.0" layoutY="176.0" text="Change password" textFill="WHITE">
+            <Label layoutX="34.0" layoutY="321.0" prefHeight="27.0" prefWidth="153.0" text="Change password" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="upLoadBtn11" layoutX="260.0" layoutY="298.0" mnemonicParsing="false" text="Save change" textFill="RED">
+            <Button fx:id="upLoadBtn11" layoutX="79.0" layoutY="546.0" mnemonicParsing="false" onAction="#changeUserPassword" prefHeight="31.0" prefWidth="85.0" text="Save change" textFill="RED">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -105,11 +82,97 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Line endX="317.0" endY="415.0" startX="78.0" startY="415.0" stroke="WHITE" strokeWidth="2.0" />
             <Label layoutX="476.0" layoutY="551.0" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
+            <Label fx:id="reportLabel" layoutX="27.0" layoutY="385.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="oldPasswordPasswordField" alignment="TOP_LEFT" layoutX="75.0" layoutY="371.0" prefHeight="30.0" prefWidth="245.0" promptText="Enter old password" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="15.0" />
+               </font></PasswordField>
+            <TextField fx:id="showUserNameTextField" alignment="TOP_LEFT" editable="false" layoutX="150.0" layoutY="110.0" prefHeight="36.0" prefWidth="256.0" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </TextField>
+            <Label layoutX="48.0" layoutY="94.0" prefHeight="47.0" prefWidth="102.0" text="Username :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <Label layoutX="81.0" layoutY="147.0" prefHeight="47.0" prefWidth="66.0" text="Name :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="showNameTextField" alignment="TOP_LEFT" editable="false" layoutX="150.0" layoutY="165.0" prefHeight="36.0" prefWidth="256.0" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </TextField>
+            <Label layoutX="26.0" layoutY="73.0" prefHeight="27.0" prefWidth="146.0" text="User Information" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="newPasswordPasswordField" alignment="TOP_LEFT" layoutX="75.0" layoutY="430.0" prefHeight="30.0" prefWidth="245.0" promptText="Enter new password" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="confirmPasswordPasswordField" alignment="TOP_LEFT" layoutX="75.0" layoutY="473.0" prefHeight="30.0" prefWidth="245.0" promptText="Confirm password" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="saveSuccessfulLabel" layoutX="70.0" layoutY="507.0" prefHeight="26.0" prefWidth="204.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="201.0" prefHeight="47.0" prefWidth="108.0" text="Store name :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="showShopNameTextField" alignment="TOP_LEFT" editable="false" layoutX="151.0" layoutY="218.0" prefHeight="36.0" prefWidth="256.0" styleClass="button" stylesheets="@../styles/styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </TextField>
+            <Button layoutX="491.0" layoutY="489.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="31.0" prefWidth="85.0" text="Back" textFill="RED">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
