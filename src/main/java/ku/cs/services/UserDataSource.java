@@ -36,11 +36,13 @@ public class UserDataSource implements DataSource<AccountList>{
                 String username = data[1];
                 String password = data[2];
                 String name = data[3];
-                boolean banStatus = Boolean.parseBoolean(data[4]);
-                String loginDate = data[5];
-                String loginTime = data[6];
-                String ImagePath = data[7];
-                accountList.addAccount(new Account(type, username, password, name, banStatus, loginDate, loginTime,ImagePath));
+                String storeName = data[4];
+                boolean banStatus = Boolean.parseBoolean(data[5]);
+                int tryLoginWhenGotBanned = Integer.parseInt(data[6]);
+                String loginDate = data[7];
+                String loginTime = data[8];
+                String ImagePath = data[9];
+                accountList.addAccount(new Account(type, username, password, name, storeName, banStatus, tryLoginWhenGotBanned, loginDate, loginTime,ImagePath));
 
             }
         } catch (FileNotFoundException e) {

@@ -39,19 +39,6 @@ public class HomePageController implements Initializable {
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
-    // private double xOffset = 0;
-    //  private double yOffset = 0;
-
-    // Stage stage = (Stage) logoImageView.getScene().getWindow();
-
-//    @FXML
-//    public void initialize() {
-//        // stage.close();
-//        // FXRouter.bind(this, stage, 800, 600);
-//        // stage.setResizable(true);
-//        // stage.initStyle(StageStyle.DECORATED);
-//    }
-
     @FXML
     public void switchToTank() throws IOException {
         try {
@@ -137,10 +124,11 @@ public class HomePageController implements Initializable {
                 com.github.saacsos.FXRouter.goTo("admin", account);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("profile");
+                com.github.saacsos.FXRouter.goTo("profile", account);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");
+            e.printStackTrace();
         }
     }
 
@@ -221,7 +209,6 @@ public class HomePageController implements Initializable {
     private List<Item> getData(){
         List<Item> items =  new ArrayList<>();
         Item item;
-
         for(int i = 0; i <= 20; i++){
             item = new Item();
             item.setName("Tank");
@@ -229,10 +216,7 @@ public class HomePageController implements Initializable {
 //            item.setImgSrc("images/product/rc_tank.jpg");
             item.setColor("6A7324");
             items.add(item);
-
-
         }
-
         return items;
     }
 
@@ -240,27 +224,20 @@ public class HomePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         items.addAll(getData());
         int column = 0;
-        int row = 0;
+        int row = 1;
         try {
             for (int i=0; i < items.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/product.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-
                 ProductController productController = fxmlLoader.getController();
                 productController.setData(items.get(i));
-
                 if(column == 3){
                     column = 0;
                     row++;
                 }
-
                 grid.add(anchorPane,column++, row);
-
                 GridPane.setMargin(anchorPane,new Insets(10));
-
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();

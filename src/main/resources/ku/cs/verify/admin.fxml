@@ -20,13 +20,13 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordTextField" alignment="TOP_LEFT" layoutX="202.0" layoutY="103.0" promptText="new password" styleClass="button" stylesheets="@../styles/styles.css" />
+            <PasswordField fx:id="newPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="103.0" promptText="New password" styleClass="button" stylesheets="@../styles/styles.css" />
             <Label layoutX="202.0" layoutY="67.0" text="Change password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="saveBtn" layoutX="366.0" layoutY="103.0" mnemonicParsing="false" onAction="#changPassword" text="Save" textFill="RED">
+            <Button fx:id="saveBtn" layoutX="367.0" layoutY="138.0" mnemonicParsing="false" onAction="#changPassword" text="Save" textFill="RED">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -38,11 +38,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="saveSuccessfulLabel" layoutX="422.0" layoutY="105.0" textFill="WHITE">
+            <Label fx:id="saveSuccessfulLabel" layoutX="367.0" layoutY="105.0" prefHeight="21.0" prefWidth="201.0" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
+            <PasswordField fx:id="confirmPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="138.0" promptText="Confirm new password" styleClass="button" stylesheets="@../styles/styles.css" />
          </children>
       </Pane>
    </top>
@@ -50,7 +51,7 @@
       <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <ListView fx:id="accountListView" layoutX="16.0" prefHeight="384.0" prefWidth="264.0" />
-            <Label layoutX="333.0" layoutY="28.0" text="Selected user:" textFill="WHITE">
+            <Label layoutX="333.0" layoutY="28.0" text="Selected user :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -67,7 +68,7 @@
             </Label>
             <ImageView fx:id="userImageView" fitHeight="150.0" fitWidth="200.0" layoutX="333.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/favpng_avatar-icon-human-icon-person-icon.png" />
+                  <Image url="@../../../images/profileDefault.png" />
                </image>
             </ImageView>
             <Label fx:id="nameLabel" layoutX="448.0" layoutY="74.0" text="-" textFill="WHITE">
@@ -95,7 +96,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="usernameLabel" layoutX="475.0" layoutY="31.0" text="-" textFill="WHITE">
+            <Label fx:id="usernameLabel" layoutX="479.0" layoutY="30.0" text="-" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -111,6 +112,16 @@
             <Label layoutX="678.0" layoutY="349.0" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="tryLoginLabel" layoutX="578.0" layoutY="157.0" text="Try Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="loginLabel" layoutX="689.0" layoutY="157.0" text="-" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
