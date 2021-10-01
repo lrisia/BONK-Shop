@@ -12,6 +12,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Item;
 import ku.cs.models.verify.Account;
+import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
+import ku.cs.services.UserDataSource;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,6 +42,8 @@ public class HomePageController implements Initializable {
     @FXML private GridPane grid;
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
 
     @FXML
     public void switchToTank() throws IOException {
@@ -139,7 +145,7 @@ public class HomePageController implements Initializable {
                 com.github.saacsos.FXRouter.goTo("store",account);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("shop_setup");
+                com.github.saacsos.FXRouter.goTo("shop_setup",account);
             }
 
         } catch (IOException e) {
@@ -222,6 +228,8 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        account = accountList.searchAccountByUsername(account.getUsername());
+
         items.addAll(getData());
         int column = 0;
         int row = 1;

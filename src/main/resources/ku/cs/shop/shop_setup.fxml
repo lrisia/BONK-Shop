@@ -29,10 +29,10 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="201.0" layoutY="213.0" prefHeight="25.0" prefWidth="400.0" promptText="enter your store name" />
-      <Button layoutX="366.0" layoutY="257.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="71.0" text="Finish" textFill="RED">
+      <Button layoutX="366.0" layoutY="257.0" mnemonicParsing="false" onAction="#startBusiness" prefHeight="36.0" prefWidth="71.0" text="Finish" textFill="RED">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <TextField fx:id="storeNameTextField" layoutX="277.0" layoutY="194.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter your store name" />
    </children>
 </AnchorPane>

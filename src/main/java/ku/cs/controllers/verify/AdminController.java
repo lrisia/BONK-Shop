@@ -10,6 +10,7 @@ import ku.cs.models.verify.Account;
 import java.io.IOException;
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
 import ku.cs.services.UserDataSource;
 
@@ -26,8 +27,8 @@ public class AdminController {
     @FXML PasswordField newPasswordField;
     @FXML PasswordField confirmPasswordField;
 
-    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
-    private AccountList accountList = userDataSource.readData();
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
     private Effect effect = new Effect();
     private Account account = (Account) FXRouter.getData();
     private Account selectedAccount = null;
@@ -72,7 +73,7 @@ public class AdminController {
     public void ban() {
         if (selectedAccount != null) {
             selectedAccount.switchBanStatus();
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
             accountListView.refresh();
         }
     }

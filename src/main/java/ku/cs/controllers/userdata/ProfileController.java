@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
 import ku.cs.services.UserDataSource;
 import com.github.saacsos.FXRouter;
@@ -31,14 +32,14 @@ public class ProfileController {
     @FXML Label saveSuccessfulLabel;
 
     private Effect effect = new Effect();
-    private UserDataSource userDataSource = new UserDataSource();
-    private AccountList accountList = userDataSource.readData();
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
     private Account account = (Account) FXRouter.getData();
 
     @FXML
     public void initialize() {
-        userDataSource = new UserDataSource();
-        AccountList accountList = userDataSource.readData();
+        dataSource = new UserDataSource();
+        AccountList accountList = dataSource.readData();
         Account account = accountList.searchAccountByUsername(getUsername);
         profileImageView.setImage(new Image(account.getImagePath()));
         showUserNameTextField.setText(account.getUsername());
@@ -74,13 +75,13 @@ public class ProfileController {
         if(fileSelected != null){
             Image image = new Image(fileSelected.toURI().toString());
             profileImageView.setImage(image);
-            userDataSource = new UserDataSource();
-            AccountList accountList = userDataSource.readData();
+            dataSource = new UserDataSource();
+            AccountList accountList = dataSource.readData();
             Account account = accountList.searchAccountByUsername(getUsername);
             accountList.removeAccount(account);
             account.setImagePath();
             accountList.addAccount(account);
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
         }
     }
 
@@ -104,7 +105,7 @@ public class ProfileController {
         } else {
             saveSuccessfulLabel.setText("เปลี่ยนรหัสผ่านสำเร็จ");
             accountList.changePasswordByUsername(username, newPassword);
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
             clear();
         }
     }
