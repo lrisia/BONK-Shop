@@ -17,28 +17,31 @@ public class Account {
     private String name;
     private String username;
     private String password;
+    private String storeName;
     private boolean banStatus;
+    private int tryLoginWhenGotBanned;
     private String loginDate;
     private String loginTime;
-
-    private String ImagePath = "profiledefault.png";
+    private String imagePath;
 
     private ProductList productList;
 
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, false, "", "","profiledefault.png");
+        this("Account", username, password, name, "-",false, 0, "", "","profileDefault.png");
         initialLoginTime();
     }
 
-    public Account(String role, String username, String password, String name, boolean banStatus, String loginDate, String loginTime,String ImagePath) {
+    public Account(String role, String username, String password, String name, String storeName, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
         this.role = role;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.storeName = storeName;
         this.banStatus = banStatus;
+        this.tryLoginWhenGotBanned = tryLoginWhenGotBanned;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
-        this.ImagePath = ImagePath;
+        this.imagePath = imagePath;
     }
 
     public void initialLoginTime() {
@@ -53,6 +56,7 @@ public class Account {
 
     public boolean canLogin(String username, String password) {
         if (this.username.equals(username) && this.password.equals(password)) {
+            if (gotBanned()) tryLoginWhenGotBanned += 1;
             initialLoginTime();
             return true;
         }
@@ -79,6 +83,10 @@ public class Account {
         return loginDate + "-" + loginTime;
     }
 
+    public String getStoreName() { return storeName; }
+
+    public int getTryLoginWhenGotBanned() { return tryLoginWhenGotBanned; }
+
     public void changePassword(String newPassword) {
         password = newPassword;
     }
@@ -86,6 +94,7 @@ public class Account {
     public void switchBanStatus() {
         if (banStatus) banStatus = false;
         else banStatus = true;
+        tryLoginWhenGotBanned = 0;
     }
 
     public boolean checkAccount(String username) {
@@ -110,8 +119,9 @@ public class Account {
 
 
     public String toCsv() {
-        return role + "," + username + "," + password + "," + name + ","
-                + banStatus + "," + loginDate + "," + loginTime + "," + ImagePath;
+        return role + "," + username + "," + password + "," + name + "," + storeName + ","
+                + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + ","
+                + loginTime + "," + imagePath;
     }
 
     @Override
@@ -123,35 +133,35 @@ public class Account {
 
     public void setImagePath() {
         if (fileSelected != null) {
-            ImagePath = username + "-" +
-                    LocalDate.now().getYear() + "-"
-                    + LocalDate.now().getMonth() + "-"
-                    + LocalDate.now().getDayOfMonth() + ".png";
-            copyUserImageToPackage(fileSelected, ImagePath);
+            imagePath = username + "-" + "profile.png";
+            copyUserImageToPackage(fileSelected, imagePath);
         }
         else {
-            ImagePath = "profiledefault.png";
+            imagePath = "profileDefault.png";
         }
     }
 
     public String getImagePath() {
         return new File(System.getProperty("user.dir") +
                 File.separator +
-                "data/PictureData" +
+                "data/images/profiles" +
                 File.separator +
-                ImagePath).toURI().toString();
+                imagePath).toURI().toString();
     }
 
-    public static void copyUserImageToPackage(File image, String imageName) {
-        File file = new File("data/PictureData");
+    public void copyUserImageToPackage(File image, String imageName) {
+        File file = new File("data/images/profiles");
         try {
-            BufferedImage bi = ImageIO.read(image.toURL());
+            BufferedImage bi = ImageIO.read(image);
             ImageIO.write(bi, "png", new File(file.getAbsolutePath(), imageName));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
+    public void registerNewStore(String storeName){
+        this.storeName = storeName;
+        this.role = "Seller";
+    }
     // todo: What user can do?
 }

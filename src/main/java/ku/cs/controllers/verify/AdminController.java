@@ -1,16 +1,17 @@
 package ku.cs.controllers.verify;
 
-import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.UserDataSource;
 
 public class AdminController {
@@ -21,15 +22,19 @@ public class AdminController {
     @FXML Label storeNameLabel;
     @FXML Label timeLabel;
     @FXML Label saveSuccessfulLabel;
-    @FXML Button banBtn;
-    @FXML TextField passwordTextField;
+    @FXML Label tryLoginLabel;
+    @FXML Label loginLabel;
+    @FXML PasswordField newPasswordField;
+    @FXML PasswordField confirmPasswordField;
 
-    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
-    private AccountList accountList = userDataSource.readData();
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
+    private Effect effect = new Effect();
     private Account account = (Account) FXRouter.getData();
     private Account selectedAccount = null;
 
     public void initialize() {
+        userImageView.setImage(new Image(account.getImagePath()));
         showListView();
         handleSelectedListView();
     }
@@ -56,12 +61,19 @@ public class AdminController {
         storeNameLabel.setText(account.getRole());
         timeLabel.setText(account.getTime());
         selectedAccount = account;
+        if (account.gotBanned()) {
+            tryLoginLabel.setText("Try Login");
+            loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
+        } else {
+            tryLoginLabel.setText("");
+            loginLabel.setText("");
+        }
     }
 
     public void ban() {
         if (selectedAccount != null) {
             selectedAccount.switchBanStatus();
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
             accountListView.refresh();
         }
     }
@@ -86,23 +98,27 @@ public class AdminController {
     }
 
     public void changPassword() {
-        String newPassword = passwordTextField.getText();
-        if ((!newPassword.equals("")) && accountList.changePasswordByUsername(account.getUsername(), newPassword)) {
-            userDataSource.writeData(accountList);
-            saveSuccessfulLabel.setText("save successful!");
-            passwordTextField.clear();
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), saveSuccessfulLabel);
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.0);
-            fadeOut.play();
+        String newPassword = newPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+        String username = account.getUsername();
+        if (newPassword.equals("") || confirmPassword.equals("")) {
+            saveSuccessfulLabel.setText("ยังกรอกไม่ครบ");
+            effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
+            clear();
+        } else if (!newPassword.equals(confirmPassword)) {
+            saveSuccessfulLabel.setText("รหัสผ่านไม่ตรงกัน");
+            effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
+            clear();
         } else {
-            saveSuccessfulLabel.setText("something incorrectly, please try again");
-            passwordTextField.clear();
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), saveSuccessfulLabel);
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.0);
-            fadeOut.play();
+            accountList.changePasswordByUsername(username, newPassword);
+            saveSuccessfulLabel.setText("เปลี่ยนรหัสผ่านสำเร็จ");
+            effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
+            clear();
         }
     }
 
+    public void clear() {
+        newPasswordField.clear();
+        confirmPasswordField.clear();
+    }
 }

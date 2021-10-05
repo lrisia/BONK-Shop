@@ -12,6 +12,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Item;
 import ku.cs.models.verify.Account;
+import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
+import ku.cs.services.UserDataSource;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,19 +42,8 @@ public class HomePageController implements Initializable {
     @FXML private GridPane grid;
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
-
-    // private double xOffset = 0;
-    //  private double yOffset = 0;
-
-    // Stage stage = (Stage) logoImageView.getScene().getWindow();
-
-//    @FXML
-//    public void initialize() {
-//        // stage.close();
-//        // FXRouter.bind(this, stage, 800, 600);
-//        // stage.setResizable(true);
-//        // stage.initStyle(StageStyle.DECORATED);
-//    }
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
 
     @FXML
     public void switchToTank() throws IOException {
@@ -137,10 +130,11 @@ public class HomePageController implements Initializable {
                 com.github.saacsos.FXRouter.goTo("admin", account);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("profile");
+                com.github.saacsos.FXRouter.goTo("profile", account);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");
+            e.printStackTrace();
         }
     }
 
@@ -151,7 +145,7 @@ public class HomePageController implements Initializable {
                 com.github.saacsos.FXRouter.goTo("store",account);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("shop_setup");
+                com.github.saacsos.FXRouter.goTo("shop_setup",account);
             }
 
         } catch (IOException e) {
@@ -160,7 +154,6 @@ public class HomePageController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 
 //    @FXML
@@ -222,7 +215,6 @@ public class HomePageController implements Initializable {
     private List<Item> getData(){
         List<Item> items =  new ArrayList<>();
         Item item;
-
         for(int i = 0; i <= 20; i++){
             item = new Item();
             item.setName("Tank");
@@ -236,6 +228,8 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        account = accountList.searchAccountByUsername(account.getUsername());
+
         items.addAll(getData());
         int column = 0;
         int row = 1;
@@ -244,22 +238,18 @@ public class HomePageController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/product.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-
                 ProductController productController = fxmlLoader.getController();
                 productController.setData(items.get(i));
-
                 if(column == 3){
                     column = 0;
                     row++;
                 }
-
                 grid.add(anchorPane,column++, row);
-
                 GridPane.setMargin(anchorPane,new Insets(10));
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

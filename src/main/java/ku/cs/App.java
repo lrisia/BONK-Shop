@@ -17,7 +17,6 @@ public class App extends Application {
 
     private static Scene scene;
 
-    public static final String CURRENCY = "฿ ";
 
     @Override
     public void start(Stage stage) throws IOException {

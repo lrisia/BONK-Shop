@@ -7,4 +7,12 @@ public class Shop {
     private Account owner;
     private Product product;
     private ProductList productList;
+
+
+
+
+
+
+
+
 }
