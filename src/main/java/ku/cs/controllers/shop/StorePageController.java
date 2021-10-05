@@ -80,7 +80,7 @@ public class StorePageController {
     @FXML
     public void switchToInfo(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("info");
+            com.github.saacsos.FXRouter.goTo("info",account);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า info ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -102,7 +102,7 @@ public class StorePageController {
     @FXML
     public void switchToAddProduct(Event event) throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("add_product");
+            com.github.saacsos.FXRouter.goTo("add_product",account);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า add_product ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -113,7 +113,7 @@ public class StorePageController {
     @FXML
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            com.github.saacsos.FXRouter.goTo("main",account);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

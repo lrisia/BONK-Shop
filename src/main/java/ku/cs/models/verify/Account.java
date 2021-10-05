@@ -22,7 +22,7 @@ public class Account {
     private int tryLoginWhenGotBanned;
     private String loginDate;
     private String loginTime;
-    private String ImagePath;
+    private String imagePath;
 
     private ProductList productList;
 
@@ -31,7 +31,7 @@ public class Account {
         initialLoginTime();
     }
 
-    public Account(String role, String username, String password, String name, String storeName, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String ImagePath) {
+    public Account(String role, String username, String password, String name, String storeName, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
         this.role = role;
         this.name = name;
         this.username = username;
@@ -41,7 +41,7 @@ public class Account {
         this.tryLoginWhenGotBanned = tryLoginWhenGotBanned;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
-        this.ImagePath = ImagePath;
+        this.imagePath = imagePath;
     }
 
     public void initialLoginTime() {
@@ -121,7 +121,7 @@ public class Account {
     public String toCsv() {
         return role + "," + username + "," + password + "," + name + "," + storeName + ","
                 + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + ","
-                + loginTime + "," + ImagePath;
+                + loginTime + "," + imagePath;
     }
 
     @Override
@@ -133,11 +133,11 @@ public class Account {
 
     public void setImagePath() {
         if (fileSelected != null) {
-            ImagePath = username + "-" + "profile.png";
-            copyUserImageToPackage(fileSelected, ImagePath);
+            imagePath = username + "-" + "profile.png";
+            copyUserImageToPackage(fileSelected, imagePath);
         }
         else {
-            ImagePath = "profileDefault.png";
+            imagePath = "profileDefault.png";
         }
     }
 
@@ -146,10 +146,10 @@ public class Account {
                 File.separator +
                 "data/images/profiles" +
                 File.separator +
-                ImagePath).toURI().toString();
+                imagePath).toURI().toString();
     }
 
-    public static void copyUserImageToPackage(File image, String imageName) {
+    public void copyUserImageToPackage(File image, String imageName) {
         File file = new File("data/images/profiles");
         try {
             BufferedImage bi = ImageIO.read(image);
@@ -158,5 +158,11 @@ public class Account {
             e.printStackTrace();
         }
     }
+
+    public void registerNewStore(String storeName){
+        this.storeName = storeName;
+        this.role = "Seller";
+    }
+
     // todo: What user can do?
 }

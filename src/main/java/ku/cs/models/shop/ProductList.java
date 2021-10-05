@@ -1,15 +1,23 @@
 package ku.cs.models.shop;
 
+import ku.cs.models.verify.Account;
+import ku.cs.services.DataSource;
+
 import java.util.ArrayList;
 
-public class ProductList {
+import static ku.cs.controllers.userdata.ProfileController.fileSelected;
+
+public class ProductList{
     private ArrayList<Product> productList;
 
     public ProductList() { productList = new ArrayList<>(); }
 
-    public void addProduct(String shopName,String productName, double price, int stock, String description, String category) {
-        Product product = new Product(shopName, productName, price, stock, description, category, initialProductId());
+    public void addProduct(String shopName,String productName, double price, int stock, String description, String category ) {
+        String id = initialProductId();
+        String imagePath = id + "-" + "product.png";
+        Product product = new Product(shopName,productName,price,stock,description,category,id, imagePath);
         productList.add(product);
+        product.setImagePath();
     }
 
     public String initialProductId(){
@@ -22,5 +30,13 @@ public class ProductList {
         for (Product product: productList)
             if (product.checkId(id)) return product;
         return null;
+    }
+
+    public String toCsv() {
+        String result = "";
+        for (Product product: productList) {
+            result += product.toCsv() + "\n";
+        }
+        return result;
     }
 }

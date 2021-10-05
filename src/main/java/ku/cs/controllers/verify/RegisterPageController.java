@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
 import ku.cs.services.UserDataSource;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class RegisterPageController {
     @FXML private Label alertLabel;
     @FXML private ImageView registerImageView;
 
-    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
+    private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = (AccountList) FXRouter.getData();
 
     @FXML
@@ -89,7 +90,7 @@ public class RegisterPageController {
             confirmPasswordPasswordField.clear();
         } else if (accountList.canRegister(username)) {
             accountList.registerNewAccount(username, password, name);
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
             try {
                 FXRouter.goTo("login", "สมัครสำเร็จแล้ว");
             } catch (IOException e) {

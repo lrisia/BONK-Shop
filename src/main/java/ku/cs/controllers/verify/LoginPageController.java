@@ -13,6 +13,7 @@ import java.io.*;
 
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
 import ku.cs.services.UserDataSource;
 
@@ -25,8 +26,8 @@ public class LoginPageController {
     @FXML private Label mainLabel;
     @FXML private ImageView loginImageView;
 
-    private UserDataSource userDataSource = new UserDataSource("data", "userData.csv");
-    private AccountList accountList = userDataSource.readData();
+    private DataSource<AccountList> dataSource = new UserDataSource();
+    private AccountList accountList = dataSource.readData();
     private Effect effect = new Effect();
     public static String getUsername;
 
@@ -68,13 +69,13 @@ public class LoginPageController {
             notificationLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");
             notificationLabel.setStyle("-fx-text-fill: #f61e1e");
             effect.crossFadeTransitionLabel(notificationLabel, mainLabel, 2.5);
-            userDataSource.writeData(accountList);
+            dataSource.writeData(accountList);
         } else {
             notificationLabel.setText("เข้าสู่ระบบสำเร็จ กรุณารอสักครู่");
             notificationLabel.setStyle("-fx-text-fill: #ffffff");
             try {
                 getUsername = username;
-                userDataSource.writeData(accountList);
+                dataSource.writeData(accountList);
                 FXRouter.goTo("main", accountList.searchAccountByUsername(username));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");

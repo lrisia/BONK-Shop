@@ -48,6 +48,12 @@ public class AccountList {
         return true;
     }
 
+    public void registerNewStoreByUsername(String username,String storeName){
+        Account account = searchAccountByUsername(username);
+        if(account != null)
+        account.registerNewStore(storeName);
+    }
+
     public void removeAccount(Account account){
         accountList.remove(account);
     }
