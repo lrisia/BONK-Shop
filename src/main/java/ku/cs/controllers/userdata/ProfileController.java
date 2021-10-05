@@ -106,6 +106,7 @@ public class ProfileController {
             accountList.changePasswordByUsername(username, newPassword);
             userDataSource.writeData(accountList);
             clear();
+            userDataSource.writeData(accountList);
         }
     }
 

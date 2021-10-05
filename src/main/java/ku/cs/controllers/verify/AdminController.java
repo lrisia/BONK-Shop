@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
 import com.github.saacsos.FXRouter;
@@ -113,6 +114,7 @@ public class AdminController {
             saveSuccessfulLabel.setText("เปลี่ยนรหัสผ่านสำเร็จ");
             effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
             clear();
+            userDataSource.writeData(accountList);
         }
     }
 

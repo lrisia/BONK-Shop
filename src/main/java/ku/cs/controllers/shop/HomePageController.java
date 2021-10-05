@@ -33,7 +33,6 @@ public class HomePageController implements Initializable {
     @FXML private ImageView knifeIconImageView;
     @FXML private ImageView assaultIconImageView;
     @FXML private HBox cardLayout;
-    @FXML private Button adminBtn;
     @FXML private ScrollPane scroll;
     @FXML private GridPane grid;
 
@@ -238,6 +237,8 @@ public class HomePageController implements Initializable {
                 }
                 grid.add(anchorPane,column++, row);
                 GridPane.setMargin(anchorPane,new Insets(10));
+
+                grid.getChildren().clear();
             }
         } catch (IOException e) {
             e.printStackTrace();
