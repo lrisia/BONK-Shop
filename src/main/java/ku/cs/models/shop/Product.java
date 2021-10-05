@@ -17,7 +17,7 @@ public class Product {
     private int stock;
     private String imagePath;
 
-    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id) {
+    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id, String imagePath) {
         this.shopName = shopName;
         this.productName = productName;
         this.price = price;
@@ -25,11 +25,8 @@ public class Product {
         this.detail = detail;
         this.category = category;
         this.id = id;
+        this.imagePath = imagePath;
     }
-
-
-
-
     public boolean checkId(String id) {
         if (this.id.equals(id)) return true;
         return false;
@@ -38,7 +35,7 @@ public class Product {
     public void setImagePath() {
         if (fileSelected != null) {
             imagePath = id + "-" + "product.png";
-            copyUserImageToPackage(fileSelected, imagePath);
+            copyProductImageToPackage(fileSelected, imagePath);
         }
         else {
             imagePath = "product_default_white.png";
@@ -53,7 +50,7 @@ public class Product {
                 imagePath).toURI().toString();
     }
 
-    public static void copyUserImageToPackage(File image, String imageName) {
+    public static void copyProductImageToPackage(File image, String imageName) {
         File file = new File("data/images/products");
         try {
             BufferedImage bi = ImageIO.read(image);

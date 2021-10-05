@@ -18,7 +18,7 @@
                   <Font name="Agency FB Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fx:id="img" fitHeight="87.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="90.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/product/p990_product.png" />
                </image>

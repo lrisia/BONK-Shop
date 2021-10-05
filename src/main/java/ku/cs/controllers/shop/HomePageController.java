@@ -155,61 +155,6 @@ public class HomePageController implements Initializable {
         }
     }
 
-
-//    @FXML
-//    public void switchToTank() throws IOException {
-//        try {
-//            com.github.saacsos.FXRouter.goTo("tank");
-//        } catch (IOException e) {
-//            System.err.println("ไปที่หน้า register ไม่ได้");
-//            System.err.println("ให้ตรวจสอบการกำหนด route");
-//        }
-//    }
-
-//    private List<Product> recentlyAdded;
-//
-//    @FXML
-//    public void showProduct (ProductList product) {
-//        recentlyAdded = new ArrayList<>(recentlyAdded());//get data ,get text
-//        try {
-//            for(int i = 0; i< recentlyAdded.size(); i++){
-//
-//                HBox cardBox = new
-//                ProductController productController = fxmlLoader.getController();
-//                productController.setData(recentlyAdded.get(i));
-//                cardLayout.getChildren().add(cardBox);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    private ImageView imageView;
-//    private BorderPane mainPane;
-//    private Label textLabel;
-//    private HBox hBox;
-//
-//    public void start(Stage homePageController) throws Exception {
-//
-////        this.imageView = new ImageView("images/icon_category/p990_product.png");
-////        imageView.setFitWidth(240);
-////        imageView.setPreserveRatio(true);
-//
-////        this.textLabel = new Label("Hello world!");
-////        textLabel.setWrapText(true);
-//
-//        HBox hBox = new HBox(8);
-//        ImageView image1 = new ImageView("images/icon_category/p990_product.png");
-//        HBox.setHgrow(image1, Priority.ALWAYS);
-//
-//
-//        cardLayout.getChildren().addAll(hBox,image1, textLabel);
-//
-//
-//        homePageController.setScene(new Scene(mainPane));
-//        homePageController.show()
-
-
     private List<Item> items = new ArrayList<>();
 
     private List<Item> getData(){
@@ -220,7 +165,6 @@ public class HomePageController implements Initializable {
             item.setName("Tank");
             item.setPrice(2000000);
 //            item.setImgSrc("images/product/rc_tank.jpg");
-            item.setColor("6A7324");
             items.add(item);
         }
         return items;
@@ -245,7 +189,7 @@ public class HomePageController implements Initializable {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane,new Insets(10));
+                GridPane.setMargin(anchorPane,new Insets(9.5));
             }
         } catch (IOException e) {
             e.printStackTrace();

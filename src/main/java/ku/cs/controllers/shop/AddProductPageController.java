@@ -12,6 +12,8 @@ import ku.cs.models.shop.ProductList;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +26,6 @@ public class AddProductPageController implements Initializable{
     @FXML TextField inputProductNameTextField;
     @FXML TextField inputProductDetailTextField;
     @FXML Label notificationLabel;
-    @FXML SplitMenuButton categorySplitMenuBtn;
     @FXML Spinner<Double> productPriceSpinner;
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
@@ -83,7 +84,6 @@ public class AddProductPageController implements Initializable{
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextField.getText();
         String category = categoryComboBox.getValue().toString();
-        System.out.println(category);
         if(productName.equals("")){
             notificationLabel.setText("Please enter your product name");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
