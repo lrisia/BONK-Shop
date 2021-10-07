@@ -14,6 +14,7 @@ import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
@@ -94,6 +95,15 @@ public class AddProductPageController implements Initializable{
             try {
                 String category = categoryComboBox.getValue().toString();
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
+                Comparator <Product> comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;
+                        if(o1.getTime().compareTo(o2.getTime()) < 0) return 1;
+                        return 0;
+                    }
+                };
+                productList.sort(comparator);
                 dataSource.writeData(productList);
                 com.github.saacsos.FXRouter.goTo("store");
             } catch (IOException e) {
