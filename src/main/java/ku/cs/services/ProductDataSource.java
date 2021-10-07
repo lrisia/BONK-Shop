@@ -1,11 +1,9 @@
 package ku.cs.services;
 
+import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class ProductDataSource implements DataSource<ProductList>{
     private String directory;
@@ -24,7 +22,41 @@ public class ProductDataSource implements DataSource<ProductList>{
     @Override
     public ProductList readData() {
         ProductList productList = new ProductList();
-        productList.addProduct("shopName","productName",0,0,"productDetail","category");
+        String path = directory + File.separator + filename;
+        File file = new File(path);
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
+        try {
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String shopName = data[0];
+                String productName = data[1];
+                double price = Double.parseDouble(data[2]);
+                int stock = Integer.parseInt(data[3]);
+                String description = data[4];
+                String category = data[5];
+                String id = data[6];
+                String productAddDate = data[7];
+                String productAddTime = data[8];
+                String imagePath = data[9];
+                productList.addProduct(new Product(shopName, productName, price, stock, description,
+                        category, id, productAddDate, productAddTime, imagePath));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return productList;
     }
 

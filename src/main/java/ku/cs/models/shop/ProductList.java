@@ -20,6 +20,10 @@ public class ProductList{
         product.setImagePath();
     }
 
+    public void addProduct(Product product) {
+        productList.add(product);
+    }
+
     public String initialProductId(){
         return String.format("%06d",productList.size()+1);
     }
