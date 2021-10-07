@@ -1,6 +1,8 @@
 package ku.cs.models.verify;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AccountList {
     private ArrayList<Account> accountList;
@@ -56,9 +58,9 @@ public class AccountList {
         accountList.remove(account);
     }
 
-//    public boolean registerNewAccount(String username, String password, String name) {
-//        if ()
-//    }
+    public void sort(Comparator<Account> accountComparator) {
+        Collections.sort(this.accountList, accountComparator);
+    }
 
     public String toCsv() {
         String result = "";

@@ -163,5 +163,6 @@ public class Account {
         this.storeName = storeName;
         this.role = "Seller";
     }
+
     // todo: What user can do?
 }

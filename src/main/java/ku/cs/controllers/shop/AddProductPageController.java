@@ -12,8 +12,6 @@ import ku.cs.models.shop.ProductList;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -83,18 +81,18 @@ public class AddProductPageController implements Initializable{
     public void add(){
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextField.getText();
-        String category = categoryComboBox.getValue().toString();
-        if(productName.equals("")){
+        if (productName.equals("")) {
             notificationLabel.setText("Please enter your product name");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(productDetail.equals("")){
+        } else if(productDetail.equals("")) {
             notificationLabel.setText("Please enter your product detail");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(fileSelected == null){
+        } else if(fileSelected == null) {
             notificationLabel.setText("Please upload your product picture");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else {
             try {
+                String category = categoryComboBox.getValue().toString();
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
                 dataSource.writeData(productList);
                 com.github.saacsos.FXRouter.goTo("store");
@@ -102,6 +100,9 @@ public class AddProductPageController implements Initializable{
                 System.err.println("ไปที่หน้า store ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                notificationLabel.setText("Please selected your product category");
+                notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
         }
     }
