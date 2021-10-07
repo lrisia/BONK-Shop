@@ -4,6 +4,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
@@ -15,9 +17,16 @@ public class Product {
     private double price;
     private String detail;
     private int stock;
+    private String productAddDate;
+    private String productAddTime;
     private String imagePath;
 
-    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id) {
+    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id, String imagePath) {
+        this(shopName, productName, price, stock, detail, category, id, "", "", imagePath);
+        initialAddProductTime();
+    }
+
+    public Product(String shopName, String productName, double price, int stock, String detail, String category, String id, String productAddDate, String productAddTime, String imagePath) {
         this.shopName = shopName;
         this.productName = productName;
         this.price = price;
@@ -25,20 +34,32 @@ public class Product {
         this.detail = detail;
         this.category = category;
         this.id = id;
+        this.productAddDate = productAddDate;
+        this.productAddTime = productAddTime;
+        this.imagePath = imagePath;
     }
 
-
-
+    public String getTime() {
+        return productAddDate + "-" + productAddTime;
+    }
 
     public boolean checkId(String id) {
         if (this.id.equals(id)) return true;
         return false;
     }
 
+    public void initialAddProductTime() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String loginDateTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        String[] time = loginDateTime.split(" ");
+        productAddDate = time[0];
+        productAddTime = time[1];
+    }
+
     public void setImagePath() {
         if (fileSelected != null) {
             imagePath = id + "-" + "product.png";
-            copyUserImageToPackage(fileSelected, imagePath);
+            copyProductImageToPackage(fileSelected, imagePath);
         }
         else {
             imagePath = "product_default_white.png";
@@ -53,7 +74,7 @@ public class Product {
                 imagePath).toURI().toString();
     }
 
-    public static void copyUserImageToPackage(File image, String imageName) {
+    public static void copyProductImageToPackage(File image, String imageName) {
         File file = new File("data/images/products");
         try {
             BufferedImage bi = ImageIO.read(image);
@@ -64,6 +85,8 @@ public class Product {
     }
 
     public String toCsv() {
-        return shopName + "," + productName + "," + price + "," + stock + "," + detail + "," + category + "," + id + "," + imagePath;
+        return shopName + "," + productName + "," + price + "," + stock + ","
+                + detail + "," + category + "," + id + "," + productAddDate +
+                "," + productAddTime + "," + imagePath;
     }
 }

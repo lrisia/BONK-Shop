@@ -1,2 +1,5 @@
-shopName,productName,0.0,0,productDetail,category,000001,null
-A,a5,1.0,1,gunsa,Guns,000002,null
+A,a,1.0,1,sadad,Plane,000001,05/10/2021,23:06:07,000001-product.png
+A,ตารางวิขา,1.0,1,hello world,Tanks,000002,05/10/2021,23:20:35,000002-product.png
+A,s,1.0,1,s,Plane,000003,05/10/2021,23:25:20,000003-product.png
+A,Tanko,1.0,1,tank for tank,Tanks,000004,07/10/2021,20:46:25,000004-product.png
+A,Tank,1.0,1,tanks,Tanks,000005,07/10/2021,20:52:40,000005-product.png

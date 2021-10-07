@@ -114,6 +114,7 @@ public class AdminController {
             saveSuccessfulLabel.setText("เปลี่ยนรหัสผ่านสำเร็จ");
             effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
             clear();
+            dataSource.writeData(accountList);
         }
     }
 
