@@ -3,7 +3,7 @@ package ku.cs.controllers.shop;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -20,7 +20,7 @@ public class DetailController {
     @FXML private ImageView productImageView;
     @FXML private Label productNameLabel;
     @FXML private Label priceLabel;
-    @FXML private Label detailLabel;
+    @FXML private TextArea detailTextArea;
     @FXML private Label productTotalLabel;
     @FXML private Label priceTotalLabel;
     @FXML private Spinner<Integer> productPieceSpinner;
@@ -29,11 +29,14 @@ public class DetailController {
 
     private int currentPiece;
 
+
     public void initialize(){
         productImageView.setImage(new Image(item.getImagePath()));
+        productImageView.resize(245,280);
         productNameLabel.setText(item.getProductName());
         priceLabel.setText(item.getPrice()+"");
-        detailLabel.setText(item.getDetail());
+        detailTextArea.setWrapText(true);
+        detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("There are "+item.getStock()+" items left.");
         SpinnerValueFactory<Integer> valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,1000);
         valueFactoryPiece.setValue(0);
