@@ -1,5 +1,7 @@
 package ku.cs.controllers.shop;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
@@ -28,8 +31,10 @@ public class AddProductPageController implements Initializable{
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
 
-    Double price;
-    Integer quantity;
+    private double price;
+    private int quantity;
+    private double currentPrice;
+    private int currentQuantity;
 
     private DataSource<ProductList> dataSource = new ProductDataSource();
     private ProductList productList = dataSource.readData();
@@ -43,7 +48,23 @@ public class AddProductPageController implements Initializable{
         valueFactoryQuantity.setValue(0);
         productPriceSpinner.setValueFactory(valueFactoryPrice);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);
-        price = productPriceSpinner.getValue();
+        currentPrice = productPriceSpinner.getValue();
+        currentQuantity = productQuantitySpinner.getValue();
+        productPriceSpinner.valueProperty().addListener(new ChangeListener<Double>() {
+            @Override
+            public void changed(ObservableValue<? extends Double> observableValue, Double aDouble, Double t1) {
+                currentPrice = productPriceSpinner.getValue();
+                price = productPriceSpinner.getValue();
+            }
+        });
+        productQuantitySpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+                currentQuantity = productQuantitySpinner.getValue();
+                quantity = productQuantitySpinner.getValue();
+            }
+        });
+
         quantity = productQuantitySpinner.getValue();
 
         categoryComboBox.getItems().add("Tanks");
@@ -94,6 +115,15 @@ public class AddProductPageController implements Initializable{
             try {
                 String category = categoryComboBox.getValue().toString();
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
+                Comparator <Product> comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;
+                        if(o1.getTime().compareTo(o2.getTime()) < 0) return 1;
+                        return 0;
+                    }
+                };
+                productList.sort(comparator);
                 dataSource.writeData(productList);
                 com.github.saacsos.FXRouter.goTo("store");
             } catch (IOException e) {
