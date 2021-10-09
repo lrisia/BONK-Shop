@@ -1,5 +1,7 @@
 package ku.cs.controllers.shop;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
@@ -24,13 +27,14 @@ public class AddProductPageController implements Initializable{
     @FXML TextField inputProductNameTextField;
     @FXML TextField inputProductDetailTextField;
     @FXML Label notificationLabel;
-    @FXML SplitMenuButton categorySplitMenuBtn;
     @FXML Spinner<Double> productPriceSpinner;
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
 
-    Double price;
-    Integer quantity;
+    private double price;
+    private int quantity;
+    private double currentPrice;
+    private int currentQuantity;
 
     private DataSource<ProductList> dataSource = new ProductDataSource();
     private ProductList productList = dataSource.readData();
@@ -44,7 +48,23 @@ public class AddProductPageController implements Initializable{
         valueFactoryQuantity.setValue(0);
         productPriceSpinner.setValueFactory(valueFactoryPrice);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);
-        price = productPriceSpinner.getValue();
+        currentPrice = productPriceSpinner.getValue();
+        currentQuantity = productQuantitySpinner.getValue();
+        productPriceSpinner.valueProperty().addListener(new ChangeListener<Double>() {
+            @Override
+            public void changed(ObservableValue<? extends Double> observableValue, Double aDouble, Double t1) {
+                currentPrice = productPriceSpinner.getValue();
+                price = productPriceSpinner.getValue();
+            }
+        });
+        productQuantitySpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+                currentQuantity = productQuantitySpinner.getValue();
+                quantity = productQuantitySpinner.getValue();
+            }
+        });
+
         quantity = productQuantitySpinner.getValue();
 
         categoryComboBox.getItems().add("Tanks");
@@ -82,26 +102,37 @@ public class AddProductPageController implements Initializable{
     public void add(){
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextField.getText();
-        String category = categoryComboBox.getValue().toString();
-        System.out.println(category);
-        if(productName.equals("")){
+        if (productName.equals("")) {
             notificationLabel.setText("Please enter your product name");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(productDetail.equals("")){
+        } else if(productDetail.equals("")) {
             notificationLabel.setText("Please enter your product detail");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(fileSelected == null){
+        } else if(fileSelected == null) {
             notificationLabel.setText("Please upload your product picture");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else {
             try {
+                String category = categoryComboBox.getValue().toString();
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
+                Comparator <Product> comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;
+                        if(o1.getTime().compareTo(o2.getTime()) < 0) return 1;
+                        return 0;
+                    }
+                };
+                productList.sort(comparator);
                 dataSource.writeData(productList);
                 com.github.saacsos.FXRouter.goTo("store");
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า store ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                notificationLabel.setText("Please selected your product category");
+                notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
         }
     }

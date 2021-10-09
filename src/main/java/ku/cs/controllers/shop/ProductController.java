@@ -4,8 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import ku.cs.App;
-import ku.cs.models.shop.Item;
+import ku.cs.models.shop.Product;
+
+import java.io.IOException;
 
 public class ProductController {
 
@@ -15,14 +16,26 @@ public class ProductController {
 
     @FXML private ImageView img;
 
-    private Item item;
+    private Product item;
 
-    public void setData(Item item){
+    public void setData(Product item){
         this.item = item;
-        nameLabel.setText(item.getName());
-        priceLabel.setText(item.getPrice()+ "");
-//        Image image = new Image(getClass().getResourceAsStream(item.getImgSrc()));
-//        img.setImage(image);
+        nameLabel.setText(item.getProductName());
+        priceLabel.setText(item.getPrice()+ " ฿");
+        Image image = new Image(item.getImagePath());
+        img.setImage(image);
     }
+
+    @FXML
+    public void switchToDetail() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("detail",item);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า detail ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+
 
 }

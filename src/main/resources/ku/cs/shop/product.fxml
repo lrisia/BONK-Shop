@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="215.0" prefWidth="220.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ProductController">
+<AnchorPane onMouseClicked="#switchToDetail" prefHeight="215.0" prefWidth="220.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ProductController">
    <children>
       <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
          <children>
@@ -18,7 +18,7 @@
                   <Font name="Agency FB Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fx:id="img" fitHeight="87.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="90.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/product/p990_product.png" />
                </image>
