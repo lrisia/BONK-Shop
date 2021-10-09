@@ -12,11 +12,6 @@ import ku.cs.models.shop.ProductList;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
-<<<<<<< HEAD
-
-import java.io.File;
-=======
->>>>>>> feature/profile_developer
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,10 +24,6 @@ public class AddProductPageController implements Initializable{
     @FXML TextField inputProductNameTextField;
     @FXML TextField inputProductDetailTextField;
     @FXML Label notificationLabel;
-<<<<<<< HEAD
-=======
-    @FXML SplitMenuButton categorySplitMenuBtn;
->>>>>>> feature/profile_developer
     @FXML Spinner<Double> productPriceSpinner;
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
@@ -90,7 +81,6 @@ public class AddProductPageController implements Initializable{
     public void add(){
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextField.getText();
-<<<<<<< HEAD
         if (productName.equals("")) {
             notificationLabel.setText("Please enter your product name");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
@@ -98,25 +88,11 @@ public class AddProductPageController implements Initializable{
             notificationLabel.setText("Please enter your product detail");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else if(fileSelected == null) {
-=======
-        String category = categoryComboBox.getValue().toString();
-        System.out.println(category);
-        if(productName.equals("")){
-            notificationLabel.setText("Please enter your product name");
-            notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(productDetail.equals("")){
-            notificationLabel.setText("Please enter your product detail");
-            notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-        }else if(fileSelected == null){
->>>>>>> feature/profile_developer
             notificationLabel.setText("Please upload your product picture");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else {
             try {
-<<<<<<< HEAD
                 String category = categoryComboBox.getValue().toString();
-=======
->>>>>>> feature/profile_developer
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
                 dataSource.writeData(productList);
                 com.github.saacsos.FXRouter.goTo("store");
@@ -124,12 +100,9 @@ public class AddProductPageController implements Initializable{
                 System.err.println("ไปที่หน้า store ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
                 e.printStackTrace();
-<<<<<<< HEAD
             } catch (NullPointerException e) {
                 notificationLabel.setText("Please selected your product category");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
-=======
->>>>>>> feature/profile_developer
             }
         }
     }

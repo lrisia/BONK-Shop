@@ -1,20 +1,15 @@
 package ku.cs.services;
 
-<<<<<<< HEAD
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 
 import java.io.*;
-
-=======
-import ku.cs.models.shop.ProductList;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
->>>>>>> feature/profile_developer
 public class ProductDataSource implements DataSource<ProductList>{
     private String directory;
     private String filename;
@@ -32,7 +27,6 @@ public class ProductDataSource implements DataSource<ProductList>{
     @Override
     public ProductList readData() {
         ProductList productList = new ProductList();
-<<<<<<< HEAD
         String path = directory + File.separator + filename;
         File file = new File(path);
         FileReader fileReader = null;
@@ -68,9 +62,6 @@ public class ProductDataSource implements DataSource<ProductList>{
                 e.printStackTrace();
             }
         }
-=======
-        productList.addProduct("shopName","productName",0,0,"productDetail","category");
->>>>>>> feature/profile_developer
         return productList;
     }
 
