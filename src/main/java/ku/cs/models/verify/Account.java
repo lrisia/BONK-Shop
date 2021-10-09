@@ -1,12 +1,9 @@
 package ku.cs.models.verify;
 
-import javafx.util.converter.LocalDateTimeStringConverter;
 import ku.cs.models.shop.ProductList;
-
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.image.BufferedImage;
@@ -172,6 +169,5 @@ public class Account {
         this.storeName = storeName;
         this.role = "Seller";
     }
-
     // todo: What user can do?
 }
