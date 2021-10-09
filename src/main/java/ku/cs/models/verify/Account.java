@@ -1,5 +1,6 @@
 package ku.cs.models.verify;
 
+import javafx.util.converter.LocalDateTimeStringConverter;
 import ku.cs.models.shop.ProductList;
 
 import javax.imageio.ImageIO;
@@ -79,8 +80,16 @@ public class Account {
         return name;
     }
 
-    public String getTime() {
-        return loginDate + "-" + loginTime;
+    public LocalDateTime getTime() {
+        String[] data = loginDate.split("/");
+        int year = Integer.parseInt(data[2]);
+        int month = Integer.parseInt(data[1]);
+        int day = Integer.parseInt(data[0]);
+        data = loginTime.split(":");
+        int hour = Integer.parseInt(data[0]);
+        int minute = Integer.parseInt(data[1]);
+        int sec = Integer.parseInt(data[2]);
+        return LocalDateTime.of(year, month, day, hour, minute, sec);
     }
 
     public String getStoreName() { return storeName; }
