@@ -89,4 +89,18 @@ public class Product {
                 + detail + "," + category + "," + id + "," + productAddDate +
                 "," + productAddTime + "," + imagePath;
     }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getDetail() { return detail; }
+
+    public double getPrice() { return price; }
+
+    public int getStock() { return stock; }
+
+    public String getId() { return id; }
+
+    public void setStock(int stock) { this.stock = stock; }
 }
