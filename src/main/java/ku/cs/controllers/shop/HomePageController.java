@@ -112,6 +112,7 @@ public class HomePageController implements Initializable {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+    
     @FXML
     public void switchToInfo(Event event) throws IOException {
         try {
@@ -122,6 +123,7 @@ public class HomePageController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void switchToProfile(Event event) throws IOException {
         try {

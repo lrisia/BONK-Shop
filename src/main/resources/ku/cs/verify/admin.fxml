@@ -44,6 +44,19 @@
                </font>
             </Label>
             <PasswordField fx:id="confirmPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="138.0" promptText="Confirm new password" styleClass="button" stylesheets="@../styles/styles.css" />
+            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="751.0" layoutY="22.0" onMouseClicked="#switchToLoginPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/transparent-web-interface-icons-icon-logout-icon-5f8bbf9bc2f138.8715297616029940757985.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="680.0" layoutY="27.0" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
@@ -101,19 +114,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="749.0" layoutY="344.0" onMouseClicked="#switchToLoginPage" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/transparent-web-interface-icons-icon-logout-icon-5f8bbf9bc2f138.8715297616029940757985.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Label layoutX="678.0" layoutY="349.0" text="Logout" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Label>
             <Label fx:id="tryLoginLabel" layoutX="578.0" layoutY="157.0" text="Try Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -124,6 +124,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button layoutX="689.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#switchToHome" prefHeight="16.0" prefWidth="92.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
