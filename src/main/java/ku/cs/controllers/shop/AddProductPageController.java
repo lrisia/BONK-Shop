@@ -25,13 +25,12 @@ public class AddProductPageController implements Initializable{
     @FXML Button upLoadPic;
     @FXML ImageView productImageView;
     @FXML TextField inputProductNameTextField;
+    @FXML TextField productPriceTextField;
     @FXML TextArea inputProductDetailTextArea;
     @FXML Label notificationLabel;
-    @FXML Spinner<Double> productPriceSpinner;
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
 
-    private double price;
     private int quantity;
     private double currentPrice;
     private int currentQuantity;
@@ -42,23 +41,11 @@ public class AddProductPageController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        double inf = Double.POSITIVE_INFINITY;
-        SpinnerValueFactory<Double> valueFactoryPrice = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,inf);
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
-        valueFactoryPrice.setValue(1.0);
         valueFactoryQuantity.setValue(0);
         inputProductDetailTextArea.setWrapText(true);
-        productPriceSpinner.setValueFactory(valueFactoryPrice);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);
-        currentPrice = productPriceSpinner.getValue();
         currentQuantity = productQuantitySpinner.getValue();
-        productPriceSpinner.valueProperty().addListener(new ChangeListener<Double>() {
-            @Override
-            public void changed(ObservableValue<? extends Double> observableValue, Double aDouble, Double t1) {
-                currentPrice = productPriceSpinner.getValue();
-                price = productPriceSpinner.getValue();
-            }
-        });
         productQuantitySpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
@@ -77,7 +64,6 @@ public class AddProductPageController implements Initializable{
         categoryComboBox.getItems().add("Knife");
         categoryComboBox.getItems().add("Assault rifle");
     }
-
 
     @FXML
     public void switchToHome() throws IOException {
@@ -116,6 +102,7 @@ public class AddProductPageController implements Initializable{
         } else {
             try {
                 String category = categoryComboBox.getValue().toString();
+                double price = Double.parseDouble(productPriceTextField.getText());
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
                 Comparator <Product> comparator = new Comparator<Product>() {
                     @Override
@@ -134,6 +121,9 @@ public class AddProductPageController implements Initializable{
                 e.printStackTrace();
             } catch (NullPointerException e) {
                 notificationLabel.setText("Please selected your product category");
+                notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+            } catch (NumberFormatException e) {
+                notificationLabel.setText("Price format incorrect");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
         }
