@@ -35,14 +35,6 @@ public class App extends Application {
         FXRouter.when("login", packageStr+ "verify/login.fxml",600,400);
         FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
         FXRouter.when("main", packageStr+"shop/home.fxml");
-        FXRouter.when("basket",packageStr+"shop/basket.fxml");
-        FXRouter.when("tank",packageStr+"shop/tank.fxml");
-        FXRouter.when("plane",packageStr+"shop/plane.fxml");
-        FXRouter.when("car",packageStr+"shop/car.fxml");
-        FXRouter.when("boat",packageStr+"shop/boat.fxml");
-        FXRouter.when("gun",packageStr+"shop/gun.fxml");
-        FXRouter.when("knife",packageStr+"shop/knife.fxml");
-        FXRouter.when("assault",packageStr+"shop/assault.fxml");
         FXRouter.when("info",packageStr+"userdata/info_page.fxml");
         FXRouter.when("profile",packageStr+"userdata/profile.fxml");
         FXRouter.when("store",packageStr+"shop/store.fxml");
