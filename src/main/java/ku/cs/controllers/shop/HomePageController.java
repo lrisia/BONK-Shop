@@ -154,12 +154,6 @@ public class HomePageController implements Initializable {
         }
     }
 
-//    private List<Item> items = new ArrayList<>();
-
-
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

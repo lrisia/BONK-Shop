@@ -37,7 +37,7 @@ public class LoginPageController {
         mainLabel.setText("เข้าสู่ระบบเพื่อยืนยันตัวตน");
         if (registerSuccessful != null){
             headerLabel.setText(registerSuccessful);
-            notificationLabel.setText("เริ่มช็อปปิ้งกันเลย!");
+            mainLabel.setText("เริ่มช็อปปิ้งกันเลย!");
         }
     }
 
@@ -62,17 +62,13 @@ public class LoginPageController {
         String username = inputUsernameTextField.getText();
         String password = inputPasswordField.getText();
         if (!accountList.canLogin(username, password)) {
-            notificationLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
-            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
-            effect.crossFadeTransitionLabel(notificationLabel, mainLabel, 2.5);
+            mainLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
+            mainLabel.setStyle("-fx-text-fill: #f61e1e");
         } else if (accountList.searchAccountByUsername(username).gotBanned()) {
-            notificationLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");
-            notificationLabel.setStyle("-fx-text-fill: #f61e1e");
-            effect.crossFadeTransitionLabel(notificationLabel, mainLabel, 2.5);
+            mainLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");
+            mainLabel.setStyle("-fx-text-fill: #f61e1e");
             dataSource.writeData(accountList);
         } else {
-            notificationLabel.setText("เข้าสู่ระบบสำเร็จ กรุณารอสักครู่");
-            notificationLabel.setStyle("-fx-text-fill: #ffffff");
             try {
                 getUsername = username;
                 dataSource.writeData(accountList);

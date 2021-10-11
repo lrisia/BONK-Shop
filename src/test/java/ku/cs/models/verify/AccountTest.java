@@ -14,7 +14,7 @@ class AccountTest {
         Account account = new Account("Irisia", "1234", "Ton");
         LocalDateTime localDateTime = LocalDateTime.now();
         String loginDataTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy,HH:mm:ss"));
-        assertEquals(loginDataTime, account.getLoginDataTime());
+        assertEquals(loginDataTime, account.getLoginDateTime());
     }
 
     @Test
