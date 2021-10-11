@@ -2,6 +2,7 @@ package ku.cs.models.shop;
 
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
+import ku.cs.strategy.ProductFilterer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,12 +17,19 @@ public class ProductList{
 
     public ProductList() { productList = new ArrayList<>(); }
 
-    public void addProduct(String shopName,String productName, double price, int stock, String description, String category ) {
+    public void addProduct(String shopName,String productName, double price, int stock, String description, String category) {
         String id = initialProductId();
         String imagePath = id + "-" + "product.png";
         Product product = new Product(shopName,productName,price,stock,description,category,id, imagePath);
         productList.add(product);
         product.setImagePath();
+    }
+
+    public ProductList filter(ProductFilterer filterer) {
+        ProductList filtered = new ProductList();
+        for (Product product : productList)
+            if (filterer.filter(product)) filtered.addProduct(product);
+        return filtered;
     }
 
     public void addProduct(Product product) {

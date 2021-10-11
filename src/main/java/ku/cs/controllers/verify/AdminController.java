@@ -68,8 +68,8 @@ public class AdminController {
     private void showSelectedAccount(Account account) {
         usernameLabel.setText(account.getUsername());
         nameLabel.setText(account.getName());
-        storeNameLabel.setText(account.getRole());
-        timeLabel.setText(account.getLoginDataTime());
+        storeNameLabel.setText(account.getStoreName());
+        timeLabel.setText(account.getLoginDateTime());
         selectedAccount = account;
         userImageView.setImage(new Image(account.getImagePath()));
         if (account.gotBanned()) {

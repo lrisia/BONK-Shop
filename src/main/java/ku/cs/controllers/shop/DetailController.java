@@ -29,7 +29,10 @@ public class DetailController {
 
 
     public void initialize(){
-        if (item.getStock() == 0) buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+        if (item.getStock() == 0) {
+            buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+            buyGoodBtn.setText("Out of stock");
+        }
         productImageView.setImage(new Image(item.getImagePath()));
         productImageView.resize(245,280);
         productNameLabel.setText(item.getProductName());
@@ -70,9 +73,9 @@ public class DetailController {
                 Product product = productList.searchProductById(item.getId());
                 product.setStock(product.getStock() - currentPiece);
                 dataSource.writeData(productList);
-                com.github.saacsos.FXRouter.goTo("successful");
+                com.github.saacsos.FXRouter.goTo("main");
             } catch (IOException e) {
-                System.err.println("ไปที่หน้า successful ไม่ได้");
+                System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         }

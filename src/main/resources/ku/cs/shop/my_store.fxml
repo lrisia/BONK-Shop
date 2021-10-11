@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.StorePageController">
+   <top>
+      <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="177.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logo_white.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="25.0" top="-35.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button layoutX="337.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#switchToAddProduct" prefHeight="36.0" prefWidth="117.0" style="-fx-background-color: #FFFFFF;" text="add product" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" spacing="5.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
+               <children>
+                  <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/information_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="userImageView" fitHeight="40.0" fitWidth="35.0" onMouseClicked="#switchToProfile" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/user_icon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="-6.0" top="-8.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="33.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/backBtn.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="-5.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets right="15.0" top="25.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <Pane prefHeight="474.0" prefWidth="804.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <ScrollPane fx:id="storeScrollPane" prefHeight="490.0" prefWidth="800.0">
+               <content>
+                  <GridPane fx:id="storeGridPane" prefHeight="0.0" prefWidth="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

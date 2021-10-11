@@ -69,11 +69,11 @@ public class AddProductPageController implements Initializable{
 
         quantity = productQuantitySpinner.getValue();
 
-        categoryComboBox.getItems().add("Tanks");
+        categoryComboBox.getItems().add("Tank");
         categoryComboBox.getItems().add("Plane");
-        categoryComboBox.getItems().add("Cars");
+        categoryComboBox.getItems().add("Car");
         categoryComboBox.getItems().add("Warship");
-        categoryComboBox.getItems().add("Guns");
+        categoryComboBox.getItems().add("Gun");
         categoryComboBox.getItems().add("Knife");
         categoryComboBox.getItems().add("Assault rifle");
     }

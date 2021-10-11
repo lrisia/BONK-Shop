@@ -61,7 +61,7 @@ public class Account {
         return false;
     }
 
-    public String getLoginDataTime() {
+    public String getLoginDateTime() {
         return loginDate + " " + loginTime;
     }
 
@@ -134,7 +134,7 @@ public class Account {
     public String toString() {
         String banStatus = "Active";
         if (this.banStatus == true) banStatus = "Banned";
-        return username + " [" + banStatus + "]";
+        return username + " [Status: " + banStatus + ", Last Access: " + getLoginDateTime() + "]";
     }
 
     public void setImagePath() {

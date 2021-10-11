@@ -13,7 +13,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
          <children>
-            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="name">
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="P-990 Razer">
                <font>
                   <Font name="Agency FB Bold" size="24.0" />
                </font>
@@ -23,7 +23,7 @@
                   <Image url="@../../../images/product/p990_product.png" />
                </image>
             </ImageView>
-            <Label fx:id="priceLabel" alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text=" price">
+            <Label fx:id="priceLabel" alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text="฿ 1,000,000">
                <font>
                   <Font name="Agency FB Bold" size="18.0" />
                </font>
