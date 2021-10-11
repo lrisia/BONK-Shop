@@ -29,7 +29,10 @@ public class DetailController {
 
 
     public void initialize(){
-        if (item.getStock() == 0) buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+        if (item.getStock() == 0) {
+            buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+            buyGoodBtn.setText("Out of stock");
+        }
         productImageView.setImage(new Image(item.getImagePath()));
         productImageView.resize(245,280);
         productNameLabel.setText(item.getProductName());
