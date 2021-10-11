@@ -42,8 +42,7 @@ public class AddProductPageController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        double inf = Double.POSITIVE_INFINITY;
-        SpinnerValueFactory<Double> valueFactoryPrice = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,inf);
+        SpinnerValueFactory<Double> valueFactoryPrice = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,90000000);
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
         valueFactoryPrice.setValue(1.0);
         valueFactoryQuantity.setValue(0);
