@@ -173,7 +173,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToBoat" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToWarship" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
                         <ImageView fx:id="boatIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>

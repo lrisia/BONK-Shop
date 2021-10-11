@@ -17,11 +17,9 @@ import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
 import ku.cs.strategy.TankCategoryProductFilterer;
-
+import ku.cs.strategy.*;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class HomePageController {
     @FXML private ImageView logoImageView;
@@ -78,73 +76,56 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToTank() throws IOException {
+    public void switchToTank() {
         clear();
         ProductList filtered = productList.filter(new TankCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToPlane() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("plane");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า plane ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToPlane() {
+        clear();
+        ProductList filtered = productList.filter(new PlaneCategoryProductFilterer());
+        showProduct(filtered);
+
     }
 
     @FXML
-    public void switchToCar() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("car");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า car ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToCar() {
+        clear();
+        ProductList filtered = productList.filter(new CarCategoryProductFilterer());
+        showProduct(filtered);
     }
 
     @FXML
-    public void switchToBoat() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("boat");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า boat ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToWarship() {
+        clear();
+        ProductList filtered = productList.filter(new WarshipCategoryProductFilterer());
+        showProduct(filtered);
     }
 
     @FXML
-    public void switchToGun() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("gun");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า gun ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToGun() {
+        clear();
+        ProductList filtered = productList.filter(new GunCategoryProductFilterer());
+        showProduct(filtered);
     }
 
     @FXML
-    public void switchToKnife() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("knife");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า knife ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToKnife() {
+        clear();
+        ProductList filtered = productList.filter(new KnifeCategoryProductFilterer());
+        showProduct(filtered);
     }
 
     @FXML
-    public void switchToAssault() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("assault");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า assault ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+    public void switchToAssault() {
+        clear();
+        ProductList filtered = productList.filter(new AssaultRifleCategoryProductFilterer());
+        showProduct(filtered);
     }
     @FXML
-    public void switchToInfo(Event event) throws IOException {
+    public void switchToInfo(Event event) {
         try {
             com.github.saacsos.FXRouter.goTo("info");
         } catch (IOException e) {
@@ -154,7 +135,7 @@ public class HomePageController {
         }
     }
     @FXML
-    public void switchToProfile(Event event) throws IOException {
+    public void switchToProfile(Event event) {
         try {
             if(account.isAdmin()){
                 com.github.saacsos.FXRouter.goTo("admin", account);
@@ -169,7 +150,7 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToStore(Event event) throws IOException {
+    public void switchToStore(Event event) {
         try {
             if(account.isSeller()){
                 com.github.saacsos.FXRouter.goTo("store", account);
