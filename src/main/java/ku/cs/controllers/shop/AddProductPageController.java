@@ -25,7 +25,7 @@ public class AddProductPageController implements Initializable{
     @FXML Button upLoadPic;
     @FXML ImageView productImageView;
     @FXML TextField inputProductNameTextField;
-    @FXML TextField inputProductDetailTextField;
+    @FXML TextArea inputProductDetailTextArea;
     @FXML Label notificationLabel;
     @FXML Spinner<Double> productPriceSpinner;
     @FXML Spinner<Integer> productQuantitySpinner;
@@ -42,10 +42,12 @@ public class AddProductPageController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SpinnerValueFactory<Double> valueFactoryPrice = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,1000000);
+        double inf = Double.POSITIVE_INFINITY;
+        SpinnerValueFactory<Double> valueFactoryPrice = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,inf);
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
         valueFactoryPrice.setValue(1.0);
         valueFactoryQuantity.setValue(0);
+        inputProductDetailTextArea.setWrapText(true);
         productPriceSpinner.setValueFactory(valueFactoryPrice);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);
         currentPrice = productPriceSpinner.getValue();
@@ -101,7 +103,7 @@ public class AddProductPageController implements Initializable{
     @FXML
     public void add(){
         String productName = inputProductNameTextField.getText();
-        String productDetail = inputProductDetailTextField.getText();
+        String productDetail = inputProductDetailTextArea.getText();
         if (productName.equals("")) {
             notificationLabel.setText("Please enter your product name");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");

@@ -9,6 +9,8 @@ import java.util.Comparator;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
+import static ku.cs.controllers.userdata.ProfileController.fileSelected;
+
 public class ProductList{
     private ArrayList<Product> productList;
 

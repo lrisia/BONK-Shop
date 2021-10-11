@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
+import java.util.Comparator;
+
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
@@ -34,6 +36,14 @@ public class AdminController {
     private Account selectedAccount = null;
 
     public void initialize() {
+        accountList.sort(new Comparator<Account>() {
+            @Override
+            public int compare(Account o1, Account o2) {
+                if (o1.getTime().isAfter(o2.getTime())) return -1;
+                if (o1.getTime().isBefore(o2.getTime())) return 1;
+                return 0;
+            }
+        });
         userImageView.setImage(new Image(account.getImagePath()));
         showListView();
         handleSelectedListView();
@@ -59,8 +69,9 @@ public class AdminController {
         usernameLabel.setText(account.getUsername());
         nameLabel.setText(account.getName());
         storeNameLabel.setText(account.getRole());
-        timeLabel.setText(account.getTime());
+        timeLabel.setText(account.getLoginDataTime());
         selectedAccount = account;
+        userImageView.setImage(new Image(account.getImagePath()));
         if (account.gotBanned()) {
             tryLoginLabel.setText("Try Login");
             loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
