@@ -16,8 +16,9 @@ public class ShopSetupController {
     private AccountList accountList = dataSource.readData();
 
     @FXML private TextField storeNameTextField;
-    @FXML Label alertLabel;
+    @FXML private Label alertLabel;
     @FXML
+
     public void switchToHome() throws IOException {
         try {
             com.github.saacsos.FXRouter.goTo("main");

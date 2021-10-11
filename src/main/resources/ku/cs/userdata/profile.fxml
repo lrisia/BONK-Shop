@@ -74,7 +74,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="549.0" layoutY="546.0" onMouseClicked="#switchToLoginPage" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="545.0" layoutY="489.0" onMouseClicked="#switchToLoginPage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/transparent-web-interface-icons-icon-logout-icon-5f8bbf9bc2f138.8715297616029940757985.png" />
                </image>
@@ -83,7 +83,7 @@
                </cursor>
             </ImageView>
             <Line endX="317.0" endY="415.0" startX="78.0" startY="415.0" stroke="WHITE" strokeWidth="2.0" />
-            <Label layoutX="476.0" layoutY="551.0" text="Logout" textFill="WHITE">
+            <Label layoutX="472.0" layoutY="494.0" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
@@ -165,7 +165,7 @@
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </TextField>
-            <Button layoutX="491.0" layoutY="489.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="31.0" prefWidth="85.0" text="Back" textFill="RED">
+            <Button layoutX="497.0" layoutY="546.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="31.0" prefWidth="85.0" text="Back" textFill="RED">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
