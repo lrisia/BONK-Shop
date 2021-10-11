@@ -103,4 +103,8 @@ public class Product {
     public String getId() { return id; }
 
     public void setStock(int stock) { this.stock = stock; }
+
+    public String getCategory() {
+        return category;
+    }
 }

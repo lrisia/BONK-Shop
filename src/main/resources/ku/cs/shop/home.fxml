@@ -21,13 +21,16 @@
    <top>
       <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
                </image>
                <HBox.margin>
                   <Insets left="25.0" top="-35.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="238.0" stylesheets="@../styles/styles.css">
                <HBox.margin>
@@ -95,7 +98,7 @@
    <left>
       <VBox prefHeight="484.0" prefWidth="167.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="274.0" prefWidth="184.0">
+            <VBox alignment="CENTER" prefHeight="274.0" prefWidth="131.0">
                <children>
                   <Label text="Category">
                      <font>
@@ -105,7 +108,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Vehicals">
+                  <Label text="Vehicle">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -191,6 +194,9 @@
                      </VBox.margin>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </VBox>
             <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
                <children>
