@@ -16,12 +16,10 @@ import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
+import ku.cs.strategy.TankCategoryProductFilterer;
 import ku.cs.strategy.*;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class HomePageController {
     @FXML private ImageView logoImageView;
@@ -78,14 +76,14 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToTank() throws IOException {
+    public void switchToTank() {
         clear();
         ProductList filtered = productList.filter(new TankCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToPlane() throws IOException {
+    public void switchToPlane() {
         clear();
         ProductList filtered = productList.filter(new PlaneCategoryProductFilterer());
         showProduct(filtered);
@@ -93,41 +91,41 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToCar() throws IOException {
+    public void switchToCar() {
         clear();
         ProductList filtered = productList.filter(new CarCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToWarship() throws IOException {
+    public void switchToWarship() {
         clear();
         ProductList filtered = productList.filter(new WarshipCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToGun() throws IOException {
+    public void switchToGun() {
         clear();
         ProductList filtered = productList.filter(new GunCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToKnife() throws IOException {
+    public void switchToKnife() {
         clear();
         ProductList filtered = productList.filter(new KnifeCategoryProductFilterer());
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToAssault() throws IOException {
+    public void switchToAssault() {
         clear();
         ProductList filtered = productList.filter(new AssaultRifleCategoryProductFilterer());
         showProduct(filtered);
     }
     @FXML
-    public void switchToInfo(Event event) throws IOException {
+    public void switchToInfo(Event event) {
         try {
             com.github.saacsos.FXRouter.goTo("info");
         } catch (IOException e) {
@@ -137,7 +135,7 @@ public class HomePageController {
         }
     }
     @FXML
-    public void switchToProfile(Event event) throws IOException {
+    public void switchToProfile(Event event) {
         try {
             if(account.isAdmin()){
                 com.github.saacsos.FXRouter.goTo("admin", account);
@@ -152,7 +150,7 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToStore(Event event) throws IOException {
+    public void switchToStore(Event event) {
         try {
             if(account.isSeller()){
                 com.github.saacsos.FXRouter.goTo("store", account);

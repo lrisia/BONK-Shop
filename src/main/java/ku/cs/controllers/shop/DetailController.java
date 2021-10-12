@@ -73,9 +73,9 @@ public class DetailController {
                 Product product = productList.searchProductById(item.getId());
                 product.setStock(product.getStock() - currentPiece);
                 dataSource.writeData(productList);
-                com.github.saacsos.FXRouter.goTo("main");
+                com.github.saacsos.FXRouter.goTo("purchase_successful");
             } catch (IOException e) {
-                System.err.println("ไปที่หน้า main ไม่ได้");
+                System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         }
