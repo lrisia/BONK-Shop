@@ -65,6 +65,16 @@ public class DetailController {
     }
 
     @FXML
+    public void switchToReport() throws IOException {
+        try {
+            com.github.saacsos.FXRouter.goTo("Report");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า Report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML
     public void buyGoods() {
         if (!(item.getStock() == 0)) {
             try {

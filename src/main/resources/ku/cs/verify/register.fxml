@@ -39,7 +39,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <TextField fx:id="nameTextField" layoutX="60.0" layoutY="75.0" prefHeight="45.0" prefWidth="230.0" promptText="Name" style="-fx-background-radius: 50;">
+            <TextField fx:id="nameTextField" layoutX="60.0" layoutY="75.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อ" style="-fx-background-radius: 50;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <TextField fx:id="usernameTextField" layoutX="60.0" layoutY="125.0" prefHeight="45.0" prefWidth="230.0" promptText="Username" style="-fx-background-radius: 50;">
+            <TextField fx:id="usernameTextField" layoutX="60.0" layoutY="125.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อผู้ใช้" style="-fx-background-radius: 50;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="89.0" layoutY="345.0" text="มี Account อยู่แล้วหรอ" textFill="#575757">
+            <Label layoutX="89.0" layoutY="345.0" text="มี บัญชี อยู่แล้วหรอ" textFill="#575757">
                <font>
                   <Font size="13.0" />
                </font>
@@ -76,12 +76,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <PasswordField fx:id="passwordPasswordField" layoutX="60.0" layoutY="185.0" prefHeight="45.0" prefWidth="230.0" promptText="Password" style="-fx-background-radius: 50;">
+            <PasswordField fx:id="passwordPasswordField" layoutX="60.0" layoutY="185.0" prefHeight="45.0" prefWidth="230.0" promptText="รหัสผ่าน" style="-fx-background-radius: 50;">
                <font>
                   <Font size="13.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="confirmPasswordPasswordField" layoutX="60.0" layoutY="235.0" prefHeight="45.0" prefWidth="230.0" promptText="Confirm Password" style="-fx-background-radius: 50;">
+            <PasswordField fx:id="confirmPasswordPasswordField" layoutX="60.0" layoutY="235.0" prefHeight="45.0" prefWidth="230.0" promptText="ยืนยันรหัสผ่าน" style="-fx-background-radius: 50;">
                <font>
                   <Font size="13.0" />
                </font>
