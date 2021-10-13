@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="215.0" prefWidth="220.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.MyProductController">
    <children>
-      <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0">
+      <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
             <Label fx:id="myProductNameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="name">
                <font>
@@ -35,4 +35,7 @@
       <String fx:value="product" />
       <String fx:value="shadow1" />
    </styleClass>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

@@ -1,6 +1,11 @@
 .border-color{
     -fx-background-color: linear-gradient(#c7192d, #000000);
 }
+.red-background{
+    -fx-background-color: #c7192d;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
+    -fx-background-radius: 25;
+}
 
 .white-background{
     -fx-background-color: #fff;
@@ -17,7 +22,9 @@
 }
 
 .button{
-    -fx-background-radius: 30;
+    -fx-background-color: #c7192d;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
+    -fx-background-radius: 25;
 }
 
 .round-grey-background{

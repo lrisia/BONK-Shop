@@ -2,6 +2,7 @@ package ku.cs.models.shop;
 
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
+import ku.cs.strategy.MyProductFilterer;
 import ku.cs.strategy.ProductFilterer;
 
 import java.util.ArrayList;
@@ -29,6 +30,13 @@ public class ProductList{
         ProductList filtered = new ProductList();
         for (Product product : productList)
             if (filterer.filter(product)) filtered.addProduct(product);
+        return filtered;
+    }
+
+    public ProductList filter(MyProductFilterer filterer, String storeName) {
+        ProductList filtered = new ProductList();
+        for (Product product : productList)
+            if (filterer.filter(product, storeName)) filtered.addProduct(product);
         return filtered;
     }
 
