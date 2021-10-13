@@ -37,7 +37,7 @@
                   <Insets top="35.0" />
                </HBox.margin>
                <children>
-                  <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="187.0" promptText="Search" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="187.0" promptText="ค้นหา" styleClass="transparent" stylesheets="@../styles/styles.css">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -100,7 +100,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="274.0" prefWidth="131.0">
                <children>
-                  <Label text="Category">
+                  <Label text="หมวดหมู่สินค้า">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="20.0" />
                      </font>
@@ -108,7 +108,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Vehicle">
+                  <Label text="ยานพาหนะ">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -120,7 +120,7 @@
                               <Image url="@../../../images/icon_category/tank_icon_category.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Tanks">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="รถถัง">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -140,7 +140,7 @@
                               <Image url="@../../../images/icon_category/fighterJet_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Plane">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="เครื่องบิน">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -160,7 +160,7 @@
                               <Image url="@../../../images/icon_category/army_car_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Cars">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="รถ">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -180,7 +180,7 @@
                               <Image url="@../../../images/icon_category/warShip_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Warship">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="เรือ">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -200,7 +200,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
                <children>
-                  <Label alignment="CENTER" text="Weapons">
+                  <Label alignment="CENTER" text="อาวุธ">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -212,7 +212,7 @@
                               <Image url="@../../../images/icon_category/gun_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Guns">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="ปืน">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -232,7 +232,7 @@
                               <Image url="@../../../images/icon_category/knife_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Knife">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="ระยะประชิด">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -252,7 +252,7 @@
                               <Image url="@../../../images/icon_category/assault_rifle_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="130.0" text="Assault Rifle">
+                        <Label prefHeight="22.0" prefWidth="130.0" text="ปืนกล">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="16.0" />
                            </font>
@@ -279,7 +279,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
             <VBox prefHeight="484.0" prefWidth="629.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <Label prefHeight="27.0" prefWidth="209.0" text="Most Popular">
+                  <Label prefHeight="27.0" prefWidth="209.0" text="สินค้ายอดนิยม">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

@@ -12,32 +12,32 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="784.0" styleClass="border-color" stylesheets="@../styles/styles.css">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Developer" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="14.0" text="ผู้พัฒนา" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="256.0" layoutY="82.0" prefWidth="94.0" text="First Name" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="256.0" layoutY="82.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="256.0" layoutY="129.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="256.0" layoutY="129.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="476.0" layoutY="82.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="476.0" layoutY="82.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="476.0" layoutY="129.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="476.0" layoutY="129.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="500.0" text="User Manual" textFill="WHITE">
+            <Label layoutX="10.0" layoutY="513.0" text="คู่มือการใช้งาน" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -62,26 +62,6 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="256.0" layoutY="233.0" prefWidth="94.0" text="First Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="256.0" layoutY="280.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="476.0" layoutY="233.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="476.0" layoutY="280.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
             <Label layoutX="394.0" layoutY="233.0" prefHeight="27.0" prefWidth="43.0" text="Warit" textFill="WHITE">
                <font>
                   <Font size="18.0" />
@@ -100,26 +80,6 @@
             <Label layoutX="602.0" layoutY="280.0" prefHeight="27.0" prefWidth="101.0" text="6310450069" textFill="WHITE">
                <font>
                   <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="256.0" layoutY="384.0" prefWidth="94.0" text="First Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="256.0" layoutY="431.0" prefWidth="94.0" text="Nick Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="476.0" layoutY="384.0" prefWidth="94.0" text="Last Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="476.0" layoutY="431.0" prefWidth="94.0" text="Student ID" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="383.0" layoutY="384.0" prefHeight="27.0" prefWidth="66.0" text="Anawat" textFill="WHITE">
@@ -165,6 +125,46 @@
                   <Image url="@../../../images/developer_image/muad.jpg" />
                </image>
             </ImageView>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="233.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="280.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="233.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="280.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="384.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="431.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="384.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="431.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </content>
 </ScrollPane>
