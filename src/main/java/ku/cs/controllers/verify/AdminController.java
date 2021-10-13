@@ -73,7 +73,7 @@ public class AdminController {
         selectedAccount = account;
         userImageView.setImage(new Image(account.getImagePath()));
         if (account.gotBanned()) {
-            tryLoginLabel.setText("Try Login");
+            tryLoginLabel.setText("จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน :");
             loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
         } else {
             tryLoginLabel.setText("");
@@ -104,6 +104,16 @@ public class AdminController {
             com.github.saacsos.FXRouter.goTo("login");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML
+    private void backToHome() {
+        try {
+            com.github.saacsos.FXRouter.goTo("main");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }

@@ -14,6 +14,7 @@ import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
+import ku.cs.strategy.CategoryProductFilterer;
 import ku.cs.strategy.MyStoreProductFilterer;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class MyStorePageController {
 
     public void showProduct(ProductList productList) {
         account = accountList.searchAccountByUsername(account.getUsername());
-        ProductList filtered =  productList.filter(new MyStoreProductFilterer(), account.getStoreName());
+        ProductList filtered =  productList.filter(new CategoryProductFilterer(account.getStoreName()));
         ArrayList<Product> products = filtered.getProductList();
         int column = 0;
         int row = 1;

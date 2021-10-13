@@ -1,17 +1,10 @@
 package ku.cs.models.shop;
 
-import ku.cs.models.verify.Account;
-import ku.cs.services.DataSource;
-import ku.cs.strategy.MyProductFilterer;
 import ku.cs.strategy.ProductFilterer;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import static ku.cs.controllers.userdata.ProfileController.fileSelected;
-
-import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
 public class ProductList{
     private ArrayList<Product> productList;
@@ -33,11 +26,8 @@ public class ProductList{
         return filtered;
     }
 
-    public ProductList filter(MyProductFilterer filterer, String storeName) {
-        ProductList filtered = new ProductList();
-        for (Product product : productList)
-            if (filterer.filter(product, storeName)) filtered.addProduct(product);
-        return filtered;
+    public void sort(Comparator<Product> productComparator) {
+        Collections.sort(this.productList, productComparator);
     }
 
     public void addProduct(Product product) {
@@ -54,11 +44,6 @@ public class ProductList{
         for (Product product: productList)
             if (product.checkId(id)) return product;
         return null;
-    }
-
-    public void sort(Comparator<Product> productComparator)
-    {
-        Collections.sort(this.productList, productComparator);
     }
 
     public String toCsv() {

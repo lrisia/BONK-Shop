@@ -44,6 +44,14 @@
                </font>
             </Label>
             <PasswordField fx:id="confirmPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="138.0" promptText="ยืนยันรหัสผ่าน" styleClass="button" stylesheets="@../styles/styles.css" />
+            <Button fx:id="banBtn1" layoutX="693.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles/styles.css" text="กลับ" textFill="#c93535">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </top>
@@ -51,54 +59,54 @@
       <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <ListView fx:id="accountListView" layoutX="16.0" prefHeight="384.0" prefWidth="362.0" />
-            <Label layoutX="395.0" layoutY="31.0" text="ชื่อผู้ใช้ :" textFill="WHITE">
+            <Label layoutX="395.0" layoutY="14.0" prefHeight="32.0" prefWidth="105.0" text="ชื่อผู้ใช้    :" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="395.0" layoutY="77.0" text="ชื่อ :" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="397.0" layoutY="118.0" text="ชื่อร้านค้า :" textFill="WHITE">
+            <Label layoutX="395.0" layoutY="60.0" text="ชื่อ               :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="userImageView" fitHeight="150.0" fitWidth="200.0" layoutX="407.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="397.0" layoutY="101.0" prefHeight="27.0" prefWidth="103.0" text="ชื่อร้านค้า    :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="userImageView" fitHeight="150.0" fitWidth="200.0" layoutX="395.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/profileDefault.png" />
                </image>
             </ImageView>
-            <Label fx:id="nameLabel" layoutX="510.0" layoutY="77.0" text="-" textFill="WHITE">
+            <Label fx:id="nameLabel" layoutX="510.0" layoutY="60.0" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="storeNameLabel" layoutX="510.0" layoutY="118.0" text="-" textFill="WHITE">
+            <Label fx:id="storeNameLabel" layoutX="510.0" layoutY="101.0" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="banBtn" layoutX="621.0" layoutY="279.0" mnemonicParsing="false" onAction="#ban" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="แบบ/อันแบน" textFill="WHITE">
+            <Button fx:id="banBtn" layoutX="633.0" layoutY="280.0" mnemonicParsing="false" onAction="#ban" prefHeight="39.0" prefWidth="147.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="แบน/ปลดแบน" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Label layoutX="395.0" layoutY="160.0" text="เข้าใช้ล่าสุด :" textFill="WHITE">
+            <Label layoutX="395.0" layoutY="143.0" text="เข้าใช้ล่าสุด :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="timeLabel" layoutX="510.0" layoutY="160.0" text="-" textFill="WHITE">
+            <Label fx:id="timeLabel" layoutX="510.0" layoutY="143.0" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="usernameLabel" layoutX="510.0" layoutY="33.0" text="-" textFill="WHITE">
+            <Label fx:id="usernameLabel" layoutX="510.0" layoutY="16.0" text="-" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
             <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="749.0" layoutY="344.0" onMouseClicked="#switchToLoginPage" pickOnBounds="true" preserveRatio="true">
@@ -114,12 +122,12 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tryLoginLabel" layoutX="552.0" layoutY="215.0" text="พยายามลงชื่อเข้า :" textFill="WHITE">
+            <Label fx:id="tryLoginLabel" layoutX="395.0" layoutY="179.0" text="จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="loginLabel" layoutX="719.0" layoutY="215.0" text="-" textFill="WHITE">
+            <Label fx:id="loginLabel" layoutX="703.0" layoutY="179.0" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

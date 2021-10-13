@@ -104,7 +104,7 @@ public class AddProductPageController implements Initializable{
                 String category = categoryComboBox.getValue().toString();
                 double price = Double.parseDouble(productPriceTextField.getText());
                 productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
-                Comparator <Product> comparator = new Comparator<Product>() {
+                Comparator<Product> comparator = new Comparator<Product>() {
                     @Override
                     public int compare(Product o1, Product o2) {
                         if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;

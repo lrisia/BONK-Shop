@@ -1,9 +1,12 @@
 package ku.cs.controllers.shop;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -18,6 +21,7 @@ import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class HomePageController {
     @FXML private ImageView logoImageView;
@@ -36,6 +40,7 @@ public class HomePageController {
     @FXML private HBox cardLayout;
     @FXML private ScrollPane scroll;
     @FXML private GridPane grid;
+    @FXML private ComboBox sortComboBox;
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
@@ -47,6 +52,54 @@ public class HomePageController {
 
     public void initialize() {
         showProduct(productList);
+        sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
+        sortComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue observableValue,
+                                String oldString, String newString) {
+                if (newString.equals("ล่าสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;
+                            if(o1.getTime().compareTo(o2.getTime()) < 0) return 1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("เก่าสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getTime().compareTo(o2.getTime()) > 0) return 1;
+                            if(o1.getTime().compareTo(o2.getTime()) < 0) return -1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("ราคาสูงสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getPrice() > o2.getPrice()) return -1;
+                            if(o1.getPrice() < o2.getPrice()) return 1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("ราคาต่ำสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getPrice() > o2.getPrice()) return 1;
+                            if(o1.getPrice() < o2.getPrice()) return -1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                }
+            }
+        });
     }
 
     public void showProduct(ProductList productList) {
