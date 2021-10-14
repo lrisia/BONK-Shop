@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.DetailController">
    <left>
-      <Pane prefHeight="590.0" prefWidth="660.0" style="-fx-background-color: #FFFFFF;" styleClass="product-card" BorderPane.alignment="CENTER">
+      <Pane fx:id="mainPane" prefHeight="590.0" prefWidth="660.0" style="-fx-background-color: #FFFFFF;" styleClass="product-card" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </BorderPane.margin>
@@ -28,7 +28,7 @@
                   <Rectangle2D />
                </viewport>
             </ImageView>
-            <Pane layoutX="316.0" layoutY="10.0" prefHeight="286.0" prefWidth="330.0" style="-fx-background-color: #e0e0e0;" styleClass="product-card">
+            <Pane layoutX="316.0" layoutY="10.0" prefHeight="280.0" prefWidth="333.0" style="-fx-background-color: #e0e0e0;" styleClass="product-card">
                <children>
                   <Label layoutX="18.0" layoutY="57.0" text="ชื่อสินค้า" textFill="RED">
                      <font>
@@ -87,6 +87,11 @@
             <Label layoutX="432.0" layoutY="545.0" onMouseClicked="#switchToReport" prefHeight="25.0" prefWidth="170.0" text="รายงานความไม่เหมาะสม">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxProductLabel" layoutX="459.0" layoutY="312.0" opacity="0.0" text="จำนวนสินค้าถึงจุดสูงสุด">
+               <font>
+                  <Font size="13.0" />
                </font>
             </Label>
          </children>

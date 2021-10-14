@@ -34,6 +34,12 @@ public class ProductList{
         productList.add(product);
     }
 
+    public Product purchaseProduct(String productId, int amount) {
+        Product product = searchProductById(productId);
+        product.purchase(amount);
+        return product;
+    }
+
     public String initialProductId(){
         return String.format("%06d",productList.size()+1);
     }

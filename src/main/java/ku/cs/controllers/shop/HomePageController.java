@@ -42,7 +42,7 @@ public class HomePageController {
     @FXML private GridPane grid;
     @FXML private ComboBox sortComboBox;
 
-    private Account account = (Account) com.github.saacsos.FXRouter.getData();
+    protected Account account = (Account) com.github.saacsos.FXRouter.getData();
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
@@ -103,6 +103,7 @@ public class HomePageController {
     }
 
     public void showProduct(ProductList productList) {
+        clear();
         account = accountList.searchAccountByUsername(account.getUsername());
         ArrayList <Product> products = productList.getProductList();
         int column = 0;
@@ -128,14 +129,12 @@ public class HomePageController {
 
     @FXML
     public void switchToTank() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToPlane() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
         showProduct(filtered);
 
@@ -143,35 +142,30 @@ public class HomePageController {
 
     @FXML
     public void switchToCar() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToWarship() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToGun() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToKnife() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToAssault() {
-        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
         showProduct(filtered);
     }
