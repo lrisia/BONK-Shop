@@ -37,4 +37,26 @@ public class Order {
         for (String element: orderDate.split("/")) result += element;
         return result + "TH";
     }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderDate='" + orderDate + '\'' +
+                ", orderTime='" + orderTime + '\'' +
+                ", buyerName='" + buyerName + '\'' +
+                ", storeName='" + storeName + '\'' +
+                ", product=" + product +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", trackingNumber='" + trackingNumber + '\'' +
+                '}';
+    }
 }

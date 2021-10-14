@@ -61,7 +61,9 @@
 .button{
     -fx-background-radius: 30;
 }
-
+.radius{
+    -fx-background-radius: 10;
+}
 .product{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;

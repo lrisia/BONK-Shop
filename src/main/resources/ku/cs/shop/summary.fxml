@@ -6,7 +6,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.DetailController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.SummaryPageController">
    <left>
       <Pane prefHeight="590.0" prefWidth="660.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -56,7 +55,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" onMouseClicked="#switchToSpecific" onMouseEntered="#mouseEnterStoreNameLabel" onMouseExited="#mouseExitedStoreNameLabel" prefHeight="30.0" prefWidth="0.0">
+                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" prefHeight="30.0" prefWidth="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -97,31 +96,44 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Pane>
-            <Button fx:id="buyGoodBtn" layoutX="428.0" layoutY="490.0" mnemonicParsing="false" onAction="#buyGoods" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="ซื้อสินค้า" textFill="WHITE">
+            <Label fx:id="buyerNameLabel" layoutX="494.0" layoutY="348.0" text="buyerName">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="447.0" layoutY="348.0" text="ผู้ซื้อ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="429.0" layoutY="391.0" text="จำนวน">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="amountLabel" layoutX="494.0" layoutY="391.0" text="amount">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="436.0" text="ราคาสุทธิ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="summaryPriceLabel" layoutX="494.0" layoutY="436.0" text="price">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="451.0" layoutY="489.0" mnemonicParsing="false" onAction="#acceptPurchase" prefHeight="46.0" prefWidth="129.0" style="-fx-background-color: #c7192d;" text="ยืนยัน" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Label fx:id="productTotalLabel" alignment="CENTER" layoutX="410.0" layoutY="382.0" prefHeight="44.0" prefWidth="214.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="priceTotalLabel" alignment="CENTER" layoutX="417.0" layoutY="435.0" prefHeight="44.0" prefWidth="200.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Spinner fx:id="productPieceSpinner" layoutX="418.0" layoutY="340.0" prefHeight="31.0" prefWidth="197.0" />
-            <Label layoutX="432.0" layoutY="545.0" onMouseClicked="#switchToReport" prefHeight="25.0" prefWidth="170.0" text="รายงานความไม่เหมาะสม">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="maxProductLabel" layoutX="459.0" layoutY="312.0" opacity="0.0" text="จำนวนสินค้าถึงจุดสูงสุด">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
+               </cursor>
+            </Button>
          </children>
          <styleClass>
             <String fx:value="product-card" />
@@ -143,7 +155,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button layoutX="24.0" layoutY="29.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="46.0" prefWidth="83.0" style="-fx-background-color: #FFFFFF;" text="กลับ" textFill="RED">
+            <Button layoutX="24.0" layoutY="29.0" mnemonicParsing="false" onAction="#back" prefHeight="46.0" prefWidth="83.0" style="-fx-background-color: #FFFFFF;" text="กลับ" textFill="RED">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

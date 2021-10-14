@@ -7,45 +7,36 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 import ku.cs.models.verify.Account;
-import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
-import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class HomePageController {
-    @FXML private ImageView logoImageView;
-    @FXML private TextField searchTextField;
-    @FXML private ImageView searchImageView;
-    @FXML private ImageView informationImageView;
-    @FXML private ImageView userImageView;
-    @FXML private ImageView myShopImageView;
-    @FXML private ImageView tankIconImageView;
-    @FXML private ImageView planeIconImageView;
-    @FXML private ImageView carIconImageView;
-    @FXML private ImageView boatIconImageView;
-    @FXML private ImageView gunIconImageView;
-    @FXML private ImageView knifeIconImageView;
-    @FXML private ImageView assaultIconImageView;
-    @FXML private HBox cardLayout;
-    @FXML private ScrollPane scroll;
     @FXML private GridPane grid;
     @FXML private ComboBox sortComboBox;
+    @FXML private TextField maxPriceTextField;
+    @FXML private TextField minPriceTextField;
+    @FXML private Label noProductLabel;
+    @FXML private Label headerLabel;
+    @FXML private Pane noProductPane;
 
     protected Account account = (Account) com.github.saacsos.FXRouter.getData();
 
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
+
+    private double max = productList.getMaxPrice();
+    private double min = 0;
+    private String category = "All";
 
     public void initialize() {
         showProduct(productList);
@@ -99,9 +90,52 @@ public class HomePageController {
         });
     }
 
+    @FXML
+    public void handlePriceFilter() {
+        if (!maxPriceTextField.getText().equals("")) {
+            try {
+                double maxInput = Double.parseDouble(maxPriceTextField.getText());
+                this.max = maxInput;
+            } catch (NumberFormatException e) {
+                System.out.println(maxPriceTextField.getText());
+                System.err.println("format ผิด");
+            }
+        } else this.max = productList.getMaxPrice();
+
+        if (!minPriceTextField.getText().equals("")) {
+            try {
+                double minInput = Double.parseDouble(minPriceTextField.getText());
+                this.min = minInput;
+            } catch (NumberFormatException e) {
+                System.out.println(minPriceTextField.getText());
+                System.err.println("format ผิด");
+            }
+        } else this.min = 0;
+        showProduct(productList);
+    }
+
+    public ProductList priceFilter(ProductList productList, double max, double min) {
+        ProductList filtered = productList.filter(new PriceProductFilterer(max, min));
+        return filtered;
+    }
+
+    public ProductList categoryFilter(ProductList productList, String category) {
+        ProductList filtered = productList.filter(new CategoryProductFilterer(category));
+        return filtered;
+    }
+
     public void showProduct(ProductList productList) {
         clear();
+        noProductLabel.setOpacity(0);
+        noProductPane.setDisable(true);
+        productList = priceFilter(productList, max, min);
+        if (!category.equals("All"))
+            productList = categoryFilter(productList, category);
         ArrayList <Product> products = productList.getProductList();
+        if (products.size() == 0) {
+            noProductLabel.setOpacity(0.45);
+            noProductPane.setDisable(false);
+        }
         int column = 0;
         int row = 1;
         try {
@@ -125,45 +159,51 @@ public class HomePageController {
 
     @FXML
     public void switchToTank() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
-        showProduct(filtered);
+        headerLabel.setText("รถถัง");
+        category = "Tank";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToPlane() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
-        showProduct(filtered);
-
+        headerLabel.setText("เครื่องบิน");
+        category = "Plane";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToCar() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
-        showProduct(filtered);
+        headerLabel.setText("รถ");
+        category = "Car";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToWarship() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
-        showProduct(filtered);
+        headerLabel.setText("เรือ");
+        category = "Warship";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToGun() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
-        showProduct(filtered);
+        headerLabel.setText("ปืน");
+        category = "Gun";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToKnife() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
-        showProduct(filtered);
+        headerLabel.setText("ระยะประชิด");
+        category = "Knife";
+        showProduct(productList);
     }
 
     @FXML
     public void switchToAssault() {
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
-        showProduct(filtered);
+        headerLabel.setText("ปืนกล");
+        category = "Assault rifle";
+        showProduct(productList);
     }
 
     @FXML
@@ -210,6 +250,8 @@ public class HomePageController {
 
     @FXML
     public void refresh() {
+        headerLabel.setText("สินค้าทั้งหมด");
+        category = "All";
         showProduct(productList);
     }
 
