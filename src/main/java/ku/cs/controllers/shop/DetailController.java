@@ -104,7 +104,7 @@ public class DetailController {
     @FXML
     public void switchToSpecific() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("specific");
+            com.github.saacsos.FXRouter.goTo("specific",shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า specific ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

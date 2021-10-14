@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
@@ -42,7 +43,8 @@ public class HomePageController {
     @FXML private GridPane grid;
     @FXML private ComboBox sortComboBox;
 
-    protected Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private Shop shop = (Shop) com.github.saacsos.FXRouter.getData();
+    protected Account account = shop.getBuyer();
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
@@ -177,7 +179,6 @@ public class HomePageController {
         } catch (IOException e) {
             System.err.println("ไปที่หน้า info ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
         }
     }
 

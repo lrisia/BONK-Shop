@@ -14,13 +14,14 @@ public class Order {
     private String trackingNumber;
 
     public Order(String buyerName, String storeName, Product product, int amount, String price) {
+        initialOrderTime();
         this.buyerName = buyerName;
         this.storeName = storeName;
         this.product = product;
         this.amount = amount;
         this.price = Double.parseDouble(price);
         this.trackingNumber = generateTrackingNumber();
-        initialOrderTime();
+
     }
 
     public void initialOrderTime() {
