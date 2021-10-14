@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Product;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class MyStorePageController {
 
     @FXML GridPane storeGridPane;
+    @FXML Label storeNameLabel;
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
@@ -32,6 +34,7 @@ public class MyStorePageController {
 
     public void initialize() {
         showProduct(productList);
+        storeNameLabel.setText(account.getStoreName());
     }
 
     public void showProduct(ProductList productList) {

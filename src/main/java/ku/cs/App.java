@@ -43,7 +43,7 @@ public class App extends Application {
         FXRouter.when("admin",packageStr+"verify/admin.fxml");
         FXRouter.when("detail",packageStr+"shop/detail.fxml");
         FXRouter.when("purchase_successful",packageStr+"shop/purchase_successful.fxml");
-        FXRouter.when("Report",packageStr+"shop/Report.fxml");
+        FXRouter.when("specific",packageStr+"shop/specific_store.fxml");
 
     }
 

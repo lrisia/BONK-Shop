@@ -9,31 +9,35 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.SpecificStoreController">
    <top>
       <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="151.0" fitWidth="171.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
                </image>
                <HBox.margin>
                   <Insets left="25.0" top="-35.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="238.0" stylesheets="@../styles/styles.css">
                <HBox.margin>
                   <Insets top="35.0" />
                </HBox.margin>
                <children>
-                  <TextField prefHeight="26.0" prefWidth="187.0" promptText="Search" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="187.0" promptText="ค้นหา" styleClass="transparent" stylesheets="@../styles/styles.css">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -50,20 +54,9 @@
                </styleClass>
             </HBox>
             <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="52.0" prefWidth="201.0" stylesheets="@../styles/styles.css">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <ImageView fx:id="cartImageView" fitHeight="54.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/cart_icon.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <HBox.margin>
-                        <Insets bottom="5.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/information_icon.png" />
                      </image>
@@ -71,7 +64,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="userImageView" fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="userImageView" fitHeight="40.0" fitWidth="35.0" onMouseClicked="#switchToProfile" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/user_icon.png" />
                      </image>
@@ -82,7 +75,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="MyShopImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="myShopImageView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#switchToStore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/my_store_icon.png" />
                      </image>
@@ -93,47 +86,41 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
+                  <Pane prefHeight="50.0" prefWidth="5.0" />
                </children>
                <HBox.margin>
                   <Insets right="15.0" top="25.0" />
                </HBox.margin>
-               <styleClass>
-                  <String fx:value="round-layout" />
-                  <String fx:value="round-grey-background" />
-               </styleClass>
             </HBox>
          </children>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="494.0" prefWidth="199.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="484.0" prefWidth="167.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="274.0" prefWidth="184.0">
+            <VBox alignment="CENTER" prefHeight="274.0" prefWidth="131.0">
                <children>
-                  <Label text="Category">
+                  <Label text="หมวดหมู่สินค้า">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="45.0" top="15.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Vehicals">
+                  <Label text="ยานพาหนะ">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="186.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fx:id="tankIconImageVIew" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tankIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/tank_icon_category.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Tanks">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="รถถัง">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -142,15 +129,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="planeHBox" alignment="CENTER" onMouseClicked="#switchToPlane" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="planeIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/fighterJet_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Plane">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="เครื่องบิน">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -159,15 +149,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="carHBox" alignment="CENTER" onMouseClicked="#switchToCar" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="carIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/army_car_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Cars">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="รถ">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -176,15 +169,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToWarship" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="boatIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/warShip_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Warship">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="เรือ">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -193,27 +189,30 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </VBox>
-            <VBox prefHeight="238.0" prefWidth="184.0">
+            <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
                <children>
-                  <Label text="Weapons">
+                  <Label alignment="CENTER" text="อาวุธ">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="gunHBox" alignment="CENTER" onMouseClicked="#switchToGun" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="gunIconImageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/gun_chosen_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Guns">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="ปืน">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -222,15 +221,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="knifeHBox" alignment="CENTER" onMouseClicked="#switchToKnife" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="knifeIconImageView" fitHeight="45.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/knife_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="113.0" text="Knife">
+                        <Label prefHeight="22.0" prefWidth="113.0" text="ระยะประชิด">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                            </font>
@@ -239,23 +241,32 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="assaultHBox" alignment="CENTER" onMouseClicked="#switchToAssault" prefHeight="50.0" prefWidth="184.0" spacing="10.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
                      <children>
-                        <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="assaultIconImageView" fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icon_category/assault_rifle_icon.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="130.0" text="Assault Rifle">
+                        <Label prefHeight="22.0" prefWidth="130.0" text="ปืนกล">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                              <Font name="Berlin Sans FB Demi Bold" size="16.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
@@ -263,12 +274,12 @@
       </VBox>
    </left>
    <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="484.0" prefWidth="642.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
-            <VBox prefHeight="484.0" prefWidth="599.0" styleClass="white-background" stylesheets="@../styles/styles.css">
+            <VBox prefHeight="484.0" prefWidth="629.0" styleClass="white-background" stylesheets="@../styles/styles.css">
                <children>
-                  <Label prefHeight="27.0" prefWidth="209.0" text="Most Popular">
+                  <Label fx:id="storeNameLabel" prefHeight="37.0" prefWidth="630.0" text="ชื่อร้าน">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -276,11 +287,19 @@
                         <Insets left="35.0" top="10.0" />
                      </padding>
                   </Label>
-                  <ScrollPane prefHeight="151.0" prefWidth="585.0" styleClass="transparent" stylesheets="@../styles/styles.css">
-                     <content>
-                        <HBox fx:id="cardLayout" prefHeight="134.0" prefWidth="982.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
-                     </content>
-                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="550.0" prefWidth="630.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="transparent" stylesheets="@../styles/styles.css" HBox.hgrow="ALWAYS">
+                           <content>
+                              <GridPane fx:id="storeGrid" prefHeight="0.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
