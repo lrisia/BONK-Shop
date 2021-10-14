@@ -63,53 +63,47 @@ public class SpecificStoreController {
 
     @FXML
     public void switchToTank() {
-        clear();
-        ProductList filtered = productList.filter(new TankCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToPlane() {
-        clear();
-        ProductList filtered = productList.filter(new PlaneCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
         showProduct(filtered);
 
     }
 
     @FXML
     public void switchToCar() {
-        clear();
-        ProductList filtered = productList.filter(new CarCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToWarship() {
-        clear();
-        ProductList filtered = productList.filter(new WarshipCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToGun() {
-        clear();
-        ProductList filtered = productList.filter(new GunCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToKnife() {
-        clear();
-        ProductList filtered = productList.filter(new KnifeCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToAssault() {
-        clear();
-        ProductList filtered = productList.filter(new AssaultRifleCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
         showProduct(filtered);
     }
+
     @FXML
     public void switchToInfo(Event event) {
         try {

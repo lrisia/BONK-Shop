@@ -3,14 +3,25 @@ package ku.cs.models.shop;
 import ku.cs.models.verify.Account;
 
 public class Shop {
-    private String shopName;
-    private Account owner;
-    private ProductList productList;
+    private Account buyer;
+    private Product product;
+    private Order order;
 
-    public Shop(String shopName, Account owner, ProductList productList) {
-        this.shopName = shopName;
-        this.owner = owner;
-        this.productList = productList;
+    public Shop(Account buyer, Product product, Order order) {
+        this.buyer = buyer;
+        this.product = product;
+        this.order = order;
     }
 
+    public Account getBuyer() {
+        return buyer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
 }

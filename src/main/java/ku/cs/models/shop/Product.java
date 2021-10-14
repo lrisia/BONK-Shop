@@ -48,6 +48,12 @@ public class Product {
         return false;
     }
 
+    public boolean purchase(int amount) {
+        if (stock - amount < 0) return false;
+        stock -= amount;
+        return true;
+    }
+
     public void initialAddProductTime() {
         LocalDateTime localDateTime = LocalDateTime.now();
         String loginDateTime = localDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));

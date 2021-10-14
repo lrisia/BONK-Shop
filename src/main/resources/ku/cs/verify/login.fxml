@@ -59,7 +59,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="113.0" layoutY="283.0" text="ยังไม่มี บัญชี หรอ สมัครเลย!" textFill="#7c7c7c" />
+            <Label layoutX="116.0" layoutY="283.0" text="ยังไม่มีบัญชีหรอ สมัครเลย!" textFill="#7c7c7c" />
             <Label fx:id="closeLabel" layoutX="322.0" layoutY="-13.0" onMouseClicked="#clickCloseLabel" prefHeight="20.0" prefWidth="17.0" text="x" textFill="WHITE">
                <font>
                   <Font size="38.0" />

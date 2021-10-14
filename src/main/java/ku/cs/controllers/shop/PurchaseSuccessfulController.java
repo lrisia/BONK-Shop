@@ -1,10 +1,8 @@
 package ku.cs.controllers.shop;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
-
 import javafx.scene.image.ImageView;
-import ku.cs.models.verify.Account;
+import com.github.saacsos.FXRouter;
 
 import java.io.IOException;
 
@@ -13,11 +11,10 @@ public class PurchaseSuccessfulController {
 
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            FXRouter.goTo("main");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
 }
