@@ -17,8 +17,9 @@ public class ProductController extends HomePageController{
     private Shop shop;
     private Product item;
 
+    @Override
     public void initialize() {
-        shop = new Shop(account, item, null);
+        return;
     }
 
     public void setData(Product item){
@@ -31,6 +32,7 @@ public class ProductController extends HomePageController{
 
     @FXML
     public void switchToDetail() {
+        shop = new Shop(account, item, null);
         try {
             com.github.saacsos.FXRouter.goTo("detail", shop);
         } catch (IOException e) {

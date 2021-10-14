@@ -44,11 +44,8 @@ public class HomePageController {
 
     protected Account account = (Account) com.github.saacsos.FXRouter.getData();
 
-    private DataSource<AccountList> dataSource = new UserDataSource();
-    private AccountList accountList = dataSource.readData();
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
-
 
     public void initialize() {
         showProduct(productList);
@@ -104,7 +101,6 @@ public class HomePageController {
 
     public void showProduct(ProductList productList) {
         clear();
-        account = accountList.searchAccountByUsername(account.getUsername());
         ArrayList <Product> products = productList.getProductList();
         int column = 0;
         int row = 1;

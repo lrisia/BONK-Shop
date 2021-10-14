@@ -106,7 +106,8 @@ public class DetailController {
                 dataSource.writeData(productList);
                 String price = String.format("%.2f", currentPiece*product.getPrice());
                 Order order = new Order(account.getName(), item.getShopName(), product, currentPiece, price);
-                FXRouter.goTo("purchase_successful", order);
+                shop.setOrder(order);
+                FXRouter.goTo("purchase_successful", shop);
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
