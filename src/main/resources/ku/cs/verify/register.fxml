@@ -63,12 +63,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="89.0" layoutY="345.0" text="มี บัญชี อยู่แล้วหรอ" textFill="#575757">
+            <Label layoutX="106.0" layoutY="348.0" text="มีบัญชีอยู่แล้วหรอ" textFill="#575757">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="loginLabel" layoutX="207.0" layoutY="345.0" onMouseClicked="#switchToLoginPage" onMouseEntered="#mouseEnteredLoginLabel" onMouseExited="#mouseExitedLoginLabel" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true">
+            <Label fx:id="loginLabel" layoutX="195.0" layoutY="347.0" onMouseClicked="#switchToLoginPage" onMouseEntered="#mouseEnteredLoginLabel" onMouseExited="#mouseExitedLoginLabel" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>
