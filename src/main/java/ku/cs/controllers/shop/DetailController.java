@@ -45,7 +45,7 @@ public class DetailController {
         productImageView.resize(245,280);
         productStoreNameLabel.setText(item.getShopName());
         productNameLabel.setText(item.getProductName());
-        priceLabel.setText(item.getPrice()+" ฿");
+        priceLabel.setText(String.format("%.2f", item.getPrice())+" ฿");
         detailTextArea.setWrapText(true);
         detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("มีสินค้า "+item.getStock()+" ชิ้น");
@@ -53,7 +53,7 @@ public class DetailController {
         valueFactoryPiece.setValue(0);
         productPieceSpinner.setValueFactory(valueFactoryPiece);
         currentPiece = productPieceSpinner.getValue();
-        priceTotalLabel.setText(("ทั้งหมดราคา "+currentPiece*item.getPrice()+" บาท"));
+        priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
         productPieceSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
@@ -63,7 +63,7 @@ public class DetailController {
                     productPieceSpinner.setValueFactory(valueFactoryPiece);
                 }
                 currentPiece = productPieceSpinner.getValue();
-                priceTotalLabel.setText(("ทั้งหมดราคา "+String.format("%.2f",currentPiece*item.getPrice())+" บาท"));
+                priceTotalLabel.setText(("ทั้งหมดราคา " + String.format("%.2f",currentPiece*item.getPrice()) + " บาท"));
             }
         });
     }

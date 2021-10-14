@@ -143,7 +143,7 @@ public class Account {
             copyUserImageToPackage(fileSelected, imagePath);
         }
         else {
-            imagePath = "profileDefault.png";
+            imagePath = "src/main/resources/images/profileDefault.png";
         }
     }
 

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.*;
 
 import com.github.saacsos.FXRouter;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
@@ -72,7 +73,7 @@ public class LoginPageController {
             try {
                 getUsername = username;
                 dataSource.writeData(accountList);
-                FXRouter.goTo("main", accountList.searchAccountByUsername(username));
+                FXRouter.goTo("main", new Shop(accountList.searchAccountByUsername(username)));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");

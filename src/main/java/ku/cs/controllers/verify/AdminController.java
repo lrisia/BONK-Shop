@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
 import java.util.Comparator;
@@ -32,7 +33,8 @@ public class AdminController {
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
     private Effect effect = new Effect();
-    private Account account = (Account) FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
     private Account selectedAccount = null;
 
     public void initialize() {

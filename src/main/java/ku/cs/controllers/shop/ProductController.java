@@ -25,7 +25,7 @@ public class ProductController extends HomePageController{
     public void setData(Product item){
         this.item = item;
         nameLabel.setText(item.getProductName());
-        priceLabel.setText(item.getPrice()+ " ฿");
+        priceLabel.setText(String.format("%.2f", item.getPrice())+ " ฿");
         Image image = new Image(item.getImagePath());
         img.setImage(image);
     }

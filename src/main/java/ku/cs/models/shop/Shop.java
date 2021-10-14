@@ -13,6 +13,18 @@ public class Shop {
         this.order = order;
     }
 
+    public Shop(Account buyer, Product product) {
+        this.buyer = buyer;
+        this.product = product;
+        this.order = null;
+    }
+
+    public Shop(Account buyer) {
+        this.buyer = buyer;
+        this.product = null;
+        this.order = null;
+    }
+
     public Account getBuyer() {
         return buyer;
     }
