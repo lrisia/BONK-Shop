@@ -26,6 +26,13 @@ public class AccountList {
         return null;
     }
 
+    public Account searchAccountByShopName(String shopName){
+        for (Account account: accountList)
+            if(account.checkAccount(shopName)) return account;
+        return null;
+    }
+
+
     public boolean canLogin(String username, String password) {
         Account account = searchAccountByUsername(username);
         if (account != null && account.canLogin(username, password)) return true;
@@ -69,4 +76,6 @@ public class AccountList {
         }
         return result;
     }
+
+
 }

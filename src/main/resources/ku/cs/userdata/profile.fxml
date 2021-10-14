@@ -33,7 +33,7 @@
                   </ImageView>
                   <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="อัปโหลดรูปภาพ" textFill="RED">
                      <VBox.margin>
-                        <Insets left="63.0" />
+                        <Insets left="56.0" />
                      </VBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
