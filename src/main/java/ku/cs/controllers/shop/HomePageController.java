@@ -1,10 +1,12 @@
 package ku.cs.controllers.shop;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -17,11 +19,9 @@ import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.Comparator;
 
 public class HomePageController {
     @FXML private ImageView logoImageView;
@@ -40,6 +40,7 @@ public class HomePageController {
     @FXML private HBox cardLayout;
     @FXML private ScrollPane scroll;
     @FXML private GridPane grid;
+    @FXML private ComboBox sortComboBox;
 
     private Account account = (Account) com.github.saacsos.FXRouter.getData();
 
@@ -51,6 +52,54 @@ public class HomePageController {
 
     public void initialize() {
         showProduct(productList);
+        sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
+        sortComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue observableValue,
+                                String oldString, String newString) {
+                if (newString.equals("ล่าสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getTime().compareTo(o2.getTime()) > 0) return -1;
+                            if(o1.getTime().compareTo(o2.getTime()) < 0) return 1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("เก่าสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getTime().compareTo(o2.getTime()) > 0) return 1;
+                            if(o1.getTime().compareTo(o2.getTime()) < 0) return -1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("ราคาสูงสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getPrice() > o2.getPrice()) return -1;
+                            if(o1.getPrice() < o2.getPrice()) return 1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                } else if (newString.equals("ราคาต่ำสุด")) {
+                    productList.sort(new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            if(o1.getPrice() > o2.getPrice()) return 1;
+                            if(o1.getPrice() < o2.getPrice()) return -1;
+                            return 0;
+                        }
+                    });
+                    showProduct(productList);
+                }
+            }
+        });
     }
 
     public void showProduct(ProductList productList) {
@@ -78,56 +127,57 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToTank() throws IOException {
+    public void switchToTank() {
         clear();
-        ProductList filtered = productList.filter(new TankCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToPlane() throws IOException {
+    public void switchToPlane() {
         clear();
-        ProductList filtered = productList.filter(new PlaneCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
         showProduct(filtered);
 
     }
 
     @FXML
-    public void switchToCar() throws IOException {
+    public void switchToCar() {
         clear();
-        ProductList filtered = productList.filter(new CarCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToWarship() throws IOException {
+    public void switchToWarship() {
         clear();
-        ProductList filtered = productList.filter(new WarshipCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToGun() throws IOException {
+    public void switchToGun() {
         clear();
-        ProductList filtered = productList.filter(new GunCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToKnife() throws IOException {
+    public void switchToKnife() {
         clear();
-        ProductList filtered = productList.filter(new KnifeCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
         showProduct(filtered);
     }
 
     @FXML
-    public void switchToAssault() throws IOException {
+    public void switchToAssault() {
         clear();
-        ProductList filtered = productList.filter(new AssaultRifleCategoryProductFilterer());
+        ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
         showProduct(filtered);
     }
+
     @FXML
-    public void switchToInfo(Event event) throws IOException {
+    public void switchToInfo(Event event) {
         try {
             com.github.saacsos.FXRouter.goTo("info");
         } catch (IOException e) {
@@ -136,8 +186,9 @@ public class HomePageController {
             e.printStackTrace();
         }
     }
+
     @FXML
-    public void switchToProfile(Event event) throws IOException {
+    public void switchToProfile(Event event) {
         try {
             if(account.isAdmin()){
                 com.github.saacsos.FXRouter.goTo("admin", account);
@@ -152,7 +203,7 @@ public class HomePageController {
     }
 
     @FXML
-    public void switchToStore(Event event) throws IOException {
+    public void switchToStore(Event event) {
         try {
             if(account.isSeller()){
                 com.github.saacsos.FXRouter.goTo("store", account);
