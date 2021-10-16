@@ -134,7 +134,7 @@ public class Account {
     public String toString() {
         String banStatus = "Active";
         if (this.banStatus == true) banStatus = "Banned";
-        return username + " [Status: " + banStatus + ", Last Access: " + getLoginDateTime() + "]";
+        return "Username: " + username + " [Status: " + banStatus + "]\nLast Access: " + getLoginDateTime();
     }
 
     public void setImagePath() {
@@ -143,7 +143,7 @@ public class Account {
             copyUserImageToPackage(fileSelected, imagePath);
         }
         else {
-            imagePath = "profileDefault.png";
+            imagePath = "src/main/resources/images/profileDefault.png";
         }
     }
 

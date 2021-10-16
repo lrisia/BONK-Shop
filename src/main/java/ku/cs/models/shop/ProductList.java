@@ -34,10 +34,18 @@ public class ProductList{
         productList.add(product);
     }
 
-    public Product purchaseProduct(String productId, int amount) {
+    public void purchaseProduct(String productId, int amount) {
         Product product = searchProductById(productId);
         product.purchase(amount);
-        return product;
+    }
+
+    public double getMaxPrice() {
+        double max = productList.get(0).getPrice();
+        for (Product product: productList) {
+            if (product.getPrice() > max) {
+                max = product.getPrice();
+            }
+        } return max;
     }
 
     public String initialProductId(){

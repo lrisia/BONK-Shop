@@ -73,7 +73,7 @@ public class LoginPageController {
             try {
                 getUsername = username;
                 dataSource.writeData(accountList);
-                FXRouter.goTo("main", new Shop(accountList.searchAccountByUsername(username), null, null));
+                FXRouter.goTo("main", new Shop(accountList.searchAccountByUsername(username)));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า main ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");

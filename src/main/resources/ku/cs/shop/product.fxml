@@ -11,25 +11,29 @@
 
 <AnchorPane onMouseClicked="#switchToDetail" prefHeight="215.0" prefWidth="220.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ProductController">
    <children>
-      <VBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+      <AnchorPane layoutX="10.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="P-990 Razer">
-               <font>
-                  <Font name="Agency FB Bold" size="24.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="img" fitHeight="90.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/product/p990_product.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="priceLabel" alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text="฿ 1,000,000">
-               <font>
-                  <Font name="Agency FB Bold" size="18.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" prefHeight="187.0" prefWidth="195.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="184.0" text="P-990 Razer">
+                     <font>
+                        <Font name="Agency FB Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="img" fitHeight="90.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/product/p990_product.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="priceLabel" alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text="฿ 1,000,000">
+                     <font>
+                        <Font name="Agency FB Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
    <styleClass>
       <String fx:value="product" />

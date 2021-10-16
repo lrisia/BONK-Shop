@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
@@ -34,7 +35,8 @@ public class ProfileController {
     private Effect effect = new Effect();
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
-    private Account account = (Account) FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
 
     @FXML
     public void initialize() {
@@ -50,7 +52,7 @@ public class ProfileController {
     @FXML
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            com.github.saacsos.FXRouter.goTo("main", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

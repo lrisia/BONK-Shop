@@ -11,17 +11,18 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.ProductDataSource;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Comparator;
-import java.util.ResourceBundle;
+import com.github.saacsos.FXRouter;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
-public class AddProductPageController implements Initializable{
+public class AddProductPageController{
     @FXML Button upLoadPic;
     @FXML ImageView productImageView;
     @FXML TextField inputProductNameTextField;
@@ -37,10 +38,11 @@ public class AddProductPageController implements Initializable{
 
     private DataSource<ProductList> dataSource = new ProductDataSource();
     private ProductList productList = dataSource.readData();
-    private Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
+    private Effect effect = new Effect();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
         valueFactoryQuantity.setValue(0);
         inputProductDetailTextArea.setWrapText(true);
@@ -51,6 +53,14 @@ public class AddProductPageController implements Initializable{
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
                 currentQuantity = productQuantitySpinner.getValue();
                 quantity = productQuantitySpinner.getValue();
+            }
+        });
+        productPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    productPriceTextField.setText(oldValue);
+                }
             }
         });
 
@@ -66,9 +76,9 @@ public class AddProductPageController implements Initializable{
     }
 
     @FXML
-    public void switchToHome() throws IOException {
+    public void switchToHome() {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            FXRouter.goTo("main", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -76,9 +86,9 @@ public class AddProductPageController implements Initializable{
     }
 
     @FXML
-    public void switchToStore(Event event) throws IOException {
+    public void switchToStore(Event event) {
         try {
-            com.github.saacsos.FXRouter.goTo("store");
+            FXRouter.goTo("store", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า store ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -87,7 +97,7 @@ public class AddProductPageController implements Initializable{
     }
 
     @FXML
-    public void add(){
+    public void add() {
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextArea.getText();
         if (productName.equals("")) {
@@ -114,7 +124,7 @@ public class AddProductPageController implements Initializable{
                 };
                 productList.sort(comparator);
                 dataSource.writeData(productList);
-                com.github.saacsos.FXRouter.goTo("store");
+                FXRouter.goTo("store", shop);
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า store ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -126,17 +136,18 @@ public class AddProductPageController implements Initializable{
                 notificationLabel.setText("Price format incorrect");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
-        }
+        } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
     @FXML
-    public void upLoadPic(){
+    public void upLoadPic() {
         FileChooser fileChooser = new FileChooser();
         fileSelected = fileChooser.showOpenDialog(null);
         fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
         if(fileSelected != null){
             Image image = new Image(fileSelected.toURI().toString());
             productImageView.setImage(image);
+            effect.centerImage(productImageView);
         }
     }
 

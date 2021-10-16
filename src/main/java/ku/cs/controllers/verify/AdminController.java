@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
 import java.util.Comparator;
@@ -28,11 +29,13 @@ public class AdminController {
     @FXML Label loginLabel;
     @FXML PasswordField newPasswordField;
     @FXML PasswordField confirmPasswordField;
+    @FXML Button banBtn;
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
     private Effect effect = new Effect();
-    private Account account = (Account) FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
     private Account selectedAccount = null;
 
     public void initialize() {
@@ -73,9 +76,11 @@ public class AdminController {
         selectedAccount = account;
         userImageView.setImage(new Image(account.getImagePath()));
         if (account.gotBanned()) {
+            banBtn.setText("ปลดแบน");
             tryLoginLabel.setText("จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน :");
             loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
         } else {
+            banBtn.setText("แบน");
             tryLoginLabel.setText("");
             loginLabel.setText("");
         }
@@ -86,6 +91,7 @@ public class AdminController {
             selectedAccount.switchBanStatus();
             dataSource.writeData(accountList);
             accountListView.refresh();
+            showSelectedAccount(selectedAccount);
         }
     }
 

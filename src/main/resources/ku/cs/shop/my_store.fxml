@@ -30,12 +30,12 @@
             </ImageView>
             <Pane prefHeight="116.0" prefWidth="170.0" stylesheets="@../styles/styles.css" HBox.hgrow="ALWAYS">
                <children>
-                  <Label layoutX="112.0" layoutY="39.0" prefHeight="39.0" prefWidth="122.0" text="ร้านค้าของฉัน" textFill="WHITE">
+                  <Label layoutX="173.0" layoutY="14.0" prefHeight="39.0" prefWidth="122.0" text="ร้านค้าของฉัน" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="storeNameLabel" alignment="CENTER" layoutX="234.0" layoutY="39.0" prefHeight="39.0" prefWidth="125.0" textFill="WHITE">
+                  <Label fx:id="storeNameLabel" alignment="CENTER" layoutX="-8.0" layoutY="59.0" prefHeight="39.0" prefWidth="470.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

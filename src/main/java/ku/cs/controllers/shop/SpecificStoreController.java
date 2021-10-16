@@ -4,12 +4,10 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
-import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
@@ -17,6 +15,7 @@ import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -24,9 +23,8 @@ public class SpecificStoreController {
     @FXML private GridPane storeGrid;
     @FXML private Label storeNameLabel;
 
-    private Shop shop = (Shop) com.github.saacsos.FXRouter.getData();
-    private Account account = shop.getBuyer();
-    private Product item = shop.getProduct();
+    private Account account = (Account) com.github.saacsos.FXRouter.getData();
+
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
@@ -36,12 +34,12 @@ public class SpecificStoreController {
 
     public void initialize() {
         showProduct(productList);
-        storeNameLabel.setText("ร้านค้าของ "+item.getShopName());
+        storeNameLabel.setText(account.getStoreName());
     }
 
     public void showProduct(ProductList productList) {
-        ProductList filtered = productList.filter(new SpecificProductFilterer(item.getShopName()));
-        ArrayList<Product> products = filtered.getProductList();
+        account = accountList.searchAccountByUsername(account.getUsername());
+        ArrayList<Product> products = productList.getProductList();
         int column = 0;
         int row = 1;
         try {
@@ -51,7 +49,7 @@ public class SpecificStoreController {
                 AnchorPane anchorPane = fxmlLoader.load();
                 ProductController productController = fxmlLoader.getController();
                 productController.setData(product);
-                if(column == 3){
+                if(column == 4){
                     column = 0;
                     row++;
                 }
@@ -65,12 +63,14 @@ public class SpecificStoreController {
 
     @FXML
     public void switchToTank() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToPlane() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
         showProduct(filtered);
 
@@ -78,34 +78,38 @@ public class SpecificStoreController {
 
     @FXML
     public void switchToCar() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToWarship() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToGun() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToKnife() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToAssault() {
+        clear();
         ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
         showProduct(filtered);
     }
-
     @FXML
     public void switchToInfo(Event event) {
         try {
@@ -157,7 +161,6 @@ public class SpecificStoreController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
 
     @FXML
     public void refresh() {

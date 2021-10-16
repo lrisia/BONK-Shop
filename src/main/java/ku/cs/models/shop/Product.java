@@ -48,10 +48,9 @@ public class Product {
         return false;
     }
 
-    public boolean purchase(int amount) {
-        if (stock - amount < 0) return false;
+    public void purchase(int amount) {
+        if (stock - amount < 0) return;
         stock -= amount;
-        return true;
     }
 
     public void initialAddProductTime() {
