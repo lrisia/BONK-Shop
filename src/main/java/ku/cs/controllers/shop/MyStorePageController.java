@@ -4,32 +4,28 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
-import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
-import ku.cs.services.UserDataSource;
-import ku.cs.strategy.CategoryProductFilterer;
+import com.github.saacsos.FXRouter;
 import ku.cs.strategy.MyStoreProductFilterer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MyStorePageController {
-
     @FXML GridPane storeGridPane;
     @FXML Label storeNameLabel;
 
-    private Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
 
-    private DataSource<AccountList> dataSource = new UserDataSource();
-    private AccountList accountList = dataSource.readData();
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
 
@@ -39,8 +35,7 @@ public class MyStorePageController {
     }
 
     public void showProduct(ProductList productList) {
-        account = accountList.searchAccountByUsername(account.getUsername());
-        ProductList filtered =  productList.filter(new CategoryProductFilterer(account.getStoreName()));
+        ProductList filtered =  productList.filter(new MyStoreProductFilterer(account.getStoreName()));
         ArrayList<Product> products = filtered.getProductList();
         int column = 0;
         int row = 1;
@@ -56,7 +51,7 @@ public class MyStorePageController {
                     row++;
                 }
                 storeGridPane.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane,new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(9));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,9 +59,9 @@ public class MyStorePageController {
     }
 
     @FXML
-    public void switchToInfo(Event event) throws IOException {
+    public void switchToInfo(Event event) {
         try {
-            com.github.saacsos.FXRouter.goTo("info",account);
+            FXRouter.goTo("info", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า info ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -75,9 +70,9 @@ public class MyStorePageController {
     }
 
     @FXML
-    public void switchToAddProduct(Event event) throws IOException {
+    public void switchToAddProduct(Event event) {
         try {
-            com.github.saacsos.FXRouter.goTo("add_product",account);
+            FXRouter.goTo("add_product", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า add_product ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -86,9 +81,9 @@ public class MyStorePageController {
     }
 
     @FXML
-    public void switchToHome() throws IOException {
+    public void switchToHome() {
         try {
-            com.github.saacsos.FXRouter.goTo("main",account);
+            FXRouter.goTo("main", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

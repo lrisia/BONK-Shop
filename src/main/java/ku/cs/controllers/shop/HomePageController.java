@@ -12,9 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
+import com.github.saacsos.FXRouter;
 import ku.cs.strategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +31,8 @@ public class HomePageController {
     @FXML private Label headerLabel;
     @FXML private Pane noProductPane;
 
-    protected Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    protected Account account = shop.getBuyer();
 
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
@@ -131,7 +134,7 @@ public class HomePageController {
         productList = priceFilter(productList, max, min);
         if (!category.equals("All"))
             productList = categoryFilter(productList, category);
-        ArrayList <Product> products = productList.getProductList();
+        ArrayList<Product> products = productList.getProductList();
         if (products.size() == 0) {
             noProductLabel.setOpacity(0.45);
             noProductPane.setDisable(false);
@@ -150,7 +153,7 @@ public class HomePageController {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane,new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(7));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -209,7 +212,7 @@ public class HomePageController {
     @FXML
     public void switchToInfo(Event event) {
         try {
-            com.github.saacsos.FXRouter.goTo("info");
+            FXRouter.goTo("info", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า info ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -221,10 +224,10 @@ public class HomePageController {
     public void switchToProfile(Event event) {
         try {
             if(account.isAdmin()){
-                com.github.saacsos.FXRouter.goTo("admin", account);
+                FXRouter.goTo("admin", shop);
             }
             else{
-                com.github.saacsos.FXRouter.goTo("profile", account);
+                FXRouter.goTo("profile", shop);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");
@@ -235,11 +238,10 @@ public class HomePageController {
     @FXML
     public void switchToStore(Event event) {
         try {
-            if(account.isSeller()){
-                com.github.saacsos.FXRouter.goTo("store", account);
-            }
-            else{
-                com.github.saacsos.FXRouter.goTo("shop_setup", account);
+            if (account.isSeller()) {
+                FXRouter.goTo("store", shop);
+            } else if (!account.isAdmin()) {
+                FXRouter.goTo("shop_setup", shop);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า store ไม่ได้");

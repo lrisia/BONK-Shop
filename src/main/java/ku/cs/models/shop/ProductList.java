@@ -34,10 +34,9 @@ public class ProductList{
         productList.add(product);
     }
 
-    public Product purchaseProduct(String productId, int amount) {
+    public void purchaseProduct(String productId, int amount) {
         Product product = searchProductById(productId);
         product.purchase(amount);
-        return product;
     }
 
     public double getMaxPrice() {

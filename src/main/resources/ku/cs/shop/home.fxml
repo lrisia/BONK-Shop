@@ -123,6 +123,9 @@
                                  <image>
                                     <Image url="@../../../images/icon_category/tank_icon_category.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </ImageView>
                               <Label prefHeight="22.0" prefWidth="113.0" text="รถถัง">
                                  <font>
@@ -143,6 +146,9 @@
                                  <image>
                                     <Image url="@../../../images/icon_category/fighterJet_chosen_icon.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </ImageView>
                               <Label prefHeight="22.0" prefWidth="113.0" text="เครื่องบิน">
                                  <font>
@@ -163,6 +169,9 @@
                                  <image>
                                     <Image url="@../../../images/icon_category/army_car_chosen_icon.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </ImageView>
                               <Label prefHeight="22.0" prefWidth="113.0" text="รถ">
                                  <font>
@@ -183,6 +192,9 @@
                                  <image>
                                     <Image url="@../../../images/icon_category/warShip_icon.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
                               </ImageView>
                               <Label prefHeight="22.0" prefWidth="113.0" text="เรือ">
                                  <font>
@@ -199,7 +211,7 @@
                         </HBox>
                      </children>
                      <VBox.margin>
-                        <Insets left="10.0" />
+                        <Insets />
                      </VBox.margin>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
