@@ -1,4 +1,4 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.verify;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

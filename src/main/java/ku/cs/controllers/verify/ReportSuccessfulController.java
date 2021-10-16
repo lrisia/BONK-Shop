@@ -1,4 +1,4 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.verify;
 
 import ku.cs.models.shop.Shop;
 

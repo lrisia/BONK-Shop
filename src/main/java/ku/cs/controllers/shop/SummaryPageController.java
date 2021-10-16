@@ -59,10 +59,6 @@ public class SummaryPageController {
         dataSource.writeData(productList);
         orderList.addOrder(order);
         orderListDataSource.writeData(orderList);
-        orderList = orderListDataSource.readData();
-        for (Order order : orderList.getAllOrder()) {
-            System.out.println(order.toCsv());
-        }
         try {
             FXRouter.goTo("purchase_successful", new Shop(account));
         } catch (IOException e) {

@@ -14,6 +14,7 @@ import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.ProductDataSource;
 import java.io.IOException;
 import java.util.Comparator;
@@ -39,6 +40,7 @@ public class AddProductPageController{
     private ProductList productList = dataSource.readData();
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
+    private Effect effect = new Effect();
 
     public void initialize() {
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
@@ -51,6 +53,14 @@ public class AddProductPageController{
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
                 currentQuantity = productQuantitySpinner.getValue();
                 quantity = productQuantitySpinner.getValue();
+            }
+        });
+        productPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    productPriceTextField.setText(oldValue);
+                }
             }
         });
 
@@ -126,7 +136,7 @@ public class AddProductPageController{
                 notificationLabel.setText("Price format incorrect");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
-        }
+        } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
     @FXML
@@ -137,6 +147,7 @@ public class AddProductPageController{
         if(fileSelected != null){
             Image image = new Image(fileSelected.toURI().toString());
             productImageView.setImage(image);
+            effect.centerImage(productImageView);
         }
     }
 
