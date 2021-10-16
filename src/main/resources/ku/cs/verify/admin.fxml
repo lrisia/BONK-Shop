@@ -30,7 +30,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <ImageView fx:id="logoImageView" fitHeight="192.0" fitWidth="192.0" layoutY="9.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="160.0" fitWidth="165.0" layoutY="9.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />
                </image>
@@ -52,6 +52,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button alignment="TOP_CENTER" layoutX="17.0" layoutY="176.0" mnemonicParsing="false" onAction="#manageAccount" prefHeight="48.0" prefWidth="122.0" text="จัดการบัญชีผู้ใช้" />
+            <Button alignment="TOP_CENTER" layoutX="139.0" layoutY="176.0" mnemonicParsing="false" onAction="#manageReport" prefHeight="48.0" prefWidth="140.0" text="รายงานความไม่เหมาะสม" />
+            <Label layoutX="442.0" layoutY="90.0" prefHeight="76.0" prefWidth="358.0" text="แก้ listener ด้วย" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>

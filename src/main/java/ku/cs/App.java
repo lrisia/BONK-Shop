@@ -45,7 +45,7 @@ public class App extends Application {
         FXRouter.when("purchase_successful",packageStr+"shop/purchase_successful.fxml");
         FXRouter.when("specific",packageStr+"shop/specific_store.fxml");
         FXRouter.when("summary",packageStr+"shop/summary.fxml");
-        FXRouter.when("report",packageStr+"shop/report.fxml");
+        FXRouter.when("report",packageStr+"verify/report.fxml");
         FXRouter.when("report_successful",packageStr+"shop/report_successful.fxml");
     }
 

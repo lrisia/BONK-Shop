@@ -1,6 +1,7 @@
 package ku.cs.controllers.verify;
 
 import javafx.fxml.FXML;
+
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -8,7 +9,11 @@ import ku.cs.models.shop.Product;
 import ku.cs.models.shop.Shop;
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.Account;
+import ku.cs.models.verify.Report;
+import ku.cs.models.verify.ReportList;
+import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
+import ku.cs.services.ReportDataSource;
 
 import java.io.IOException;
 
@@ -17,12 +22,16 @@ public class ReportController {
     @FXML Label productStoreNameLabel;
     @FXML Label productNameLabel;
     @FXML Label priceLabel;
+    @FXML Label notificationLabel;
     @FXML TextArea detailTextArea;
-    @FXML MenuButton topicMenuButton;
+    @FXML ComboBox topicComboBox;
 
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
     private Product product = shop.getProduct();
+
+    private DataSource<ReportList> reportListDataSource;
+    private ReportList reportList;
 
     private Effect effect = new Effect();
 
@@ -33,10 +42,14 @@ public class ReportController {
         priceLabel.setText(String.format("%.2f", product.getPrice()) + " ฿");
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
-        topicMenuButton.getItems().addAll(
-                new MenuItem("สินค้าไม่ตรงตามลายระเอียด/ไม่ตรงปก"),
-                new MenuItem("เป็นสินค้าผิดกฏหมาย"),
-                new MenuItem("มีคำหยาบคาย/ไม่เหมาะสม"));
+        topicComboBox.getItems().addAll(
+                "สินค้าไม่ตรงตามรายละเอียด",
+                "เป็นสินค้าผิดกฏหมาย",
+                "มีคำหยาบคาย/ไม่เหมาะสม",
+                "ละเมิดลิขสิทธ์",
+                "ไม่ส่งของตามจริง");
+        reportListDataSource = new ReportDataSource();
+        reportList = reportListDataSource.readData();
     }
 
     @FXML
@@ -62,11 +75,21 @@ public class ReportController {
 
     @FXML
     public void enterReportButton() {
-        try {
-            FXRouter.goTo("purchase_successful", new Shop(account));
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
+        if (detailTextArea.getText().equals(""))
+            notificationLabel.setText("โปรดใส่รายละเอียด");
+        else if (topicComboBox.getValue() == null)
+            notificationLabel.setText("โปรดเลือกหัวข้อ");
+        else {
+            String topic = topicComboBox.getValue().toString();
+            String detail = detailTextArea.getText();
+            reportList.addNewReport(account.getUsername(), product.getId(), "product", topic, detail);
+            reportListDataSource.writeData(reportList);
+            try {
+                FXRouter.goTo("purchase_successful", new Shop(account));
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
+        } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 }

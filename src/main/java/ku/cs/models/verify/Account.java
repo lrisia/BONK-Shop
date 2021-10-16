@@ -132,9 +132,9 @@ public class Account {
 
     @Override
     public String toString() {
-        String banStatus = "Active";
-        if (this.banStatus == true) banStatus = "Banned";
-        return "Username: " + username + " [Status: " + banStatus + "]\nLast Access: " + getLoginDateTime();
+        String banStatus = "ปกติ";
+        if (this.banStatus == true) banStatus = "ถูกแบน";
+        return "ชื่อบัญชีผู้ใช้: " + username + " [สถานะ: " + banStatus + "]\nเข้าใช้งานล่าสุด: " + getLoginDateTime();
     }
 
     public void setImagePath() {

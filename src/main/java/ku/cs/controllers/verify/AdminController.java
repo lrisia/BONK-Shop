@@ -13,8 +13,10 @@ import java.util.Comparator;
 
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.models.verify.ReportList;
 import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
+import ku.cs.services.ReportDataSource;
 import ku.cs.services.UserDataSource;
 
 public class AdminController {
@@ -33,6 +35,8 @@ public class AdminController {
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
+    private DataSource<ReportList> reportListDataSource = new ReportDataSource();
+    private ReportList reportList = reportListDataSource.readData();
     private Effect effect = new Effect();
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
@@ -48,12 +52,29 @@ public class AdminController {
             }
         });
         userImageView.setImage(new Image(account.getImagePath()));
-        showListView();
+        showAccountInListView();
         handleSelectedListView();
     }
 
-    private void showListView() {
+    @FXML
+    public void manageAccount() {
+        clearListView();
+        showAccountInListView();
+    }
+
+    @FXML
+    public void manageReport() {
+        clearListView();
+        showReportInListView();
+    }
+
+    private void showAccountInListView() {
         accountListView.getItems().addAll(accountList.getAllAccountExceptAdmin());
+        accountListView.refresh();
+    }
+
+    private void showReportInListView() {
+        accountListView.getItems().addAll(reportList.getAllReportLog());
         accountListView.refresh();
     }
 
@@ -75,6 +96,7 @@ public class AdminController {
         timeLabel.setText(account.getLoginDateTime());
         selectedAccount = account;
         userImageView.setImage(new Image(account.getImagePath()));
+        effect.centerImage(userImageView);
         if (account.gotBanned()) {
             banBtn.setText("ปลดแบน");
             tryLoginLabel.setText("จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน :");
@@ -148,5 +170,9 @@ public class AdminController {
     public void clear() {
         newPasswordField.clear();
         confirmPasswordField.clear();
+    }
+
+    public void clearListView() {
+        accountListView.getItems().clear();
     }
 }

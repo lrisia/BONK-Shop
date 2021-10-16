@@ -134,7 +134,7 @@ public class HomePageController {
         productList = priceFilter(productList, max, min);
         if (!category.equals("All"))
             productList = categoryFilter(productList, category);
-        ArrayList <Product> products = productList.getProductList();
+        ArrayList<Product> products = productList.getProductList();
         if (products.size() == 0) {
             noProductLabel.setOpacity(0.45);
             noProductPane.setDisable(false);
@@ -153,7 +153,7 @@ public class HomePageController {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane,new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(9));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -238,10 +238,9 @@ public class HomePageController {
     @FXML
     public void switchToStore(Event event) {
         try {
-            if(account.isSeller()){
+            if (account.isSeller()) {
                 FXRouter.goTo("store", shop);
-            }
-            else{
+            } else if (!account.isAdmin()) {
                 FXRouter.goTo("shop_setup", shop);
             }
         } catch (IOException e) {

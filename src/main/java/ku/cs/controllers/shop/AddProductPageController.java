@@ -4,7 +4,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -101,13 +100,13 @@ public class AddProductPageController{
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextArea.getText();
         if (productName.equals("")) {
-            notificationLabel.setText("Please enter your product name");
+            notificationLabel.setText("โปรดกรอกชื่อสินค้า");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else if(productDetail.equals("")) {
-            notificationLabel.setText("Please enter your product detail");
+            notificationLabel.setText("โปรดกรอกรายละเอียด");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else if(fileSelected == null) {
-            notificationLabel.setText("Please upload your product picture");
+            notificationLabel.setText("โปรดเลือกรูปภาพ");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else {
             try {
