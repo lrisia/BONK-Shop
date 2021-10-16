@@ -4,23 +4,34 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Order {
-    private String orderDate;
-    private String orderTime;
-    private String buyerName;
+    private String productId;
     private String storeName;
-    private Product product;
+    private String buyerUsername;
     private int amount;
     private double price;
+    private String orderDate;
+    private String orderTime;
     private String trackingNumber;
 
-    public Order(String buyerName, String storeName, Product product, int amount, String price) {
+    public Order(String productId, String storeName, String buyerUsername, int amount, String price) {
         initialOrderTime();
-        this.buyerName = buyerName;
+        this.productId = productId;
         this.storeName = storeName;
-        this.product = product;
+        this.buyerUsername = buyerUsername;
         this.amount = amount;
         this.price = Double.parseDouble(price);
         this.trackingNumber = generateTrackingNumber();
+    }
+
+    public Order(String productId, String storeName, String buyerName, int amount, double price, String orderDate, String orderTime, String trackingNumber) {
+        this.productId = productId;
+        this.storeName = storeName;
+        this.buyerUsername = buyerName;
+        this.amount = amount;
+        this.price = price;
+        this.orderDate = orderDate;
+        this.orderTime = orderTime;
+        this.trackingNumber = trackingNumber;
     }
 
     public void initialOrderTime() {
@@ -46,16 +57,22 @@ public class Order {
         return price;
     }
 
+    public String toCsv() {
+        return productId + "," + storeName + "," + buyerUsername + ","
+                + amount + "," + price + "," + orderDate + "," + orderTime
+                + "," + trackingNumber;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "orderDate='" + orderDate + '\'' +
-                ", orderTime='" + orderTime + '\'' +
-                ", buyerName='" + buyerName + '\'' +
+                "productId='" + productId + '\'' +
                 ", storeName='" + storeName + '\'' +
-                ", product=" + product +
+                ", buyerName='" + buyerUsername + '\'' +
                 ", amount=" + amount +
                 ", price=" + price +
+                ", orderDate='" + orderDate + '\'' +
+                ", orderTime='" + orderTime + '\'' +
                 ", trackingNumber='" + trackingNumber + '\'' +
                 '}';
     }

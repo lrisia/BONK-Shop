@@ -37,7 +37,7 @@ public class Shop {
         return order;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void newOrder(String productId, String storeName, String buyerUsername, int amount, String price) {
+        order = new Order(productId, storeName, buyerUsername, amount, price);
     }
 }

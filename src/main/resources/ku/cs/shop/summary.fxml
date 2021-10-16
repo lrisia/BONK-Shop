@@ -20,7 +20,7 @@
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <ImageView fx:id="productImageView" fitHeight="245.0" fitWidth="245.0" layoutX="47.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productImageView" fitHeight="263.0" fitWidth="239.0" layoutX="44.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/product_default.png" />
                </image>
@@ -55,12 +55,12 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" prefHeight="30.0" prefWidth="0.0">
+                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" prefHeight="30.0" prefWidth="295.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Label>
                </children>
@@ -81,7 +81,7 @@
                   </Label>
                   <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="25.0" layoutY="44.0" prefHeight="218.0" prefWidth="318.0">
                      <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <font>
                         <Font size="17.0" />
@@ -96,37 +96,55 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Pane>
-            <Label fx:id="buyerNameLabel" layoutX="494.0" layoutY="348.0" text="buyerName">
+            <Label fx:id="buyerNameLabel" layoutX="502.0" layoutY="350.0" text="buyerName">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Label layoutX="447.0" layoutY="348.0" text="ผู้ซื้อ">
+            <Label layoutX="455.0" layoutY="350.0" text="ผู้ซื้อ">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Label layoutX="429.0" layoutY="391.0" text="จำนวน">
+            <Label layoutX="437.0" layoutY="393.0" text="จำนวน">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Label fx:id="amountLabel" layoutX="494.0" layoutY="391.0" text="amount">
+            <Label fx:id="amountLabel" layoutX="502.0" layoutY="393.0" text="amount">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Label layoutX="411.0" layoutY="436.0" text="ราคาสุทธิ">
+            <Label layoutX="419.0" layoutY="438.0" text="ราคาสุทธิ">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Label fx:id="summaryPriceLabel" layoutX="494.0" layoutY="436.0" text="price">
+            <Label fx:id="summaryPriceLabel" layoutX="502.0" layoutY="438.0" text="price">
                <font>
-                  <Font size="20.0" />
+                  <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </Label>
-            <Button layoutX="451.0" layoutY="489.0" mnemonicParsing="false" onAction="#acceptPurchase" prefHeight="46.0" prefWidth="129.0" style="-fx-background-color: #c7192d;" text="ยืนยัน" textFill="WHITE">
+            <Button layoutX="428.0" layoutY="490.0" mnemonicParsing="false" onAction="#acceptPurchase" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #c7192d;" text="ยืนยัน" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -140,7 +158,7 @@
             <String fx:value="radius" />
          </styleClass>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Pane>
    </left>

@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.Shop;
+import ku.cs.services.Effect;
 
 import java.io.IOException;
 
@@ -16,6 +17,7 @@ public class ProductController extends HomePageController{
 
     private Shop shop;
     private Product item;
+    private Effect effect = new Effect();
 
     @Override
     public void initialize() {
@@ -28,6 +30,7 @@ public class ProductController extends HomePageController{
         priceLabel.setText(String.format("%.2f", item.getPrice())+ " ฿");
         Image image = new Image(item.getImagePath());
         img.setImage(image);
+        effect.centerImage(img);
     }
 
     @FXML

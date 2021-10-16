@@ -20,6 +20,7 @@ public class DetailController {
     @FXML private Label productNameLabel;
     @FXML private Label priceLabel;
     @FXML private Label maxProductLabel;
+    @FXML private Label reportLabel;
     @FXML private TextArea detailTextArea;
     @FXML private Label productTotalLabel;
     @FXML private Label priceTotalLabel;
@@ -42,7 +43,7 @@ public class DetailController {
             startingAmount = 0;
         }
         productImageView.setImage(new Image(item.getImagePath()));
-        productImageView.resize(245,280);
+        effect.centerImage(productImageView);
         productStoreNameLabel.setText(item.getShopName());
         productNameLabel.setText(item.getProductName());
         priceLabel.setText(String.format("%.2f", item.getPrice())+" ฿");
@@ -68,14 +69,6 @@ public class DetailController {
         });
     }
 
-//    @FXML
-//    public void changeProductAmount(InputMethodEvent inputMethodEvent) {
-//        if (productPieceSpinner.getValue() > item.getStock()) {
-//            buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
-//            buyGoodBtn.setText("สินค้าหมด");
-//        }
-//    }
-
     @FXML
     private void mouseEnterStoreNameLabel(MouseEvent mouseEvent) {
         productStoreNameLabel.setStyle("-fx-text-fill: #7597fd"); //เปลี่ยนสี Label
@@ -87,9 +80,19 @@ public class DetailController {
     }
 
     @FXML
+    private void mouseEnterReport(MouseEvent mouseEvent) {
+        reportLabel.setStyle("-fx-text-fill: #7597fd"); //เปลี่ยนสี Label
+    }
+
+    @FXML
+    private void mouseExitedReport(MouseEvent mouseEvent) {
+        reportLabel.setStyle("-fx-text-fill: #000000"); //เปลี่ยนสีกลับ
+    }
+
+    @FXML
     public void switchToHome() {
         try {
-            FXRouter.goTo("main");
+            FXRouter.goTo("main", new Shop(account));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -99,7 +102,7 @@ public class DetailController {
     @FXML
     public void switchToSpecific() {
         try {
-            com.github.saacsos.FXRouter.goTo("specific");
+            com.github.saacsos.FXRouter.goTo("specific", new Shop(account));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า specific ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -108,12 +111,13 @@ public class DetailController {
     }
 
     @FXML
-    public void switchToReport() {
+    public void goToReportPage() {
         try {
-            FXRouter.goTo("Report");
+            FXRouter.goTo("report", shop);
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า Report ไม่ได้");
+            System.err.println("ไปที่หน้า report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
         }
     }
 
@@ -122,8 +126,7 @@ public class DetailController {
         if ((!(item.getStock() == 0)) && currentPiece <= item.getStock()) {
             try {
                 String price = String.format("%.2f", currentPiece*item.getPrice());
-                Order order = new Order(account.getName(), item.getShopName(), item, currentPiece, price);
-                shop.setOrder(order);
+                shop.newOrder(item.getId(), item.getShopName(), account.getUsername(), currentPiece, price);
                 FXRouter.goTo("summary", shop);
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า summary ไม่ได้");
