@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import ku.cs.models.shop.Product;
+import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import java.io.IOException;
@@ -13,34 +16,48 @@ import java.util.Comparator;
 
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.AccountList;
+import ku.cs.models.verify.Report;
 import ku.cs.models.verify.ReportList;
-import ku.cs.services.DataSource;
-import ku.cs.services.Effect;
-import ku.cs.services.ReportDataSource;
-import ku.cs.services.UserDataSource;
+import ku.cs.services.*;
 
 public class AdminController {
-    @FXML ListView accountListView;
+    @FXML ListView showDataListView;
     @FXML ImageView userImageView;
+    @FXML PasswordField newPasswordField;
+    @FXML PasswordField confirmPasswordField;
+    @FXML Button banBtn;
+    @FXML Button accountManageBtn;
+    @FXML Button reportManageBtn;
+    @FXML Label saveSuccessfulLabel;
+    // ส่วนของข้อมูล account
+    @FXML Pane accountPane;
     @FXML Label usernameLabel;
     @FXML Label nameLabel;
     @FXML Label storeNameLabel;
     @FXML Label timeLabel;
-    @FXML Label saveSuccessfulLabel;
     @FXML Label tryLoginLabel;
     @FXML Label loginLabel;
-    @FXML PasswordField newPasswordField;
-    @FXML PasswordField confirmPasswordField;
-    @FXML Button banBtn;
+    // ส่วนของข้อมูล report
+    @FXML Pane reportPane;
+    @FXML Label reportUsernameLabel;
+    @FXML Label reportCategoryLabel;
+    @FXML Label reportTopicLabel;
+    @FXML TextArea detailTextArea;
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
     private DataSource<ReportList> reportListDataSource = new ReportDataSource();
     private ReportList reportList = reportListDataSource.readData();
+    private DataSource<ProductList> productDataSource = new ProductDataSource();
+    private ProductList productList = productDataSource.readData();
     private Effect effect = new Effect();
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
     private Account selectedAccount = null;
+    private ChangeListener myListener = null;
+
+    private ChangeListener<Account> accountListener = null;
+    private ChangeListener<Report> reportListener = null;
 
     public void initialize() {
         accountList.sort(new Comparator<Account>() {
@@ -51,60 +68,105 @@ public class AdminController {
                 return 0;
             }
         });
-        userImageView.setImage(new Image(account.getImagePath()));
+        accountListener = new ChangeListener<Account>() {
+            @Override
+            public void changed(ObservableValue<? extends Account> observable,
+                                Account oldValue, Account newValue) {
+                showSelectedAccount(newValue);
+            }
+        };
+        reportListener = new ChangeListener<Report>() {
+            @Override
+            public void changed(ObservableValue<? extends Report> observableValue,
+                                Report oldValue, Report newValue) {
+                showSelectedReport(newValue);
+            }
+        };
+        myListener = accountListener;
+        showDataListView.getSelectionModel().selectedItemProperty().addListener(myListener);
+        reportPane.setOpacity(0);
         showAccountInListView();
-        handleSelectedListView();
+        detailTextArea.setDisable(true);
     }
 
     @FXML
-    public void manageAccount() {
-        clearListView();
+    public void handleAccountMenu() {
         showAccountInListView();
+        reportPane.setOpacity(0);
+        accountPane.setOpacity(1);
+        if (myListener.equals(reportListener)) {
+            showDataListView.getSelectionModel().selectedItemProperty().removeListener(reportListener);
+            showDataListView.getSelectionModel().selectedItemProperty().addListener(accountListener);
+            myListener = accountListener;
+        }
+        banBtn.setDisable(false);
+        banBtn.setVisible(true);
+        accountManageBtn.setOpacity(1);
+        reportManageBtn.setOpacity(0.75);
+        detailTextArea.setDisable(true);
     }
 
     @FXML
-    public void manageReport() {
-        clearListView();
+    public void handleReportMenu() {
         showReportInListView();
+        accountPane.setOpacity(0);
+        reportPane.setOpacity(1);
+        if (myListener.equals(accountListener)) {
+            showDataListView.getSelectionModel().selectedItemProperty().removeListener(accountListener);
+            showDataListView.getSelectionModel().selectedItemProperty().addListener(reportListener);
+            myListener = reportListener;
+        }
+        banBtn.setDisable(true);
+        banBtn.setVisible(false);
+        reportManageBtn.setOpacity(1);
+        accountManageBtn.setOpacity(0.75);
+        detailTextArea.setDisable(false);
     }
 
     private void showAccountInListView() {
-        accountListView.getItems().addAll(accountList.getAllAccountExceptAdmin());
-        accountListView.refresh();
+        clearData();
+        userImageView.setImage(new Image(getClass().getResource("/images/profileDefault.png").toExternalForm()));
+        showDataListView.getItems().addAll(accountList.getAllAccountExceptAdmin());
+        showDataListView.refresh();
     }
 
     private void showReportInListView() {
-        accountListView.getItems().addAll(reportList.getAllReportLog());
-        accountListView.refresh();
-    }
-
-    private void handleSelectedListView() {
-        accountListView.getSelectionModel().selectedItemProperty().addListener(
-                new ChangeListener<Account>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Account> observable,
-                                        Account oldValue, Account newValue) {
-                        showSelectedAccount(newValue);
-                    }
-                });
+        clearData();
+        userImageView.setImage(new Image(getClass().getResource("/images/product_default_white.png").toExternalForm()));
+        showDataListView.getItems().addAll(reportList.getAllReportLog());
+        showDataListView.refresh();
     }
 
     private void showSelectedAccount(Account account) {
-        usernameLabel.setText(account.getUsername());
-        nameLabel.setText(account.getName());
-        storeNameLabel.setText(account.getStoreName());
-        timeLabel.setText(account.getLoginDateTime());
-        selectedAccount = account;
-        userImageView.setImage(new Image(account.getImagePath()));
-        effect.centerImage(userImageView);
-        if (account.gotBanned()) {
-            banBtn.setText("ปลดแบน");
-            tryLoginLabel.setText("จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน :");
-            loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
-        } else {
-            banBtn.setText("แบน");
-            tryLoginLabel.setText("");
-            loginLabel.setText("");
+        if (account != null) {
+            usernameLabel.setText(account.getUsername());
+            nameLabel.setText(account.getName());
+            storeNameLabel.setText(account.getStoreName());
+            timeLabel.setText(account.getLoginDateTime());
+            selectedAccount = account;
+            userImageView.setImage(new Image(account.getImagePath()));
+            effect.centerImage(userImageView);
+            if (account.gotBanned()) {
+                banBtn.setText("ปลดแบน");
+                tryLoginLabel.setText("จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน :");
+                loginLabel.setText(String.valueOf(account.getTryLoginWhenGotBanned()));
+            } else {
+                banBtn.setText("แบน");
+                tryLoginLabel.setText("");
+                loginLabel.setText("");
+            }
+        }
+    }
+
+    private void showSelectedReport(Report report) {
+        if (report != null) {
+            reportUsernameLabel.setText(report.getReporterUsername());
+            reportCategoryLabel.setText(report.getCategory());
+            reportTopicLabel.setText(report.getTopic());
+            detailTextArea.setText(report.getDetail());
+            String imagePath = productList.getProductImagePathByProductId(report.getProductId());
+            userImageView.setImage(new Image(imagePath));
+            effect.centerImage(userImageView);
         }
     }
 
@@ -112,14 +174,14 @@ public class AdminController {
         if (selectedAccount != null) {
             selectedAccount.switchBanStatus();
             dataSource.writeData(accountList);
-            accountListView.refresh();
+            showDataListView.refresh();
             showSelectedAccount(selectedAccount);
         }
     }
 
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            FXRouter.goTo("main");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -129,7 +191,7 @@ public class AdminController {
     @FXML
     private void switchToLoginPage() {
         try {
-            com.github.saacsos.FXRouter.goTo("login");
+            FXRouter.goTo("login");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า login ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -139,7 +201,7 @@ public class AdminController {
     @FXML
     private void backToHome() {
         try {
-            com.github.saacsos.FXRouter.goTo("main");
+            FXRouter.goTo("main");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -153,26 +215,33 @@ public class AdminController {
         if (newPassword.equals("") || confirmPassword.equals("")) {
             saveSuccessfulLabel.setText("ยังกรอกไม่ครบ");
             effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
-            clear();
         } else if (!newPassword.equals(confirmPassword)) {
             saveSuccessfulLabel.setText("รหัสผ่านไม่ตรงกัน");
             effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
-            clear();
         } else {
             accountList.changePasswordByUsername(username, newPassword);
             saveSuccessfulLabel.setText("เปลี่ยนรหัสผ่านสำเร็จ");
             effect.fadeOutLabelEffect(saveSuccessfulLabel, 5);
-            clear();
             dataSource.writeData(accountList);
-        }
+        } clearPasswordField();
     }
 
-    public void clear() {
+    public void clearPasswordField() {
         newPasswordField.clear();
         confirmPasswordField.clear();
     }
 
-    public void clearListView() {
-        accountListView.getItems().clear();
+    public void clearData() {
+        showDataListView.getItems().clear();
+        usernameLabel.setText("-");
+        nameLabel.setText("-");
+        storeNameLabel.setText("-");
+        timeLabel.setText("-");
+        tryLoginLabel.setText("");
+        loginLabel.setText("");
+        reportUsernameLabel.setText("-");
+        reportCategoryLabel.setText("-");
+        reportTopicLabel.setText("-");
+        detailTextArea.clear();
     }
 }

@@ -60,6 +60,16 @@ public class ProductList{
         return null;
     }
 
+    public String getStoreNameByProductId(String productId) {
+        Product product = searchProductById(productId);
+        return product.getShopName();
+    }
+
+    public String getProductImagePathByProductId(String productId) {
+        Product product = searchProductById(productId);
+        return product.getImagePath();
+    }
+
     public String toCsv() {
         String result = "";
         for (Product product: productList) {

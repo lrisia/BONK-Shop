@@ -36,12 +36,13 @@ public class ReportDataSource implements DataSource<ReportList>{
                 String data[] = line.split(",");
                 String reporterUsername = data[0];
                 String productId = data[1];
-                String category = data[2];
-                String topic = data[3];
-                String detail = data[4];
-                String reportDate = data[5];
-                String reportTime = data[6];
-                reportList.addReport(new Report(reporterUsername, productId, category, topic, detail, reportDate, reportTime));
+                String storeName = data[2];
+                String category = data[3];
+                String topic = data[4];
+                String detail = data[5];
+                String reportDate = data[6];
+                String reportTime = data[7];
+                reportList.addReport(new Report(reporterUsername, productId, storeName, category, topic, detail, reportDate, reportTime));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

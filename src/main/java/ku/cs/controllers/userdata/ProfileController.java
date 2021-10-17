@@ -52,7 +52,7 @@ public class ProfileController {
     @FXML
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main", shop);
+            FXRouter.goTo("main", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -62,7 +62,7 @@ public class ProfileController {
     @FXML
     private void switchToLoginPage() {
         try {
-            com.github.saacsos.FXRouter.goTo("login");
+            FXRouter.goTo("login");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า login ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
