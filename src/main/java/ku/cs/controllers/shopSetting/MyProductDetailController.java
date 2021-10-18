@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.github.saacsos.FXRouter;
 import javafx.scene.Node;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -24,7 +21,6 @@ import ku.cs.services.ProductDataSource;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class MyProductDetailController {
     @FXML private TextField storeNameTextField;
@@ -33,6 +29,7 @@ public class MyProductDetailController {
     @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private ImageView productImageView;
     @FXML private TextArea detailTextArea;
+    @FXML private Label notificationLabel;
 
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
@@ -94,6 +91,29 @@ public class MyProductDetailController {
         productListDataSource.writeData(productList);
         productImageView.setImage(image);
         effect.centerImage(productImageView);
+    }
+
+    @FXML
+    public void handleUpdateProductInfo() {
+        if (productNameTextField.getText().equals("")) {
+            notificationLabel.setText("ยังไม่ได้กรอกชื่อสินค้า");
+        } else if (priceTextField.getText().equals("")) {
+            notificationLabel.setText("ยังไม่ได้กรอกราคา");
+        } else if (detailTextArea.getText().equals("")) {
+            notificationLabel.setText("ยังไม่ได้กรอกรายละเอียด");
+        } else {
+            try {
+                String productName = productNameTextField.getText();
+                String price = priceTextField.getText();
+                String detail = detailTextArea.getText();
+                productList.editProductInformation(product, productName, price, newAmount, detail);
+                productListDataSource.writeData(productList);
+                FXRouter.goTo("store", new Shop(account));
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า store ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
+        } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
 

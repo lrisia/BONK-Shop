@@ -56,7 +56,7 @@
                      </font>
                   </Label>
                   <Spinner fx:id="productPieceSpinner" layoutX="119.0" layoutY="165.0" prefHeight="31.0" prefWidth="202.0" />
-                  <Button layoutX="93.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleUploadButton" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="เปลี่ยนรูป" textFill="WHITE">
+                  <Button layoutX="93.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleUploadButton" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="เปลี่ยนรูป" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -64,6 +64,11 @@
                   <Label layoutX="306.0" layoutY="121.0" text="฿" textFill="RED">
                      <font>
                         <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="notificationLabel" alignment="CENTER" layoutX="3.0" layoutY="257.0" prefHeight="20.0" prefWidth="323.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -82,7 +87,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="15.0" layoutY="44.0" prefHeight="213.0" prefWidth="376.0" promptText="รายละเอียด" wrapText="true">
+                  <TextArea fx:id="detailTextArea" focusTraversable="false" layoutX="15.0" layoutY="44.0" prefHeight="213.0" prefWidth="376.0" promptText="รายละเอียด" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DISAPPEAR" />
                      </cursor>
@@ -99,7 +104,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Pane>
-            <Button fx:id="saveEditBtn" layoutX="450.0" layoutY="512.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="บันทึกการเปลี่ยนแปลง" textFill="WHITE">
+            <Button fx:id="saveEditBtn" layoutX="450.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleUpdateProductInfo" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="บันทึกการเปลี่ยนแปลง" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

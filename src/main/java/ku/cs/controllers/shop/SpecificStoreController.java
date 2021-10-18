@@ -5,16 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
-import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
-import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 import com.github.saacsos.FXRouter;
 
@@ -25,6 +25,7 @@ public class SpecificStoreController {
     @FXML private GridPane storeGrid;
     @FXML private Label storeNameLabel;
     @FXML private Label noProductLabel;
+
 
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();

@@ -109,7 +109,12 @@ public class Product implements HandleImage {
 
     public String getId() { return id; }
 
-    public void setStock(int stock) { this.stock = stock; }
+    public void setProductInformation(String productName, Double price, int amount, String detail) {
+        this.productName = productName;
+        this.price = price;
+        this.stock = amount;
+        this.detail = detail;
+    }
 
     public String getCategory() {
         return category;

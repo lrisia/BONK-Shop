@@ -55,6 +55,12 @@ public class ProductList{
         } return max;
     }
 
+    public void editProductInformation(Product oldProduct, String productName, String price, int amount, String detail) {
+        Product product = searchProductById(oldProduct.getId());
+        double priceDouble = Double.parseDouble(price);
+        product.setProductInformation(productName, priceDouble, amount, detail);
+    }
+
     public String initialProductId(){
         return String.format("%06d",productList.size()+1);
     }
