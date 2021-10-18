@@ -48,6 +48,13 @@ public class ProductList{
         } return max;
     }
 
+    public int getMaxStock() {
+        int max = productList.get(0).getStock();
+        for (Product product: productList) {
+            if (product.getStock() > max) max = product.getStock();
+        } return max;
+    }
+
     public String initialProductId(){
         return String.format("%06d",productList.size()+1);
     }

@@ -1,10 +1,14 @@
 package ku.cs.controllers.shopSetting;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -26,9 +30,11 @@ public class MyStorePageController {
     @FXML GridPane storeGridPane;
     @FXML Label storeNameLabel;
     @FXML Pane noProductPane;
+    @FXML Spinner<Integer> alertLowProductSpinner;
 
     private Shop shop = (Shop) FXRouter.getData();
     protected Account account = shop.getBuyer();
+    protected int lowProductAlert;
 
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
@@ -37,11 +43,22 @@ public class MyStorePageController {
 
     public void initialize() {
         account = accountList.searchAccountByUsername(account.getUsername());
+        lowProductAlert = account.getLowProductAlert();
         showProduct(productList);
         storeNameLabel.setText(account.getStoreName());
+        SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, productList.getMaxStock());
+        valueFactoryQuantity.setValue(account.getLowProductAlert());
+        alertLowProductSpinner.setValueFactory(valueFactoryQuantity);
+        alertLowProductSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+                lowProductAlert = newValue;
+            }
+        });
     }
 
     public void showProduct(ProductList productList) {
+        storeGridPane.getChildren().clear();
         ProductList filtered =  productList.filter(new MyStoreProductFilterer(account.getStoreName()));
         ArrayList<Product> products = filtered.getProductList();
         noProductPane.setOpacity(0);
@@ -58,7 +75,7 @@ public class MyStorePageController {
                 fxmlLoader.setLocation(getClass().getResource("/ku/cs/shopSetting/my_product.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 MyProductController myProductController = fxmlLoader.getController();
-                myProductController.setData(product);
+                myProductController.setData(product, lowProductAlert);
                 if(column == 4){
                     column = 0;
                     row++;
@@ -72,14 +89,10 @@ public class MyStorePageController {
     }
 
     @FXML
-    public void switchToInfo(Event event) {
-        try {
-            FXRouter.goTo("info", shop);
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า info ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
-        }
+    public void applyNewSettingLowAmount() {
+        accountList.setNewLowProductAlertValue(account, lowProductAlert);
+        accountListDataSource.writeData(accountList);
+        showProduct(productList);
     }
 
     @FXML
@@ -102,7 +115,4 @@ public class MyStorePageController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
-
-
 }

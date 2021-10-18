@@ -42,7 +42,7 @@ public class AddProductPageController{
     private Effect effect = new Effect();
 
     public void initialize() {
-        SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
+        SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5000);
         valueFactoryQuantity.setValue(0);
         inputProductDetailTextArea.setWrapText(true);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);

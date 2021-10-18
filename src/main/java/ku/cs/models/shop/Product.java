@@ -1,5 +1,7 @@
 package ku.cs.models.shop;
 
+import ku.cs.services.HandleImage;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
-public class Product {
+public class Product implements HandleImage {
     private String id;
     private String shopName;
     private String category;
@@ -115,5 +117,16 @@ public class Product {
 
     public String getShopName() {
         return shopName;
+    }
+
+    @Override
+    public void setImagePathToDirectory(String path) {
+        String[] fileSplit = path.split("\\.");
+        this.imagePath = getFilePictureName() + "." + fileSplit[fileSplit.length - 1];
+    }
+
+    @Override
+    public String getFilePictureName() {
+        return id + "-product";
     }
 }

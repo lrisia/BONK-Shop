@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#switchToDetail" prefHeight="180.0" prefWidth="180.0" styleClass="transparent" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.MyProductController">
+<AnchorPane onMouseClicked="#switchToDetail" prefHeight="180.0" prefWidth="180.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.MyProductController">
    <children>
       <AnchorPane prefHeight="180.0" prefWidth="180.0" stylesheets="@../styles/styles.css">
          <children>
@@ -28,7 +28,7 @@
                   <Font name="Agency FB Bold" size="16.0" />
                </font>
             </Label>
-            <Circle fill="RED" layoutX="167.0" layoutY="2.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="lowProductAlertIcon" fill="RED" layoutX="167.0" layoutY="2.0" opacity="0.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
          <styleClass>
             <String fx:value="product" />
@@ -39,4 +39,8 @@
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
+   <styleClass>
+      <String fx:value="transparent" />
+      <String fx:value="shadow" />
+   </styleClass>
 </AnchorPane>

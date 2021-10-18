@@ -1,7 +1,5 @@
 package ku.cs.services;
 
-import ku.cs.models.verify.Account;
-import ku.cs.models.verify.AccountList;
 import ku.cs.models.verify.Report;
 import ku.cs.models.verify.ReportList;
 
@@ -18,7 +16,7 @@ public class ReportDataSource implements DataSource<ReportList>{
     public ReportDataSource(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
-        InitialFileIfNotExist.initialFileIfNotExist(directory, filename);
+        FileService.initialFileIfNotExist(directory, filename);
     }
 
     @Override

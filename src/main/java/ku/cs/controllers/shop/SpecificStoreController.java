@@ -41,6 +41,7 @@ public class SpecificStoreController {
 
     public void showProduct(ProductList productList) {
         noProductLabel.setText("");
+        productList = productList.filter(new MyStoreProductFilterer(product.getShopName()));
         ArrayList<Product> products = productList.getProductList();
         int column = 0;
         int row = 1;
@@ -54,7 +55,7 @@ public class SpecificStoreController {
                 AnchorPane anchorPane = fxmlLoader.load();
                 ProductController productController = fxmlLoader.getController();
                 productController.setData(product);
-                if(column == 4){
+                if(column == 3){
                     column = 0;
                     row++;
                 }
