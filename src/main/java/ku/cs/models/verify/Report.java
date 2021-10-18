@@ -63,6 +63,10 @@ public class Report {
 
     public String getProductId() { return productId; }
 
+    public String getStoreName() {
+        return storeName;
+    }
+
     public String toCsv() {
         return reporterUsername + "," + productId + "," + storeName +
                 "," + category + "," + topic + "," + detail + "," +
@@ -71,11 +75,7 @@ public class Report {
 
     @Override
     public String toString() {
-        String categoryTH = "";
-        if (category.equals("product")) categoryTH = "สินค้า";
-        else if (category.equals("review")) categoryTH = "รีวิว";
-        else categoryTH = "ไม่มีข้อมูล";
-        return "รายงานโดย: " + reporterUsername + " [หมวดหมู่: " + categoryTH + "/หัวข้อ: " + topic +"]\n" +
+        return "รายงานโดย: " + reporterUsername + " [หมวดหมู่: " + category + "/หัวข้อ: " + topic +"]\n" +
                 "วันที่รายงาน: " + reportDate;
     }
 }

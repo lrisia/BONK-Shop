@@ -147,7 +147,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="reportPane" layoutX="378.0" layoutY="169.0" prefHeight="251.0" prefWidth="422.0">
+      <Pane fx:id="reportPane" layoutX="378.0" layoutY="169.0" opacity="0.0" prefHeight="251.0" prefWidth="422.0">
          <children>
             <Label layoutX="14.0" prefHeight="32.0" prefWidth="117.0" text="ผู้รายงาน :" textFill="WHITE">
                <font>
@@ -179,7 +179,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="detailTextArea" editable="false" layoutX="7.0" layoutY="75.0" prefHeight="161.0" prefWidth="409.0" promptText="รายละเอียด" style="-fx-background-radius: 5;" wrapText="true">
+            <TextArea fx:id="detailTextArea" editable="false" layoutX="7.0" layoutY="100.0" prefHeight="136.0" prefWidth="409.0" promptText="รายละเอียด" style="-fx-background-radius: 5;" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>
@@ -187,6 +187,16 @@
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </TextArea>
+            <Label layoutX="14.0" layoutY="70.0" prefHeight="27.0" prefWidth="176.0" text="ชื่อบัญชีที่ถูกรายงาน :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="ownUsernameLabel" layoutX="198.0" layoutY="70.0" text="-" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

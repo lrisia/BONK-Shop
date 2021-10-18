@@ -42,6 +42,7 @@ public class AdminController {
     @FXML Label reportUsernameLabel;
     @FXML Label reportCategoryLabel;
     @FXML Label reportTopicLabel;
+    @FXML Label ownUsernameLabel;
     @FXML TextArea detailTextArea;
 
     private DataSource<AccountList> dataSource = new UserDataSource();
@@ -126,6 +127,7 @@ public class AdminController {
     private void showAccountInListView() {
         clearData();
         userImageView.setImage(new Image(getClass().getResource("/images/profileDefault.png").toExternalForm()));
+        effect.centerImage(userImageView);
         showDataListView.getItems().addAll(accountList.getAllAccountExceptAdmin());
         showDataListView.refresh();
     }
@@ -133,6 +135,7 @@ public class AdminController {
     private void showReportInListView() {
         clearData();
         userImageView.setImage(new Image(getClass().getResource("/images/product_default_white.png").toExternalForm()));
+        effect.centerImage(userImageView);
         showDataListView.getItems().addAll(reportList.getAllReportLog());
         showDataListView.refresh();
     }
@@ -163,6 +166,7 @@ public class AdminController {
             reportUsernameLabel.setText(report.getReporterUsername());
             reportCategoryLabel.setText(report.getCategory());
             reportTopicLabel.setText(report.getTopic());
+            ownUsernameLabel.setText(report.getStoreName());
             detailTextArea.setText(report.getDetail());
             String imagePath = productList.getProductImagePathByProductId(report.getProductId());
             userImageView.setImage(new Image(imagePath));
@@ -242,6 +246,7 @@ public class AdminController {
         reportUsernameLabel.setText("-");
         reportCategoryLabel.setText("-");
         reportTopicLabel.setText("-");
+        ownUsernameLabel.setText("-");
         detailTextArea.clear();
     }
 }

@@ -1,4 +1,4 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.shopSetting;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -112,7 +112,7 @@ public class AddProductPageController{
             try {
                 String category = categoryComboBox.getValue().toString();
                 double price = Double.parseDouble(productPriceTextField.getText());
-                productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
+                productList.addProduct(account.getStoreName(), productName, price, quantity, productDetail, category);
                 Comparator<Product> comparator = new Comparator<Product>() {
                     @Override
                     public int compare(Product o1, Product o2) {
@@ -129,10 +129,10 @@ public class AddProductPageController{
                 System.err.println("ให้ตรวจสอบการกำหนด route");
                 e.printStackTrace();
             } catch (NullPointerException e) {
-                notificationLabel.setText("Please selected your product category");
+                notificationLabel.setText("โปรดเลือกหมวดหมู่ของสินค้า");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             } catch (NumberFormatException e) {
-                notificationLabel.setText("Price format incorrect");
+                notificationLabel.setText("รูปแบบราคาไม่ถูกต้อง");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
         } effect.fadeOutLabelEffect(notificationLabel, 3);

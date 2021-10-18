@@ -14,7 +14,7 @@ public class ProductList{
     public void addProduct(String shopName,String productName, double price, int stock, String description, String category) {
         String id = initialProductId();
         String imagePath = id + "-" + "product.png";
-        Product product = new Product(shopName,productName,price,stock,description,category,id, imagePath);
+        Product product = new Product(shopName, productName, price, stock, description, category, id, imagePath);
         productList.add(product);
         product.setImagePath();
     }

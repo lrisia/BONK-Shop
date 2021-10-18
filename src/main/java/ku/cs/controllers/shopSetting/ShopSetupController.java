@@ -1,4 +1,4 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.shopSetting;
 
 import javafx.fxml.FXML;
 import ku.cs.models.shop.Shop;

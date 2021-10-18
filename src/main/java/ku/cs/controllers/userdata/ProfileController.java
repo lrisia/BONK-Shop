@@ -44,6 +44,7 @@ public class ProfileController {
         AccountList accountList = dataSource.readData();
         Account account = accountList.searchAccountByUsername(getUsername);
         profileImageView.setImage(new Image(account.getImagePath()));
+        effect.centerImage(profileImageView);
         showUserNameTextField.setText(account.getUsername());
         showNameTextField.setText(account.getName());
         showShopNameTextField.setText(account.getStoreName());
@@ -70,13 +71,14 @@ public class ProfileController {
     }
 
     @FXML
-    public void upLoadPic(){
+    public void upLoadPic() {
         FileChooser fileChooser = new FileChooser();
         fileSelected = fileChooser.showOpenDialog(null);
         fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
         if(fileSelected != null){
             Image image = new Image(fileSelected.toURI().toString());
             profileImageView.setImage(image);
+            effect.centerImage(profileImageView);
             dataSource = new UserDataSource();
             AccountList accountList = dataSource.readData();
             Account account = accountList.searchAccountByUsername(getUsername);
