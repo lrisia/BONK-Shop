@@ -4,14 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import ku.cs.models.shop.Order;
-import ku.cs.models.shop.Product;
-import ku.cs.models.shop.ProductList;
-import ku.cs.models.shop.Shop;
+import ku.cs.models.shop.*;
 import com.github.saacsos.FXRouter;
 import ku.cs.models.verify.Account;
 import javafx.scene.image.ImageView;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
+import ku.cs.services.OrderDataSource;
 import ku.cs.services.ProductDataSource;
 
 import java.io.IOException;
@@ -31,29 +30,37 @@ public class SummaryPageController {
     private Product product = shop.getProduct();
     private Order order = shop.getOrder();
 
+    private Effect effect = new Effect();
     private DataSource<ProductList> dataSource;
     private ProductList productList;
+    private DataSource<OrderList> orderListDataSource;
+    private OrderList orderList;
 
     public void initialize() {
         productNameLabel.setText(product.getProductName());
         productStoreNameLabel.setText(product.getShopName());
-        priceLabel.setText("" + product.getPrice() + " ฿");
+        priceLabel.setText(String.format("%.2f", product.getPrice()) + " ฿");
         buyerNameLabel.setText(account.getName());
         amountLabel.setText("" + order.getAmount());
-        summaryPriceLabel.setText("" + order.getPrice() + " ฿");
+        summaryPriceLabel.setText(String.format("%.2f", order.getPrice()) + " ฿");
         productImageView.setImage(new Image(product.getImagePath()));
+        effect.centerImage(productImageView);
         detailTextArea.setText(product.getDetail());
 
         dataSource = new ProductDataSource();
         productList = dataSource.readData();
+
+        orderListDataSource = new OrderDataSource();
+        orderList = orderListDataSource.readData();
     }
 
     public void acceptPurchase() {
         productList.purchaseProduct(product.getId(), order.getAmount());
         dataSource.writeData(productList);
+        orderList.addOrder(order);
+        orderListDataSource.writeData(orderList);
         try {
-            System.out.println(order);
-            FXRouter.goTo("purchase_successful");
+            FXRouter.goTo("purchase_successful", new Shop(account));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

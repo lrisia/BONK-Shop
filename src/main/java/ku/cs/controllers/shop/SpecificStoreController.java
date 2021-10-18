@@ -4,44 +4,50 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
+import com.github.saacsos.FXRouter;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class SpecificStoreController {
     @FXML private GridPane storeGrid;
     @FXML private Label storeNameLabel;
+    @FXML private Label noProductLabel;
 
-    private Account account = (Account) com.github.saacsos.FXRouter.getData();
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
+    private Product product = shop.getProduct();
 
-
-    private DataSource<AccountList> dataSource = new UserDataSource();
-    private AccountList accountList = dataSource.readData();
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
 
 
     public void initialize() {
         showProduct(productList);
-        storeNameLabel.setText(account.getStoreName());
+        storeNameLabel.setText(product.getShopName());
     }
 
     public void showProduct(ProductList productList) {
-        account = accountList.searchAccountByUsername(account.getUsername());
+        noProductLabel.setText("");
+        productList = productList.filter(new MyStoreProductFilterer(product.getShopName()));
         ArrayList<Product> products = productList.getProductList();
         int column = 0;
         int row = 1;
+        if (products.size() == 0) {
+            noProductLabel.setText("ไม่พบสินค้า");
+        }
         try {
             for (Product product: products) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -49,12 +55,12 @@ public class SpecificStoreController {
                 AnchorPane anchorPane = fxmlLoader.load();
                 ProductController productController = fxmlLoader.getController();
                 productController.setData(product);
-                if(column == 4){
+                if(column == 3){
                     column = 0;
                     row++;
                 }
                 storeGrid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane,new Insets(9));
+                GridPane.setMargin(anchorPane,new Insets(7));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,10 +116,11 @@ public class SpecificStoreController {
         ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
         showProduct(filtered);
     }
+
     @FXML
     public void switchToInfo(Event event) {
         try {
-            com.github.saacsos.FXRouter.goTo("info");
+            FXRouter.goTo("info", new Shop(account));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า info ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -124,11 +131,10 @@ public class SpecificStoreController {
     @FXML
     public void switchToProfile(Event event) {
         try {
-            if(account.isAdmin()){
-                com.github.saacsos.FXRouter.goTo("admin", account);
-            }
-            else{
-                com.github.saacsos.FXRouter.goTo("profile", account);
+            if (account.isAdmin()) {
+                FXRouter.goTo("admin", new Shop(account));
+            } else {
+                FXRouter.goTo("profile", new Shop(account));
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า profile ไม่ได้");
@@ -137,25 +143,9 @@ public class SpecificStoreController {
     }
 
     @FXML
-    public void switchToStore(Event event) {
+    public void switchToHome() {
         try {
-            if(account.isSeller()){
-                com.github.saacsos.FXRouter.goTo("store", account);
-            }
-            else{
-                com.github.saacsos.FXRouter.goTo("shop_setup", account);
-            }
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า store ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void switchToHome() throws IOException {
-        try {
-            com.github.saacsos.FXRouter.goTo("main");
+            FXRouter.goTo("main", new Shop(account));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -164,6 +154,7 @@ public class SpecificStoreController {
 
     @FXML
     public void refresh() {
+        clear();
         showProduct(productList);
     }
 

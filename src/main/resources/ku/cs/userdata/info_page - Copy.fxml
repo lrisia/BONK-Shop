@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.InfoPageController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="784.0" styleClass="border-color" stylesheets="@../styles/styles.css">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="ผู้พัฒนา" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="256.0" layoutY="82.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="256.0" layoutY="129.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="476.0" layoutY="82.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="476.0" layoutY="129.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="513.0" text="คู่มือการใช้งาน" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="382.0" layoutY="82.0" prefHeight="27.0" prefWidth="66.0" text="Pochara" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="586.0" layoutY="82.0" prefHeight="27.0" prefWidth="132.0" text="Suwaravoranath" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="129.0" prefHeight="27.0" prefWidth="34.0" text="Ton" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="129.0" prefHeight="27.0" prefWidth="101.0" text="6310451294" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="394.0" layoutY="233.0" prefHeight="27.0" prefWidth="43.0" text="Warit" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="586.0" layoutY="233.0" prefHeight="27.0" prefWidth="132.0" text="Wattanakritsada" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="280.0" prefHeight="27.0" prefWidth="34.0" text="Oab" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="280.0" prefHeight="27.0" prefWidth="101.0" text="6310450069" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="383.0" layoutY="384.0" prefHeight="27.0" prefWidth="66.0" text="Anawat" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="615.0" layoutY="384.0" prefHeight="27.0" prefWidth="74.0" text="Homhual" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="391.0" layoutY="431.0" prefHeight="27.0" prefWidth="48.0" text="Muad" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="602.0" layoutY="431.0" prefHeight="27.0" prefWidth="101.0" text="6310451871" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="628.0" layoutY="-46.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logo_white.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/ton.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/oab.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="73.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/developer_image/muad.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="233.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="280.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="233.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="280.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="384.0" prefWidth="94.0" text="ชื่อ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="259.0" layoutY="431.0" prefWidth="94.0" text="ชื่อเล่น" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="384.0" prefWidth="94.0" text="นามสกุล" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="479.0" layoutY="431.0" prefWidth="94.0" text="รหัสนิสิต" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
