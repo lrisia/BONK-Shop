@@ -104,6 +104,7 @@ public class DetailController {
         ArrayList<Review> reviews = reviewList.getAllReviewWithProductId(item.getId());
         int allReview = reviews.size();
         String averageScore = String.format("%.1f", reviewList.findAverageScore(reviews)) + "/5.0";
+        noReviewPane.setOpacity(0);
         if (allReview == 0)  {
             averageScore = "ไม่มีคะแนน";
             noReviewPane.setOpacity(0.45);

@@ -98,14 +98,26 @@
             </Pane>
          </right>
          <bottom>
-            <ImageView fitHeight="105.0" fitWidth="105.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
-               <image>
-                  <Image url="@../../../images/Add_Icon.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/list_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Add_Icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </HBox>
          </bottom>
       </BorderPane>
       <Pane fx:id="noProductPane" layoutX="390.0" layoutY="360.0" opacity="0.0" prefHeight="17.0" prefWidth="55.0">
