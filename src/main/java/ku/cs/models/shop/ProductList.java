@@ -83,6 +83,11 @@ public class ProductList{
         return product.getImagePath();
     }
 
+    public void removeProduct(Product remove) {
+        Product product = searchProductById(remove.getId());
+        productList.remove(product);
+    }
+
     public String toCsv() {
         String result = "";
         for (Product product: productList) {

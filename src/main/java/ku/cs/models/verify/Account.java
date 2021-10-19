@@ -1,6 +1,5 @@
 package ku.cs.models.verify;
 
-import ku.cs.models.shop.ProductList;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +21,6 @@ public class Account {
     private String loginDate;
     private String loginTime;
     private String imagePath;
-
-    private ProductList productList;
 
     public Account(String username, String password, String name) {
         this("Account", username, password, name, "", 0, false, 0, "", "","profileDefault.png");

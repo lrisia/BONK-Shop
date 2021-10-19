@@ -22,6 +22,7 @@ public class SummaryPageController {
     @FXML Label buyerNameLabel;
     @FXML Label amountLabel;
     @FXML Label summaryPriceLabel;
+    @FXML Label categoryLabel;
     @FXML ImageView productImageView;
     @FXML TextArea detailTextArea;
 
@@ -43,6 +44,7 @@ public class SummaryPageController {
         buyerNameLabel.setText(account.getName());
         amountLabel.setText("" + order.getAmount());
         summaryPriceLabel.setText(String.format("%.2f", order.getPrice()) + " ฿");
+        categoryLabel.setText(product.getCategory());
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
         detailTextArea.setText(product.getDetail());

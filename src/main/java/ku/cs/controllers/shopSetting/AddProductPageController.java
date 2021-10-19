@@ -65,13 +65,13 @@ public class AddProductPageController{
 
         quantity = productQuantitySpinner.getValue();
 
-        categoryComboBox.getItems().add("Tank");
-        categoryComboBox.getItems().add("Plane");
-        categoryComboBox.getItems().add("Car");
-        categoryComboBox.getItems().add("Warship");
-        categoryComboBox.getItems().add("Gun");
-        categoryComboBox.getItems().add("Knife");
-        categoryComboBox.getItems().add("Assault rifle");
+        categoryComboBox.getItems().add("รถถัง");
+        categoryComboBox.getItems().add("เครื่องบิน");
+        categoryComboBox.getItems().add("รถ");
+        categoryComboBox.getItems().add("เรือ");
+        categoryComboBox.getItems().add("ปืน");
+        categoryComboBox.getItems().add("ระยะประชิด");
+        categoryComboBox.getItems().add("ปืนกล");
     }
 
     @FXML

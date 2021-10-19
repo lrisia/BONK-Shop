@@ -109,6 +109,19 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <ImageView fx:id="trashIconImageView" fitHeight="30.0" fitWidth="98.0" layoutX="613.0" layoutY="300.0" onMouseClicked="#handleRemoveProduct" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/remove_product.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="516.0" layoutY="305.0" text="ลบสินค้าชิ้นนี้!!!">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
          <styleClass>
             <String fx:value="product-card" />

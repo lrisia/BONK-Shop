@@ -28,6 +28,7 @@ public class MyProductDetailController {
     @FXML private TextField priceTextField;
     @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private ImageView productImageView;
+    @FXML private ImageView trashIconImageView;
     @FXML private TextArea detailTextArea;
     @FXML private Label notificationLabel;
 
@@ -49,6 +50,7 @@ public class MyProductDetailController {
         productNameTextField.setText(product.getProductName());
         priceTextField.setText(String.format("%.2f", product.getPrice()));
         detailTextArea.setText(product.getDetail());
+        trashIconImageView.setImage(new Image(getClass().getResource("/images/remove_product.png").toExternalForm()));
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
         handlePriceTextFieldListener();
@@ -116,6 +118,17 @@ public class MyProductDetailController {
         } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
+    @FXML
+    public void handleRemoveProduct() {
+        productList.removeProduct(product);
+        productListDataSource.writeData(productList);
+        try {
+            FXRouter.goTo("store", new Shop(account));
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 
     @FXML
     public void backBtn() {

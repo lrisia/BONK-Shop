@@ -12,7 +12,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.DetailController">
@@ -47,7 +49,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceLabel" layoutX="33.0" layoutY="229.0" prefHeight="30.0" prefWidth="290.0">
+                  <Label fx:id="priceLabel" layoutX="131.0" layoutY="183.0" prefHeight="30.0" prefWidth="190.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -64,6 +66,16 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                  </Label>
+                  <Label layoutX="21.0" layoutY="228.0" text="หมวดหมู่" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="categoryLabel" layoutX="131.0" layoutY="228.0" prefHeight="30.0" prefWidth="190.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </Label>
                </children>
                <styleClass>
@@ -94,7 +106,14 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="26.0" layoutY="153.0" prefHeight="110.0" prefWidth="318.0" />
+                  <ScrollPane layoutX="26.0" layoutY="153.0" prefHeight="110.0" prefWidth="318.0">
+                     <content>
+                        <GridPane fx:id="reviewGridPane" prefHeight="0.0" prefWidth="0.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content></ScrollPane>
                </children>
                <styleClass>
                   <String fx:value="product-card" />

@@ -163,49 +163,49 @@ public class HomePageController {
     @FXML
     public void switchToTank() {
         headerLabel.setText("รถถัง");
-        category = "Tank";
+        category = "รถถัง";
         showProduct(productList);
     }
 
     @FXML
     public void switchToPlane() {
         headerLabel.setText("เครื่องบิน");
-        category = "Plane";
+        category = "เครื่องบิน";
         showProduct(productList);
     }
 
     @FXML
     public void switchToCar() {
         headerLabel.setText("รถ");
-        category = "Car";
+        category = "รถ";
         showProduct(productList);
     }
 
     @FXML
     public void switchToWarship() {
         headerLabel.setText("เรือ");
-        category = "Warship";
+        category = "เรือ";
         showProduct(productList);
     }
 
     @FXML
     public void switchToGun() {
         headerLabel.setText("ปืน");
-        category = "Gun";
+        category = "ปืน";
         showProduct(productList);
     }
 
     @FXML
     public void switchToKnife() {
         headerLabel.setText("ระยะประชิด");
-        category = "Knife";
+        category = "ระยะประชิด";
         showProduct(productList);
     }
 
     @FXML
     public void switchToAssault() {
         headerLabel.setText("ปืนกล");
-        category = "Assault rifle";
+        category = "ปืนกล";
         showProduct(productList);
     }
 

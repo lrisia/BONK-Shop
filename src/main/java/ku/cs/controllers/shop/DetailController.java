@@ -3,9 +3,13 @@ package ku.cs.controllers.shop;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import ku.cs.models.shop.Order;
 import javafx.scene.input.MouseEvent;
 import ku.cs.models.shop.Product;
@@ -24,9 +28,11 @@ public class DetailController {
     @FXML private TextArea detailTextArea;
     @FXML private Label productTotalLabel;
     @FXML private Label priceTotalLabel;
+    @FXML private Label categoryLabel;
     @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private Label productStoreNameLabel;
     @FXML private Button buyGoodBtn;
+    @FXML private GridPane reviewGridPane;
 
     private Shop shop = (Shop) FXRouter.getData();
     private Product item = shop.getProduct(); //เก็บข้อมูลจากหน้าสินค้ามาไว้ในนี้ด้วย
@@ -47,6 +53,7 @@ public class DetailController {
         productStoreNameLabel.setText(item.getShopName());
         productNameLabel.setText(item.getProductName());
         priceLabel.setText(String.format("%.2f", item.getPrice())+" ฿");
+        categoryLabel.setText(item.getCategory());
         detailTextArea.setWrapText(true);
         detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("มีสินค้า "+item.getStock()+" ชิ้น");
@@ -68,6 +75,28 @@ public class DetailController {
             }
         });
     }
+
+//    private void handleShowReview() {
+//        int column = 0;
+//        int row = 1;
+//        try {
+//            for (Product product: products) {
+//                FXMLLoader fxmlLoader = new FXMLLoader();
+//                fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/product.fxml"));
+//                AnchorPane anchorPane = fxmlLoader.load();
+//                ProductController productController = fxmlLoader.getController();
+//                productController.setData(product);
+//                if(column == 1){
+//                    column = 0;
+//                    row++;
+//                }
+//                grid.add(anchorPane,column++, row);
+//                GridPane.setMargin(anchorPane, new Insets(9));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @FXML
     private void mouseEnterStoreNameLabel(MouseEvent mouseEvent) {
