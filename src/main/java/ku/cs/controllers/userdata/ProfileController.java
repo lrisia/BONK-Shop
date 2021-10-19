@@ -44,6 +44,7 @@ public class ProfileController {
         AccountList accountList = dataSource.readData();
         Account account = accountList.searchAccountByUsername(getUsername);
         profileImageView.setImage(new Image(account.getImagePath()));
+        effect.centerImage(profileImageView);
         showUserNameTextField.setText(account.getUsername());
         showNameTextField.setText(account.getName());
         showShopNameTextField.setText(account.getStoreName());
@@ -52,7 +53,7 @@ public class ProfileController {
     @FXML
     public void switchToHome() throws IOException {
         try {
-            com.github.saacsos.FXRouter.goTo("main", shop);
+            FXRouter.goTo("main", shop);
         } catch (IOException e) {
             System.err.println("ไปที่หน้า main ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -62,7 +63,7 @@ public class ProfileController {
     @FXML
     private void switchToLoginPage() {
         try {
-            com.github.saacsos.FXRouter.goTo("login");
+            FXRouter.goTo("login");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า login ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -70,13 +71,14 @@ public class ProfileController {
     }
 
     @FXML
-    public void upLoadPic(){
+    public void upLoadPic() {
         FileChooser fileChooser = new FileChooser();
         fileSelected = fileChooser.showOpenDialog(null);
         fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
         if(fileSelected != null){
             Image image = new Image(fileSelected.toURI().toString());
             profileImageView.setImage(image);
+            effect.centerImage(profileImageView);
             dataSource = new UserDataSource();
             AccountList accountList = dataSource.readData();
             Account account = accountList.searchAccountByUsername(getUsername);

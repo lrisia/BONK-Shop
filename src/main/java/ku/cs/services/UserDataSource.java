@@ -16,7 +16,7 @@ public class UserDataSource implements DataSource<AccountList>{
     public UserDataSource(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
-        InitialFileIfNotExist.initialFileIfNotExist(directory, filename);
+        FileService.initialFileIfNotExist(directory, filename);
     }
 
     @Override
@@ -37,12 +37,13 @@ public class UserDataSource implements DataSource<AccountList>{
                 String password = data[2];
                 String name = data[3];
                 String storeName = data[4];
-                boolean banStatus = Boolean.parseBoolean(data[5]);
-                int tryLoginWhenGotBanned = Integer.parseInt(data[6]);
-                String loginDate = data[7];
-                String loginTime = data[8];
-                String ImagePath = data[9];
-                accountList.addAccount(new Account(type, username, password, name, storeName, banStatus, tryLoginWhenGotBanned, loginDate, loginTime,ImagePath));
+                int lowProductAlert = Integer.parseInt(data[5]);
+                boolean banStatus = Boolean.parseBoolean(data[6]);
+                int tryLoginWhenGotBanned = Integer.parseInt(data[7]);
+                String loginDate = data[8];
+                String loginTime = data[9];
+                String ImagePath = data[10];
+                accountList.addAccount(new Account(type, username, password, name, storeName, lowProductAlert, banStatus, tryLoginWhenGotBanned, loginDate, loginTime,ImagePath));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

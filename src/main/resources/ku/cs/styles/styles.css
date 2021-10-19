@@ -1,6 +1,7 @@
 .border-color{
     -fx-background-color: linear-gradient(#c7192d, #000000);
 }
+
 .red-background{
     -fx-background-color: #c7192d;
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
@@ -12,13 +13,12 @@
 }
 
 .transparent{
-    -fx-background-color: rgba(0,0,0,0);
+    -fx-background-color: rgba(0, 0, 0, 0);
 }
 
 .round-layout{
     -fx-border-radius: 50;
     -fx-border-color: #D7D7D7;
-
 }
 
 .button{
@@ -53,6 +53,7 @@
 .shadow{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);
 }
+
 .button{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;
@@ -61,12 +62,13 @@
 .button{
     -fx-background-radius: 30;
 }
+
 .radius{
     -fx-background-radius: 10;
 }
 .product{
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 30;
+    -fx-background-radius: 15;
 }
 
 .shadow1{

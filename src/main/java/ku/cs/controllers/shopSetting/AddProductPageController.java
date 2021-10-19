@@ -1,10 +1,9 @@
-package ku.cs.controllers.shop;
+package ku.cs.controllers.shopSetting;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,7 +42,7 @@ public class AddProductPageController{
     private Effect effect = new Effect();
 
     public void initialize() {
-        SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200);
+        SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5000);
         valueFactoryQuantity.setValue(0);
         inputProductDetailTextArea.setWrapText(true);
         productQuantitySpinner.setValueFactory(valueFactoryQuantity);
@@ -101,19 +100,19 @@ public class AddProductPageController{
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextArea.getText();
         if (productName.equals("")) {
-            notificationLabel.setText("Please enter your product name");
+            notificationLabel.setText("โปรดกรอกชื่อสินค้า");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else if(productDetail.equals("")) {
-            notificationLabel.setText("Please enter your product detail");
+            notificationLabel.setText("โปรดกรอกรายละเอียด");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else if(fileSelected == null) {
-            notificationLabel.setText("Please upload your product picture");
+            notificationLabel.setText("โปรดเลือกรูปภาพ");
             notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
         } else {
             try {
                 String category = categoryComboBox.getValue().toString();
                 double price = Double.parseDouble(productPriceTextField.getText());
-                productList.addProduct(account.getStoreName(),productName,price,quantity,productDetail,category);
+                productList.addProduct(account.getStoreName(), productName, price, quantity, productDetail, category);
                 Comparator<Product> comparator = new Comparator<Product>() {
                     @Override
                     public int compare(Product o1, Product o2) {
@@ -130,10 +129,10 @@ public class AddProductPageController{
                 System.err.println("ให้ตรวจสอบการกำหนด route");
                 e.printStackTrace();
             } catch (NullPointerException e) {
-                notificationLabel.setText("Please selected your product category");
+                notificationLabel.setText("โปรดเลือกหมวดหมู่ของสินค้า");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             } catch (NumberFormatException e) {
-                notificationLabel.setText("Price format incorrect");
+                notificationLabel.setText("รูปแบบราคาไม่ถูกต้อง");
                 notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
             }
         } effect.fadeOutLabelEffect(notificationLabel, 3);

@@ -37,16 +37,17 @@ public class App extends Application {
         FXRouter.when("main", packageStr+"shop/home.fxml");
         FXRouter.when("info",packageStr+"userdata/info_page.fxml");
         FXRouter.when("profile",packageStr+"userdata/profile.fxml");
-        FXRouter.when("store",packageStr+"shop/my_store.fxml");
-        FXRouter.when("shop_setup",packageStr+"shop/shop_setup.fxml");
-        FXRouter.when("add_product",packageStr+"shop/add_product.fxml");
+        FXRouter.when("store",packageStr+"shopSetting/my_store.fxml");
+        FXRouter.when("shop_setup",packageStr+"shopSetting/shop_setup.fxml");
+        FXRouter.when("add_product",packageStr+"shopSetting/add_product.fxml");
         FXRouter.when("admin",packageStr+"verify/admin.fxml");
         FXRouter.when("detail",packageStr+"shop/detail.fxml");
         FXRouter.when("purchase_successful",packageStr+"shop/purchase_successful.fxml");
         FXRouter.when("specific",packageStr+"shop/specific_store.fxml");
         FXRouter.when("summary",packageStr+"shop/summary.fxml");
-        FXRouter.when("report",packageStr+"shop/report.fxml");
-        FXRouter.when("report_successful",packageStr+"shop/report_successful.fxml");
+        FXRouter.when("report",packageStr+"verify/report.fxml");
+        FXRouter.when("report_successful",packageStr+"verify/report_successful.fxml");
+        FXRouter.when("my_product_detail",packageStr+"shopSetting/my_product_detail.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -69,7 +70,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-
-
 }

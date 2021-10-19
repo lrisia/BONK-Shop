@@ -21,7 +21,7 @@ public class ProductDataSource implements DataSource<ProductList>{
     public ProductDataSource(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
-        InitialFileIfNotExist.initialFileIfNotExist(directory, filename);
+        FileService.initialFileIfNotExist(directory, filename);
     }
 
     @Override

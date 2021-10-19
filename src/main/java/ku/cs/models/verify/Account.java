@@ -16,6 +16,7 @@ public class Account {
     private String username;
     private String password;
     private String storeName;
+    private int lowProductAlert;
     private boolean banStatus;
     private int tryLoginWhenGotBanned;
     private String loginDate;
@@ -25,16 +26,17 @@ public class Account {
     private ProductList productList;
 
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, "-",false, 0, "", "","profileDefault.png");
+        this("Account", username, password, name, "", 0, false, 0, "", "","profileDefault.png");
         initialLoginTime();
     }
 
-    public Account(String role, String username, String password, String name, String storeName, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
+    public Account(String role, String username, String password, String name, String storeName, int lowProductAlert, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
         this.role = role;
         this.name = name;
         this.username = username;
         this.password = password;
         this.storeName = storeName;
+        this.lowProductAlert = lowProductAlert;
         this.banStatus = banStatus;
         this.tryLoginWhenGotBanned = tryLoginWhenGotBanned;
         this.loginDate = loginDate;
@@ -73,8 +75,16 @@ public class Account {
         return role;
     }
 
+    public int getLowProductAlert() {
+        return lowProductAlert;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setLowProductAlert(int lowProductAlert) {
+        this.lowProductAlert = lowProductAlert;
     }
 
     public LocalDateTime getTime() {
@@ -125,16 +135,15 @@ public class Account {
 
 
     public String toCsv() {
-        return role + "," + username + "," + password + "," + name + "," + storeName + ","
-                + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + ","
-                + loginTime + "," + imagePath;
+        return role + "," + username + "," + password + "," + name + "," + storeName + "," + lowProductAlert + ","
+                + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + "," + loginTime + "," + imagePath;
     }
 
     @Override
     public String toString() {
-        String banStatus = "Active";
-        if (this.banStatus == true) banStatus = "Banned";
-        return "Username: " + username + " [Status: " + banStatus + "]\nLast Access: " + getLoginDateTime();
+        String banStatus = "ปกติ";
+        if (this.banStatus == true) banStatus = "ถูกแบน";
+        return "ชื่อบัญชีผู้ใช้: " + username + " [สถานะ: " + banStatus + "]\nเข้าใช้งานล่าสุด: " + getLoginDateTime();
     }
 
     public void setImagePath() {

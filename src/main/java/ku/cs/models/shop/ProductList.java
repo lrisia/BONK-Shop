@@ -14,7 +14,7 @@ public class ProductList{
     public void addProduct(String shopName,String productName, double price, int stock, String description, String category) {
         String id = initialProductId();
         String imagePath = id + "-" + "product.png";
-        Product product = new Product(shopName,productName,price,stock,description,category,id, imagePath);
+        Product product = new Product(shopName, productName, price, stock, description, category, id, imagePath);
         productList.add(product);
         product.setImagePath();
     }
@@ -48,6 +48,19 @@ public class ProductList{
         } return max;
     }
 
+    public int getMaxStock() {
+        int max = productList.get(0).getStock();
+        for (Product product: productList) {
+            if (product.getStock() > max) max = product.getStock();
+        } return max;
+    }
+
+    public void editProductInformation(Product oldProduct, String productName, String price, int amount, String detail) {
+        Product product = searchProductById(oldProduct.getId());
+        double priceDouble = Double.parseDouble(price);
+        product.setProductInformation(productName, priceDouble, amount, detail);
+    }
+
     public String initialProductId(){
         return String.format("%06d",productList.size()+1);
     }
@@ -58,6 +71,16 @@ public class ProductList{
         for (Product product: productList)
             if (product.checkId(id)) return product;
         return null;
+    }
+
+    public String getStoreNameByProductId(String productId) {
+        Product product = searchProductById(productId);
+        return product.getShopName();
+    }
+
+    public String getProductImagePathByProductId(String productId) {
+        Product product = searchProductById(productId);
+        return product.getImagePath();
     }
 
     public String toCsv() {

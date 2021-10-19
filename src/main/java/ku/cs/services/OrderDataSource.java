@@ -16,7 +16,7 @@ public class OrderDataSource implements DataSource<OrderList>{
     public OrderDataSource(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
-        InitialFileIfNotExist.initialFileIfNotExist(directory, filename);
+        FileService.initialFileIfNotExist(directory, filename);
     }
 
     @Override
