@@ -89,7 +89,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="25.0" layoutY="44.0" prefHeight="218.0" prefWidth="318.0">
+                  <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="25.0" layoutY="44.0" prefHeight="218.0" prefWidth="318.0" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>

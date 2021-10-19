@@ -2,7 +2,7 @@ package ku.cs.strategy;
 
 import ku.cs.models.shop.Product;
 
-public class MyStoreProductFilterer implements ProductFilterer{
+public class MyStoreProductFilterer implements ProductFilterer {
     private String storeName;
 
     public MyStoreProductFilterer(String storeName) {

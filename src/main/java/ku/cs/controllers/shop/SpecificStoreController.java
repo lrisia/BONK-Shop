@@ -71,14 +71,14 @@ public class SpecificStoreController {
     @FXML
     public void switchToTank() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Tank"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("รถถัง"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToPlane() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Plane"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("เครื่องบิน"));
         showProduct(filtered);
 
     }
@@ -86,35 +86,35 @@ public class SpecificStoreController {
     @FXML
     public void switchToCar() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Car"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("รถ"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToWarship() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Warship"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("เรือ"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToGun() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Gun"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("ปืน"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToKnife() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Knife"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("ระยะประชิด"));
         showProduct(filtered);
     }
 
     @FXML
     public void switchToAssault() {
         clear();
-        ProductList filtered = productList.filter(new CategoryProductFilterer("Assault rifle"));
+        ProductList filtered = productList.filter(new CategoryProductFilterer("ปืนกล"));
         showProduct(filtered);
     }
 

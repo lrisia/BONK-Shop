@@ -55,6 +55,7 @@ public class MyProductDetailController {
         effect.centerImage(productImageView);
         handlePriceTextFieldListener();
         handleProductPieceSpinnerListener();
+        newAmount = product.getStock();
     }
 
     private void handlePriceTextFieldListener() {
