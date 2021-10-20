@@ -1,0 +1,97 @@
+.login-background {
+    -fx-background-color: login-background;
+}
+
+.header-text {
+    -fx-text-fill: header-text;
+}
+
+.sub-text {
+    -fx-text-fill: sub-text;
+}
+
+.text-can-hover {
+    -fx-text-fill: sub-text;
+}
+
+.text-can-hover:hover {
+    -fx-text-fill: on-hover;
+}
+
+.login-button {
+    -fx-text-fill: text-in-button;
+    -fx-background-color: login-button;
+}
+
+.register-button {
+    -fx-text-fill: text-in-button;
+    -fx-background-color: register-button;
+}
+
+.main-theme-background {
+    -fx-background-color: main-background;
+}
+
+.sub-theme-background {
+    -fx-background-color: sub-background;
+}
+
+.market-place-background {
+    -fx-background-color: market-place-background;
+}
+
+.category-hover:hover {
+    -fx-background-color: category-hover;
+}
+
+.light-button {
+    -fx-text-fill: light-text-color;
+    -fx-background-color: light-button-color;
+    -fx-background-radius: 50;
+}
+
+.button-general {
+    -fx-background-radius: 50;
+    -fx-background-color: button-background;
+    -fx-text-fill: button-text;
+}
+
+.light-header {
+    -fx-text-fill: light-header-text;
+}
+
+.line {
+    -fx-stroke: line-color;
+}
+
+.text-field {
+    -fx-background-radius: 15;
+}
+
+.product-card-background {
+    -fx-background-color: product-card-backgroud;
+    -fx-background-radius: 15;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.card {
+    -fx-background-color: card;
+    -fx-background-radius: 15;
+}
+
+.text-in-card {
+    -fx-text-fill: text-in-card;
+}
+
+.description-text-card {
+    -fx-text-fill: description-in-card;
+}
+
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.notification-low-product {
+    -fx-fill: notification-icon;
+}
+

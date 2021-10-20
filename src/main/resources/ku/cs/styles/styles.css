@@ -1,5 +1,5 @@
 .border-color{
-    -fx-background-color: linear-gradient(#c7192d, #000000);
+    -fx-background-color: red-button;
 }
 
 .red-background{

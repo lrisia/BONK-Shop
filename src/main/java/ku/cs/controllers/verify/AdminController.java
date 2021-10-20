@@ -211,9 +211,9 @@ public class AdminController {
     @FXML
     private void switchToLoginPage() {
         try {
-            FXRouter.goTo("login");
+            FXRouter.goTo("login_register");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ไปที่หน้า login_register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
