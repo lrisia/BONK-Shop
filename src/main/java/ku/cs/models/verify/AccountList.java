@@ -32,6 +32,16 @@ public class AccountList {
         return null;
     }
 
+    public Account searchAccountByLoginAccount(Account loginAccount) {
+        for (Account account: accountList)
+            if (account.equals(loginAccount)) return account;
+        return null;
+    }
+
+    public void setNewLowProductAlertValue(Account loginAccount, int amount) {
+        Account account = searchAccountByLoginAccount(loginAccount);
+        account.setLowProductAlert(amount);
+    }
 
     public boolean canLogin(String username, String password) {
         Account account = searchAccountByUsername(username);

@@ -16,7 +16,6 @@ public class Order {
     public Order(String productId, String storeName, String buyerUsername, int amount, String price) {
         this(productId, storeName, buyerUsername, amount, Double.parseDouble(price), "", "", "");
         initialOrderTime();
-        this.trackingNumber = generateTrackingNumber();
     }
 
     public Order(String productId, String storeName, String buyerUsername, int amount, double price, String orderDate, String orderTime, String trackingNumber) {

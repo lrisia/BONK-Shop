@@ -23,24 +23,25 @@
                   <Insets top="50.0" />
                </VBox.margin>
                <children>
-                  <ImageView fx:id="profileImageView" fitHeight="193.0" fitWidth="179.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../images/profileDefault.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="อัปโหลดรูปภาพ" textFill="RED">
-                     <VBox.margin>
-                        <Insets left="56.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                  <Pane prefHeight="166.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="profileImageView" fitHeight="193.0" fitWidth="179.0" layoutX="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/profileDefault.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
+            <Button fx:id="upLoadBtn" mnemonicParsing="false" onAction="#upLoadPic" text="อัปโหลดรูปภาพ" textFill="RED">
+               <VBox.margin>
+                  <Insets left="56.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <ImageView fx:id="logoImageView" fitHeight="206.0" fitWidth="198.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo_white.png" />

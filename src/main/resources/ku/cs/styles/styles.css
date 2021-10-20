@@ -13,13 +13,12 @@
 }
 
 .transparent{
-    -fx-background-color: rgba(0,0,0,0);
+    -fx-background-color: rgba(0, 0, 0, 0);
 }
 
 .round-layout{
     -fx-border-radius: 50;
     -fx-border-color: #D7D7D7;
-
 }
 
 .button{
@@ -74,4 +73,10 @@
 
 .shadow1{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.highlightOnHover:hover {
+    -fx-text-fill: #7597fd;
+    -fx-underline: true;
+    -fx-cursor: hand;
 }
