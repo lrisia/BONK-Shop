@@ -1,5 +1,7 @@
 package ku.cs.models.shop;
 
+import ku.cs.models.verify.Report;
+
 import java.util.ArrayList;
 
 public class ReviewList {
@@ -53,5 +55,15 @@ public class ReviewList {
     public void editReviewInformation(String username, String productId, String score, String reviewDetail) {
         Review review = searchReviewByUsername(username, productId);
         review.editData(Double.parseDouble(score), reviewDetail);
+    }
+
+    public void removeAllReviewByProductId(String productId) {
+        ArrayList<Review> reviews = new ArrayList<>();
+        for (Review review: reviewsList) {
+            if (review.getProductId().equals(productId))
+                reviews.add(review);
+        } for (Review review: reviews) {
+            if (review.getProductId().equals(productId)) reviewsList.remove(review);
+        }
     }
 }
