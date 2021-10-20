@@ -14,9 +14,11 @@ import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
+import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import com.github.saacsos.FXRouter;
+import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,12 +38,15 @@ public class HomePageController {
 
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
+    private DataSource<AccountList> accountListDataSource = new UserDataSource();
+    private AccountList accountList = accountListDataSource.readData();
 
     private double max = productList.getMaxPrice();
     private double min = 0;
     private String category = "All";
 
     public void initialize() {
+        account = accountList.searchAccountByUsername(account.getUsername());
         showProduct(productList);
         sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
         sortComboBox.valueProperty().addListener(new ChangeListener<String>() {
@@ -153,7 +158,7 @@ public class HomePageController {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane, new Insets(7));
+                GridPane.setMargin(anchorPane, new Insets(9));
             }
         } catch (IOException e) {
             e.printStackTrace();

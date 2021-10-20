@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -15,6 +16,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.userdata.InfoPageController">
    <children>
+      <Label layoutX="14.0" layoutY="16.0" prefHeight="43.0" prefWidth="308.0" text="วิธีการใช้งาน" textFill="WHITE">
+         <font>
+            <Font name="Agency FB Bold" size="30.0" />
+         </font>
+      </Label>
       <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="736.0" layoutY="-51.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/logo_white.png" />
@@ -115,6 +121,58 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="หน้าสินค้าของผู้ขาย">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="664.0" fitWidth="967.0" layoutX="-19.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/how_to_use/สินค้าผู้ขาย.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="เพิ่มสินค้า">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="664.0" fitWidth="967.0" layoutX="-27.0" layoutY="-44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/how_to_use/เพิ่มสินค้า.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="แก้ไขสินค้า">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="664.0" fitWidth="967.0" layoutX="-39.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/how_to_use/แก้ไขสินค้า.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="การจัดส่ง">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="713.0" fitWidth="974.0" layoutX="-14.0" layoutY="-86.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/how_to_use/ติดตามสินค้า.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
             <Tab text="ผู้จัดทำ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="border-color" stylesheets="@../styles/styles.css">
@@ -179,12 +237,15 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox layoutX="260.0" layoutY="428.0" prefHeight="150.0" prefWidth="380.0" spacing="40.0" styleClass="product" stylesheets="@../styles/styles.css">
+                        <HBox alignment="CENTER" layoutX="260.0" layoutY="428.0" prefHeight="134.0" prefWidth="380.0" spacing="40.0" styleClass="product" stylesheets="@../styles/styles.css">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="149.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/developer_image/muad.jpg" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                               </ImageView>
                               <VBox prefHeight="150.0" prefWidth="726.0">
                                  <children>

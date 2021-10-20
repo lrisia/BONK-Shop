@@ -39,10 +39,11 @@ public class ShopSetupController {
             alertLabel.setStyle("-fx-text-fill: #FFFFFF");
         }
         else{
-            accountList.registerNewStoreByUsername(account.getUsername(),storeName);
+            accountList.registerNewStoreByUsername(account.getUsername(), storeName);
             dataSource.writeData(accountList);
+            account = accountList.searchAccountByUsername(account.getUsername());
             try{
-                com.github.saacsos.FXRouter.goTo("store", shop);
+                com.github.saacsos.FXRouter.goTo("store", new Shop(account));
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า store ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");

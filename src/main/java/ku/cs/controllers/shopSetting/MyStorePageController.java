@@ -89,6 +89,17 @@ public class MyStorePageController {
     }
 
     @FXML
+    public void handleMyOrderMenu() {
+        try {
+            FXRouter.goTo("order_manage", shop);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า order_manage ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void applyNewSettingLowAmount() {
         accountList.setNewLowProductAlertValue(account, lowProductAlert);
         accountListDataSource.writeData(accountList);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
@@ -35,6 +36,27 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="238.0" stylesheets="@../styles/styles.css">
+                     <HBox.margin>
+                        <Insets top="35.0" />
+                     </HBox.margin>
+                     <children>
+                        <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="187.0" promptText="ค้นหา" styleClass="transparent" stylesheets="@../styles/styles.css">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <ImageView fx:id="searchImageView" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/search_icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="round-layout" />
+                        <String fx:value="round-white-background" />
+                     </styleClass>
+                  </HBox>
                   <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
                   <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
                      <children>
