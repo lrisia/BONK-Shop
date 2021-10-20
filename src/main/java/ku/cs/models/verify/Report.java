@@ -1,11 +1,17 @@
 package ku.cs.models.verify;
 
+import ku.cs.models.shop.ProductList;
+import ku.cs.services.DataSource;
+import ku.cs.services.ProductDataSource;
+import ku.cs.services.ReportDataSource;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Report {
     private String reporterUsername;
     private String productId;
+    private String storeName;
     private String category;
     private String topic;
     private String detail;
@@ -13,11 +19,14 @@ public class Report {
     private String reportTime;
 
     public Report(String reporterUsername, String productId, String category, String topic, String detail) {
-        this(reporterUsername, productId, category, topic, detail, "", "");
+        this(reporterUsername, productId, "", category, topic, detail, "", "");
+        DataSource<ProductList> dataSource = new ProductDataSource();
+        ProductList productList = dataSource.readData();
+        storeName = productList.getStoreNameByProductId(productId);
         initialReportTime();
     }
 
-    public Report(String reporterUsername, String productId,  String category, String topic, String detail, String reportDate, String reportTime) {
+    public Report(String reporterUsername, String productId, String storeName, String category, String topic, String detail, String reportDate, String reportTime) {
         this.reporterUsername = reporterUsername;
         this.productId = productId;
         this.category = category;
@@ -25,6 +34,7 @@ public class Report {
         this.detail = detail;
         this.reportDate = reportDate;
         this.reportTime = reportTime;
+        this.storeName = storeName;
     }
 
     public void initialReportTime() {
@@ -35,19 +45,37 @@ public class Report {
         reportTime = time[1];
     }
 
+    public String getReporterUsername() {
+        return reporterUsername;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public String getProductId() { return productId; }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
     public String toCsv() {
-        return reporterUsername + "," + productId + "," + category +
-                "," + topic + "," + detail + "," + reportDate + ","
-                + reportTime;
+        return reporterUsername + "," + productId + "," + storeName +
+                "," + category + "," + topic + "," + detail + "," +
+                reportDate + "," + reportTime;
     }
 
     @Override
     public String toString() {
-        String categoryTH = "";
-        if (category.equals("product")) categoryTH = "สินค้า";
-        else if (category.equals("review")) categoryTH = "รีวิว";
-        else categoryTH = "ไม่มีข้อมูล";
-        return "รายงานโดย: " + reporterUsername + " [หมวดหมู่: " + categoryTH + "/หัวข้อ: " + topic +"]\n" +
+        return "รายงานโดย: " + reporterUsername + " [หมวดหมู่: " + category + "/หัวข้อ: " + topic +"]\n" +
                 "วันที่รายงาน: " + reportDate;
     }
 }

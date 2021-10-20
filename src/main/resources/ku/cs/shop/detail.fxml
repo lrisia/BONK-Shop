@@ -6,17 +6,20 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.DetailController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.DetailController">
    <left>
-      <Pane prefHeight="590.0" prefWidth="660.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+      <Pane prefHeight="590.0" prefWidth="660.0" styleClass="product-card-background" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </BorderPane.margin>
@@ -29,114 +32,187 @@
                   <Rectangle2D />
                </viewport>
             </ImageView>
-            <Pane layoutX="316.0" layoutY="10.0" prefHeight="280.0" prefWidth="330.0" style="-fx-background-color: #e0e0e0;" stylesheets="@../styles/styles.css">
+            <Pane layoutX="316.0" layoutY="10.0" prefHeight="280.0" prefWidth="330.0" styleClass="card">
                <children>
-                  <Label layoutX="15.0" layoutY="98.0" text="ชื่อสินค้า" textFill="RED">
+                  <Label layoutX="15.0" layoutY="98.0" styleClass="text-in-card" text="ชื่อสินค้า" textFill="RED">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="productNameLabel" layoutX="31.0" layoutY="140.0" prefHeight="30.0" prefWidth="290.0">
+                  <Label fx:id="productNameLabel" layoutX="31.0" layoutY="140.0" prefHeight="30.0" prefWidth="290.0" styleClass="description-text-card">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="21.0" layoutY="183.0" text="ราคาต่อชิ้น" textFill="RED">
+                  <Label layoutX="21.0" layoutY="183.0" styleClass="text-in-card" text="ราคาต่อชิ้น" textFill="RED">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceLabel" layoutX="33.0" layoutY="229.0" prefHeight="30.0" prefWidth="290.0">
+                  <Label fx:id="priceLabel" layoutX="131.0" layoutY="183.0" prefHeight="30.0" prefWidth="190.0" styleClass="description-text-card">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="14.0" text="ชื่อร้านค้า" textFill="RED">
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="text-in-card" text="ชื่อร้านค้า" textFill="RED">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" onMouseClicked="#switchToSpecific" onMouseEntered="#mouseEnterStoreNameLabel" onMouseExited="#mouseExitedStoreNameLabel" prefHeight="30.0" prefWidth="298.0">
+                  <Label fx:id="productStoreNameLabel" layoutX="33.0" layoutY="44.0" onMouseClicked="#switchToSpecific" prefHeight="30.0" prefWidth="296.0">
                      <font>
                         <Font size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="description-text-card" />
+                        <String fx:value="text-can-hover" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="21.0" layoutY="228.0" styleClass="text-in-card" text="หมวดหมู่" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="categoryLabel" layoutX="131.0" layoutY="228.0" prefHeight="30.0" prefWidth="190.0" styleClass="description-text-card">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Pane>
+            <Pane layoutX="11.0" layoutY="300.0" prefHeight="270.0" prefWidth="370.0" styleClass="card">
+               <children>
+                  <Label layoutX="14.0" layoutY="3.0" styleClass="text-in-card" text="รายละเอียดสินค้า" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="26.0" layoutY="33.0" prefHeight="94.0" prefWidth="318.0">
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="13.0" layoutY="127.0" styleClass="text-in-card" text="รีวิว" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane focusTraversable="false" layoutX="26.0" layoutY="153.0" prefHeight="110.0" prefWidth="318.0" style="-fx-background-color: GREY;">
+                     <content>
+                        <GridPane fx:id="reviewGridPane" prefHeight="0.0" prefWidth="0.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content></ScrollPane>
+                  <Label layoutX="280.0" layoutY="132.0" onMouseClicked="#handleWriteReviewButton" text="รีวิวสินค้าชิ้นนี้">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="description-text-card" />
+                        <String fx:value="text-can-hover" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="allScoreLabel" layoutX="47.0" layoutY="132.0" styleClass="description-text-card" text="(ทั้งหมด 10 คน เฉลี่ย 1.25/5.0)" />
+                  <Pane fx:id="noReviewPane" layoutX="170.0" layoutY="200.0" opacity="0.0" prefHeight="17.0" prefWidth="39.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="35.0" styleClass="sub-text" text="ไม่มีรีวิว" />
+                     </children>
+                  </Pane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Pane>
+            <Button fx:id="buyGoodBtn" layoutX="428.0" layoutY="490.0" mnemonicParsing="false" onAction="#buyGoods" prefHeight="47.0" prefWidth="177.0" styleClass="button-general" text="ซื้อสินค้า" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="productTotalLabel" alignment="CENTER" layoutX="410.0" layoutY="382.0" prefHeight="44.0" prefWidth="214.0" styleClass="description-text-card">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTotalLabel" alignment="CENTER" layoutX="417.0" layoutY="435.0" prefHeight="44.0" prefWidth="200.0" styleClass="description-text-card">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="productPieceSpinner" layoutX="418.0" layoutY="340.0" prefHeight="31.0" prefWidth="197.0" />
+            <Label fx:id="reportLabel" layoutX="457.0" layoutY="545.0" onMouseClicked="#goToReportPage" prefHeight="25.0" prefWidth="120.0" text="รายงานความไม่เหมาะสม">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <styleClass>
+                  <String fx:value="description-text-card" />
+                  <String fx:value="text-can-hover" />
+               </styleClass>
+            </Label>
+            <Label fx:id="maxProductLabel" layoutX="459.0" layoutY="312.0" opacity="0.0" styleClass="description-text-card" text="จำนวนสินค้าถึงจุดสูงสุด">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Pane fx:id="writeReviewPane" layoutX="159.0" layoutY="125.0" prefHeight="270.0" prefWidth="370.0" styleClass="product-card-background">
+               <children>
+                  <Label layoutX="14.0" layoutY="23.0" styleClass="description-text-card" text="ชื่อ :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel" layoutX="59.0" layoutY="23.0" styleClass="description-text-card" text="usernameLabel">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Spinner fx:id="scoreSpinner" layoutX="289.0" layoutY="24.0" prefHeight="25.0" prefWidth="67.0" />
+                  <Label layoutX="219.0" layoutY="23.0" styleClass="description-text-card" text="คะแนน :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="54.0" styleClass="description-text-card" text="รีวิว">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="reviewDetailTextArea" layoutX="19.0" layoutY="84.0" prefHeight="169.0" prefWidth="331.0" promptText="รีวิว" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextArea>
+                  <Button layoutX="297.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleEnterWriteReviewButton" styleClass="button-general" text="เสร็จสิ้น" />
+                  <Label fx:id="notificationLabel" layoutX="48.0" layoutY="59.0" styleClass="description-text-card" />
+                  <Label layoutX="350.0" layoutY="1.0" onMouseClicked="#handleCloseWriteReview" styleClass="description-text-card" text="X">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
                </children>
-               <styleClass>
-                  <String fx:value="product-card" />
-                  <String fx:value="radius" />
-               </styleClass>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
             </Pane>
-            <Pane layoutX="11.0" layoutY="300.0" prefHeight="270.0" prefWidth="370.0" style="-fx-background-color: #e0e0e0;" stylesheets="@../styles/styles.css">
-               <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="รายละเอียดสินค้า" textAlignment="CENTER" textFill="RED">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <TextArea fx:id="detailTextArea" editable="false" focusTraversable="false" layoutX="25.0" layoutY="44.0" prefHeight="218.0" prefWidth="318.0">
-                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
-                     </cursor>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextArea>
-               </children>
-               <styleClass>
-                  <String fx:value="product-card" />
-                  <String fx:value="radius" />
-               </styleClass>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Pane>
-            <Button fx:id="buyGoodBtn" layoutX="428.0" layoutY="490.0" mnemonicParsing="false" onAction="#buyGoods" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="ซื้อสินค้า" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Label fx:id="productTotalLabel" alignment="CENTER" layoutX="410.0" layoutY="382.0" prefHeight="44.0" prefWidth="214.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="priceTotalLabel" alignment="CENTER" layoutX="417.0" layoutY="435.0" prefHeight="44.0" prefWidth="200.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Spinner fx:id="productPieceSpinner" layoutX="418.0" layoutY="340.0" prefHeight="31.0" prefWidth="197.0" />
-            <Label fx:id="reportLabel" layoutX="457.0" layoutY="545.0" onMouseClicked="#goToReportPage" onMouseEntered="#mouseEnterReport" onMouseExited="#mouseExitedReport" prefHeight="25.0" prefWidth="120.0" text="รายงานความไม่เหมาะสม">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="maxProductLabel" layoutX="459.0" layoutY="312.0" opacity="0.0" text="จำนวนสินค้าถึงจุดสูงสุด">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
          </children>
-         <styleClass>
-            <String fx:value="product-card" />
-            <String fx:value="radius" />
-         </styleClass>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Pane>
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="highlightOnHover" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="189.0" fitWidth="601.0" layoutX="-29.0" layoutY="206.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
@@ -146,7 +222,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button layoutX="24.0" layoutY="29.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="46.0" prefWidth="83.0" style="-fx-background-color: #FFFFFF;" text="กลับ" textFill="RED">
+            <Button layoutX="24.0" layoutY="29.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="46.0" prefWidth="83.0" styleClass="light-button" text="กลับ" textFill="RED">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

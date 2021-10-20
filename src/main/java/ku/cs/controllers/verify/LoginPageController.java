@@ -63,7 +63,7 @@ public class LoginPageController {
         String username = inputUsernameTextField.getText();
         String password = inputPasswordField.getText();
         if (!accountList.canLogin(username, password)) {
-            mainLabel.setText("Username หรือรหัสผ่านไม่ถูกต้อง");
+            mainLabel.setText("ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง");
             mainLabel.setStyle("-fx-text-fill: #f61e1e");
         } else if (accountList.searchAccountByUsername(username).gotBanned()) {
             mainLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");

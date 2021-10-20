@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.LoginRegisterController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login-background">
+         <children>
+            <Line endX="120.0" fill="BLACK" layoutX="449.0" layoutY="273.0" opacity="0.33" startX="-120.0" styleClass="line" />
+            <TextField fx:id="inputUsernameTextField" layoutX="334.0" layoutY="95.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อผู้ใช้" style="-fx-background-radius: 50;" styleClass="text-field" stylesheets="@../styles/styles.css" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label fx:id="headerLabel" layoutX="371.0" layoutY="34.0" styleClass="header-text" text="ยินดีต้อนรับกลับ">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="closeLabel" layoutX="577.0" layoutY="-13.0" onMouseClicked="#clickCloseLabel" prefHeight="20.0" prefWidth="17.0" text="x" textFill="WHITE" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-14.0">
+               <font>
+                  <Font size="38.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="302.0" layoutY="69.0" prefHeight="19.0" prefWidth="294.0" styleClass="sub-text" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="4.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleRegisterScreenBtn" prefHeight="45.0" style="-fx-background-radius: 50;" styleClass="register-button" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <PasswordField fx:id="inputPasswordField" layoutX="334.0" layoutY="150.0" prefHeight="45.0" prefWidth="230.0" promptText="รหัสผ่าน" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="334.0" layoutY="214.0" mnemonicParsing="false" onAction="#loginAccept" prefHeight="45.0" prefWidth="230.0" style="-fx-background-radius: 50;" styleClass="login-button" text="เข้าสู่ระบบ" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Label layoutX="390.0" layoutY="283.0" styleClass="sub-text" text="ยังไม่มีบัญชีหรอ สมัครเลย!" textFill="#7c7c7c">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="66.0" layoutY="18.0" styleClass="header-text" text="สมัครสมาชิกใหม่">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="alertLabel" alignment="CENTER" layoutX="3.0" layoutY="47.0" prefHeight="19.0" prefWidth="298.0" text="สมัครง่าย ๆ ไม่กี่ขั้นตอน" textAlignment="CENTER">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameTextField" layoutX="38.0" layoutY="73.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อ" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="333.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="usernameTextField" layoutX="38.0" layoutY="123.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อผู้ใช้" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="333.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <PasswordField fx:id="passwordPasswordField" layoutX="38.0" layoutY="183.0" prefHeight="45.0" prefWidth="230.0" promptText="รหัสผ่าน" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="333.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="confirmPasswordPasswordField" layoutX="38.0" layoutY="233.0" prefHeight="45.0" prefWidth="230.0" promptText="ยืนยันรหัสผ่าน" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="333.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <Label layoutX="5.0" layoutY="-13.0" onMouseClicked="#clickCloseLabel" prefHeight="20.0" prefWidth="17.0" text="x" textFill="WHITE">
+               <font>
+                  <Font size="38.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Button layoutX="37.0" layoutY="293.0" mnemonicParsing="false" onAction="#registerNewAccount" prefHeight="45.0" style="-fx-background-radius: 50;" styleClass="register-button" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="334.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="84.0" layoutY="346.0" styleClass="sub-text" text="มีบัญชีอยู่แล้วหรอ" textFill="#575757" AnchorPane.bottomAnchor="36.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="loginLabel" layoutX="173.0" layoutY="345.0" onMouseClicked="#handleLoginScreenBtn" styleClass="text-can-hover" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true" AnchorPane.bottomAnchor="36.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <ComboBox fx:id="themeComboBox" layoutX="491.0" layoutY="374.0" prefHeight="25.0" prefWidth="57.0" promptText="ธีม" styleClass="login-background" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <VBox fx:id="containImageViewVBox" layoutX="221.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="loginImageView" fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/verify/login_register.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

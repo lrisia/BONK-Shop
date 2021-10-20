@@ -47,7 +47,8 @@ public class ReportController {
                 "เป็นสินค้าผิดกฏหมาย",
                 "มีคำหยาบคาย/ไม่เหมาะสม",
                 "ละเมิดลิขสิทธ์",
-                "ไม่ส่งของตามจริง");
+                "ไม่ส่งของตามจริง",
+                "สินค้าอันตราย/มีความรุนแรง");
         reportListDataSource = new ReportDataSource();
         reportList = reportListDataSource.readData();
     }
@@ -82,12 +83,12 @@ public class ReportController {
         else {
             String topic = topicComboBox.getValue().toString();
             String detail = detailTextArea.getText();
-            reportList.addNewReport(account.getUsername(), product.getId(), "product", topic, detail);
+            reportList.addNewReport(account.getUsername(), product.getId(), "สินค้า", topic, detail);
             reportListDataSource.writeData(reportList);
             try {
-                FXRouter.goTo("purchase_successful", new Shop(account));
+                FXRouter.goTo("report_successful", new Shop(account));
             } catch (IOException e) {
-                System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
+                System.err.println("ไปที่หน้า report_successful ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         } effect.fadeOutLabelEffect(notificationLabel, 3);

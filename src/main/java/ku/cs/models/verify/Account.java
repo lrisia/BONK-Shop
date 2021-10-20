@@ -1,6 +1,7 @@
 package ku.cs.models.verify;
 
-import ku.cs.models.shop.ProductList;
+import ku.cs.services.HandleImage;
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -10,31 +11,31 @@ import java.awt.image.BufferedImage;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
-public class Account {
+public class Account implements HandleImage {
     private String role;
     private String name;
     private String username;
     private String password;
     private String storeName;
+    private int lowProductAlert;
     private boolean banStatus;
     private int tryLoginWhenGotBanned;
     private String loginDate;
     private String loginTime;
     private String imagePath;
 
-    private ProductList productList;
-
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, "-",false, 0, "", "","profileDefault.png");
+        this("Account", username, password, name, "-", 0, false, 0, "", "","profileDefault.png");
         initialLoginTime();
     }
 
-    public Account(String role, String username, String password, String name, String storeName, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
+    public Account(String role, String username, String password, String name, String storeName, int lowProductAlert, boolean banStatus, int tryLoginWhenGotBanned, String loginDate, String loginTime,String imagePath) {
         this.role = role;
         this.name = name;
         this.username = username;
         this.password = password;
         this.storeName = storeName;
+        this.lowProductAlert = lowProductAlert;
         this.banStatus = banStatus;
         this.tryLoginWhenGotBanned = tryLoginWhenGotBanned;
         this.loginDate = loginDate;
@@ -73,8 +74,16 @@ public class Account {
         return role;
     }
 
+    public int getLowProductAlert() {
+        return lowProductAlert;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setLowProductAlert(int lowProductAlert) {
+        this.lowProductAlert = lowProductAlert;
     }
 
     public LocalDateTime getTime() {
@@ -125,9 +134,8 @@ public class Account {
 
 
     public String toCsv() {
-        return role + "," + username + "," + password + "," + name + "," + storeName + ","
-                + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + ","
-                + loginTime + "," + imagePath;
+        return role + "," + username + "," + password + "," + name + "," + storeName + "," + lowProductAlert + ","
+                + banStatus + "," + tryLoginWhenGotBanned +"," + loginDate + "," + loginTime + "," + imagePath;
     }
 
     @Override
@@ -168,6 +176,17 @@ public class Account {
     public void registerNewStore(String storeName){
         this.storeName = storeName;
         this.role = "Seller";
+    }
+
+    @Override
+    public void setImagePathToDirectory(String path) {
+        String[] fileSplit = path.split("\\.");
+        this.imagePath = getFilePictureName() + "." + fileSplit[fileSplit.length - 1];
+    }
+
+    @Override
+    public String getFilePictureName() {
+        return username + "-profile";
     }
 
     // todo: What user can do?

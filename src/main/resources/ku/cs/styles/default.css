@@ -1,0 +1,28 @@
+*{
+    login-background: #F5D26E;
+    header-text: #000000;
+    sub-text: #7c7c7c;
+    text-in-button: WHITE;
+    login-button:  #00A1F5;
+    register-button: #FA7344;
+    on-hover: #7597fd;
+    invalid-input-notification: #f61e1e;
+
+    /* ในโปรแกรม */
+    main-background: linear-gradient(#c7192d, #000000);
+    sub-background: WHITE;
+    market-place-background: #a8a8a8;
+    category-hover: #cbcbcb;
+    light-text-color: #ff0000;
+    light-button-color: WHITE;
+    light-header-text: WHITE;
+    line-color: #000000;
+    contrast-button: #d7d7d7;
+    button-background: #C7192DFF;
+    button-text: WHITE;
+    product-card-backgroud: #ffffff;
+    card: #d4d4d4;
+    text-in-card: #ff0000;
+    description-in-card: BLACK;
+    notification-icon: RED;
+}
