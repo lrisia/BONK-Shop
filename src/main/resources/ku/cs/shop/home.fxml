@@ -46,10 +46,13 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <ImageView fx:id="searchImageView" fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="searchImageView" fitHeight="27.0" fitWidth="29.0" onMouseClicked="#handleSearchIcon" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/search_icon.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </children>
                      <styleClass>

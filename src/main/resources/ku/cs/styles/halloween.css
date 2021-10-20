@@ -1,26 +1,26 @@
 *{
-    login-background: #F5D26E;
-    header-text: #000000;
-    sub-text: #7c7c7c;
+    login-background: rgba(37, 35, 35, 0.93);
+    header-text: #ffffff;
+    sub-text: #ff6c00;
     text-in-button: WHITE;
     login-button:  #00A1F5;
     register-button: #FA7344;
-    on-hover: #7597fd;
-    invalid-input-notification: #f61e1e;
+    on-hover: #ff0000;
+    invalid-input-notification: #fa7344;
 
     /* ในโปรแกรม */
-    main-background: linear-gradient(#c7192d, #000000);
-    sub-background: WHITE;
-    market-place-background: #a8a8a8;
+    main-background: linear-gradient(#ff7400, #a11d1d, #000000);
+    sub-background: #525252;
+    market-place-background: #2f2e2e;
     category-hover: #cbcbcb;
     light-text-color: #ff0000;
     light-button-color: WHITE;
-    light-header-text: WHITE;
-    line-color: #000000;
+    light-header-text: #ffffff;
+    line-color: WHITE;
     contrast-button: #d7d7d7;
     button-background: #C7192DFF;
     button-text: WHITE;
-    product-card-backgroud: #ffffff;
+    product-card-backgroud: #f16622;
     card: #d4d4d4;
     text-in-card: #ff0000;
     description-in-card: BLACK;
