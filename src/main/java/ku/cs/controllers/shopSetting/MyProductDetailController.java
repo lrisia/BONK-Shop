@@ -12,12 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.ReviewList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
-import ku.cs.services.DataSource;
-import ku.cs.services.Effect;
-import ku.cs.services.FileService;
-import ku.cs.services.ProductDataSource;
+import ku.cs.models.verify.Report;
+import ku.cs.models.verify.ReportList;
+import ku.cs.services.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +37,10 @@ public class MyProductDetailController {
     private Product product = shop.getProduct();
     private DataSource<ProductList> productListDataSource;
     private ProductList productList;
+    private DataSource<ReportList> reportDataSource;
+    private ReportList reportList;
+    private DataSource<ReviewList> reviewListDataSource;
+    private ReviewList reviewList;
     private Effect effect;
     private int newAmount;
 
@@ -44,6 +48,10 @@ public class MyProductDetailController {
     public void initialize() {
         productListDataSource = new ProductDataSource();
         productList = productListDataSource.readData();
+        reportDataSource = new ReportDataSource();
+        reportList = reportDataSource.readData();
+        reviewListDataSource = new ReviewDataSource();
+        reviewList = reviewListDataSource.readData();
         product = productList.searchProductById(product.getId());
         effect = new Effect();
         storeNameTextField.setText(product.getShopName());
@@ -124,7 +132,9 @@ public class MyProductDetailController {
     @FXML
     public void handleRemoveProduct() {
         productList.removeProduct(product);
+        reviewList.removeAllReviewByProductId(product.getId());
         productListDataSource.writeData(productList);
+        reviewListDataSource.writeData(reviewList);
         try {
             FXRouter.goTo("store", new Shop(account));
         } catch (IOException e) {

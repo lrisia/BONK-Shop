@@ -44,6 +44,7 @@ public class AdminController {
     @FXML Label reportTopicLabel;
     @FXML Label ownUsernameLabel;
     @FXML TextArea detailTextArea;
+    @FXML Button deleteReportBtn;
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
@@ -55,6 +56,7 @@ public class AdminController {
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
     private Account selectedAccount = null;
+    private Report selectedReport = null;
     private ChangeListener myListener = null;
 
     private ChangeListener<Account> accountListener = null;
@@ -102,6 +104,8 @@ public class AdminController {
         }
         banBtn.setDisable(false);
         banBtn.setVisible(true);
+        deleteReportBtn.setDisable(true);
+        deleteReportBtn.setOpacity(0);
         accountManageBtn.setOpacity(1);
         reportManageBtn.setOpacity(0.75);
         detailTextArea.setDisable(true);
@@ -119,6 +123,8 @@ public class AdminController {
         }
         banBtn.setDisable(true);
         banBtn.setVisible(false);
+        deleteReportBtn.setDisable(false);
+        deleteReportBtn.setOpacity(1);
         reportManageBtn.setOpacity(1);
         accountManageBtn.setOpacity(0.75);
         detailTextArea.setDisable(false);
@@ -168,10 +174,18 @@ public class AdminController {
             reportTopicLabel.setText(report.getTopic());
             ownUsernameLabel.setText(report.getStoreName());
             detailTextArea.setText(report.getDetail());
+            selectedReport = report;
             String imagePath = productList.getProductImagePathByProductId(report.getProductId());
-            userImageView.setImage(new Image(imagePath));
+            if (imagePath == null) userImageView.setImage(new Image(getClass().getResource("/images/product_default_white.png").toExternalForm()));
+            else userImageView.setImage(new Image(imagePath));
             effect.centerImage(userImageView);
         }
+    }
+
+    public void deleteReportBtn() {
+        reportList.deleteReport(selectedReport);
+        reportListDataSource.writeData(reportList);
+        showReportInListView();
     }
 
     public void ban() {

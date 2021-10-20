@@ -89,6 +89,11 @@
                         <Image url="@../../../images/profileDefault.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="deleteReportBtn" alignment="CENTER" layoutX="633.0" layoutY="280.0" mnemonicParsing="false" onAction="#deleteReportBtn" opacity="0.0" prefHeight="39.0" prefWidth="148.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="ลบ" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </bottom>
