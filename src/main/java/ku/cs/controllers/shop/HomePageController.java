@@ -179,7 +179,7 @@ public class HomePageController {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane, new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(7));
             }
         } catch (IOException e) {
             e.printStackTrace();
