@@ -100,7 +100,7 @@
          <bottom>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#handleMyOrderMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/list_icon.png" />
                      </image>

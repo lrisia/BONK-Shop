@@ -87,9 +87,9 @@ public class ReportController {
             reportList.addNewReport(account.getUsername(), product.getId(), "สินค้า", topic, detail);
             reportListDataSource.writeData(reportList);
             try {
-                FXRouter.goTo("purchase_successful", new Shop(account));
+                FXRouter.goTo("report_successful", new Shop(account));
             } catch (IOException e) {
-                System.err.println("ไปที่หน้า purchase_successful ไม่ได้");
+                System.err.println("ไปที่หน้า report_successful ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         } effect.fadeOutLabelEffect(notificationLabel, 3);

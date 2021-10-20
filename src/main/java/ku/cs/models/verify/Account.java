@@ -23,7 +23,7 @@ public class Account {
     private String imagePath;
 
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, "", 0, false, 0, "", "","profileDefault.png");
+        this("Account", username, password, name, "-", 0, false, 0, "", "","profileDefault.png");
         initialLoginTime();
     }
 

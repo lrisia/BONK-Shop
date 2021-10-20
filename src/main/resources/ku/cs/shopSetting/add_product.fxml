@@ -43,7 +43,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="upLoadPic" layoutX="649.0" layoutY="276.0" mnemonicParsing="false" onAction="#upLoadPic" style="-fx-background-color: #c7192d;" text="อัปโหลดรูป" textFill="WHITE">
+      <Button fx:id="upLoadPic" layoutX="649.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleUploadButton" style="-fx-background-color: #c7192d;" text="อัปโหลดรูป" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

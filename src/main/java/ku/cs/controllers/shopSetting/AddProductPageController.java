@@ -139,7 +139,7 @@ public class AddProductPageController{
     }
 
     @FXML
-    public void upLoadPic() {
+    public void handleUploadButton() {
         FileChooser fileChooser = new FileChooser();
         fileSelected = fileChooser.showOpenDialog(null);
         fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
@@ -149,6 +149,4 @@ public class AddProductPageController{
             effect.centerImage(productImageView);
         }
     }
-
-
 }

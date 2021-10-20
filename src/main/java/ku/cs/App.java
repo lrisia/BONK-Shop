@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -48,6 +47,7 @@ public class App extends Application {
         FXRouter.when("report",packageStr+"verify/report.fxml");
         FXRouter.when("report_successful",packageStr+"verify/report_successful.fxml");
         FXRouter.when("my_product_detail",packageStr+"shopSetting/my_product_detail.fxml");
+        FXRouter.when("order_manage",packageStr+"shopSetting/order_manage.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {
