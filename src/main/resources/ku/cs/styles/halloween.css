@@ -5,7 +5,7 @@
     text-in-button: WHITE;
     login-button:  #00A1F5;
     register-button: #FA7344;
-    on-hover: #ff0000;
+    on-hover: #dd9cff;
     invalid-input-notification: #f2e205;
 
     /* ในโปรแกรม */
@@ -24,5 +24,5 @@
     card: #f2a74b;
     text-in-card: #ff0000;
     description-in-card: BLACK;
-    notification-icon: RED;
+    notification-icon: #590202;
 }

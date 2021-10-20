@@ -29,6 +29,7 @@ public class HomePageController {
     @FXML private ComboBox sortComboBox;
     @FXML private TextField maxPriceTextField;
     @FXML private TextField minPriceTextField;
+    @FXML private TextField searchTextField;
     @FXML private Label noProductLabel;
     @FXML private Label headerLabel;
     @FXML private Pane noProductPane;
@@ -44,6 +45,7 @@ public class HomePageController {
     private double max = productList.getMaxPrice();
     private double min = 0;
     private String category = "All";
+    private String search = "";
 
     public void initialize() {
         account = accountList.searchAccountByUsername(account.getUsername());
@@ -153,10 +155,16 @@ public class HomePageController {
         return filtered;
     }
 
+    public ProductList searchFilter(ProductList productList, String search) {
+        ProductList filtered = productList.filter(new SearchProductFilterer(search));
+        return filtered;
+    }
+
     public void showProduct(ProductList productList) {
         clear();
         noProductLabel.setOpacity(0);
         noProductPane.setDisable(true);
+        productList = searchFilter(productList, search);
         productList = priceFilter(productList, max, min);
         if (!category.equals("All"))
             productList = categoryFilter(productList, category);
@@ -232,6 +240,12 @@ public class HomePageController {
     public void switchToAssault() {
         headerLabel.setText("ปืนกล");
         category = "ปืนกล";
+        showProduct(productList);
+    }
+
+    @FXML
+    public void handleSearchIcon() {
+        search = searchTextField.getText();
         showProduct(productList);
     }
 

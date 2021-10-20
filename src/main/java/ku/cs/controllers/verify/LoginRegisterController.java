@@ -2,8 +2,12 @@ package ku.cs.controllers.verify;
 
 import com.github.saacsos.FXRouter;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -35,6 +39,7 @@ public class LoginRegisterController {
     @FXML private PasswordField passwordPasswordField;
     @FXML private PasswordField confirmPasswordPasswordField;
     @FXML private ImageView loginImageView;
+    @FXML private ComboBox<String> themeComboBox;
 
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
@@ -44,6 +49,31 @@ public class LoginRegisterController {
         readDataFromCsv();
         loginImageView.setImage(new Image(getClass().getResource("/images/verify/login_register.png").toExternalForm()));
         mainLabel.setText("เข้าสู่ระบบเพื่อยืนยันตัวตน");
+        initializeComboBox();
+    }
+
+    private void initializeComboBox() {
+        themeComboBox.getItems().addAll("พื้นฐาน", "อวกาศ", "ฮาโลวีน");
+        themeComboBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                if (newValue.equals("พื้นฐาน")) FXRouter.setCssStylePath("default.css");
+                else if (newValue.equals("อวกาศ")) FXRouter.setCssStylePath("space.css");
+                else if (newValue.equals("ฮาโลวีน")) FXRouter.setCssStylePath("halloween.css");
+                refreshPage();
+            }
+        });
+    }
+
+    private void refreshPage() {
+        try {
+            dataSource.writeData(accountList);
+            FXRouter.goTo("login_register");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login_register ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
+        }
     }
 
     private void readDataFromCsv() {
