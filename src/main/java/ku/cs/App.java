@@ -26,13 +26,14 @@ public class App extends Application {
         stage.setResizable(false);
 //        stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         configRoute();
-        FXRouter.goTo("login");
+        FXRouter.goTo("login_register");
     }
 
     private static void configRoute() {
         String packageStr = "ku/cs/";
         FXRouter.when("login", packageStr+ "verify/login.fxml",600,400);
         FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
+        FXRouter.when("login_register", packageStr+ "verify/login_register.fxml",600,400);
         FXRouter.when("main", packageStr+"shop/home.fxml");
         FXRouter.when("info",packageStr+"userdata/info_page.fxml",900,700);
         FXRouter.when("profile",packageStr+"userdata/profile.fxml");

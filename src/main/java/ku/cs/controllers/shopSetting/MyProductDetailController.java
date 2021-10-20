@@ -90,10 +90,12 @@ public class MyProductDetailController {
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images PNG JPG GIF", "*.png", "*.jpg", "*.jpeg", "*.gif"));
         Node source = (Node) event.getSource();
         File file = chooser.showOpenDialog(source.getScene().getWindow());
-        Image image = FileService.handleUploadPicture(file, product, directory);
-        productListDataSource.writeData(productList);
-        productImageView.setImage(image);
-        effect.centerImage(productImageView);
+        if (file != null) {
+            Image image = FileService.handleUploadPicture(file, product, directory);
+            productListDataSource.writeData(productList);
+            productImageView.setImage(image);
+            effect.centerImage(productImageView);
+        }
     }
 
     @FXML
