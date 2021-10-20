@@ -26,7 +26,7 @@ public final class FXRouter {
     private static Double animationDuration;
     private static AbstractMap<String, RouteScene> routes = new HashMap();
     private static RouteScene currentRoute;
-    private static String cssStylePath = "/ku/cs/styles/default.css";
+    private static String cssStylePath = "/ku/cs/styles/space.css";
     private static double x = 0;
     private static double y = 0;
 

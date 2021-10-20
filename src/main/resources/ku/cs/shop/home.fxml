@@ -338,7 +338,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="550.0" prefWidth="630.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="market-place-background" HBox.hgrow="ALWAYS">
+                              <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="market-place-background" stylesheets="@../styles/style.css" HBox.hgrow="ALWAYS">
                                  <content>
                                     <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                        <rowConstraints>

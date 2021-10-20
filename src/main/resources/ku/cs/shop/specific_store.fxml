@@ -76,7 +76,7 @@
             </HBox>
          </top>
          <left>
-            <VBox prefHeight="484.0" prefWidth="167.0" spacing="10.0" styleClass="white-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="484.0" prefWidth="167.0" spacing="10.0" styleClass="sub-theme-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
                <children>
                   <VBox alignment="CENTER" prefHeight="274.0" prefWidth="131.0">
                      <children>
