@@ -297,7 +297,7 @@ public class HomePageController {
         showProduct(productList);
     }
 
-    void clear() {
+    private void clear() {
         grid.getChildren().clear();
     }
 
