@@ -48,7 +48,6 @@ public class ReportController {
                 "มีคำหยาบคาย/ไม่เหมาะสม",
                 "ละเมิดลิขสิทธ์",
                 "ไม่ส่งของตามจริง",
-                "ไม่ส่งของตามจริง",
                 "สินค้าอันตราย/มีความรุนแรง");
         reportListDataSource = new ReportDataSource();
         reportList = reportListDataSource.readData();
