@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.SpecificStoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.SpecificStoreController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <top>
             <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
@@ -34,7 +34,7 @@
                      </cursor>
                   </ImageView>
                   <Pane prefHeight="116.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
-                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="141.0" style="-fx-background-radius: 50;" styleClass="sub-theme-background">
                      <children>
                         <ImageView fx:id="informationImageView" fitHeight="50.0" fitWidth="55.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -80,7 +80,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="274.0" prefWidth="131.0">
                      <children>
-                        <Label text="หมวดหมู่สินค้า">
+                        <Label styleClass="header-text" text="หมวดหมู่สินค้า">
                            <font>
                               <Font name="Berlin Sans FB Bold" size="20.0" />
                            </font>
@@ -88,12 +88,12 @@
                               <Insets top="15.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="ยานพาหนะ">
+                        <Label styleClass="header-text" text="ยานพาหนะ">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="186.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="tankHBox" alignment="CENTER" onMouseClicked="#switchToTank" prefHeight="46.0" prefWidth="186.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="tankIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -103,7 +103,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="รถถัง">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="รถถัง">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -116,7 +116,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="planeHBox" alignment="CENTER" onMouseClicked="#switchToPlane" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="planeHBox" alignment="CENTER" onMouseClicked="#switchToPlane" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="planeIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -126,7 +126,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="เครื่องบิน">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="เครื่องบิน">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -139,7 +139,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="carHBox" alignment="CENTER" onMouseClicked="#switchToCar" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="carHBox" alignment="CENTER" onMouseClicked="#switchToCar" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="carIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -149,7 +149,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="รถ">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="รถ">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -162,7 +162,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToWarship" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="boatHBox" alignment="CENTER" onMouseClicked="#switchToWarship" prefHeight="46.0" prefWidth="165.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="boatIconImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -172,7 +172,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="เรือ">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="เรือ">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -192,19 +192,19 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="211.0" prefWidth="164.0">
                      <children>
-                        <Label alignment="CENTER" text="อาวุธ">
+                        <Label alignment="CENTER" styleClass="header-text" text="อาวุธ">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <HBox fx:id="gunHBox" alignment="CENTER" onMouseClicked="#switchToGun" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="gunHBox" alignment="CENTER" onMouseClicked="#switchToGun" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="gunIconImageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/icon_category/gun_chosen_icon.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="ปืน">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="ปืน">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -217,14 +217,14 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="knifeHBox" alignment="CENTER" onMouseClicked="#switchToKnife" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="knifeHBox" alignment="CENTER" onMouseClicked="#switchToKnife" prefHeight="40.0" prefWidth="184.0" spacing="15.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="knifeIconImageView" fitHeight="45.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/icon_category/knife_icon.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="113.0" text="ระยะประชิด">
+                              <Label prefHeight="22.0" prefWidth="113.0" styleClass="header-text" text="ระยะประชิด">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                                  </font>
@@ -237,14 +237,14 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="assaultHBox" alignment="CENTER" onMouseClicked="#switchToAssault" prefHeight="50.0" prefWidth="184.0" spacing="10.0" styleClass="mouse-move" stylesheets="@../styles/styles.css">
+                        <HBox fx:id="assaultHBox" alignment="CENTER" onMouseClicked="#switchToAssault" prefHeight="50.0" prefWidth="184.0" spacing="10.0" styleClass="category-hover">
                            <children>
                               <ImageView fx:id="assaultIconImageView" fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/icon_category/assault_rifle_icon.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="22.0" prefWidth="130.0" text="ปืนกล">
+                              <Label prefHeight="22.0" prefWidth="130.0" styleClass="header-text" text="ปืนกล">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="16.0" />
                                  </font>
@@ -269,9 +269,9 @@
             <HBox prefHeight="484.0" prefWidth="642.0" BorderPane.alignment="CENTER">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="477.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
-                  <VBox prefHeight="484.0" prefWidth="629.0" styleClass="white-background" stylesheets="@../styles/styles.css">
+                  <VBox prefHeight="484.0" prefWidth="629.0" styleClass="sub-theme-background">
                      <children>
-                        <Label fx:id="storeNameLabel" prefHeight="37.0" prefWidth="630.0" text="ชื่อร้าน">
+                        <Label fx:id="storeNameLabel" prefHeight="37.0" prefWidth="596.0" styleClass="header-text" text="ชื่อร้าน">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -281,7 +281,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="550.0" prefWidth="630.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="transparent" stylesheets="@../styles/styles.css" HBox.hgrow="ALWAYS">
+                              <ScrollPane fx:id="scroll" prefHeight="552.0" prefWidth="630.0" styleClass="market-place-background" HBox.hgrow="ALWAYS">
                                  <content>
                                     <GridPane fx:id="storeGrid" prefHeight="0.0" prefWidth="0.0">
                                        <rowConstraints>
@@ -300,7 +300,7 @@
       </BorderPane>
       <Pane fx:id="noProductPane" layoutX="470.0" layoutY="360.0" prefHeight="17.0" prefWidth="55.0">
          <children>
-            <Label fx:id="noProductLabel" opacity="0.45" prefHeight="13.0" prefWidth="55.0" text="ไม่พบสินค้า" />
+            <Label fx:id="noProductLabel" opacity="0.45" prefHeight="13.0" prefWidth="55.0" styleClass="sub-text" text="ไม่พบสินค้า" />
          </children>
       </Pane>
    </children>

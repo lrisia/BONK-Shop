@@ -26,6 +26,13 @@ public final class FXRouter {
     private static Double animationDuration;
     private static AbstractMap<String, RouteScene> routes = new HashMap();
     private static RouteScene currentRoute;
+    private static String cssStylePath = "/ku/cs/styles/default.css";
+    private static double x = 0;
+    private static double y = 0;
+
+    public static void setCssStylePath(String filename) {
+        cssStylePath = "/ku/cs/styles/" + filename;
+    }
 
     private FXRouter() {
     }
@@ -104,7 +111,17 @@ public final class FXRouter {
         Parent resource = (Parent)FXMLLoader.load((new Object() {
         }).getClass().getResource(scenePath));
         window.setTitle(route.windowTitle);
-        window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
+        resource.getStylesheets().add(FXRouter.class.getResource(cssStylePath).toString());
+        Scene scene = new Scene(resource, route.sceneWidth, route.sceneHeight);
+        window.setScene(scene);
+        scene.setOnMousePressed(mouseEvent -> {
+            x = mouseEvent.getSceneX();
+            y = mouseEvent.getSceneY();
+        });
+        scene.setOnMouseDragged(mouseEvent -> {
+            window.setX(mouseEvent.getScreenX() - x);
+            window.setY(mouseEvent.getScreenY() - y);
+        });
         window.show();
         routeAnimation(resource);
     }

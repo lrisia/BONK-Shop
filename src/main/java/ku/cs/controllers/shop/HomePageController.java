@@ -96,6 +96,27 @@ public class HomePageController {
                 }
             }
         });
+        handleMaxMinTextField();
+    }
+
+    @FXML
+    public void handleMaxMinTextField() {
+        maxPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    maxPriceTextField.setText(oldValue);
+                }
+            }
+        });
+        minPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    minPriceTextField.setText(oldValue);
+                }
+            }
+        });
     }
 
     @FXML

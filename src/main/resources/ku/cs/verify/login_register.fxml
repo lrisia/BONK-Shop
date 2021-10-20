@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.LoginRegisterController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.LoginRegisterController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F5D26E;" styleClass="loginRegisterBackground" stylesheets="@../styles/styles.css">
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login-background">
          <children>
             <Line endX="120.0" fill="BLACK" layoutX="449.0" layoutY="273.0" opacity="0.33" startX="-120.0" />
             <TextField fx:id="inputUsernameTextField" layoutX="334.0" layoutY="95.0" prefHeight="45.0" prefWidth="230.0" promptText="ชื่อผู้ใช้" style="-fx-background-radius: 50;" styleClass="text-field" stylesheets="@../styles/styles.css" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
@@ -22,7 +22,7 @@
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Label fx:id="headerLabel" layoutX="371.0" layoutY="34.0" text="ยินดีต้อนรับกลับ">
+            <Label fx:id="headerLabel" layoutX="371.0" layoutY="34.0" styleClass="header-text" text="ยินดีต้อนรับกลับ">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -35,31 +35,40 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" layoutX="302.0" layoutY="69.0" prefHeight="19.0" prefWidth="294.0" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="4.0">
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="302.0" layoutY="69.0" prefHeight="19.0" prefWidth="294.0" styleClass="sub-text" text="เข้าสู่ระบบเพื่อยืนยันตัวตน" textFill="#7c7c7c" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="4.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleRegisterScreenBtn" prefHeight="45.0" style="-fx-background-color: #FA7344;" styleClass="text-field" stylesheets="@../styles/styles.css" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+            <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleRegisterScreenBtn" prefHeight="45.0" style="-fx-background-radius: 50;" styleClass="register-button" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
             <PasswordField fx:id="inputPasswordField" layoutX="334.0" layoutY="150.0" prefHeight="45.0" prefWidth="230.0" promptText="รหัสผ่าน" style="-fx-background-radius: 50;" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
                <font>
                   <Font size="13.0" />
                </font>
             </PasswordField>
-            <Button layoutX="334.0" layoutY="214.0" mnemonicParsing="false" onAction="#loginAccept" prefHeight="45.0" prefWidth="230.0" style="-fx-background-color: #00A1F5;" styleClass="text-field" stylesheets="@../styles/styles.css" text="เข้าสู่ระบบ" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
+            <Button layoutX="334.0" layoutY="214.0" mnemonicParsing="false" onAction="#loginAccept" prefHeight="45.0" prefWidth="230.0" style="-fx-background-radius: 50;" styleClass="login-button" text="เข้าสู่ระบบ" textFill="WHITE" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="36.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Label layoutX="390.0" layoutY="283.0" text="ยังไม่มีบัญชีหรอ สมัครเลย!" textFill="#7c7c7c" />
-            <Label layoutX="66.0" layoutY="18.0" text="สมัครสมาชิกใหม่">
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Label layoutX="390.0" layoutY="283.0" styleClass="sub-text" text="ยังไม่มีบัญชีหรอ สมัครเลย!" textFill="#7c7c7c">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label layoutX="66.0" layoutY="18.0" styleClass="header-text" text="สมัครสมาชิกใหม่">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="alertLabel" alignment="CENTER" layoutX="3.0" layoutY="47.0" prefHeight="19.0" prefWidth="298.0" text="สมัครง่าย ๆ ไม่กี่ขั้นตอน" textAlignment="CENTER" textFill="#7c7c7c">
+            <Label fx:id="alertLabel" alignment="CENTER" layoutX="3.0" layoutY="47.0" prefHeight="19.0" prefWidth="298.0" text="สมัครง่าย ๆ ไม่กี่ขั้นตอน" textAlignment="CENTER">
                <font>
                   <Font size="13.0" />
                </font>
@@ -98,17 +107,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Button layoutX="37.0" layoutY="293.0" mnemonicParsing="false" onAction="#registerNewAccount" prefHeight="45.0" style="-fx-background-color: #FA7344;" styleClass="text-field" stylesheets="@../styles/styles.css" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="334.0">
+            <Button layoutX="37.0" layoutY="293.0" mnemonicParsing="false" onAction="#registerNewAccount" prefHeight="45.0" style="-fx-background-radius: 50;" styleClass="register-button" text="สมัครสมาชิก" textFill="WHITE" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="334.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Label layoutX="84.0" layoutY="346.0" text="มีบัญชีอยู่แล้วหรอ" textFill="#575757" AnchorPane.bottomAnchor="36.0">
+            <Label layoutX="84.0" layoutY="346.0" styleClass="sub-text" text="มีบัญชีอยู่แล้วหรอ" textFill="#575757" AnchorPane.bottomAnchor="36.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="loginLabel" layoutX="173.0" layoutY="345.0" onMouseClicked="#handleLoginScreenBtn" styleClass="highlightOnHover" stylesheets="@../styles/styles.css" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true" AnchorPane.bottomAnchor="36.0">
+            <Label fx:id="loginLabel" layoutX="173.0" layoutY="345.0" onMouseClicked="#handleLoginScreenBtn" styleClass="text-can-hover" text="เข้าสู่ระบบ" textFill="#575757" underline="true" wrapText="true" AnchorPane.bottomAnchor="36.0">
                <font>
                   <Font size="13.0" />
                </font>
@@ -116,7 +125,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <VBox fx:id="containImageViewVBox" layoutY="3.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox fx:id="containImageViewVBox" layoutX="221.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="loginImageView" fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                      <image>

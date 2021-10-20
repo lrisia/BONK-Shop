@@ -56,11 +56,13 @@ public class LoginRegisterController {
         String username = inputUsernameTextField.getText();
         String password = inputPasswordField.getText();
         if (!accountList.canLogin(username, password)) {
-            mainLabel.setText("ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง");
-            mainLabel.setStyle("-fx-text-fill: #f61e1e");
+
+            mainLabel.setText("ชื่อผู้ใช้ หรือรหัสผ่านไม่ถูกต้อง");
+            mainLabel.setStyle("-fx-text-fill: invalid-input-notification");
+
         } else if (accountList.searchAccountByUsername(username).gotBanned()) {
             mainLabel.setText("บัญชีของคุณถูกระงับการใช้งาน โปรดติดต่อผู้ดูแล");
-            mainLabel.setStyle("-fx-text-fill: #f61e1e");
+            mainLabel.setStyle("-fx-text-fill: invalid-input-notification");
             dataSource.writeData(accountList);
         } else {
             try {
@@ -82,19 +84,19 @@ public class LoginRegisterController {
         String confirmPassword = confirmPasswordPasswordField.getText();
         if (name.equals("")) {
             alertLabel.setText("ยังไม่ได้กรอกชื่อ");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
         } else if (username.equals("")) {
             alertLabel.setText("ยังไม่ได้กรอก Username");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
         } else if (password.equals("")) {
             alertLabel.setText("ยังไม่ได้กรอกรหัสผ่าน");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
         } else if (confirmPassword.equals("")) {
             alertLabel.setText("ยังไม่ได้ยืนยันรหัสผ่าน");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
         } else if (!password.equals(confirmPassword)) {
             alertLabel.setText("รหัสผ่านไม่ตรงกัน");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
             confirmPasswordPasswordField.clear();
         } else if (accountList.canRegister(username)) {
             accountList.registerNewAccount(username, password, name);
@@ -104,7 +106,7 @@ public class LoginRegisterController {
             handleLoginScreenBtn();
         } else {
             alertLabel.setText("Username นี้ถูกใช้แล้ว");
-            alertLabel.setStyle("-fx-text-fill: #f61e1e");
+            alertLabel.setStyle("-fx-text-fill: invalid-input-notification");
         }
     }
 
@@ -112,8 +114,9 @@ public class LoginRegisterController {
         inputUsernameTextField.clear();
         inputPasswordField.clear();
         mainLabel.setText("เข้าสู่ระบบเพื่อยืนยันตัวตน");
+        mainLabel.setStyle("-fx-text-fill: sub-text");
         alertLabel.setText("สมัครง่าย ๆ ไม่กี่ขั้นตอน");
-        alertLabel.setStyle("-fx-text-fill: #000000");
+        alertLabel.setStyle("-fx-text-fill: sub-text");
         nameTextField.clear();
         usernameTextField.clear();
         passwordPasswordField.clear();

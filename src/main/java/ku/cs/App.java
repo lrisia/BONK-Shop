@@ -4,9 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
+import javafx.stage.StageStyle;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -24,7 +27,9 @@ public class App extends Application {
 //        stage.setScene(scene);
         FXRouter.bind(this, stage, 800, 600);
         stage.setResizable(false);
-//        stage.initStyle(StageStyle.DECORATED.UNDECORATED);
+        stage.getIcons().add(new Image(new FileInputStream("data/Images/logo_bonk.png")));
+//        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         configRoute();
         FXRouter.goTo("login_register");
     }
