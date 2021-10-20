@@ -183,9 +183,11 @@ public class AdminController {
     }
 
     public void deleteReportBtn() {
-        reportList.deleteReport(selectedReport);
-        reportListDataSource.writeData(reportList);
-        showReportInListView();
+        if (selectedReport != null) {
+            reportList.deleteReport(selectedReport);
+            reportListDataSource.writeData(reportList);
+            showReportInListView();
+        }
     }
 
     public void ban() {
