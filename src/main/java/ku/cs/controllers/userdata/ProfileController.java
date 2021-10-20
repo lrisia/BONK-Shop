@@ -41,8 +41,7 @@ public class ProfileController {
     @FXML
     public void initialize() {
         dataSource = new UserDataSource();
-        AccountList accountList = dataSource.readData();
-        Account account = accountList.searchAccountByUsername(getUsername);
+        accountList = dataSource.readData();
         profileImageView.setImage(new Image(account.getImagePath()));
         effect.centerImage(profileImageView);
         showUserNameTextField.setText(account.getUsername());
