@@ -27,7 +27,7 @@ public class App extends Application {
 //        stage.setScene(scene);
         FXRouter.bind(this, stage, 800, 600);
         stage.setResizable(false);
-        stage.getIcons().add(new Image(new FileInputStream("data/Images/logo_bonk.png")));
+        stage.getIcons().add(new Image(new FileInputStream("data/Images/app_logo.png")));
 //        stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         configRoute();

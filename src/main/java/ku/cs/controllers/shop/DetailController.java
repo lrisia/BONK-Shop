@@ -49,27 +49,22 @@ public class DetailController {
     private DataSource<ReviewList> reviewDataSource;
     private ReviewList reviewList;
     private SpinnerValueFactory<Integer> valueFactoryScore;
-
-    Effect effect = new Effect();
+    private SpinnerValueFactory<Integer> valueFactoryPiece;
+    private Effect effect = new Effect();
     private int currentPiece;
 
     public void initialize(){
-        reviewDataSource = new ReviewDataSource();
-        reviewList = reviewDataSource.readData();
-        valueFactoryScore = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
-        valueFactoryScore.setValue(5);
-        scoreSpinner.setValueFactory(valueFactoryScore);
-        usernameLabel.setText(account.getUsername());
-
+        readDataFromCsv();
         writeReviewPane.setDisable(true);
         writeReviewPane.setOpacity(0);
-
+        usernameLabel.setText(account.getUsername());
         int startingAmount = 1;
         if (item.getStock() == 0) {
-            buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+            buyGoodBtn.setStyle("-fx-background-color: market-place-background");
             buyGoodBtn.setText("สินค้าหมด");
             startingAmount = 0;
         }
+        initializeSpinner(startingAmount);
         productImageView.setImage(new Image(item.getImagePath()));
         effect.centerImage(productImageView);
         productStoreNameLabel.setText(item.getShopName());
@@ -79,11 +74,24 @@ public class DetailController {
         detailTextArea.setWrapText(true);
         detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("มีสินค้า "+item.getStock()+" ชิ้น");
-        SpinnerValueFactory<Integer> valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
+        currentPiece = startingAmount;
+        priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
+        showAllReview(reviewList);
+    }
+
+    private void readDataFromCsv() {
+        reviewDataSource = new ReviewDataSource();
+        reviewList = reviewDataSource.readData();
+    }
+
+    private void initializeSpinner(int startingAmount) {
+        valueFactoryScore = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
+        valueFactoryScore.setValue(5);
+        scoreSpinner.setValueFactory(valueFactoryScore);
+
+        valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
         valueFactoryPiece.setValue(0);
         productPieceSpinner.setValueFactory(valueFactoryPiece);
-        currentPiece = productPieceSpinner.getValue();
-        priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
         productPieceSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
@@ -92,11 +100,10 @@ public class DetailController {
                     valueFactoryPiece.setValue(item.getStock());
                     productPieceSpinner.setValueFactory(valueFactoryPiece);
                 }
-                currentPiece = productPieceSpinner.getValue();
+                currentPiece = t1;
                 priceTotalLabel.setText(("ทั้งหมดราคา " + String.format("%.2f",currentPiece*item.getPrice()) + " บาท"));
             }
         });
-        showAllReview(reviewList);
     }
 
     private void showAllReview(ReviewList reviewList) {
@@ -170,7 +177,7 @@ public class DetailController {
         if (reviewList.isThisUsernameHaveAlreadyReview(username, productId)) {
             Review thisReview = reviewList.searchReviewByUsername(username, productId);
             valueFactoryScore.setValue((int)thisReview.getScore());
-            productPieceSpinner.setValueFactory(valueFactoryScore);
+            scoreSpinner.setValueFactory(valueFactoryScore);
             reviewDetailTextArea.setText(thisReview.getReviewDetail());
         }
     }

@@ -90,6 +90,7 @@ public class AdminController {
         reportPane.setOpacity(0);
         showAccountInListView();
         detailTextArea.setDisable(true);
+        deleteReportBtn.setDisable(true);
     }
 
     @FXML
