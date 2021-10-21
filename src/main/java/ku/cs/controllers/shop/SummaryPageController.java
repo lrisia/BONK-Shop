@@ -30,14 +30,26 @@ public class SummaryPageController {
     private Account account = shop.getBuyer();
     private Product product = shop.getProduct();
     private Order order = shop.getOrder();
-
-    private Effect effect = new Effect();
+    private Effect effect;
     private DataSource<ProductList> dataSource;
     private ProductList productList;
     private DataSource<OrderList> orderListDataSource;
     private OrderList orderList;
 
     public void initialize() {
+        readData();
+        initializeUI();
+    }
+
+    private void readData() {
+        effect = new Effect();
+        dataSource = new ProductDataSource();
+        productList = dataSource.readData();
+        orderListDataSource = new OrderDataSource();
+        orderList = orderListDataSource.readData();
+    }
+
+    private void initializeUI() {
         productNameLabel.setText(product.getProductName());
         productStoreNameLabel.setText(product.getShopName());
         priceLabel.setText(String.format("%.2f", product.getPrice()) + " ฿");
@@ -45,17 +57,12 @@ public class SummaryPageController {
         amountLabel.setText("" + order.getAmount());
         summaryPriceLabel.setText(String.format("%.2f", order.getPrice()) + " ฿");
         categoryLabel.setText(product.getCategory());
+        detailTextArea.setText(product.getDetail());
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
-        detailTextArea.setText(product.getDetail());
-
-        dataSource = new ProductDataSource();
-        productList = dataSource.readData();
-
-        orderListDataSource = new OrderDataSource();
-        orderList = orderListDataSource.readData();
     }
 
+    @FXML
     public void acceptPurchase() {
         productList.purchaseProduct(product.getId(), order.getAmount());
         dataSource.writeData(productList);
@@ -70,6 +77,7 @@ public class SummaryPageController {
         }
     }
 
+    @FXML
     public void back() {
         try {
             FXRouter.goTo("detail", new Shop(account, product, null));

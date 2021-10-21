@@ -46,23 +46,23 @@ public class AdminController {
     @FXML TextArea detailTextArea;
     @FXML Button deleteReportBtn;
 
-    private DataSource<AccountList> dataSource = new UserDataSource();
-    private AccountList accountList = dataSource.readData();
-    private DataSource<ReportList> reportListDataSource = new ReportDataSource();
-    private ReportList reportList = reportListDataSource.readData();
-    private DataSource<ProductList> productDataSource = new ProductDataSource();
-    private ProductList productList = productDataSource.readData();
-    private Effect effect = new Effect();
+    private DataSource<AccountList> dataSource;
+    private AccountList accountList;
+    private DataSource<ReportList> reportListDataSource;
+    private ReportList reportList;
+    private DataSource<ProductList> productDataSource;
+    private ProductList productList;
+    private Effect effect;
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
     private Account selectedAccount = null;
     private Report selectedReport = null;
     private ChangeListener myListener = null;
-
     private ChangeListener<Account> accountListener = null;
     private ChangeListener<Report> reportListener = null;
 
     public void initialize() {
+        readData();
         accountList.sort(new Comparator<Account>() {
             @Override
             public int compare(Account o1, Account o2) {
@@ -91,6 +91,16 @@ public class AdminController {
         showAccountInListView();
         detailTextArea.setDisable(true);
         deleteReportBtn.setDisable(true);
+    }
+
+    private void readData() {
+        dataSource = new UserDataSource();
+        accountList = dataSource.readData();
+        reportListDataSource = new ReportDataSource();
+        reportList = reportListDataSource.readData();
+        productDataSource = new ProductDataSource();
+        productList = productDataSource.readData();
+        effect = new Effect();
     }
 
     @FXML

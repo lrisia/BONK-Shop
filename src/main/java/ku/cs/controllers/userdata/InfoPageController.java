@@ -9,9 +9,6 @@ import java.io.IOException;
 
 public class InfoPageController {
     @FXML ImageView logoImageView;
-    @FXML ImageView profileImageView1;
-    @FXML ImageView profileImageView2;
-    @FXML ImageView profileImageView3;
 
     private Shop shop = (Shop) FXRouter.getData();
 

@@ -34,18 +34,30 @@ public class MyStorePageController {
 
     private Shop shop = (Shop) FXRouter.getData();
     protected Account account = shop.getBuyer();
+    private DataSource<ProductList> productListDataSource;
+    private ProductList productList;
+    private DataSource<AccountList> accountListDataSource;
+    private AccountList accountList;
     protected int lowProductAlert;
 
-    private DataSource<ProductList> productListDataSource = new ProductDataSource();
-    private ProductList productList = productListDataSource.readData();
-    private DataSource<AccountList> accountListDataSource = new UserDataSource();
-    private AccountList accountList = accountListDataSource.readData();
-
     public void initialize() {
+        readData();
+        showProduct(productList);
+        initializeUIAndListener();
+    }
+
+    private void readData() {
+        productListDataSource = new ProductDataSource();
+        productList = productListDataSource.readData();
+        accountListDataSource = new UserDataSource();
+        accountList = accountListDataSource.readData();
         account = accountList.searchAccountByUsername(account.getUsername());
         lowProductAlert = account.getLowProductAlert();
-        showProduct(productList);
+    }
+
+    private void initializeUIAndListener() {
         storeNameLabel.setText(account.getStoreName());
+
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, productList.getMaxStock());
         valueFactoryQuantity.setValue(account.getLowProductAlert());
         alertLowProductSpinner.setValueFactory(valueFactoryQuantity);
@@ -107,7 +119,7 @@ public class MyStorePageController {
     }
 
     @FXML
-    public void switchToAddProduct(Event event) {
+    public void switchToAddProduct() {
         try {
             FXRouter.goTo("add_product", shop);
         } catch (IOException e) {

@@ -35,22 +35,27 @@ public class ProfileController {
     @FXML PasswordField confirmPasswordPasswordField;
     @FXML Label saveSuccessfulLabel;
 
-    private Effect effect = new Effect();
-    private DataSource<AccountList> dataSource = new UserDataSource();
-    private AccountList accountList = dataSource.readData();
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
+    private DataSource<AccountList> dataSource;
+    private AccountList accountList;
+    private Effect effect;
 
     @FXML
     public void initialize() {
-        dataSource = new UserDataSource();
-        accountList = dataSource.readData();
-        account = accountList.searchAccountByUsername(account.getUsername());
+        readData();
         profileImageView.setImage(new Image(account.getImagePath()));
         effect.centerImage(profileImageView);
         showUserNameTextField.setText(account.getUsername());
         showNameTextField.setText(account.getName());
         showShopNameTextField.setText(account.getStoreName());
+    }
+
+    private void readData() {
+        dataSource = new UserDataSource();
+        accountList = dataSource.readData();
+        account = accountList.searchAccountByUsername(account.getUsername());
+        effect = new Effect();
     }
 
     @FXML

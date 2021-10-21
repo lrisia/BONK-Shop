@@ -38,7 +38,6 @@ public class OrderManageController {
 
     @FXML private Shop shop = (Shop) FXRouter.getData();
     private Account account;
-
     private DataSource<ProductList> productListDataSource;
     private ProductList productList;
     private DataSource<OrderList> orderListDataSource;
@@ -48,20 +47,20 @@ public class OrderManageController {
 
     @FXML
     public void initialize() {
-        account = shop.getBuyer();
+        readData();
         logoImageView.setImage(new Image(getClass().getResource("/images/logo_white.png").toExternalForm()));
         productImageView.setImage(new Image(getClass().getResource("/images/product_default.png").toExternalForm()));
-        effect = new Effect();
-        readDataFromCsv();
         handleListViewListener();
         addNewOrderInListView(orderList);
     }
 
-    private void readDataFromCsv() {
+    private void readData() {
         productListDataSource = new ProductDataSource();
         productList = productListDataSource.readData();
         orderListDataSource = new OrderDataSource();
         orderList = orderListDataSource.readData();
+        account = shop.getBuyer();
+        effect = new Effect();
     }
 
     private void handleListViewListener() {

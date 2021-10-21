@@ -37,24 +37,39 @@ public class HomePageController {
     @FXML private Label headerLabel;
     @FXML private Pane noProductPane;
 
-    private Effect effect;
     private Shop shop = (Shop) FXRouter.getData();
     protected Account account = shop.getBuyer();
-
-    private DataSource<ProductList> productListDataSource = new ProductDataSource();
-    private ProductList productList = productListDataSource.readData();
-    private DataSource<AccountList> accountListDataSource = new UserDataSource();
-    private AccountList accountList = accountListDataSource.readData();
-
-    private double max = productList.getMaxPrice();
-    private double min = 0;
-    private String category = "All";
-    private String search = "";
+    private DataSource<ProductList> productListDataSource;
+    private ProductList productList;
+    private DataSource<AccountList> accountListDataSource;
+    private AccountList accountList;
+    private Effect effect;
+    private double max;
+    private double min;
+    private String category;
+    private String search;
 
     public void initialize() {
+        readData();
+        showProduct(productList);
+        initializeListener();
+        handleMaxMinTextField();
+    }
+
+    private void readData() {
+        productListDataSource = new ProductDataSource();
+        productList = productListDataSource.readData();
+        accountListDataSource = new UserDataSource();
+        accountList = accountListDataSource.readData();
         effect = new Effect();
         account = accountList.searchAccountByUsername(account.getUsername());
-        showProduct(productList);
+        max = productList.getMaxPrice();
+        min = 0;
+        category = "All";
+        search = "";
+    }
+
+    private void initializeListener() {
         sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
         sortComboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -103,7 +118,6 @@ public class HomePageController {
                 }
             }
         });
-        handleMaxMinTextField();
     }
 
     @FXML
@@ -250,9 +264,20 @@ public class HomePageController {
     }
 
     @FXML
+    public void refresh() {
+        headerLabel.setText("สินค้าทั้งหมด");
+        category = "All";
+        showProduct(productList);
+    }
+
+    @FXML
     public void handleSearchIcon() {
         search = searchTextField.getText();
         showProduct(productList);
+    }
+
+    private void clear() {
+        grid.getChildren().clear();
     }
 
     @FXML
@@ -295,16 +320,4 @@ public class HomePageController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    public void refresh() {
-        headerLabel.setText("สินค้าทั้งหมด");
-        category = "All";
-        showProduct(productList);
-    }
-
-    private void clear() {
-        grid.getChildren().clear();
-    }
-
 }

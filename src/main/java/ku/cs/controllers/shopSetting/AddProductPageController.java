@@ -31,17 +31,29 @@ public class AddProductPageController{
     @FXML Spinner<Integer> productQuantitySpinner;
     @FXML ComboBox categoryComboBox;
 
+    private DataSource<ProductList> dataSource;
+    private ProductList productList;
+    private Shop shop = (Shop) FXRouter.getData();
+    private Account account = shop.getBuyer();
+    private Effect effect;
     private int quantity;
     private double currentPrice;
     private int currentQuantity;
 
-    private DataSource<ProductList> dataSource = new ProductDataSource();
-    private ProductList productList = dataSource.readData();
-    private Shop shop = (Shop) FXRouter.getData();
-    private Account account = shop.getBuyer();
-    private Effect effect = new Effect();
-
     public void initialize() {
+        readData();
+        initializeListener();
+        initializeUI();
+        quantity = productQuantitySpinner.getValue();
+    }
+
+    private void readData() {
+        dataSource = new ProductDataSource();
+        productList = dataSource.readData();
+        effect = new Effect();
+    }
+
+    private void initializeListener() {
         SpinnerValueFactory<Integer> valueFactoryQuantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5000);
         valueFactoryQuantity.setValue(0);
         inputProductDetailTextArea.setWrapText(true);
@@ -62,9 +74,9 @@ public class AddProductPageController{
                 }
             }
         });
+    }
 
-        quantity = productQuantitySpinner.getValue();
-
+    private void initializeUI() {
         categoryComboBox.getItems().add("รถถัง");
         categoryComboBox.getItems().add("เครื่องบิน");
         categoryComboBox.getItems().add("รถ");
@@ -75,39 +87,18 @@ public class AddProductPageController{
     }
 
     @FXML
-    public void switchToHome() {
-        try {
-            FXRouter.goTo("main", shop);
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า main ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
-
-    @FXML
-    public void switchToStore(Event event) {
-        try {
-            FXRouter.goTo("store", shop);
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า store ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     public void add() {
         String productName = inputProductNameTextField.getText();
         String productDetail = inputProductDetailTextArea.getText();
         if (productName.equals("")) {
             notificationLabel.setText("โปรดกรอกชื่อสินค้า");
-            notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+            notificationLabel.setStyle("-fx-text-fill: light-header-text");
         } else if(productDetail.equals("")) {
             notificationLabel.setText("โปรดกรอกรายละเอียด");
-            notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+            notificationLabel.setStyle("-fx-text-fill: light-header-text");
         } else if(fileSelected == null) {
             notificationLabel.setText("โปรดเลือกรูปภาพ");
-            notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+            notificationLabel.setStyle("-fx-text-fill: light-header-text");
         } else {
             try {
                 String category = categoryComboBox.getValue().toString();
@@ -130,10 +121,10 @@ public class AddProductPageController{
                 e.printStackTrace();
             } catch (NullPointerException e) {
                 notificationLabel.setText("โปรดเลือกหมวดหมู่ของสินค้า");
-                notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+                notificationLabel.setStyle("-fx-text-fill: light-header-text");
             } catch (NumberFormatException e) {
                 notificationLabel.setText("รูปแบบราคาไม่ถูกต้อง");
-                notificationLabel.setStyle("-fx-text-fill: #FFFFFF");
+                notificationLabel.setStyle("-fx-text-fill: light-header-text");
             }
         } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
@@ -147,6 +138,27 @@ public class AddProductPageController{
             Image image = new Image(fileSelected.toURI().toString());
             productImageView.setImage(image);
             effect.centerImage(productImageView);
+        }
+    }
+
+    @FXML
+    public void switchToHome() {
+        try {
+            FXRouter.goTo("main", shop);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า main ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML
+    public void switchToStore() {
+        try {
+            FXRouter.goTo("store", shop);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+            e.printStackTrace();
         }
     }
 }

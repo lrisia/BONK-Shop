@@ -45,14 +45,25 @@ public class MyProductDetailController {
 
     @FXML
     public void initialize() {
+        readData();
+        initializeUI();
+        handlePriceTextFieldListener();
+        handleProductPieceSpinnerListener();
+    }
+
+    private void readData() {
         productListDataSource = new ProductDataSource();
         productList = productListDataSource.readData();
+        product = productList.searchProductById(product.getId());
         reportDataSource = new ReportDataSource();
         reportList = reportDataSource.readData();
         reviewListDataSource = new ReviewDataSource();
         reviewList = reviewListDataSource.readData();
-        product = productList.searchProductById(product.getId());
         effect = new Effect();
+        newAmount = product.getStock();
+    }
+
+    private void initializeUI() {
         storeNameTextField.setText(product.getShopName());
         productNameTextField.setText(product.getProductName());
         priceTextField.setText(String.format("%.2f", product.getPrice()));
@@ -60,9 +71,6 @@ public class MyProductDetailController {
         trashIconImageView.setImage(new Image(getClass().getResource("/images/remove_product.png").toExternalForm()));
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
-        handlePriceTextFieldListener();
-        handleProductPieceSpinnerListener();
-        newAmount = product.getStock();
     }
 
     private void handlePriceTextFieldListener() {
