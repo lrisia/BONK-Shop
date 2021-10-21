@@ -34,7 +34,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="747.0" fitWidth="934.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="684.0" fitWidth="972.0" layoutX="-48.0" layoutY="-58.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/how_to_use/หน้าหลัก.png" />
                            </image>
