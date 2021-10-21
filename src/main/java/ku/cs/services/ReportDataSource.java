@@ -4,6 +4,7 @@ import ku.cs.models.verify.Report;
 import ku.cs.models.verify.ReportList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ReportDataSource implements DataSource<ReportList>{
     private String directory;
@@ -27,7 +28,7 @@ public class ReportDataSource implements DataSource<ReportList>{
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
-            fileReader = new FileReader(file);
+            fileReader = new FileReader(file, StandardCharsets.UTF_8);
             bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
@@ -64,7 +65,7 @@ public class ReportDataSource implements DataSource<ReportList>{
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file, StandardCharsets.UTF_8);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(reportList.toCsv());
         } catch (IOException e) {

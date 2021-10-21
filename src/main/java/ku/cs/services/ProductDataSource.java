@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class ProductDataSource implements DataSource<ProductList>{
     private String directory;
@@ -32,7 +33,7 @@ public class ProductDataSource implements DataSource<ProductList>{
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
-            fileReader = new FileReader(file);
+            fileReader = new FileReader(file, StandardCharsets.UTF_8);
             bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
@@ -72,7 +73,7 @@ public class ProductDataSource implements DataSource<ProductList>{
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file, StandardCharsets.UTF_8);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(productList.toCsv());
         } catch (IOException e) {

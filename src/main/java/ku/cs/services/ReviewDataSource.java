@@ -5,6 +5,7 @@ import ku.cs.models.shop.ReviewList;
 import ku.cs.models.verify.Account;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ReviewDataSource implements DataSource<ReviewList> {
     private String directory;
@@ -26,7 +27,7 @@ public class ReviewDataSource implements DataSource<ReviewList> {
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
-            fileReader = new FileReader(file);
+            fileReader = new FileReader(file, StandardCharsets.UTF_8);
             bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
@@ -59,7 +60,7 @@ public class ReviewDataSource implements DataSource<ReviewList> {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file, StandardCharsets.UTF_8);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(reviewList.toCsv());
         } catch (IOException e) {
