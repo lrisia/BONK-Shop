@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.OrderManageController">
+   <children>
+      <Button fx:id="manageNewOrderMenuBtn" alignment="TOP_LEFT" layoutX="14.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleManageNewOrder" prefHeight="45.0" prefWidth="212.0" styleClass="light-button" text="รายการสั่งซื้อใหม่" textFill="#da0101">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="manageOldOrderMenuBtn" alignment="TOP_LEFT" layoutX="14.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleManageAlreadySend" opacity="0.75" prefHeight="45.0" prefWidth="212.0" styleClass="light-button" text="รายการที่จัดส่งแล้ว" textFill="#da0101">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane layoutX="199.0" layoutY="14.0" prefHeight="571.0" prefWidth="586.0" styleClass="sub-theme-background">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <children>
+            <Pane prefHeight="571.0" prefWidth="586.0" />
+            <Pane prefHeight="571.0" prefWidth="586.0">
+               <children>
+                  <ListView fx:id="newOrderListView" layoutX="20.0" layoutY="22.0" prefHeight="530.0" prefWidth="278.0" />
+                  <ImageView fx:id="productImageView" fitHeight="252.0" fitWidth="219.0" layoutX="327.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/product_default.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="308.0" layoutY="286.0" styleClass="description-text-card" text="ชื่อสินค้า :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="productNameLabel" layoutX="391.0" layoutY="286.0" styleClass="description-text-card" text="-">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="308.0" layoutY="319.0" styleClass="description-text-card" text="จำนวน    :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="productAmountLabel" layoutX="391.0" layoutY="319.0" styleClass="description-text-card" text="-">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="308.0" layoutY="355.0" prefHeight="27.0" prefWidth="93.0" styleClass="description-text-card" text="ราคาทั้งหมด :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLabel" layoutX="412.0" layoutY="355.0" styleClass="description-text-card" text="-">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="308.0" layoutY="388.0" prefHeight="27.0" prefWidth="93.0" styleClass="description-text-card" text="สถานะ    :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sendProductStatusLabel" layoutX="391.0" layoutY="388.0" styleClass="description-text-card" text="-">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="acceptBtn" alignment="TOP_CENTER" layoutX="314.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleEnterTrackingNumber" prefHeight="45.0" prefWidth="58.0" styleClass="button-general" text="จัดส่ง" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="trackingGenerateBtn" alignment="TOP_CENTER" layoutX="372.0" layoutY="443.0" mnemonicParsing="false" onAction="#handleGenerateTrackingNumber" prefHeight="45.0" prefWidth="163.0" styleClass="button-general" text="สร้าง tracking number" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="trackingNumberTextField" layoutX="311.0" layoutY="465.0" prefHeight="30.0" prefWidth="262.0" promptText="tracking number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="notificationLabel" alignment="CENTER" layoutX="311.0" layoutY="509.0" prefHeight="17.0" prefWidth="262.0" />
+                  <TextField fx:id="trackingNumberForAlreadySendTextField" disable="true" editable="false" layoutX="311.0" layoutY="465.0" opacity="0.0" prefHeight="30.0" prefWidth="262.0" promptText="tracking number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Pane>
+         </children>
+      </Pane>
+      <Button layoutX="47.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="45.0" prefWidth="102.0" styleClass="light-button" text="กลับ" textFill="#eb0e0e">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fx:id="logoImageView" fitHeight="211.0" fitWidth="245.0" layoutX="-12.0" layoutY="194.0" onMouseClicked="#handleLogoImageView" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../../../images/logo_white.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

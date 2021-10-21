@@ -1,5 +1,5 @@
 .border-color{
-    -fx-background-color: linear-gradient(#c7192d, #000000);
+    -fx-background-color: red-button;
 }
 
 .red-background{
@@ -73,4 +73,10 @@
 
 .shadow1{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.highlightOnHover:hover {
+    -fx-text-fill: #7597fd;
+    -fx-underline: true;
+    -fx-cursor: hand;
 }

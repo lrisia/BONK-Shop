@@ -12,12 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
+import ku.cs.models.shop.ReviewList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
-import ku.cs.services.DataSource;
-import ku.cs.services.Effect;
-import ku.cs.services.FileService;
-import ku.cs.services.ProductDataSource;
+import ku.cs.models.verify.ReportList;
+import ku.cs.services.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +27,7 @@ public class MyProductDetailController {
     @FXML private TextField priceTextField;
     @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private ImageView productImageView;
+    @FXML private ImageView trashIconImageView;
     @FXML private TextArea detailTextArea;
     @FXML private Label notificationLabel;
 
@@ -36,6 +36,10 @@ public class MyProductDetailController {
     private Product product = shop.getProduct();
     private DataSource<ProductList> productListDataSource;
     private ProductList productList;
+    private DataSource<ReportList> reportDataSource;
+    private ReportList reportList;
+    private DataSource<ReviewList> reviewListDataSource;
+    private ReviewList reviewList;
     private Effect effect;
     private int newAmount;
 
@@ -43,16 +47,22 @@ public class MyProductDetailController {
     public void initialize() {
         productListDataSource = new ProductDataSource();
         productList = productListDataSource.readData();
+        reportDataSource = new ReportDataSource();
+        reportList = reportDataSource.readData();
+        reviewListDataSource = new ReviewDataSource();
+        reviewList = reviewListDataSource.readData();
         product = productList.searchProductById(product.getId());
         effect = new Effect();
         storeNameTextField.setText(product.getShopName());
         productNameTextField.setText(product.getProductName());
         priceTextField.setText(String.format("%.2f", product.getPrice()));
         detailTextArea.setText(product.getDetail());
+        trashIconImageView.setImage(new Image(getClass().getResource("/images/remove_product.png").toExternalForm()));
         productImageView.setImage(new Image(product.getImagePath()));
         effect.centerImage(productImageView);
         handlePriceTextFieldListener();
         handleProductPieceSpinnerListener();
+        newAmount = product.getStock();
     }
 
     private void handlePriceTextFieldListener() {
@@ -87,10 +97,12 @@ public class MyProductDetailController {
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images PNG JPG GIF", "*.png", "*.jpg", "*.jpeg", "*.gif"));
         Node source = (Node) event.getSource();
         File file = chooser.showOpenDialog(source.getScene().getWindow());
-        Image image = FileService.handleUploadPicture(file, product, directory);
-        productListDataSource.writeData(productList);
-        productImageView.setImage(image);
-        effect.centerImage(productImageView);
+        if (file != null) {
+            Image image = FileService.handleUploadPicture(file, product, directory);
+            productListDataSource.writeData(productList);
+            productImageView.setImage(image);
+            effect.centerImage(productImageView);
+        }
     }
 
     @FXML
@@ -116,6 +128,19 @@ public class MyProductDetailController {
         } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
+    @FXML
+    public void handleRemoveProduct() {
+        productList.removeProduct(product);
+        reviewList.removeAllReviewByProductId(product.getId());
+        productListDataSource.writeData(productList);
+        reviewListDataSource.writeData(reviewList);
+        try {
+            FXRouter.goTo("store", new Shop(account));
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า store ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 
     @FXML
     public void backBtn() {

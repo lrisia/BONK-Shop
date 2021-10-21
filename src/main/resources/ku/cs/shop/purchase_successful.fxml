@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.PurchaseSuccessfulController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.PurchaseSuccessfulController">
    <children>
-      <Label fx:id="headerLabel" alignment="CENTER" layoutX="153.0" layoutY="74.0" text="คำสั่งซื้อดำเนินการเสร็จสิ้น" textFill="WHITE">
+      <Label fx:id="headerLabel" alignment="CENTER" layoutX="153.0" layoutY="74.0" styleClass="light-header" text="คำสั่งซื้อดำเนินการเสร็จสิ้น" textFill="WHITE">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
-      <Label fx:id="textBodyLabel" alignment="CENTER" layoutX="281.0" layoutY="216.0" prefHeight="30.0" prefWidth="241.0" text="สินค้าของคุณจะถูกจัดส่งเร็ว ๆ นี้" textFill="WHITE">
+      <Label fx:id="textBodyLabel" alignment="CENTER" layoutX="281.0" layoutY="216.0" prefHeight="30.0" prefWidth="241.0" styleClass="light-header" text="สินค้าของคุณจะถูกจัดส่งเร็ว ๆ นี้" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button layoutX="697.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#switchToHome" prefHeight="36.0" prefWidth="80.0" text="กลับ" textFill="RED">
+      <Button layoutX="697.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#switchToHome" prefHeight="36.0" prefWidth="80.0" styleClass="light-button" text="กลับ" textFill="RED">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

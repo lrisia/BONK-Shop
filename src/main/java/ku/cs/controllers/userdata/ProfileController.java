@@ -1,6 +1,7 @@
 package ku.cs.controllers.userdata;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,8 +13,10 @@ import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
+import ku.cs.services.FileService;
 import ku.cs.services.UserDataSource;
 import com.github.saacsos.FXRouter;
+import javafx.event.ActionEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,8 +44,8 @@ public class ProfileController {
     @FXML
     public void initialize() {
         dataSource = new UserDataSource();
-        AccountList accountList = dataSource.readData();
-        Account account = accountList.searchAccountByUsername(getUsername);
+        accountList = dataSource.readData();
+        account = accountList.searchAccountByUsername(account.getUsername());
         profileImageView.setImage(new Image(account.getImagePath()));
         effect.centerImage(profileImageView);
         showUserNameTextField.setText(account.getUsername());
@@ -63,28 +66,25 @@ public class ProfileController {
     @FXML
     private void switchToLoginPage() {
         try {
-            FXRouter.goTo("login");
+            FXRouter.goTo("login_register");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ไปที่หน้า login_register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
 
     @FXML
-    public void upLoadPic() {
-        FileChooser fileChooser = new FileChooser();
-        fileSelected = fileChooser.showOpenDialog(null);
-        fileChooser.getExtensionFilters().addAll(new  FileChooser.ExtensionFilter("image", ".jpg", ".png"));
-        if(fileSelected != null){
-            Image image = new Image(fileSelected.toURI().toString());
+    public void handleUploadButton(ActionEvent event) {
+        String directory = "data/Images/profiles";
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images PNG JPG GIF", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+        Node source = (Node) event.getSource();
+        File file = chooser.showOpenDialog(source.getScene().getWindow());
+        if(file != null){
+            Image image = FileService.handleUploadPicture(file, account, directory);
             profileImageView.setImage(image);
             effect.centerImage(profileImageView);
-            dataSource = new UserDataSource();
-            AccountList accountList = dataSource.readData();
-            Account account = accountList.searchAccountByUsername(getUsername);
-            accountList.removeAccount(account);
-            account.setImagePath();
-            accountList.addAccount(account);
             dataSource.writeData(accountList);
         }
     }

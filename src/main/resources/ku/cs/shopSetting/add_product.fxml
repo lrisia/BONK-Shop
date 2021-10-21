@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.AddProductPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.AddProductPageController">
    <children>
       <ImageView fx:id="logoImageView" fitHeight="153.0" fitWidth="156.0" layoutX="28.0" layoutY="-25.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,32 +22,32 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextField fx:id="inputProductNameTextField" layoutX="213.0" layoutY="114.0" prefHeight="35.0" prefWidth="162.0" promptText="ชื่อสินค้า" />
-      <Label layoutX="349.0" layoutY="53.0" text="เพิ่มสินค้า" textFill="WHITE">
+      <TextField fx:id="inputProductNameTextField" layoutX="213.0" layoutY="114.0" prefHeight="35.0" prefWidth="162.0" promptText="ชื่อสินค้า" styleClass="text-field" />
+      <Label layoutX="349.0" layoutY="53.0" styleClass="light-header" text="เพิ่มสินค้า" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="105.0" layoutY="118.0" prefHeight="27.0" prefWidth="80.0" text="ชื่อสินค้า :" textFill="WHITE">
+      <Label layoutX="105.0" layoutY="118.0" prefHeight="27.0" prefWidth="80.0" styleClass="light-header" text="ชื่อสินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="449.0" layoutY="171.0" prefHeight="27.0" prefWidth="131.0" text="หมวดหมู่สินค้า :" textFill="WHITE">
+      <Label layoutX="449.0" layoutY="171.0" prefHeight="27.0" prefWidth="131.0" styleClass="light-header" text="หมวดหมู่สินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="495.0" layoutY="274.0" prefHeight="27.0" prefWidth="143.0" text="อัปโหลดรูปสินค้า :" textFill="WHITE">
+      <Label layoutX="495.0" layoutY="274.0" prefHeight="27.0" prefWidth="143.0" styleClass="light-header" text="อัปโหลดรูปสินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="upLoadPic" layoutX="649.0" layoutY="276.0" mnemonicParsing="false" onAction="#upLoadPic" style="-fx-background-color: #c7192d;" text="อัปโหลดรูป" textFill="WHITE">
+      <Button fx:id="upLoadPic" layoutX="649.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleUploadButton" styleClass="button-general" text="อัปโหลดรูป" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="backBtn" layoutX="716.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#switchToStore" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFFFF;" text="กลับ" textFill="RED">
+      <Button fx:id="backBtn" layoutX="716.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#switchToStore" prefHeight="35.0" prefWidth="57.0" styleClass="light-button" text="กลับ" textFill="RED">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -55,12 +55,12 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="72.0" layoutY="170.0" prefHeight="27.0" prefWidth="113.0" text="จำนวนสินค้า :" textFill="WHITE">
+      <Label layoutX="72.0" layoutY="170.0" prefHeight="27.0" prefWidth="113.0" styleClass="light-header" text="จำนวนสินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="274.0" prefHeight="27.0" prefWidth="143.0" text="รายละเอียดสินค้า :" textFill="WHITE">
+      <Label layoutX="39.0" layoutY="274.0" prefHeight="27.0" prefWidth="143.0" styleClass="light-header" text="รายละเอียดสินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -69,7 +69,7 @@
          <image>
             <Image url="@../../../images/product_default_white.png" />
          </image></ImageView>
-      <Button fx:id="addBtn" layoutX="638.0" layoutY="35.0" mnemonicParsing="false" onAction="#add" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFFFF;" text="เพิ่ม" textFill="RED">
+      <Button fx:id="addBtn" layoutX="638.0" layoutY="35.0" mnemonicParsing="false" onAction="#add" prefHeight="35.0" prefWidth="57.0" styleClass="light-button" text="เพิ่ม" textFill="RED">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -77,12 +77,12 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="notificationLabel" layoutX="443.0" layoutY="213.0" prefHeight="25.0" prefWidth="330.0" textFill="WHITE">
+      <Label fx:id="notificationLabel" layoutX="495.0" layoutY="251.0" prefHeight="25.0" prefWidth="272.0" styleClass="light-header" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="485.0" layoutY="118.0" prefHeight="27.0" prefWidth="95.0" text="ราคาสินค้า :" textFill="WHITE">
+      <Label layoutX="485.0" layoutY="118.0" prefHeight="27.0" prefWidth="95.0" styleClass="light-header" text="ราคาสินค้า :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

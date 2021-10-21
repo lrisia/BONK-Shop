@@ -1,5 +1,7 @@
 package ku.cs.models.verify;
 
+import ku.cs.models.shop.Review;
+
 import java.util.ArrayList;
 
 public class ReportList {
@@ -19,6 +21,22 @@ public class ReportList {
 
     public ArrayList<Report> getAllReportLog() {
         return reportList;
+    }
+
+    public void removeReportFromProductId(String productId) {
+        ArrayList<Report> reportLists = new ArrayList<>();
+        for (Report report: reportList) {
+            if (report.getProductId().equals(productId)) reportLists.add(report);
+        } for (Report report: reportLists) {
+            if (report.getProductId().equals(productId)) reportList.remove(report);
+        }
+    }
+
+    public void deleteReport(Report report) {
+        Report target = null;
+        for (Report thisReport: reportList) {
+            if (thisReport.equals(report)) target = thisReport;
+        } reportList.remove(target);
     }
 
     public String toCsv() {

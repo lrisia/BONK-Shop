@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="285.0" styleClass="transparent" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shop.ReviewController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="285.0" styleClass="product-card-background" stylesheets="@../styles/styles.css">
+         <children>
+            <Label fx:id="nameLabel" layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="160.0" styleClass="description-text-card" text="nameLabel" />
+            <TextArea fx:id="reviewTextArea" editable="false" layoutX="14.0" layoutY="25.0" prefHeight="42.0" prefWidth="244.0" promptText="รีวิว" wrapText="true" />
+            <ImageView fx:id="moreActionIconImageView" fitHeight="42.0" fitWidth="34.0" layoutX="261.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="172.0" layoutY="7.0" prefHeight="17.0" prefWidth="81.0" styleClass="description-text-card" text="คะแนน       /5.0">
+               <padding>
+                  <Insets top="-2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="scoreLabel" layoutX="214.0" layoutY="6.0" styleClass="description-text-card" text="5.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

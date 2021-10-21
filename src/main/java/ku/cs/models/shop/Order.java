@@ -1,5 +1,8 @@
 package ku.cs.models.shop;
 
+import ku.cs.services.DataSource;
+import ku.cs.services.ProductDataSource;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -12,11 +15,11 @@ public class Order {
     private String orderDate;
     private String orderTime;
     private String trackingNumber;
+    private Product product;
 
     public Order(String productId, String storeName, String buyerUsername, int amount, String price) {
-        this(productId, storeName, buyerUsername, amount, Double.parseDouble(price), "", "", "");
+        this(productId, storeName, buyerUsername, amount, Double.parseDouble(price), "", "", "ยังไม่ส่ง");
         initialOrderTime();
-        this.trackingNumber = generateTrackingNumber();
     }
 
     public Order(String productId, String storeName, String buyerUsername, int amount, double price, String orderDate, String orderTime, String trackingNumber) {
@@ -28,6 +31,9 @@ public class Order {
         this.orderDate = orderDate;
         this.orderTime = orderTime;
         this.trackingNumber = trackingNumber;
+        DataSource<ProductList> productListDataSource = new ProductDataSource();
+        ProductList productList = productListDataSource.readData();
+        this.product = productList.searchProductById(productId);
     }
 
     public void initialOrderTime() {
@@ -45,12 +51,28 @@ public class Order {
         return result + "TH";
     }
 
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
     public int getAmount() {
         return amount;
     }
 
     public double getPrice() {
         return price;
+    }
+
+    public String getTrackingNumber() {
+        return trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
     }
 
     public String toCsv() {
@@ -61,15 +83,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "productId='" + productId + '\'' +
-                ", storeName='" + storeName + '\'' +
-                ", buyerName='" + buyerUsername + '\'' +
-                ", amount=" + amount +
-                ", price=" + price +
-                ", orderDate='" + orderDate + '\'' +
-                ", orderTime='" + orderTime + '\'' +
-                ", trackingNumber='" + trackingNumber + '\'' +
-                '}';
+        return "ชื่อสินค้า " + product.getProductName() + " [" + trackingNumber +  "]\nจำนวน "
+                + amount + " ชิ้น ราคาทั้งหมด " + String.format("%.2f", price) + " บาท";
     }
 }

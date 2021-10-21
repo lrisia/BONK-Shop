@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import com.github.saacsos.FXRouter;
 import javafx.stage.StageStyle;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -25,17 +27,20 @@ public class App extends Application {
 //        stage.setScene(scene);
         FXRouter.bind(this, stage, 800, 600);
         stage.setResizable(false);
-//        stage.initStyle(StageStyle.DECORATED.UNDECORATED);
+        stage.getIcons().add(new Image(new FileInputStream("data/Images/app_logo.png")));
+//        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
         configRoute();
-        FXRouter.goTo("login");
+        FXRouter.goTo("login_register");
     }
 
     private static void configRoute() {
         String packageStr = "ku/cs/";
         FXRouter.when("login", packageStr+ "verify/login.fxml",600,400);
         FXRouter.when("register", packageStr+ "verify/register.fxml",600,400);
+        FXRouter.when("login_register", packageStr+ "verify/login_register.fxml",600,400);
         FXRouter.when("main", packageStr+"shop/home.fxml");
-        FXRouter.when("info",packageStr+"userdata/info_page.fxml");
+        FXRouter.when("info",packageStr+"userdata/info_page.fxml",900,700);
         FXRouter.when("profile",packageStr+"userdata/profile.fxml");
         FXRouter.when("store",packageStr+"shopSetting/my_store.fxml");
         FXRouter.when("shop_setup",packageStr+"shopSetting/shop_setup.fxml");
@@ -48,6 +53,7 @@ public class App extends Application {
         FXRouter.when("report",packageStr+"verify/report.fxml");
         FXRouter.when("report_successful",packageStr+"verify/report_successful.fxml");
         FXRouter.when("my_product_detail",packageStr+"shopSetting/my_product_detail.fxml");
+        FXRouter.when("order_manage",packageStr+"shopSetting/order_manage.fxml");
     }
 
     public static void setRoot(String fxml) throws IOException {

@@ -81,9 +81,20 @@ public class MyStorePageController {
                     row++;
                 }
                 storeGridPane.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane, new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(7));
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleMyOrderMenu() {
+        try {
+            FXRouter.goTo("order_manage", shop);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า order_manage ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
             e.printStackTrace();
         }
     }

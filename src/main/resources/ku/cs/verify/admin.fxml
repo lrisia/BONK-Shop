@@ -13,24 +13,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.verify.AdminController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <top>
-            <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="แอดมิน" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="light-header" text="แอดมิน" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="newPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="103.0" promptText="รหัสผ่านใหม่" styleClass="button" stylesheets="@../styles/styles.css" />
-                  <Label layoutX="202.0" layoutY="67.0" text="เปลี่ยนรหัสผ่าน" textFill="WHITE">
+                  <PasswordField fx:id="newPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="103.0" promptText="รหัสผ่านใหม่" />
+                  <Label layoutX="202.0" layoutY="67.0" styleClass="light-header" text="เปลี่ยนรหัสผ่าน" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="saveBtn" layoutX="367.0" layoutY="138.0" mnemonicParsing="false" onAction="#changPassword" text="บันทึก" textFill="RED">
+                  <Button fx:id="saveBtn" layoutX="367.0" layoutY="138.0" mnemonicParsing="false" onAction="#changPassword" styleClass="light-button" text="บันทึก" textFill="RED">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -43,13 +43,13 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Label fx:id="saveSuccessfulLabel" layoutX="367.0" layoutY="105.0" prefHeight="21.0" prefWidth="201.0" textFill="WHITE">
+                  <Label fx:id="saveSuccessfulLabel" layoutX="367.0" layoutY="105.0" prefHeight="21.0" prefWidth="201.0" styleClass="light-header" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="confirmPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="138.0" promptText="ยืนยันรหัสผ่าน" styleClass="button" stylesheets="@../styles/styles.css" />
-                  <Button fx:id="banBtn1" layoutX="693.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles/styles.css" text="กลับ" textFill="#c93535">
+                  <PasswordField fx:id="confirmPasswordField" alignment="TOP_LEFT" layoutX="202.0" layoutY="138.0" promptText="ยืนยันรหัสผ่าน" />
+                  <Button fx:id="banBtn1" layoutX="693.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="39.0" prefWidth="87.0" styleClass="light-button" text="กลับ" textFill="#c93535">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -57,8 +57,8 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="accountManageBtn" alignment="TOP_CENTER" layoutX="17.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleAccountMenu" prefHeight="48.0" prefWidth="122.0" text="จัดการบัญชีผู้ใช้" />
-                  <Button fx:id="reportManageBtn" alignment="TOP_CENTER" layoutX="139.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleReportMenu" opacity="0.75" prefHeight="48.0" prefWidth="140.0" text="รายงานความไม่เหมาะสม" />
+                  <Button fx:id="accountManageBtn" alignment="TOP_CENTER" layoutX="17.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleAccountMenu" prefHeight="48.0" prefWidth="122.0" styleClass="light-button" text="จัดการบัญชีผู้ใช้" />
+                  <Button fx:id="reportManageBtn" alignment="TOP_CENTER" layoutX="139.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleReportMenu" opacity="0.75" prefHeight="48.0" prefWidth="140.0" styleClass="light-button" text="รายงานความไม่เหมาะสม" />
                </children>
             </Pane>
          </top>
@@ -66,12 +66,12 @@
             <Pane prefHeight="400.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="showDataListView" layoutX="16.0" prefHeight="384.0" prefWidth="362.0" />
-                  <Label layoutX="648.0" layoutY="349.0" text="ลงชื่อออก" textFill="WHITE">
+                  <Label layoutX="648.0" layoutY="349.0" styleClass="light-header" text="ลงชื่อออก" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="banBtn" alignment="CENTER" layoutX="633.0" layoutY="280.0" mnemonicParsing="false" onAction="#ban" prefHeight="39.0" prefWidth="147.0" style="-fx-background-color: #c7192d;" stylesheets="@../styles/styles.css" text="แบน/ปลดแบน" textFill="WHITE">
+                  <Button fx:id="banBtn" alignment="CENTER" layoutX="633.0" layoutY="280.0" mnemonicParsing="false" onAction="#ban" prefHeight="39.0" prefWidth="147.0" styleClass="button-general" text="แบน/ปลดแบน" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -89,58 +89,63 @@
                         <Image url="@../../../images/profileDefault.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="deleteReportBtn" alignment="CENTER" layoutX="633.0" layoutY="280.0" mnemonicParsing="false" onAction="#deleteReportBtn" opacity="0.0" prefHeight="39.0" prefWidth="148.0" styleClass="button-general" text="ลบ" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </bottom>
       </BorderPane>
       <Pane fx:id="accountPane" layoutX="378.0" layoutY="171.0" prefHeight="251.0" prefWidth="422.0">
          <children>
-            <Label layoutX="13.0" layoutY="-2.0" prefHeight="32.0" prefWidth="105.0" text="ชื่อผู้ใช้    :" textFill="WHITE">
+            <Label layoutX="13.0" layoutY="-2.0" prefHeight="32.0" prefWidth="105.0" styleClass="light-header" text="ชื่อผู้ใช้    :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="usernameLabel" layoutX="133.0" layoutY="1.0" text="-" textFill="WHITE">
+            <Label fx:id="usernameLabel" layoutX="133.0" layoutY="1.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="41.0" text="ชื่อ               :" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="41.0" styleClass="light-header" text="ชื่อ               :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="nameLabel" layoutX="133.0" layoutY="41.0" text="-" textFill="WHITE">
+            <Label fx:id="nameLabel" layoutX="133.0" layoutY="41.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="82.0" prefHeight="27.0" prefWidth="103.0" text="ชื่อร้านค้า    :" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="82.0" prefHeight="27.0" prefWidth="103.0" styleClass="light-header" text="ชื่อร้านค้า    :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="storeNameLabel" layoutX="133.0" layoutY="82.0" text="-" textFill="WHITE">
+            <Label fx:id="storeNameLabel" layoutX="133.0" layoutY="82.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="126.0" text="เข้าใช้ล่าสุด :" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="126.0" styleClass="light-header" text="เข้าใช้ล่าสุด :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="timeLabel" layoutX="133.0" layoutY="126.0" text="-" textFill="WHITE">
+            <Label fx:id="timeLabel" layoutX="133.0" layoutY="126.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="tryLoginLabel" layoutX="13.0" layoutY="167.0" text="จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน" textFill="WHITE">
+            <Label fx:id="tryLoginLabel" layoutX="13.0" layoutY="167.0" styleClass="light-header" text="จำนวนครั้งที่เข้าสู่ระบบระหว่างถูกแบน" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="loginLabel" layoutX="317.0" layoutY="167.0" text="-" textFill="WHITE">
+            <Label fx:id="loginLabel" layoutX="317.0" layoutY="167.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -149,32 +154,32 @@
       </Pane>
       <Pane fx:id="reportPane" layoutX="378.0" layoutY="169.0" opacity="0.0" prefHeight="251.0" prefWidth="422.0">
          <children>
-            <Label layoutX="14.0" prefHeight="32.0" prefWidth="117.0" text="ผู้รายงาน :" textFill="WHITE">
+            <Label layoutX="14.0" prefHeight="32.0" prefWidth="117.0" styleClass="light-header" text="ผู้รายงาน :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="reportUsernameLabel" layoutX="131.0" layoutY="3.0" text="-" textFill="WHITE">
+            <Label fx:id="reportUsernameLabel" layoutX="131.0" layoutY="3.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="43.0" text="ชนิด :" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="43.0" styleClass="light-header" text="ชนิด :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="reportCategoryLabel" layoutX="73.0" layoutY="43.0" text="-" textFill="WHITE">
+            <Label fx:id="reportCategoryLabel" layoutX="73.0" layoutY="43.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="123.0" layoutY="43.0" text="หัวข้อ :" textFill="WHITE">
+            <Label layoutX="123.0" layoutY="43.0" styleClass="light-header" text="หัวข้อ :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="reportTopicLabel" layoutX="195.0" layoutY="43.0" text="-" textFill="WHITE">
+            <Label fx:id="reportTopicLabel" layoutX="195.0" layoutY="43.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -187,12 +192,12 @@
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </TextArea>
-            <Label layoutX="14.0" layoutY="70.0" prefHeight="27.0" prefWidth="176.0" text="ชื่อบัญชีที่ถูกรายงาน :" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="70.0" prefHeight="27.0" prefWidth="176.0" styleClass="light-header" text="ชื่อบัญชีที่ถูกรายงาน :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="ownUsernameLabel" layoutX="198.0" layoutY="70.0" text="-" textFill="WHITE">
+            <Label fx:id="ownUsernameLabel" layoutX="198.0" layoutY="70.0" styleClass="light-header" text="-" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

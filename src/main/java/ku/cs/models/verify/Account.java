@@ -1,6 +1,7 @@
 package ku.cs.models.verify;
 
-import ku.cs.models.shop.ProductList;
+import ku.cs.services.HandleImage;
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 import static ku.cs.controllers.userdata.ProfileController.fileSelected;
 
-public class Account {
+public class Account implements HandleImage {
     private String role;
     private String name;
     private String username;
@@ -23,10 +24,8 @@ public class Account {
     private String loginTime;
     private String imagePath;
 
-    private ProductList productList;
-
     public Account(String username, String password, String name) {
-        this("Account", username, password, name, "", 0, false, 0, "", "","profileDefault.png");
+        this("Account", username, password, name, "-", 0, false, 0, "", "","profileDefault.png");
         initialLoginTime();
     }
 
@@ -177,6 +176,17 @@ public class Account {
     public void registerNewStore(String storeName){
         this.storeName = storeName;
         this.role = "Seller";
+    }
+
+    @Override
+    public void setImagePathToDirectory(String path) {
+        String[] fileSplit = path.split("\\.");
+        this.imagePath = getFilePictureName() + "." + fileSplit[fileSplit.length - 1];
+    }
+
+    @Override
+    public String getFilePictureName() {
+        return username + "-profile";
     }
 
     // todo: What user can do?

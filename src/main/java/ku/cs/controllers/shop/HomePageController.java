@@ -14,9 +14,11 @@ import ku.cs.models.shop.Product;
 import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
+import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
 import ku.cs.services.ProductDataSource;
 import com.github.saacsos.FXRouter;
+import ku.cs.services.UserDataSource;
 import ku.cs.strategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class HomePageController {
     @FXML private ComboBox sortComboBox;
     @FXML private TextField maxPriceTextField;
     @FXML private TextField minPriceTextField;
+    @FXML private TextField searchTextField;
     @FXML private Label noProductLabel;
     @FXML private Label headerLabel;
     @FXML private Pane noProductPane;
@@ -36,12 +39,16 @@ public class HomePageController {
 
     private DataSource<ProductList> productListDataSource = new ProductDataSource();
     private ProductList productList = productListDataSource.readData();
+    private DataSource<AccountList> accountListDataSource = new UserDataSource();
+    private AccountList accountList = accountListDataSource.readData();
 
     private double max = productList.getMaxPrice();
     private double min = 0;
     private String category = "All";
+    private String search = "";
 
     public void initialize() {
+        account = accountList.searchAccountByUsername(account.getUsername());
         showProduct(productList);
         sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
         sortComboBox.valueProperty().addListener(new ChangeListener<String>() {
@@ -91,6 +98,27 @@ public class HomePageController {
                 }
             }
         });
+        handleMaxMinTextField();
+    }
+
+    @FXML
+    public void handleMaxMinTextField() {
+        maxPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    maxPriceTextField.setText(oldValue);
+                }
+            }
+        });
+        minPriceTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,13}([\\.]\\d{0,2})?")) {
+                    minPriceTextField.setText(oldValue);
+                }
+            }
+        });
     }
 
     @FXML
@@ -127,10 +155,16 @@ public class HomePageController {
         return filtered;
     }
 
+    public ProductList searchFilter(ProductList productList, String search) {
+        ProductList filtered = productList.filter(new SearchProductFilterer(search));
+        return filtered;
+    }
+
     public void showProduct(ProductList productList) {
         clear();
         noProductLabel.setOpacity(0);
         noProductPane.setDisable(true);
+        productList = searchFilter(productList, search);
         productList = priceFilter(productList, max, min);
         if (!category.equals("All"))
             productList = categoryFilter(productList, category);
@@ -153,7 +187,7 @@ public class HomePageController {
                     row++;
                 }
                 grid.add(anchorPane,column++, row);
-                GridPane.setMargin(anchorPane, new Insets(9));
+                GridPane.setMargin(anchorPane, new Insets(7));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,49 +197,55 @@ public class HomePageController {
     @FXML
     public void switchToTank() {
         headerLabel.setText("รถถัง");
-        category = "Tank";
+        category = "รถถัง";
         showProduct(productList);
     }
 
     @FXML
     public void switchToPlane() {
         headerLabel.setText("เครื่องบิน");
-        category = "Plane";
+        category = "เครื่องบิน";
         showProduct(productList);
     }
 
     @FXML
     public void switchToCar() {
         headerLabel.setText("รถ");
-        category = "Car";
+        category = "รถ";
         showProduct(productList);
     }
 
     @FXML
     public void switchToWarship() {
         headerLabel.setText("เรือ");
-        category = "Warship";
+        category = "เรือ";
         showProduct(productList);
     }
 
     @FXML
     public void switchToGun() {
         headerLabel.setText("ปืน");
-        category = "Gun";
+        category = "ปืน";
         showProduct(productList);
     }
 
     @FXML
     public void switchToKnife() {
         headerLabel.setText("ระยะประชิด");
-        category = "Knife";
+        category = "ระยะประชิด";
         showProduct(productList);
     }
 
     @FXML
     public void switchToAssault() {
         headerLabel.setText("ปืนกล");
-        category = "Assault rifle";
+        category = "ปืนกล";
+        showProduct(productList);
+    }
+
+    @FXML
+    public void handleSearchIcon() {
+        search = searchTextField.getText();
         showProduct(productList);
     }
 
@@ -257,7 +297,7 @@ public class HomePageController {
         showProduct(productList);
     }
 
-    void clear() {
+    private void clear() {
         grid.getChildren().clear();
     }
 

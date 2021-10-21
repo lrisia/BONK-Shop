@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.MyStorePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-theme-background" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopSetting.MyStorePageController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-color" stylesheets="@../styles/styles.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <top>
             <HBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
@@ -47,7 +47,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="47.0" spacing="5.0" styleClass="round-white-background" stylesheets="@../styles/styles.css">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="46.0" prefWidth="47.0" spacing="5.0" style="-fx-background-radius: 50;" styleClass="sub-theme-background">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="33.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -69,12 +69,12 @@
             </HBox>
          </top>
          <right>
-            <Pane prefHeight="474.0" prefWidth="804.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="474.0" prefWidth="804.0" styleClass="sub-theme-background" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <ScrollPane fx:id="storeScrollPane" layoutY="29.0" prefHeight="458.0" prefWidth="800.0">
+                  <ScrollPane fx:id="storeScrollPane" layoutY="29.0" prefHeight="458.0" prefWidth="800.0" styleClass="market-place-background">
                      <content>
                         <GridPane fx:id="storeGridPane" prefHeight="0.0" prefWidth="0.0">
                            <rowConstraints>
@@ -83,13 +83,13 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <Button alignment="TOP_RIGHT" defaultButton="true" layoutX="738.0" layoutY="2.0" mnemonicParsing="false" onAction="#applyNewSettingLowAmount" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #dddddd;" text="ตกลง">
+                  <Button alignment="TOP_RIGHT" defaultButton="true" layoutX="738.0" layoutY="2.0" mnemonicParsing="false" onAction="#applyNewSettingLowAmount" prefHeight="25.0" prefWidth="60.0" styleClass="button-general" text="ตกลง">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <Spinner fx:id="alertLowProductSpinner" layoutX="685.0" layoutY="2.0" prefHeight="25.0" prefWidth="75.0" />
-                  <Label layoutX="552.0" layoutY="5.0" prefHeight="19.0" prefWidth="130.0" text="แจ้งเตือนเมื่อสินค้าต่ำกว่า :">
+                  <Label layoutX="552.0" layoutY="5.0" prefHeight="19.0" prefWidth="130.0" styleClass="header-text" text="แจ้งเตือนเมื่อสินค้าต่ำกว่า :">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -98,14 +98,26 @@
             </Pane>
          </right>
          <bottom>
-            <ImageView fitHeight="105.0" fitWidth="105.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
-               <image>
-                  <Image url="@../../../images/Add_Icon.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#handleMyOrderMenu" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/list_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="105.0" fitWidth="405.0" onMouseClicked="#switchToAddProduct" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Add_Icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </HBox>
          </bottom>
       </BorderPane>
       <Pane fx:id="noProductPane" layoutX="390.0" layoutY="360.0" opacity="0.0" prefHeight="17.0" prefWidth="55.0">

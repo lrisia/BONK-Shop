@@ -3,17 +3,23 @@ package ku.cs.controllers.shop;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import ku.cs.models.shop.Order;
-import javafx.scene.input.MouseEvent;
-import ku.cs.models.shop.Product;
-import ku.cs.models.shop.Shop;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import ku.cs.models.shop.*;
 import ku.cs.models.verify.Account;
+import ku.cs.services.DataSource;
 import ku.cs.services.Effect;
 import com.github.saacsos.FXRouter;
+import ku.cs.services.ReviewDataSource;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DetailController {
     @FXML private ImageView productImageView;
@@ -24,37 +30,68 @@ public class DetailController {
     @FXML private TextArea detailTextArea;
     @FXML private Label productTotalLabel;
     @FXML private Label priceTotalLabel;
+    @FXML private Label categoryLabel;
     @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private Label productStoreNameLabel;
     @FXML private Button buyGoodBtn;
+    @FXML private GridPane reviewGridPane;
+    @FXML private Pane writeReviewPane;
+    @FXML private Label usernameLabel;
+    @FXML private Spinner<Integer> scoreSpinner;
+    @FXML private TextArea reviewDetailTextArea;
+    @FXML private Label notificationLabel;
+    @FXML private Label allScoreLabel;
+    @FXML private Pane noReviewPane;
 
     private Shop shop = (Shop) FXRouter.getData();
     private Product item = shop.getProduct(); //เก็บข้อมูลจากหน้าสินค้ามาไว้ในนี้ด้วย
     private Account account = shop.getBuyer();
-
-    Effect effect = new Effect();
+    private DataSource<ReviewList> reviewDataSource;
+    private ReviewList reviewList;
+    private SpinnerValueFactory<Integer> valueFactoryScore;
+    private SpinnerValueFactory<Integer> valueFactoryPiece;
+    private Effect effect = new Effect();
     private int currentPiece;
 
     public void initialize(){
+        readDataFromCsv();
+        writeReviewPane.setDisable(true);
+        writeReviewPane.setOpacity(0);
+        usernameLabel.setText(account.getUsername());
         int startingAmount = 1;
         if (item.getStock() == 0) {
-            buyGoodBtn.setStyle("-fx-background-color: #9e9e9e");
+            buyGoodBtn.setStyle("-fx-background-color: market-place-background");
             buyGoodBtn.setText("สินค้าหมด");
             startingAmount = 0;
         }
+        initializeSpinner(startingAmount);
         productImageView.setImage(new Image(item.getImagePath()));
         effect.centerImage(productImageView);
         productStoreNameLabel.setText(item.getShopName());
         productNameLabel.setText(item.getProductName());
         priceLabel.setText(String.format("%.2f", item.getPrice())+" ฿");
+        categoryLabel.setText(item.getCategory());
         detailTextArea.setWrapText(true);
         detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("มีสินค้า "+item.getStock()+" ชิ้น");
-        SpinnerValueFactory<Integer> valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
+        currentPiece = startingAmount;
+        priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
+        showAllReview(reviewList);
+    }
+
+    private void readDataFromCsv() {
+        reviewDataSource = new ReviewDataSource();
+        reviewList = reviewDataSource.readData();
+    }
+
+    private void initializeSpinner(int startingAmount) {
+        valueFactoryScore = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
+        valueFactoryScore.setValue(5);
+        scoreSpinner.setValueFactory(valueFactoryScore);
+
+        valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
         valueFactoryPiece.setValue(0);
         productPieceSpinner.setValueFactory(valueFactoryPiece);
-        currentPiece = productPieceSpinner.getValue();
-        priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
         productPieceSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
@@ -63,30 +100,86 @@ public class DetailController {
                     valueFactoryPiece.setValue(item.getStock());
                     productPieceSpinner.setValueFactory(valueFactoryPiece);
                 }
-                currentPiece = productPieceSpinner.getValue();
+                currentPiece = t1;
                 priceTotalLabel.setText(("ทั้งหมดราคา " + String.format("%.2f",currentPiece*item.getPrice()) + " บาท"));
             }
         });
     }
 
-    @FXML
-    private void mouseEnterStoreNameLabel(MouseEvent mouseEvent) {
-        productStoreNameLabel.setStyle("-fx-text-fill: #7597fd"); //เปลี่ยนสี Label
+    private void showAllReview(ReviewList reviewList) {
+        reviewGridPane.getChildren().clear();
+        ArrayList<Review> reviews = reviewList.getAllReviewWithProductId(item.getId());
+        int allReview = reviews.size();
+        String averageScore = String.format("%.1f", reviewList.findAverageScore(reviews)) + "/5.0";
+        noReviewPane.setOpacity(0);
+        if (allReview == 0)  {
+            averageScore = "ไม่มีคะแนน";
+            noReviewPane.setOpacity(0.45);
+        }
+        allScoreLabel.setText("ทั้งหมด " + allReview + " รีวิว คะแนนเฉลี่ย " + averageScore);
+        int column = 0;
+        int row = 1;
+        try {
+            for (Review review: reviews) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/ku/cs/shop/review.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+                ReviewController reviewController = fxmlLoader.getController();
+                reviewController.setData(review);
+                if(column == 1){
+                    column = 0;
+                    row++;
+                }
+                reviewGridPane.add(anchorPane,column++, row);
+                GridPane.setMargin(anchorPane, new Insets(9));
+                GridPane.setColumnSpan(anchorPane, 3);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void mouseExitedStoreNameLabel(MouseEvent mouseEvent) {
-        productStoreNameLabel.setStyle("-fx-text-fill: #000000"); //เปลี่ยนสีกลับ
+    public void handleWriteReviewButton() {
+        writeReviewPane.setOpacity(1);
+        writeReviewPane.setDisable(false);
+        initializeWriteReviewWindow(account.getUsername(), item.getId());
     }
 
     @FXML
-    private void mouseEnterReport(MouseEvent mouseEvent) {
-        reportLabel.setStyle("-fx-text-fill: #7597fd"); //เปลี่ยนสี Label
+    public void handleCloseWriteReview() {
+        writeReviewPane.setOpacity(0);
+        writeReviewPane.setDisable(true);
     }
 
     @FXML
-    private void mouseExitedReport(MouseEvent mouseEvent) {
-        reportLabel.setStyle("-fx-text-fill: #000000"); //เปลี่ยนสีกลับ
+    public void handleEnterWriteReviewButton() {
+        String username = account.getUsername();
+        String productId = item.getId();
+        if (reviewDetailTextArea.getText().equals("")) {
+            notificationLabel.setText("ยังไม่ได้กรอกรายละเอียด");
+        } else if (reviewList.isThisUsernameHaveAlreadyReview(username, productId)) {
+            String score = scoreSpinner.getValue().toString();
+            String detail = reviewDetailTextArea.getText();
+            reviewList.editReviewInformation(username, productId, score, detail);
+            reviewDataSource.writeData(reviewList);
+            handleCloseWriteReview();
+            showAllReview(reviewList);
+        } else {
+            reviewList.addNewReview(new Review(username, productId, scoreSpinner.getValue(), reviewDetailTextArea.getText()));
+            reviewDataSource.writeData(reviewList);
+            handleCloseWriteReview();
+            showAllReview(reviewList);
+        } effect.fadeOutLabelEffect(notificationLabel, 3);
+    }
+
+    private void initializeWriteReviewWindow(String username, String productId) {
+        if (reviewList.isThisUsernameHaveAlreadyReview(username, productId)) {
+            Review thisReview = reviewList.searchReviewByUsername(username, productId);
+            valueFactoryScore.setValue((int)thisReview.getScore());
+            scoreSpinner.setValueFactory(valueFactoryScore);
+            reviewDetailTextArea.setText(thisReview.getReviewDetail());
+        }
     }
 
     @FXML
@@ -135,6 +228,4 @@ public class DetailController {
             }
         }
     }
-
-
 }
