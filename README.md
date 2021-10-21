@@ -33,7 +33,7 @@
 
 
 ## วิธีการติดตั้งหรือรันโปรแกรม
-  * เข้าผ่านทางโฟลเดอร์ "cs211-431-project/bin/launch.sh"
+  * ให้เข้า directory "ตรวจที่นี้-cs211-Project/cs211-431-project/bin" จากนั้นให้ใช้ command "./launch.sh"
 
 
 
