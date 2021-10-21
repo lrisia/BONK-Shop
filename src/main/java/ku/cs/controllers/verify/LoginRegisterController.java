@@ -21,6 +21,7 @@ import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.UserDataSource;
 
 import java.io.IOException;
@@ -41,11 +42,14 @@ public class LoginRegisterController {
     @FXML private ImageView loginImageView;
     @FXML private ComboBox<String> themeComboBox;
 
+    private Effect effect;
     private DataSource<AccountList> dataSource = new UserDataSource();
     private AccountList accountList = dataSource.readData();
 
     @FXML
     public void initialize() {
+        effect = new Effect();
+        effect.fadeInPage(root);
         readDataFromCsv();
         loginImageView.setImage(new Image(getClass().getResource("/images/verify/login_register.png").toExternalForm()));
         mainLabel.setText("เข้าสู่ระบบเพื่อยืนยันตัวตน");
@@ -53,27 +57,22 @@ public class LoginRegisterController {
     }
 
     private void initializeComboBox() {
-        themeComboBox.getItems().addAll("พื้นฐาน", "อวกาศ", "ฮาโลวีน");
+        themeComboBox.getItems().addAll("พื้นฐาน", "อวกาศ", "ฮาโลวีน", "ซากุระ");
         themeComboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
                 if (newValue.equals("พื้นฐาน")) FXRouter.setCssStylePath("default.css");
                 else if (newValue.equals("อวกาศ")) FXRouter.setCssStylePath("space.css");
                 else if (newValue.equals("ฮาโลวีน")) FXRouter.setCssStylePath("halloween.css");
+                else if (newValue.equals("ซากุระ")) FXRouter.setCssStylePath("sakura.css");
                 refreshPage();
             }
         });
     }
 
     private void refreshPage() {
-        try {
-            dataSource.writeData(accountList);
-            FXRouter.goTo("login_register");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า login_register ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-            e.printStackTrace();
-        }
+        dataSource.writeData(accountList);
+        effect.changePage(root, "login_register");
     }
 
     private void readDataFromCsv() {

@@ -98,6 +98,7 @@ public class AdminController {
         showAccountInListView();
         reportPane.setOpacity(0);
         accountPane.setOpacity(1);
+        effect.fadeInPage(accountPane);
         if (myListener.equals(reportListener)) {
             showDataListView.getSelectionModel().selectedItemProperty().removeListener(reportListener);
             showDataListView.getSelectionModel().selectedItemProperty().addListener(accountListener);
@@ -117,6 +118,7 @@ public class AdminController {
         showReportInListView();
         accountPane.setOpacity(0);
         reportPane.setOpacity(1);
+        effect.fadeInPage(reportPane);
         if (myListener.equals(accountListener)) {
             showDataListView.getSelectionModel().selectedItemProperty().removeListener(accountListener);
             showDataListView.getSelectionModel().selectedItemProperty().addListener(reportListener);
@@ -265,5 +267,8 @@ public class AdminController {
         reportTopicLabel.setText("-");
         ownUsernameLabel.setText("-");
         detailTextArea.clear();
+        effect.fadeInPage(showDataListView);
+        effect.fadeInPage(accountManageBtn);
+        effect.fadeInPage(reportManageBtn);
     }
 }

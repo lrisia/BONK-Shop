@@ -2,10 +2,17 @@ package ku.cs.services;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class Effect {
     public void fadeOutLabelEffect(Label fadeLabel, double duration) {
@@ -33,10 +40,6 @@ public class Effect {
         fadeOut.play();
     }
 
-    public void stopAllEffect() {
-
-    }
-
     public void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
         if (img != null) {
@@ -55,5 +58,86 @@ public class Effect {
             imageView.setX((imageView.getFitWidth() - w) / 2);
             imageView.setY((imageView.getFitHeight() - h) / 2);
         }
+    }
+
+    public void changePage(AnchorPane root, String page) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(200));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished((ActionEvent event) -> {
+            try {
+                com.github.saacsos.FXRouter.goTo(page);
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า " + page + " ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void changePage(Pane root, String page) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(200));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished((ActionEvent event) -> {
+            try {
+                com.github.saacsos.FXRouter.goTo(page);
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า " + page + " ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void fadeInPage(AnchorPane root) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(200));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
+
+    public void fadeInPage(Pane root) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(250));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
+
+    public void fadeInPage(ListView root) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(250));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
+
+    public void fadeInPage(Button root) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(250));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
+
+    public void fadeInPage(ScrollPane root) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(1000));
+        fadeTransition.setNode(root);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
     }
 }
