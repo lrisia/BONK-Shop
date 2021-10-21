@@ -48,11 +48,13 @@
 * (Seller) (Username: Military) (Password: hailhydra)
 * (Seller) (Username: JohnApexShop) (Password: 212224236)
 * (Seller) (Username: Trevor007) (Password: HelloWorld)
+* (Seller) (Username: Steve1234) (Password: iloveminecraft)
 * (Buyer) (username: SamZaa) (password: 108041998Sam)
 * (Buyer) (username: หญิงเอง) (password: 18145)
 * (Buyer) (username: KittyCat123) (password: meowmeow)
 * (Buyer) (username: OneForAll) (password: NumberOneHero)
 * (Buyer) (username: IronManZaa007) (password: Tonylovepepper)
+
 
 ## สรุปสิ่งที่พัฒนาแต่ละครั้งที่นำเสนอความก้าวหน้าของระบบ
 * ครั้งที่ 1 (11 สิงหาคม 2021)

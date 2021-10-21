@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +16,7 @@ import ku.cs.models.shop.ProductList;
 import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.ProductDataSource;
 import ku.cs.strategy.*;
 import com.github.saacsos.FXRouter;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SpecificStoreController {
+    @FXML private ScrollPane mainScrollPane;
     @FXML private GridPane storeGrid;
     @FXML private Label storeNameLabel;
     @FXML private Label noProductLabel;
@@ -30,6 +33,7 @@ public class SpecificStoreController {
 
     private String search = "";
 
+    private Effect effect;
     private Shop shop = (Shop) FXRouter.getData();
     private Account account = shop.getBuyer();
     private Product product = shop.getProduct();
@@ -39,6 +43,7 @@ public class SpecificStoreController {
 
 
     public void initialize() {
+        effect = new Effect();
         showProduct(productList);
         storeNameLabel.setText(product.getShopName());
     }
@@ -56,6 +61,7 @@ public class SpecificStoreController {
 
     public void showProduct(ProductList productList) {
         clear();
+        effect.fadeInPage(mainScrollPane);
         noProductLabel.setText("");
         productList = searchFilter(productList,search);
         productList = productList.filter(new MyStoreProductFilterer(product.getShopName()));

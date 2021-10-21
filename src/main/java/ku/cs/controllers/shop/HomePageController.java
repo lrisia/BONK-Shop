@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import ku.cs.models.shop.Product;
@@ -16,6 +17,7 @@ import ku.cs.models.shop.Shop;
 import ku.cs.models.verify.Account;
 import ku.cs.models.verify.AccountList;
 import ku.cs.services.DataSource;
+import ku.cs.services.Effect;
 import ku.cs.services.ProductDataSource;
 import com.github.saacsos.FXRouter;
 import ku.cs.services.UserDataSource;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class HomePageController {
+    @FXML private ScrollPane mainScrollPane;
     @FXML private GridPane grid;
     @FXML private ComboBox sortComboBox;
     @FXML private TextField maxPriceTextField;
@@ -34,6 +37,7 @@ public class HomePageController {
     @FXML private Label headerLabel;
     @FXML private Pane noProductPane;
 
+    private Effect effect;
     private Shop shop = (Shop) FXRouter.getData();
     protected Account account = shop.getBuyer();
 
@@ -48,6 +52,7 @@ public class HomePageController {
     private String search = "";
 
     public void initialize() {
+        effect = new Effect();
         account = accountList.searchAccountByUsername(account.getUsername());
         showProduct(productList);
         sortComboBox.getItems().addAll("ล่าสุด", "เก่าสุด", "ราคาสูงสุด", "ราคาต่ำสุด");
@@ -162,6 +167,7 @@ public class HomePageController {
 
     public void showProduct(ProductList productList) {
         clear();
+        effect.fadeInPage(mainScrollPane);
         noProductLabel.setOpacity(0);
         noProductPane.setDisable(true);
         productList = searchFilter(productList, search);

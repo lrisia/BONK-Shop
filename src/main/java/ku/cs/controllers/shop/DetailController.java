@@ -22,73 +22,80 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DetailController {
+    // หน้ารายละเอียดสินค้า
     @FXML private ImageView productImageView;
     @FXML private Label productNameLabel;
     @FXML private Label priceLabel;
     @FXML private Label maxProductLabel;
-    @FXML private Label reportLabel;
-    @FXML private TextArea detailTextArea;
     @FXML private Label productTotalLabel;
     @FXML private Label priceTotalLabel;
     @FXML private Label categoryLabel;
-    @FXML private Spinner<Integer> productPieceSpinner;
+    @FXML private TextArea detailTextArea;
     @FXML private Label productStoreNameLabel;
+    @FXML private Spinner<Integer> productPieceSpinner;
     @FXML private Button buyGoodBtn;
+    // หน้ารีวิว
     @FXML private GridPane reviewGridPane;
     @FXML private Pane writeReviewPane;
+    @FXML private Pane noReviewPane;
     @FXML private Label usernameLabel;
-    @FXML private Spinner<Integer> scoreSpinner;
-    @FXML private TextArea reviewDetailTextArea;
     @FXML private Label notificationLabel;
     @FXML private Label allScoreLabel;
-    @FXML private Pane noReviewPane;
-
-    private Shop shop = (Shop) FXRouter.getData();
-    private Product item = shop.getProduct(); //เก็บข้อมูลจากหน้าสินค้ามาไว้ในนี้ด้วย
-    private Account account = shop.getBuyer();
-    private DataSource<ReviewList> reviewDataSource;
-    private ReviewList reviewList;
+    @FXML private TextArea reviewDetailTextArea;
+    @FXML private Spinner<Integer> scoreSpinner;
     private SpinnerValueFactory<Integer> valueFactoryScore;
     private SpinnerValueFactory<Integer> valueFactoryPiece;
-    private Effect effect = new Effect();
+
+    private Shop shop;
+    private Product item; //เก็บข้อมูลจากหน้าสินค้ามาไว้ในนี้ด้วย
+    private Account account;
+    private DataSource<ReviewList> reviewDataSource;
+    private ReviewList reviewList;
+    private Effect effect;
     private int currentPiece;
 
     public void initialize(){
-        readDataFromCsv();
-        writeReviewPane.setDisable(true);
-        writeReviewPane.setOpacity(0);
-        usernameLabel.setText(account.getUsername());
+        readData();
+        initializeUI();
         int startingAmount = 1;
         if (item.getStock() == 0) {
             buyGoodBtn.setStyle("-fx-background-color: market-place-background");
             buyGoodBtn.setText("สินค้าหมด");
             startingAmount = 0;
-        }
+        } currentPiece = startingAmount;
         initializeSpinner(startingAmount);
+        showAllReview(reviewList);
+    }
+
+    private void readData() {
+        shop = (Shop) FXRouter.getData();
+        item = shop.getProduct(); //เก็บข้อมูลจากหน้าสินค้ามาไว้ในนี้ด้วย
+        account = shop.getBuyer();
+        reviewDataSource = new ReviewDataSource();
+        reviewList = reviewDataSource.readData();
+    }
+
+    private void initializeUI() {
+        effect = new Effect();
+        writeReviewPane.setDisable(true);
+        detailTextArea.setWrapText(true);
+        writeReviewPane.setOpacity(0);
         productImageView.setImage(new Image(item.getImagePath()));
         effect.centerImage(productImageView);
+        usernameLabel.setText(account.getUsername());
         productStoreNameLabel.setText(item.getShopName());
         productNameLabel.setText(item.getProductName());
         priceLabel.setText(String.format("%.2f", item.getPrice())+" ฿");
         categoryLabel.setText(item.getCategory());
-        detailTextArea.setWrapText(true);
         detailTextArea.setText(item.getDetail());
         productTotalLabel.setText("มีสินค้า "+item.getStock()+" ชิ้น");
-        currentPiece = startingAmount;
         priceTotalLabel.setText(("ทั้งหมดราคา "+ String.format("%.2f", currentPiece*item.getPrice()) +" บาท"));
-        showAllReview(reviewList);
-    }
-
-    private void readDataFromCsv() {
-        reviewDataSource = new ReviewDataSource();
-        reviewList = reviewDataSource.readData();
     }
 
     private void initializeSpinner(int startingAmount) {
         valueFactoryScore = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
         valueFactoryScore.setValue(5);
         scoreSpinner.setValueFactory(valueFactoryScore);
-
         valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
         valueFactoryPiece.setValue(0);
         productPieceSpinner.setValueFactory(valueFactoryPiece);
@@ -104,6 +111,15 @@ public class DetailController {
                 priceTotalLabel.setText(("ทั้งหมดราคา " + String.format("%.2f",currentPiece*item.getPrice()) + " บาท"));
             }
         });
+    }
+
+    private void initializeWriteReviewWindow(String username, String productId) {
+        if (reviewList.isThisUsernameHaveAlreadyReview(username, productId)) {
+            Review thisReview = reviewList.searchReviewByUsername(username, productId);
+            valueFactoryScore.setValue((int)thisReview.getScore());
+            scoreSpinner.setValueFactory(valueFactoryScore);
+            reviewDetailTextArea.setText(thisReview.getReviewDetail());
+        }
     }
 
     private void showAllReview(ReviewList reviewList) {
@@ -143,6 +159,7 @@ public class DetailController {
     public void handleWriteReviewButton() {
         writeReviewPane.setOpacity(1);
         writeReviewPane.setDisable(false);
+        effect.fadeInPage(writeReviewPane);
         initializeWriteReviewWindow(account.getUsername(), item.getId());
     }
 
@@ -173,12 +190,18 @@ public class DetailController {
         } effect.fadeOutLabelEffect(notificationLabel, 3);
     }
 
-    private void initializeWriteReviewWindow(String username, String productId) {
-        if (reviewList.isThisUsernameHaveAlreadyReview(username, productId)) {
-            Review thisReview = reviewList.searchReviewByUsername(username, productId);
-            valueFactoryScore.setValue((int)thisReview.getScore());
-            scoreSpinner.setValueFactory(valueFactoryScore);
-            reviewDetailTextArea.setText(thisReview.getReviewDetail());
+    @FXML
+    public void buyGoods() {
+        if ((!(item.getStock() == 0)) && currentPiece <= item.getStock()) {
+            try {
+                String price = String.format("%.2f", currentPiece*item.getPrice());
+                shop.newOrder(item.getId(), item.getShopName(), account.getUsername(), currentPiece, price);
+                FXRouter.goTo("summary", shop);
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า summary ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+                e.printStackTrace();
+            }
         }
     }
 
@@ -195,7 +218,7 @@ public class DetailController {
     @FXML
     public void switchToSpecific() {
         try {
-            com.github.saacsos.FXRouter.goTo("specific", new Shop(account, item));
+            FXRouter.goTo("specific", new Shop(account, item));
         } catch (IOException e) {
             System.err.println("ไปที่หน้า specific ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -211,21 +234,6 @@ public class DetailController {
             System.err.println("ไปที่หน้า report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
             e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void buyGoods() {
-        if ((!(item.getStock() == 0)) && currentPiece <= item.getStock()) {
-            try {
-                String price = String.format("%.2f", currentPiece*item.getPrice());
-                shop.newOrder(item.getId(), item.getShopName(), account.getUsername(), currentPiece, price);
-                FXRouter.goTo("summary", shop);
-            } catch (IOException e) {
-                System.err.println("ไปที่หน้า summary ไม่ได้");
-                System.err.println("ให้ตรวจสอบการกำหนด route");
-                e.printStackTrace();
-            }
         }
     }
 }
