@@ -56,7 +56,6 @@ public class DetailController {
 
     public void initialize(){
         readData();
-        initializeUI();
         int startingAmount = 1;
         if (item.getStock() == 0) {
             buyGoodBtn.setStyle("-fx-background-color: market-place-background");
@@ -64,6 +63,7 @@ public class DetailController {
             startingAmount = 0;
         } currentPiece = startingAmount;
         initializeSpinner(startingAmount);
+        initializeUI();
         showAllReview(reviewList);
     }
 
@@ -97,7 +97,7 @@ public class DetailController {
         valueFactoryScore.setValue(5);
         scoreSpinner.setValueFactory(valueFactoryScore);
         valueFactoryPiece = new SpinnerValueFactory.IntegerSpinnerValueFactory(startingAmount, item.getStock()+1);
-        valueFactoryPiece.setValue(0);
+        valueFactoryPiece.setValue(startingAmount);
         productPieceSpinner.setValueFactory(valueFactoryPiece);
         productPieceSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
@@ -107,7 +107,7 @@ public class DetailController {
                     valueFactoryPiece.setValue(item.getStock());
                     productPieceSpinner.setValueFactory(valueFactoryPiece);
                 }
-                currentPiece = t1;
+                currentPiece = productPieceSpinner.getValue();
                 priceTotalLabel.setText(("ทั้งหมดราคา " + String.format("%.2f",currentPiece*item.getPrice()) + " บาท"));
             }
         });
